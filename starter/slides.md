@@ -153,11 +153,30 @@ layout: statement
 <div class="mt-8 text-2xl opacity-80">Wer PRs mergen will, ohne jede Zeile zu lesen,<br/>braucht bessere <span class="text-[#ff6bed]">automatische Verifikation</span>.</div>
 
 <!--
-TIME: 4:30–5:30 (60s)
+TIME: 4:30–5:00 (30s)
 
 - **Die Kernthese** des Talks.
 - „Weitgehend“ ist bewusst gewählt. Es gibt noch harte Probleme. Aber für einen typischen Frontend-Ticket schreibt der Agent den Code.
 - Die Frage ist also nicht mehr „Wer schreibt das?“, sondern „Woher weiß ich, dass es stimmt?“
+-->
+
+---
+clicks: 1
+---
+
+# Wo fangen wir Fehler <span class="text-[#ff6bed]">ab</span>?
+
+<VerificationFunnel />
+
+<!--
+TIME: 5:00–5:30 (30s)
+
+- Ein Trichter: Oben fängt man am meisten ab, unten kommt nur noch durch, was alle Schichten davor übersehen haben.
+- Codebase, statische Analyse, Verifikation, Prosa (Regeln, Skills, AGENTS.md), ganz unten der Mensch im Review.
+- [click] **Heute** geht es um die Mitte: Verifikation. Der Agent prüft empirisch im echten Browser, ob das Ticket erfüllt ist.
+- Je mehr die oberen Schichten abfangen, desto kleiner wird das menschliche Review.
+
+SOURCE: TODO Urheber des Trichter-Diagramms nachtragen (Vorlage von Alex als Bild geliefert, nachgezeichnet als SVG).
 -->
 
 ---
