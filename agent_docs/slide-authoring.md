@@ -36,7 +36,7 @@ Presenter notes go in an HTML comment at the END of the slide.
 
 - `---` on its own line separates slides; the first frontmatter block is the **headmatter** (deck-wide config), later ones are per-slide **frontmatter**.
 - Write presenter notes for every content slide — they're part of a good talk, not optional polish.
-- `starter/slides.md` is the canonical example — copy real patterns from there.
+- `starter/demo.md` is the canonical example — copy real patterns from there.
 
 ## Click animations (the core of a good Slidev talk)
 

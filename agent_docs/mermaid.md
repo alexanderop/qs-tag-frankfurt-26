@@ -1,6 +1,6 @@
 # Mermaid diagrams
 
-Mermaid is the only diagram tool for decks in this stack. Do not use the addon's `Rough*` components in new slides. Every feature on this page has a working demo slide in `starter/slides.md` (section "Diagram & UI Components"). Copy from there before writing a diagram from scratch.
+Mermaid is the only diagram tool for decks in this stack. Do not use the addon's `Rough*` components in new slides. Every feature on this page has a working demo slide in `starter/demo.md` (section "Diagram & UI Components"). Copy from there before writing a diagram from scratch.
 
 Versions: Slidev 53.1 bundles Mermaid 12.3. Syntax reference: https://mermaid.js.org/intro/ (check the version badge on each feature).
 

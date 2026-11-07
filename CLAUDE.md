@@ -6,7 +6,7 @@ A pnpm workspace monorepo: my personal Slidev stack for conference talks. It exi
 
 - `packages/slidev-theme-brand` — theme: layouts, branded footer (global layer), content-card components, fonts/styles. `@alexop/slidev-theme-brand`
 - `packages/slidev-addon-utils` — addon: Callout, About, `code-editor` + `TwoCols` layouts, plus legacy Rough diagram components (new decks use Mermaid). `@alexop/slidev-addon-utils`
-- `starter` — presentation template consuming both via `workspace:*`; its `slides.md` demonstrates every component and layout end-to-end. `starter/recordings/` holds VHS tape templates for scripted terminal clips (Claude Code, Copilot CLI).
+- `starter` — presentation template consuming both via `workspace:*`; `slides.md` is the QS-Tag Frankfurt 2026 talk (German); `demo.md` demonstrates every component and layout end-to-end (the deck smoke tests build `demo.md`). `starter/recordings/` holds VHS tape templates for scripted terminal clips (Claude Code, Copilot CLI).
 
 Slidev auto-discovers the theme (via `slidev.colorSchema` in package.json) and addon, and auto-registers all components globally — slides never import components. The addon ships `setup/unocss.ts` (icon preset) that Slidev merges into the presentation. The theme ships `setup/mermaid.ts` (hand-drawn look + brand colors for every Mermaid diagram) and `setup/main.ts` (marks print/export mode and hides a stuck PWA badge). Layout files must be lowercase (`cover.vue`): Slidev matches `layout:` names case-sensitively.
 
@@ -28,7 +28,7 @@ Target a single package with `pnpm --filter <name> <script>` (e.g. `pnpm --filte
 ## How to work here
 
 - Edit theme/addon files directly and check the result through `pnpm dev` — everything hot-reloads, there is no build step for the packages.
-- Before using or changing a component/layout, copy its usage from `starter/slides.md` rather than guessing prop shapes.
+- Before using or changing a component/layout, copy its usage from `starter/demo.md` rather than guessing prop shapes.
 - New presentations: copy `starter/` and keep `theme: '@alexop/slidev-theme-brand'` + `addons: ['@alexop/slidev-addon-utils']` in the headmatter.
 - `starter/AGENTS.md` owns how Alex builds talks (deck skeleton, slide rules, timing, notes) and the talk-research workflow. Read it before drafting or restructuring a deck, and before ingesting an article, YouTube video, local file, or pasted note into `starter/research/`.
 

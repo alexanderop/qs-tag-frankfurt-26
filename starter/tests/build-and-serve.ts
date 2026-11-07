@@ -29,7 +29,7 @@ declare module 'vitest' {
 
 /** Build the starter deck once and serve it like a static host (SPA fallback to index.html). */
 export default async function setup(project: TestProject) {
-  execFileSync('pnpm', ['exec', 'slidev', 'build', '--out', outDir], { cwd: starter, stdio: 'inherit' })
+  execFileSync('pnpm', ['exec', 'slidev', 'build', 'demo.md', '--out', outDir], { cwd: starter, stdio: 'inherit' })
 
   const server = createServer((req, res) => {
     const path = decodeURIComponent(new URL(req.url ?? '/', 'http://x').pathname)

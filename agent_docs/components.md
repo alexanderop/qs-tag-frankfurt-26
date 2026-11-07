@@ -1,7 +1,7 @@
 # Custom Components & Layouts Reference
 
 Everything below is auto-registered globally by Slidev — no imports needed in slides.
-`starter/slides.md` demonstrates every component/layout end-to-end — copy from there rather than guessing prop shapes.
+`starter/demo.md` demonstrates every component/layout end-to-end — copy from there rather than guessing prop shapes.
 
 ## Theme components (`packages/slidev-theme-brand/components/`)
 
