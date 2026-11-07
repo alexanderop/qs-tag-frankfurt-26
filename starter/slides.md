@@ -232,23 +232,15 @@ TIME: 6:00–6:45 (45s)
 
 # Die <span class="text-[#ff6bed]">Augen und Hände</span> des Agenten
 
-<div class="grid grid-cols-2 gap-5 mt-8 text-base">
-  <div v-click class="border border-white/20 rounded px-4 py-3 bg-white/5">
-    <div class="font-bold text-lg">Playwright CLI</div>
-    <div class="opacity-80">Für Teams, die Playwright schon kennen. Stabil und günstig.</div>
-  </div>
-  <div v-click class="border border-white/20 rounded px-4 py-3 bg-white/5">
-    <div class="font-bold text-lg">Playwright MCP</div>
-    <div class="opacity-80">Zum lokalen Erkunden. Bequem, aber teuer im Kontext.</div>
-  </div>
-  <div v-click class="border border-[#ff6bed] rounded px-4 py-3 bg-[#ff6bed]/10">
-    <div class="font-bold text-lg">Agent Browser</div>
-    <div class="opacity-80">Mein Favorit. Snapshot mit Refs, gebaut für Agents.</div>
-  </div>
-  <div v-click class="border border-white/20 rounded px-4 py-3 bg-white/5">
-    <div class="font-bold text-lg">Computer Use</div>
-    <div class="opacity-80">Wenn es keinen Browser gibt: Desktop-Apps, Legacy-UIs.</div>
-  </div>
+<div class="mt-10">
+
+<IconCards :columns="4" :items="[
+  { icon: '/icons/playwright-cli.webp', title: 'Playwright CLI', sub: 'Für Teams, die Playwright schon kennen. Stabil und günstig.' },
+  { icon: '/icons/playwright-mcp.webp', title: 'Playwright MCP', sub: 'Zum lokalen Erkunden. Bequem, aber teuer im Kontext.' },
+  { icon: '/icons/agent-browser.webp', title: 'Agent Browser', sub: 'Mein Favorit. Snapshot mit Refs, gebaut für Agents.', accent: true },
+  { icon: '/icons/computer-use.webp', title: 'Computer Use', sub: 'Wenn es keinen Browser gibt: Desktop-Apps, Legacy-UIs.' },
+]" size="lg" />
+
 </div>
 
 <!--
@@ -352,33 +344,30 @@ TIME: 7:45–8:45 (60s)
 
 # So hilft der Skill bei <span class="text-[#ff6bed]">jedem Lauf</span>
 
-<div class="grid grid-cols-[1fr_1.2fr] gap-8 mt-6 items-start">
-<div>
+<div class="mt-4">
 
-<v-clicks>
-
-1. **Launch:** startet den Shop auf einem freien Port
-2. **Doctor:** prüft, ob die Instanz taugt
-3. **Drive:** bedient die App wie ein Mensch
-4. **Evidence:** Screenshot, Snapshot, Cookies pro Schritt
-5. **Cleanup:** räumt auf, Belege bleiben
-
-</v-clicks>
+<IconCards flow :items="[
+  { icon: '/icons/launch.webp', title: 'Launch', sub: 'startet den Shop auf einem freien Port' },
+  { icon: '/icons/doctor.webp', title: 'Doctor', sub: 'prüft, ob die Instanz taugt' },
+  { icon: '/icons/drive.webp', title: 'Drive', sub: 'bedient die App wie ein Mensch', accent: true },
+  { icon: '/icons/evidence.webp', title: 'Evidence', sub: 'Screenshot, Snapshot, Cookies pro Schritt' },
+  { icon: '/icons/cleanup.webp', title: 'Cleanup', sub: 'räumt auf, Belege bleiben' },
+]" />
 
 </div>
-<div v-click>
+
+<div v-click class="grid grid-cols-[1.1fr_1fr] gap-6 mt-5 items-center">
+<div>
 
 ```text
 $ otto-verify.sh doctor
 ok   port 3100 owned by our run
 ok   GET / renders OTTO homepage (SSR)
 ok   /api/products total=184
-ok   internet reachable
 ```
 
-<div class="mt-4 text-lg opacity-80">Jeder Agent startet <b>gleich</b>. Nicht jeder erfindet seinen eigenen Weg.</div>
-
 </div>
+<div class="text-lg opacity-80">Jeder Agent startet <b>gleich</b>. Nicht jeder erfindet seinen eigenen Weg.</div>
 </div>
 
 <!--
@@ -807,14 +796,16 @@ TIME: 19:00–19:30 (30s)
 
 # So baut ihr das in <span class="text-[#ff6bed]">eurem</span> Frontend nach
 
-<v-clicks>
+<div class="mt-10">
 
-1. **Akzeptanzkriterien** als Gherkin ins Ticket schreiben
-2. Dem Agenten einen **Browser** geben: Agent Browser oder Playwright CLI
-3. `/create-verification-skill` laufen lassen und die **Feature Map** pflegen
-4. Ein festes **Report-Format** vorgeben: Urteil, Screenshots, Video
+<IconCards :columns="4" size="lg" :items="[
+  { icon: '/icons/issue.webp', title: 'Akzeptanzkriterien', sub: 'als Gherkin ins Ticket schreiben' },
+  { icon: '/icons/agent-browser.webp', title: 'Einen Browser geben', sub: 'Agent Browser oder Playwright CLI' },
+  { icon: '/icons/feature-map.webp', title: 'Feature Map', sub: '/create-verification-skill laufen lassen und pflegen' },
+  { icon: '/icons/report.webp', title: 'Festes Report-Format', sub: 'Urteil, Screenshots, Video' },
+]" />
 
-</v-clicks>
+</div>
 
 <!--
 TIME: 19:30–20:15 (45s)
@@ -830,23 +821,15 @@ TIME: 19:30–20:15 (45s)
 
 # Label setzen, und der Agent testet <span class="text-[#ff6bed]">in der Cloud</span>
 
-<div class="flex justify-center mt-4">
+<div class="mt-6">
 
-<MermaidSteps :steps="['dev label', 'gha shop', 'agent ticket', 'browser', 'comment gate']">
-
-```mermaid {scale: 0.62}
-flowchart LR
-  dev@{ shape: person, label: "Du" } --> label[Label<br/>qa-verify]
-  label --> gha[GitHub Actions]
-  gha --> shop[Shop starten<br/>mit Skill]
-  shop --> agent@{ shape: console, label: "Claude Code" }
-  ticket[Verlinktes<br/>GitHub-Issue] --> agent
-  agent --> browser@{ shape: browser, label: "Agent Browser" }
-  browser --> comment[Report als<br/>PR-Kommentar]
-  browser --> gate{Urteil}
-```
-
-</MermaidSteps>
+<IconCards flow :items="[
+  { icon: '/icons/label.webp', title: 'Label setzen', sub: 'qa-verify am PR', tag: 'Du' },
+  { icon: '/jira/workflow.webp', title: 'Shop starten', sub: 'mit dem Skript aus dem Skill', tag: 'GitHub Actions' },
+  { icon: '/icons/issue.webp', title: 'Ticket lesen', sub: 'verlinktes GitHub-Issue', tag: 'Claude Code' },
+  { icon: '/jira/agent.webp', title: 'Im Browser testen', sub: 'headless in der Cloud', tag: 'Agent Browser', accent: true },
+  { icon: '/icons/urteil.webp', title: 'Report + Urteil', sub: 'Kommentar mit Screenshots, Check grün oder rot', tag: 'PR' },
+]" />
 
 </div>
 
@@ -947,25 +930,17 @@ TIME: 22:15–23:00 (45s)
 
 # Teaser: Ticket auf „In QA“, und der <span class="text-[#ff6bed]">Agent legt los</span>
 
-<div class="flow mt-4">
-  <div v-click class="flow__step"><div class="flow__card"><img src="/jira/ticket.webp" alt="" class="flow__icon" /><div class="flow__title">Dev schiebt Ticket</div><div class="flow__sub">auf „In QA“</div><div class="flow__tool">Jira</div></div></div>
-  <div v-click class="flow__step"><div class="flow__arrow">→</div><div class="flow__card"><img src="/jira/trigger.webp" alt="" class="flow__icon" /><div class="flow__title">Automation feuert</div><div class="flow__sub">Send web request</div><div class="flow__tool">Jira Automation</div></div></div>
-  <div v-click class="flow__step"><div class="flow__arrow">→</div><div class="flow__card"><img src="/jira/workflow.webp" alt="" class="flow__icon" /><div class="flow__title">Workflow startet</div><div class="flow__sub">repository_dispatch</div><div class="flow__tool">GitHub Actions</div></div></div>
-  <div v-click class="flow__step"><div class="flow__arrow">→</div><div class="flow__card is-agent"><img src="/jira/agent.webp" alt="" class="flow__icon" /><div class="flow__title">Agent liest & testet</div><div class="flow__sub">Ticket via Rovo MCP, Browser</div><div class="flow__tool">Claude Code</div></div></div>
-  <div v-click class="flow__step"><div class="flow__arrow">→</div><div class="flow__card"><img src="/jira/funde.webp" alt="" class="flow__icon" /><div class="flow__title">Funde ins Ticket</div><div class="flow__sub">Kommentar + Screenshots</div><div class="flow__tool">Jira REST API</div></div></div>
-</div>
+<div class="mt-4">
 
-<style>
-.flow { display: flex; align-items: stretch; justify-content: center; }
-.flow__step { display: flex; align-items: stretch; }
-.flow__arrow { align-self: center; color: #ff6bed; font-size: 28px; font-weight: 700; padding: 0 6px; }
-.flow__card { display: flex; flex-direction: column; align-items: center; width: 150px; text-align: center; border: 1px solid rgba(255,255,255,.15); border-radius: 12px; padding: 12px 8px; background: rgba(255,255,255,.04); }
-.flow__card.is-agent { border-color: #ff6bed; background: rgba(255,107,237,.12); }
-.flow__icon { width: 72px; height: 72px; margin: 0 auto 6px; }
-.flow__title { font-weight: 700; font-size: 15px; line-height: 1.25; }
-.flow__sub { font-size: 12px; opacity: .7; margin-top: 2px; }
-.flow__tool { font-size: 11px; color: #ff6bed; margin-top: auto; padding-top: 6px; text-transform: uppercase; letter-spacing: .05em; }
-</style>
+<IconCards flow :items="[
+  { icon: '/jira/ticket.webp', title: 'Dev schiebt Ticket', sub: 'auf „In QA“', tag: 'Jira' },
+  { icon: '/jira/trigger.webp', title: 'Automation feuert', sub: 'Send web request', tag: 'Jira Automation' },
+  { icon: '/jira/workflow.webp', title: 'Workflow startet', sub: 'repository_dispatch', tag: 'GitHub Actions' },
+  { icon: '/jira/agent.webp', title: 'Agent liest & testet', sub: 'Ticket via Rovo MCP, Browser', tag: 'Claude Code', accent: true },
+  { icon: '/jira/funde.webp', title: 'Funde ins Ticket', sub: 'Kommentar + Screenshots', tag: 'Jira REST API' },
+]" />
+
+</div>
 
 <div v-click class="mt-6 grid grid-cols-3 gap-4 text-sm">
   <div class="border border-white/20 rounded px-3 py-2 bg-white/5"><b>Auslöser:</b> Trigger „Work item transitioned“ auf den Status In QA</div>
@@ -1229,13 +1204,11 @@ TIME: 29:00–29:15 (15s)
 <div class="grid grid-cols-[1.4fr_1fr] gap-8 mt-6 items-center">
 <div>
 
-<v-clicks>
-
-1. Schreibt Akzeptanzkriterien, die ein **Agent prüfen** kann.
-2. Gebt eurem Agenten einen **Browser** und eine **Feature Map**.
-3. Lasst ihn nicht nur bestätigen, sondern **explorativ** suchen.
-
-</v-clicks>
+<IconCards :columns="3" :items="[
+  { icon: '/icons/issue.webp', title: 'Akzeptanzkriterien', sub: 'die ein Agent prüfen kann' },
+  { icon: '/icons/feature-map.webp', title: 'Browser + Feature Map', sub: 'für euren Agenten' },
+  { icon: '/icons/explorativ.webp', title: 'Explorativ suchen', sub: 'nicht nur bestätigen lassen', accent: true },
+]" />
 
 </div>
 <div class="flex flex-col items-center">

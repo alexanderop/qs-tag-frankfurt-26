@@ -169,3 +169,18 @@ Building blocks: `EditorTitleBar.vue`, `EditorFileTree.vue`, `EditorFileNode.vue
 ## Theme layouts (`packages/slidev-theme-brand/layouts/`)
 
 `cover`, `section`, `default`, `center`, `end`, `fact`, `full`, `iframe`, `iframe-left`, `iframe-right`, `image`, `image-left`, `image-right`, `intro`, `none`, `quote`, `statement`, `two-cols`, `two-cols-header`
+
+## IconCards (starter/components, QS-Tag deck)
+
+Cards with a Codex sticker icon, title, optional `sub` and pink `tag`. One `v-click` per card.
+
+```md
+<IconCards flow :items="[
+  { icon: '/icons/launch.webp', title: 'Launch', sub: 'startet den Shop', tag: 'Skill' },
+  { icon: '/icons/drive.webp', title: 'Drive', accent: true },
+]" />
+```
+
+- `flow`: row with `→` between cards (a process). Without it: grid, `:columns` defaults to the item count.
+- `size="lg"`: bigger icons and text for 3–4 cards.
+- Icons live in `starter/public/icons/` and `starter/public/jira/` (256 px WebP, transparent). Prompts: `starter/research/trichter-icons-prompt.md`.

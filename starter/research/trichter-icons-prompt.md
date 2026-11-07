@@ -9,3 +9,11 @@ Prompt (gekürzt):
 ## Jira-Teaser-Icons
 
 Gleicher Stil, `ref.png` = Trichter-Bogen. Fünf Icons auf #00FF00, keine echten Markenlogos: Kanban-Board mit verschobener Karte, Blitz + Papierflieger, Zahnrad + Pipeline + Play, Roboter über Browser mit Haken, Ticket mit Büroklammer, Screenshot und Bug-Badge. Ergebnis: `public/jira/*.webp`.
+
+## Icon-Bögen für IconCards
+
+Drei weitere Bögen im gleichen Stil (`ref.png` = Trichter-Bogen), Ergebnis `public/icons/*.webp`:
+
+- s1: Terminal mit Cursor (playwright-cli), Stecker in Browser (playwright-mcp), Browser mit Auge (agent-browser), Monitor mit Mauszeiger (computer-use), Kompass mit Lupe und Bug (explorativ)
+- s2: Rakete (launch), Stethoskop um Server (doctor), Hand klickt Button (drive), Kamera mit Fotos (evidence), Besen (cleanup)
+- s3: Etikett (label), Ticket mit Checkboxen (issue), Sprechblase mit Screenshot und Richterhammer (urteil), Faltkarte mit Pins (feature-map), Report mit Foto, Film und Stempel (report)
