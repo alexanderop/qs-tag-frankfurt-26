@@ -335,7 +335,7 @@ Szenario: Gutschein entfernen
 ```
 
 <!--
-TIME: 8:15–9:00 (45s)
+TIME: 8:15–8:45 (30s)
 
 - Ein ganz normales Ticket. User Story plus drei Gherkin-Szenarien.
 - [click] Gültiger Code, Summe sinkt.
@@ -353,7 +353,7 @@ layout: statement
 <div class="mt-8 text-2xl opacity-80">Gutes Requirements Engineering ist die halbe Verifikation.</div>
 
 <!--
-TIME: 9:00–9:15 (15s)
+TIME: 8:45–9:00 (15s)
 
 - Der Agent braucht ein **Orakel**: Was ist richtig, was ist falsch?
 - Unklare Kriterien heißt unklares Urteil. Das gilt für Menschen und für Agents.
@@ -391,7 +391,7 @@ TIME: 9:00–9:15 (15s)
 <div class="mt-5 text-center text-sm opacity-60">pstack: Skills von Lauren Tan (poteto) bei Cursor · Claude-Code-Port: alexanderop/pstack-claude</div>
 
 <!--
-TIME: 9:15–9:45 (30s)
+TIME: 9:00–9:30 (30s)
 
 - Brücke: Der Agent kennt unseren Otto-Klon nicht. Bevor er SHOP-42 prüfen kann, braucht er eine Einarbeitung.
 - Die Mappe müsst ihr nicht von Hand schreiben. Dafür gibt es **pstack**: eine Sammlung von Skills von Lauren Tan (poteto) bei Cursor. Ich habe sie nach Claude Code portiert.
@@ -415,51 +415,138 @@ TIME: 9:15–9:45 (30s)
 </div>
 <div>
 
-<div class="mappe">
-  <div class="mappe__file">features/warenkorb.md</div>
-  <div v-click class="mappe__row">
-    <div class="mappe__label">Was gibt es?</div>
-    <code>cart-coupon-valid</code>: <code>SPAR10</code> gibt −10 % auf die Zwischensumme
-  </div>
-  <div v-click class="mappe__row">
-    <div class="mappe__label">Wie komme ich hin?</div>
-    Im Header „Warenkorb“ wählen
-  </div>
-  <div v-click class="mappe__row">
-    <div class="mappe__label">Wie bediene ich es?</div>
-    <code>agent-browser find role button click --name "+" --exact</code>
-  </div>
-  <div v-click class="mappe__row is-gotcha">
-    <div class="mappe__label">Worauf muss ich achten?</div>
-    Der Minus-Button ist „−“ (U+2212), <b>kein Bindestrich</b>.
-  </div>
+<div class="space-y-5 text-xl">
+  <div v-click class="mappe-row"><img src="/funnel/prosa.webp" alt="" /><div><b>SKILL.md</b><br/><span>die Anleitung: starten, prüfen, bedienen, belegen, aufräumen</span></div></div>
+  <div v-click class="mappe-row"><img src="/icons/feature-map.webp" alt="" /><div><b>features/*.md</b><br/><span>die Feature Map: eine Datei pro Feature</span></div></div>
 </div>
 
-<div v-click class="mt-5 text-lg">Der Agent muss nicht raten. Er <span class="text-[#ff6bed]">schlägt nach</span>.</div>
+<div v-click class="mt-6 text-lg">Der Agent muss nicht raten. Er <span class="text-[#ff6bed]">schlägt nach</span>.</div>
 
 </div>
 </div>
 
 <style>
-.mappe { border: 1px solid rgba(255,255,255,.15); border-radius: 12px; padding: 14px 16px; background: rgba(255,255,255,.03); font-size: 15px; line-height: 1.4; }
-.mappe__file { font-family: ui-monospace, monospace; font-size: 13px; opacity: .6; margin-bottom: 8px; }
-.mappe__row { padding: 8px 10px; border-left: 3px solid #7a5ca8; margin-top: 8px; border-radius: 4px; background: rgba(122,92,168,.12); }
-.mappe__row.is-gotcha { border-left-color: #ff6bed; background: rgba(255,107,237,.14); }
-.mappe__label { font-weight: 700; color: #ff6bed; font-size: 13px; text-transform: uppercase; letter-spacing: .04em; margin-bottom: 2px; }
-.mappe code { font-size: 13px; }
+.mappe-row { display: flex; gap: 14px; align-items: center; }
+.mappe-row img { width: 64px; height: 64px; }
+.mappe-row span { font-size: 15px; opacity: .75; }
 </style>
 
 <!--
-TIME: 9:45–10:30 (45s)
+TIME: 9:30–9:50 (20s)
 
 - **Analogie:** Ein Agent ist wie ein neuer Kollege am ersten Tag. Schlau, aber er kennt euren Shop nicht. Und er vergisst jeden Abend alles.
-- So sieht die Mappe im Otto-Klon aus: eine Datei pro Feature (Startseite, Suche, Listing, Produktseite, Warenkorb, Merkzettel).
-- [click] Was gibt es? Jedes Unterfeature mit erwartetem Verhalten.
-- [click] Wie komme ich als Nutzer hin?
-- [click] Wie bediene ich es? Echte Befehle, die der Agent kopieren kann.
-- [click] Die Gotchas. Mein Lieblingsbeispiel: Der Minus-Button ist ein typografisches Minus, kein Bindestrich. Genau das Wissen, das sonst nur im Kopf einer Testerin steckt.
+- Also bekommt er eine **Einarbeitungsmappe**. Zwei Teile:
+- [click] Die Anleitung: SKILL.md.
+- [click] Die Feature Map: eine Datei pro Feature.
+- [click] Schauen wir rein.
+-->
+
+---
+layout: code-editor
+project: otto-nuxt-shop
+activeFile: SKILL.md
+tabs: SKILL.md
+step: Die Anleitung
+files: |
+  .claude/skills/verify-otto-shop
+    SKILL.md
+    scripts/
+      otto-verify.sh
+    features/
+      README.md
+      startseite.md
+      suche.md
+      produktseite.md
+      warenkorb.md
+      merkzettel.md
+---
+
+```md {1-4|6-7|9-10|12-13|15-16|18-19|all}
+---
+name: verify-otto-shop
+description: Launch the OTTO demo shop and drive it in a real
+  browser with agent-browser to prove a change works.
+---
+## Hard rules
+Never touch port 3000. Kill only what you started.
+
+## Launch
+$V launch    # nuxt dev on 3100, ready = "Beliebte Kategorien"
+
+## Doctor
+$V doctor    # every line must say ok
+
+## Drive
+agent-browser open http://localhost:3100/ ; $V wait-ready
+
+## Evidence + Cleanup
+$V proof warenkorb-nachher ; $V stop   # Belege bleiben
+```
+
+<!--
+TIME: 9:50–10:25 (35s)
+
+- So sieht ein Skill aus: eine Markdown-Datei in `.claude/skills/`. Links die ganze Mappe.
+- [click] Oben die **Beschreibung**. Nur die liest der Agent immer. Daran erkennt er: Wenn ich die UI beweisen soll, lade ich diesen Skill.
+- [click] Harte Regeln. Port 3000 gehört einem anderen Projekt. Nur stoppen, was man selbst gestartet hat.
+- [click] Launch, [click] Doctor, [click] Drive, [click] Evidence und Cleanup: echte Befehle aus diesem Repo, keine Beispiele.
+- [click] Alles zusammen: eine Anleitung, die jeder Agent gleich abarbeitet.
+- Auf der Folie gekürzt und auf Englisch, wie im Repo. Original: 130 Zeilen.
+- SOURCE: otto-nuxt-shop Commit 01f006e, `.claude/skills/verify-otto-shop/SKILL.md`
+-->
+
+---
+layout: code-editor
+project: otto-nuxt-shop
+activeFile: warenkorb.md
+tabs: SKILL.md, warenkorb.md
+step: Die Feature Map
+files: |
+  .claude/skills/verify-otto-shop
+    SKILL.md
+    scripts/
+      otto-verify.sh
+    features/
+      README.md
+      startseite.md
+      suche.md
+      produktseite.md
+      warenkorb.md
+      merkzettel.md
+---
+
+```md {1|3-6|8-9|11-14|16-18|all}
+# Warenkorb
+
+## Sub-features
+- cart-qty-plus: `+` erhöht die Menge, Summen und Cookie ziehen mit.
+- cart-coupon-valid: SPAR10 gibt −10 % auf die Zwischensumme.
+- cart-coupon-invalid: zeigt „Dieser Gutschein ist ungültig“.
+
+## How to get to it (user POV)
+- Im Header „Warenkorb“ wählen.
+
+## Driving it with agent-browser
+- agent-browser open http://localhost:3100/p/1
+- agent-browser find role button click --name "In den Warenkorb"
+- agent-browser find role button click --name "+" --exact
+
+## Gotchas
+- Der Minus-Button ist „−“ (U+2212), kein Bindestrich.
+- Toasts liegen im Shadow DOM. wait --text findet sie nicht.
+```
+
+<!--
+TIME: 10:25–11:00 (35s)
+
+- Und das ist eine Seite aus der Feature Map: der Warenkorb.
+- [click] Jede Datei hat dieselben vier Abschnitte.
+- [click] **Was gibt es?** Jedes Unterfeature mit erwartetem Verhalten.
+- [click] **Wie komme ich hin?** Aus Sicht der Nutzerin.
+- [click] **Wie bediene ich es?** Echte Befehle, die der Agent kopieren kann.
+- [click] **Gotchas.** Mein Lieblingsbeispiel: Der Minus-Button ist ein typografisches Minus, kein Bindestrich. Genau das Wissen, das sonst nur im Kopf einer Testerin steckt.
 - [click] Das ist im Grunde ein Testkonzept, das der Agent lesen kann.
-- SOURCE: otto-nuxt-shop, Commit 01f006e, `.claude/skills/verify-otto-shop/features/warenkorb.md`
+- SOURCE: otto-nuxt-shop Commit 01f006e, `.claude/skills/verify-otto-shop/features/warenkorb.md` (gekürzt)
 -->
 
 ---
@@ -493,7 +580,7 @@ ok   /api/products total=184
 </div>
 
 <!--
-TIME: 10:30–11:15 (45s)
+TIME: 11:00–11:30 (30s)
 
 - Der Skill ist ein Rezept, das jeder Agent gleich abarbeitet.
 - [click] Launch: startet den Shop. Bei mir auf Port 3100, weil 3000 belegt war. Das hat der Agent selbst gemerkt und eingebaut.
@@ -526,7 +613,7 @@ TIME: 10:30–11:15 (45s)
 </div>
 
 <!--
-TIME: 11:15–11:45 (30s)
+TIME: 11:30–12:00 (30s)
 
 - Den Bug habe ich nicht eingebaut. Den hat der Agent beim Erkunden des Shops gefunden.
 - In der Suche springt ArrowDown immer wieder auf -1. Enter landet dann auf der Ergebnisseite statt beim Produkt.
@@ -554,7 +641,7 @@ TIME: 11:15–11:45 (30s)
 </div>
 
 <!--
-TIME: 11:45–12:15 (30s)
+TIME: 12:00–12:30 (30s)
 
 - Der ganze Ablauf auf einer Folie.
 - [click] Ticket mit Gherkin-Szenarien.
@@ -588,7 +675,7 @@ Implementiere das Ticket docs/tickets/SHOP-42-gutschein.md.
 </style>
 
 <!--
-TIME: 12:15–13:00 (45s)
+TIME: 12:30–13:15 (45s)
 
 - Das ist der ganze Prompt. Gekürzt um den Port-Hinweis, den Skill-Pfad und „Antworte auf Deutsch mit einer Zusammenfassung“.
 - [click] Das Ticket ist die Quelle, nicht mein Chat-Text.
@@ -620,7 +707,7 @@ TIME: 12:15–13:00 (45s)
 <div v-click class="mt-8 text-center text-xl"><b>15 Tool-Aufrufe · 16 Turns · 0,90 $</b> · alle drei Szenarien grün</div>
 
 <!--
-TIME: 13:00–14:15 (75s)
+TIME: 13:15–14:30 (75s)
 
 - Das ist der echte Ablauf aus dem Log. Ein Prompt: „Implementiere SHOP-42, prüfe jedes Szenario mit dem Skill, ergänze die Feature Map, committe.“
 - Er liest zuerst das Ticket **und** den Verification-Skill. Er weiß also vorher, wie er prüfen wird.
@@ -660,7 +747,7 @@ Ticket: docs/tickets/SHOP-42-gutschein.md
 </style>
 
 <!--
-TIME: 14:15–15:15 (60s)
+TIME: 14:30–15:30 (60s)
 
 - Ein **zweiter** Agent. Er hat den Code nicht geschrieben, und er darf ihn nicht ändern.
 - [click] Rolle und Grenze: QA-Agent, kein Code.
@@ -692,7 +779,7 @@ TIME: 14:15–15:15 (60s)
 </div>
 
 <!--
-TIME: 15:15–16:00 (45s)
+TIME: 15:30–16:15 (45s)
 
 LIVE-OPTION (wenn WLAN stabil):
 - Im Repo otto-nuxt-shop auf Branch `feat/gutschein`: `claude` starten.
@@ -726,7 +813,7 @@ LIVE-OPTION (wenn WLAN stabil):
 />
 
 <!--
-TIME: 16:00–17:15 (75s)
+TIME: 16:15–17:30 (75s)
 
 - Das ist das echte Video des QA-Agenten, von ihm selbst mit `agent-browser record` aufgenommen. Rechts die Kapitel, ein Klick springt hin.
 - Das Video ist 1:20 lang. Sprich einfach mit, die Einblendung sagt dir, wo du bist.
@@ -761,7 +848,7 @@ VOICE-OVER:
 </div>
 
 <!--
-TIME: 17:15–18:00 (45s)
+TIME: 17:30–18:15 (45s)
 
 - Fund F2, Severity Critical.
 - Repro: 9 Stück in den Warenkorb, SPAR10 einlösen, auf 1 Stück reduzieren.
@@ -781,7 +868,7 @@ backgroundSize: contain
 <div v-click class="absolute bottom-16 right-12 bg-[#ff6bed] text-black font-bold text-3xl px-6 py-3 rounded rotate-[-3deg]">Gesamt: −1,39 €</div>
 
 <!--
-TIME: 18:00–18:30 (30s)
+TIME: 18:15–18:45 (30s)
 
 - Und dann geht er noch weiter. Fund F3, Critical.
 - Rabatt bei 9 Stück einlösen, Artikel entfernen, eine Zitrone für 0,71 € reinlegen.
@@ -822,7 +909,7 @@ TIME: 18:00–18:30 (30s)
 <div v-click class="mt-6 text-center opacity-80">Mit Repro-Schritten, Erwartet vs. Ist, 12 Screenshots, Video und Ursache. <b>20 Turns · 1,00 $</b></div>
 
 <!--
-TIME: 18:30–19:00 (30s)
+TIME: 18:45–19:15 (30s)
 
 - Das Urteil ist eines von drei festen Werten: HEALTHY, MINOR_ISSUES, CRITICAL_BUGS.
 - Links: Alle Ticket-Szenarien grün.
@@ -847,7 +934,7 @@ background: /bild-gherkin.jpeg
 </div>
 
 <!--
-TIME: 19:00–19:30 (30s)
+TIME: 19:15–19:45 (30s)
 
 - **Die Pointe.** Kurz Pause lassen.
 - Alle drei Szenarien waren grün. Ein klassischer E2E-Test wäre durchgelaufen.
@@ -870,7 +957,7 @@ TIME: 19:00–19:30 (30s)
 </div>
 
 <!--
-TIME: 19:30–20:15 (45s)
+TIME: 19:45–20:30 (45s)
 
 - Vier Schritte, alle an einem Nachmittag machbar.
 - [click] Ohne gute Kriterien kein gutes Urteil.
@@ -898,7 +985,7 @@ TIME: 19:30–20:15 (45s)
 <div v-click class="mt-6 text-center text-xl opacity-80">Dieselbe Schleife wie lokal. Nur der <b>Auslöser</b> ist jetzt ein Label.</div>
 
 <!--
-TIME: 20:15–21:00 (45s)
+TIME: 20:30–21:15 (45s)
 
 - Lokal funktioniert's. Jetzt soll es ohne mich laufen.
 - [click] Ich setze am PR das Label `qa-verify`. Bewusst ein Label, nicht jeder Push: Ich entscheide, wann sich ein Lauf lohnt.
@@ -948,7 +1035,7 @@ jobs:
 ```
 
 <!--
-TIME: 21:00–22:15 (75s)
+TIME: 21:15–22:15 (60s)
 
 - Das ist der echte Workflow aus dem Repo, gekürzt. Er ist am 07.11. mehrfach echt gelaufen.
 - [click] **Trigger:** nur wenn ein Label gesetzt wird.
