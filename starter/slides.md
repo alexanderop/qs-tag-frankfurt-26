@@ -152,12 +152,15 @@ layout: statement
 
 <div class="mt-8 text-2xl opacity-80">Wer PRs mergen will, ohne jede Zeile zu lesen,<br/>braucht bessere <span class="text-[#ff6bed]">automatische Verifikation</span>.</div>
 
+<div v-click class="mt-10 text-xl">Und braucht es dann noch <b class="text-[#ff6bed]">uns</b>? Die Antwort gibt's am Ende.</div>
+
 <!--
-TIME: 4:30–5:00 (30s)
+TIME: 4:30–5:15 (45s)
 
 - **Die Kernthese** des Talks.
 - „Weitgehend“ ist bewusst gewählt. Es gibt noch harte Probleme. Aber für einen typischen Frontend-Ticket schreibt der Agent den Code.
 - Die Frage ist also nicht mehr „Wer schreibt das?“, sondern „Woher weiß ich, dass es stimmt?“
+- [click] **Die Frage aussprechen, die jetzt im Saal hängt:** „Wenn ein Agent codet und testet, braucht es uns dann noch?“ Nicht beantworten. „Die Antwort bekommt ihr am Ende.“
 -->
 
 ---
@@ -169,7 +172,7 @@ clicks: 1
 <VerificationFunnel />
 
 <!--
-TIME: 5:00–5:30 (30s)
+TIME: 5:15–5:45 (30s)
 
 - Ein Trichter: Oben fängt man am meisten ab, unten kommt nur noch durch, was alle Schichten davor übersehen haben.
 - Codebasis, statische Analyse, Verifikation, Prosa (Regeln für den Agenten, z. B. Skills und AGENTS.md), ganz unten der Mensch im Review.
@@ -198,7 +201,7 @@ Ein PR, der seinen Beweis gleich mitbringt.
 </v-clicks>
 
 <!--
-TIME: 5:30–6:00 (30s)
+TIME: 5:45–6:15 (30s)
 
 - So soll ein PR aussehen: nicht nur Code, sondern **Belege**.
 - [click] Screenshots von jedem geprüften Szenario.
@@ -242,7 +245,7 @@ TIME: 5:30–6:00 (30s)
 </style>
 
 <!--
-TIME: 6:00–6:45 (45s)
+TIME: 6:15–7:00 (45s)
 
 - Claude Code in einem Bild. Ein Agent, der im Terminal läuft.
 - [click] **Tools:** lesen, schreiben, Bash ausführen. Damit kann er auch einen Browser steuern.
@@ -267,7 +270,7 @@ TIME: 6:00–6:45 (45s)
 </div>
 
 <!--
-TIME: 6:45–7:45 (60s)
+TIME: 7:00–8:00 (60s)
 
 - Ohne Browser ist der Agent blind. Also geben wir ihm Augen und Hände.
 - [click] **Playwright CLI:** Kennt ihr schon. Der Agent ruft es über Bash auf.
@@ -303,7 +306,7 @@ TIME: 6:45–7:45 (60s)
 </div>
 
 <!--
-TIME: 7:45–8:15 (30s)
+TIME: 8:00–8:30 (30s)
 
 - Bevor wir dem Agenten etwas beibringen: Woran arbeiten wir?
 - Unser laufendes Beispiel: ein Otto-Klon in Nuxt 4 mit dem offenen B2B-Designsystem von OTTO. Startseite, Suche, Kategorien, Produktseite, Warenkorb, Merkzettel.
@@ -335,7 +338,7 @@ Szenario: Gutschein entfernen
 ```
 
 <!--
-TIME: 8:15–8:45 (30s)
+TIME: 8:30–9:00 (30s)
 
 - Ein ganz normales Ticket. User Story plus drei Gherkin-Szenarien.
 - [click] Gültiger Code, Summe sinkt.
@@ -353,7 +356,7 @@ layout: statement
 <div class="mt-8 text-2xl opacity-80">Gutes Requirements Engineering ist die halbe Verifikation.</div>
 
 <!--
-TIME: 8:45–9:00 (15s)
+TIME: 9:00–9:15 (15s)
 
 - Der Agent braucht ein **Orakel**: Was ist richtig, was ist falsch?
 - Unklare Kriterien heißt unklares Urteil. Das gilt für Menschen und für Agents.
@@ -391,7 +394,7 @@ TIME: 8:45–9:00 (15s)
 <div class="mt-5 text-center text-sm opacity-60">pstack: Skills von Lauren Tan (poteto) bei Cursor · Claude-Code-Port: alexanderop/pstack-claude</div>
 
 <!--
-TIME: 9:00–9:30 (30s)
+TIME: 9:15–9:45 (30s)
 
 - Brücke: Der Agent kennt unseren Otto-Klon nicht. Bevor er SHOP-42 prüfen kann, braucht er eine Einarbeitung.
 - Die Mappe müsst ihr nicht von Hand schreiben. Dafür gibt es **pstack**: eine Sammlung von Skills von Lauren Tan (poteto) bei Cursor. Ich habe sie nach Claude Code portiert.
@@ -432,7 +435,7 @@ TIME: 9:00–9:30 (30s)
 </style>
 
 <!--
-TIME: 9:30–9:50 (20s)
+TIME: 9:45–10:05 (20s)
 
 - **Analogie:** Ein Agent ist wie ein neuer Kollege am ersten Tag. Schlau, aber er kennt euren Shop nicht. Und er vergisst jeden Abend alles.
 - Also bekommt er eine **Einarbeitungsmappe**. Zwei Teile:
@@ -484,7 +487,7 @@ $V proof warenkorb-nachher ; $V stop   # Belege bleiben
 ```
 
 <!--
-TIME: 9:50–10:25 (35s)
+TIME: 10:05–10:40 (35s)
 
 - So sieht ein Skill aus: eine Markdown-Datei in `.claude/skills/`. Links die ganze Mappe.
 - [click] Oben die **Beschreibung**. Nur die liest der Agent immer. Daran erkennt er: Wenn ich die UI beweisen soll, lade ich diesen Skill.
@@ -537,7 +540,7 @@ files: |
 ```
 
 <!--
-TIME: 10:25–11:00 (35s)
+TIME: 10:40–11:15 (35s)
 
 - Und das ist eine Seite aus der Feature Map: der Warenkorb.
 - [click] Jede Datei hat dieselben vier Abschnitte.
@@ -580,7 +583,7 @@ ok   /api/products total=184
 </div>
 
 <!--
-TIME: 11:00–11:30 (30s)
+TIME: 11:15–11:45 (30s)
 
 - Der Skill ist ein Rezept, das jeder Agent gleich abarbeitet.
 - [click] Launch: startet den Shop. Bei mir auf Port 3100, weil 3000 belegt war. Das hat der Agent selbst gemerkt und eingebaut.
@@ -613,7 +616,7 @@ TIME: 11:00–11:30 (30s)
 </div>
 
 <!--
-TIME: 11:30–12:00 (30s)
+TIME: 11:45–12:15 (30s)
 
 - Den Bug habe ich nicht eingebaut. Den hat der Agent beim Erkunden des Shops gefunden.
 - In der Suche springt ArrowDown immer wieder auf -1. Enter landet dann auf der Ergebnisseite statt beim Produkt.
@@ -641,7 +644,7 @@ TIME: 11:30–12:00 (30s)
 </div>
 
 <!--
-TIME: 12:00–12:30 (30s)
+TIME: 12:15–12:45 (30s)
 
 - Der ganze Ablauf auf einer Folie.
 - [click] Ticket mit Gherkin-Szenarien.
@@ -675,7 +678,7 @@ Implementiere das Ticket docs/tickets/SHOP-42-gutschein.md.
 </style>
 
 <!--
-TIME: 12:30–13:15 (45s)
+TIME: 12:45–13:30 (45s)
 
 - Das ist der ganze Prompt. Gekürzt um den Port-Hinweis, den Skill-Pfad und „Antworte auf Deutsch mit einer Zusammenfassung“.
 - [click] Das Ticket ist die Quelle, nicht mein Chat-Text.
@@ -707,7 +710,7 @@ TIME: 12:30–13:15 (45s)
 <div v-click class="mt-8 text-center text-xl"><b>15 Tool-Aufrufe · 16 Turns · 0,90 $</b> · alle drei Szenarien grün</div>
 
 <!--
-TIME: 13:15–14:30 (75s)
+TIME: 13:30–14:45 (75s)
 
 - Das ist der echte Ablauf aus dem Log. Ein Prompt: „Implementiere SHOP-42, prüfe jedes Szenario mit dem Skill, ergänze die Feature Map, committe.“
 - Er liest zuerst das Ticket **und** den Verification-Skill. Er weiß also vorher, wie er prüfen wird.
@@ -747,7 +750,7 @@ Ticket: docs/tickets/SHOP-42-gutschein.md
 </style>
 
 <!--
-TIME: 14:30–15:30 (60s)
+TIME: 14:45–15:45 (60s)
 
 - Ein **zweiter** Agent. Er hat den Code nicht geschrieben, und er darf ihn nicht ändern.
 - [click] Rolle und Grenze: QA-Agent, kein Code.
@@ -763,36 +766,10 @@ TIME: 14:30–15:30 (60s)
 - SOURCE: otto-nuxt-shop `.talk-logs/03-verify-gutschein.jsonl`, Report-Commit 302bad8
 -->
 
----
-
-# Demo 1: Die drei Szenarien sind <span class="text-[#ff6bed]">grün</span>
-
-<div class="grid grid-cols-2 gap-6 mt-6">
-  <div>
-    <img src="/shop42-s1-gueltig.png" class="rounded border border-white/20" alt="Warenkorb mit Gutschein SPAR10, Rabatt 0,89 Euro, Gesamt 14,00 Euro" />
-    <div class="text-sm opacity-70 mt-2 text-center">Gültig: SPAR10 → −0,89 €, Gesamt 14,00 €</div>
-  </div>
-  <div>
-    <img src="/shop42-s2-ungueltig.png" class="rounded border border-white/20" alt="Warenkorb mit Fehlermeldung Dieser Gutschein ist ungültig" />
-    <div class="text-sm opacity-70 mt-2 text-center">Ungültig: „Dieser Gutschein ist ungültig“</div>
-  </div>
-</div>
-
-<!--
-TIME: 15:30–16:15 (45s)
-
-LIVE-OPTION (wenn WLAN stabil):
-- Im Repo otto-nuxt-shop auf Branch `feat/gutschein`: `claude` starten.
-- Prompt: „Du bist der QA-Agent für den PR auf feat/gutschein. Prüfe SHOP-42 mit verify-otto-shop, teste explorativ, schreibe einen Report.“
-- Dauert etwa 2,5 Minuten. Sonst die Screenshots und das Video aus dem echten Lauf zeigen.
-
-- Ein **zweiter** Agent, der QA-Agent, prüft den PR. Er hat den Code nicht geschrieben.
-- Alle drei Szenarien grün. „Bis hier hätte das auch ein E2E-Test gekonnt.“
--->
 
 ---
 
-# Demo 2: Jetzt wird's <span class="text-[#ff6bed]">explorativ</span>
+# Demo: Erst das Ticket, dann <span class="text-[#ff6bed]">explorativ</span>
 
 <AnnotatedVideo
   class="mt-2"
@@ -813,16 +790,20 @@ LIVE-OPTION (wenn WLAN stabil):
 />
 
 <!--
-TIME: 16:15–17:30 (75s)
+TIME: 15:45–17:15 (90s)
 
+- Ein **zweiter** Agent, der QA-Agent, prüft den PR. Er hat den Code nicht geschrieben.
 - Das ist das echte Video des QA-Agenten, von ihm selbst mit `agent-browser record` aufgenommen. Rechts die Kapitel, ein Klick springt hin.
+- LIVE-OPTION (wenn WLAN stabil): im Repo otto-nuxt-shop auf `feat/gutschein` `claude` starten, Prompt aus Folie „Prompt 2“. Dauert etwa 2,5 Minuten. Sonst dieses Video.
 - Das Video ist 1:20 lang. Sprich einfach mit, die Einblendung sagt dir, wo du bist.
 
 VOICE-OVER:
 - **0:00** „Der Agent startet auf der Startseite und legt eine Mascara in den Warenkorb.“
 - **0:04** „Szenario 1: Er löst SPAR10 ein. 89 Cent Rabatt, Gesamt 14 Euro. Grün.“
 - **0:09** „Szenario 2: GIBTSNICHT. Die Fehlermeldung kommt. Grün.“
-- **0:15** „Ab hier steht nichts mehr im Ticket. Er tippt den Code klein und mit Leerzeichen. Funktioniert.“
+- **0:15 VIDEO ANHALTEN.** „Alle drei Szenarien aus dem Ticket: grün. Bis hier hätte das auch ein E2E-Test gekonnt. Ab jetzt steht nichts mehr im Ticket.“
+- [Ask for hands] **„Ihr seid die Tester: Wo würdet ihr jetzt suchen?“** Zwei, drei Zurufe abwarten (Menge? Leerzeichen? Entfernen?). Dann weiter abspielen.
+- „Er tippt den Code klein und mit Leerzeichen. Funktioniert.“
 - **0:20** „Jetzt erhöht er die Menge auf 5. Achtet auf den Rabatt: Er bleibt bei 89 Cent. Das ist der erste Fund.“
 - **0:29** „Er dreht es um: bei 9 Stück einlösen, dann auf 1 runter. 8,05 Euro Rabatt auf 8,94 Euro. Das sind 90 Prozent.“
 - **0:37** „Szenario 3 nebenbei: Gutschein entfernen, voller Preis. Grün.“
@@ -836,44 +817,26 @@ VOICE-OVER:
 
 ---
 
-# Menge ändern, und der Rabatt <span class="text-[#ff6bed]">bleibt stehen</span>
+# Zwei <span class="text-[#ff6bed]">kritische</span> Funde
 
-<div class="grid grid-cols-[1.4fr_1fr] gap-8 mt-4 items-center">
-  <img src="/shop42-f2-rabatt-zu-hoch.png" class="rounded border border-white/20" alt="Warenkorb mit 8,94 Euro Zwischensumme und 8,05 Euro Rabatt" />
-  <div class="text-lg space-y-4">
-    <div>Bei 9 Stück eingelöst: <b>−8,05 €</b></div>
-    <div>Dann auf 1 Stück reduziert.</div>
-    <div v-click class="text-[#ff6bed] text-2xl font-bold">8,05 € Rabatt auf 8,94 €.<br/>Das sind 90 %.</div>
+<div class="grid grid-cols-2 gap-6 mt-4">
+  <div>
+    <img src="/shop42-f2-rabatt-zu-hoch.png" class="rounded border border-white/20" alt="Warenkorb mit 8,94 Euro Zwischensumme und 8,05 Euro Rabatt" />
+    <div class="mt-3 text-lg">Bei 9 Stück eingelöst, auf 1 reduziert:<br/><b class="text-[#ff6bed]">8,05 € Rabatt auf 8,94 €</b></div>
+  </div>
+  <div v-click>
+    <img src="/shop42-f3-negativ.png" class="rounded border border-white/20" alt="Warenkorb mit einer Zitrone und negativer Gesamtsumme" />
+    <div class="mt-3 text-lg">Artikel raus, Zitrone für 0,71 € rein:<br/><b class="text-[#ff6bed]">Gesamt −1,39 €</b>, „Zur Kasse“ geht</div>
   </div>
 </div>
 
 <!--
-TIME: 17:30–18:15 (45s)
+TIME: 17:15–18:00 (45s)
 
-- Fund F2, Severity Critical.
-- Repro: 9 Stück in den Warenkorb, SPAR10 einlösen, auf 1 Stück reduzieren.
-- [click] Der Rabatt bleibt bei 8,05 €. Erwartet wären 0,89 €.
-- **Ehrlich sagen:** Diesen Bug habe ich absichtlich eingebaut. Der Rabatt wird beim Einlösen als fester Betrag gespeichert. Der QA-Agent wusste das nicht: Der Commit heißt neutral „Rabatt beim Einlösen berechnen und speichern“.
-- SOURCE: docs/reports/SHOP-42-qa-report.md, F2
--->
-
----
-layout: image
-image: /shop42-f3-negativ.png
-backgroundSize: contain
----
-
-<h1 class="sr-only">Gesamtsumme minus 1,39 Euro</h1>
-
-<div v-click class="absolute bottom-16 right-12 bg-[#ff6bed] text-black font-bold text-3xl px-6 py-3 rounded rotate-[-3deg]">Gesamt: −1,39 €</div>
-
-<!--
-TIME: 18:15–18:45 (30s)
-
-- Und dann geht er noch weiter. Fund F3, Critical.
-- Rabatt bei 9 Stück einlösen, Artikel entfernen, eine Zitrone für 0,71 € reinlegen.
-- [click] Gesamtsumme: **minus 1,39 Euro**. Und „Zur Kasse“ ist weiter klickbar.
-- Das habe ich nicht vorhergesehen. Ich habe nur den einen Bug eingebaut. Der Agent hat daraus vier Funde gemacht.
+- Fund F2, Critical: 9 Stück, SPAR10 einlösen, auf 1 Stück runter. Der Rabatt bleibt bei 8,05 €. Erwartet wären 0,89 €. Das sind 90 %.
+- [click] Fund F3, Critical: Artikel entfernen, eine Zitrone für 71 Cent rein. Gesamtsumme **minus 1,39 Euro**. Und „Zur Kasse“ ist weiter klickbar.
+- **Ehrlich sagen:** Einen Bug habe ich absichtlich eingebaut: Der Rabatt wird beim Einlösen als fester Betrag gespeichert. Der QA-Agent wusste das nicht, der Commit heißt neutral „Rabatt beim Einlösen berechnen und speichern“. Aus dem einen Bug hat er vier Funde gemacht.
+- SOURCE: docs/reports/SHOP-42-qa-report.md, F2 und F3
 -->
 
 ---
@@ -909,7 +872,7 @@ TIME: 18:15–18:45 (30s)
 <div v-click class="mt-6 text-center opacity-80">Mit Repro-Schritten, Erwartet vs. Ist, 12 Screenshots, Video und Ursache. <b>20 Turns · 1,00 $</b></div>
 
 <!--
-TIME: 18:45–19:15 (30s)
+TIME: 18:00–18:30 (30s)
 
 - Das Urteil ist eines von drei festen Werten: HEALTHY, MINOR_ISSUES, CRITICAL_BUGS.
 - Links: Alle Ticket-Szenarien grün.
@@ -934,7 +897,7 @@ background: /bild-gherkin.jpeg
 </div>
 
 <!--
-TIME: 19:15–19:45 (30s)
+TIME: 18:30–19:00 (30s)
 
 - **Die Pointe.** Kurz Pause lassen.
 - Alle drei Szenarien waren grün. Ein klassischer E2E-Test wäre durchgelaufen.
@@ -957,7 +920,7 @@ TIME: 19:15–19:45 (30s)
 </div>
 
 <!--
-TIME: 19:45–20:30 (45s)
+TIME: 19:00–19:45 (45s)
 
 - Vier Schritte, alle an einem Nachmittag machbar.
 - [click] Ohne gute Kriterien kein gutes Urteil.
@@ -985,7 +948,7 @@ TIME: 19:45–20:30 (45s)
 <div v-click class="mt-6 text-center text-xl opacity-80">Dieselbe Schleife wie lokal. Nur der <b>Auslöser</b> ist jetzt ein Label.</div>
 
 <!--
-TIME: 20:30–21:15 (45s)
+TIME: 19:45–20:30 (45s)
 
 - Lokal funktioniert's. Jetzt soll es ohne mich laufen.
 - [click] Ich setze am PR das Label `qa-verify`. Bewusst ein Label, nicht jeder Push: Ich entscheide, wann sich ein Lauf lohnt.
@@ -1035,7 +998,7 @@ jobs:
 ```
 
 <!--
-TIME: 21:15–22:15 (60s)
+TIME: 20:30–21:30 (60s)
 
 - Das ist der echte Workflow aus dem Repo, gekürzt. Er ist am 07.11. mehrfach echt gelaufen.
 - [click] **Trigger:** nur wenn ein Label gesetzt wird.
@@ -1053,24 +1016,29 @@ TIME: 21:15–22:15 (60s)
 # So sieht das im <span class="text-[#ff6bed]">PR</span> aus
 
 <div class="grid grid-cols-[1.5fr_1fr] gap-6 mt-2 items-start">
-  <img src="/ci-pr-kommentar.png" class="rounded border border-white/20" alt="QA-Report des github-actions Bots in PR #1: Urteil CRITICAL_BUGS, Kurzfassung und eingebetteter Screenshot des Warenkorbs" />
+  <div class="space-y-2">
+    <div class="text-xs opacity-60">Belege aus dem Bot-Kommentar, Fund F2: vorher</div>
+    <img src="/run5-f2-vorher.jpg" class="rounded border border-white/20 h-[165px] w-full object-cover object-left-top" alt="Warenkorb mit Mascara und Sofa, Rabatt 215,79 Euro" />
+    <div class="text-xs opacity-60">nachher: Sofa entfernt</div>
+    <img src="/run5-f2-nachher.jpg" class="rounded border border-white/20 h-[165px] w-full object-cover object-left-top" alt="Warenkorb nur mit Mascara, Rabatt 215,79 Euro, Gesamt minus 191,96 Euro" />
+  </div>
   <div class="space-y-4 text-lg">
     <div v-click>🤖 Kommentar vom <b>github-actions</b> Bot</div>
     <div v-click>⚖️ <b>Urteil: CRITICAL_BUGS</b>, der Merge ist blockiert</div>
-    <div v-click>📸 <b>13 Screenshots</b> direkt im Kommentar, vorher und nachher pro Fund</div>
-    <div v-click class="text-[#ff6bed] font-bold">Diesmal mit einer Rolex: Gesamt −1.512,20 €</div>
-    <div v-click class="opacity-70">109 Turns · 1,19 $ · 2,9 Min</div>
+    <div v-click>📸 <b>14 Screenshots</b> und ein Video-GIF direkt im Kommentar</div>
+    <div v-click class="text-[#ff6bed] font-bold">Diesmal mit einem Sofa: Gesamt −191,96 €</div>
+    <div v-click class="opacity-70">110 Turns · 1,33 $ · 3,1 Min</div>
   </div>
 </div>
 
 <!--
-TIME: 22:15–23:00 (45s)
+TIME: 21:30–22:15 (45s)
 
-- Das ist der echte Kommentar in PR #1 vom 07.11., kein Mockup.
+- Das ist derselbe Bot-Kommentar wie auf dem Zielbild am Anfang (Lauf 5, Run 42368915488), kein Mockup.
 - [click] Gepostet vom Report-Job, nicht vom Agenten.
 - [click] Urteil in der ersten Zeile, der Check ist rot.
 - [click] Jedes Szenario und jeder Fund ist mit Screenshot belegt. Ich muss nichts nachklicken, um zu glauben, was da steht.
-- [click] Jeder Lauf findet einen anderen Weg zum selben Fehler: lokal die Zitrone, in der Cloud das Sofa, dann die Rolex.
+- [click] Jeder Lauf findet einen anderen Weg zum selben Fehler: lokal die Zitrone, in der Cloud ein Sofa für 2.139,99 €. Rabatt beim Sofa eingelöst, Sofa raus, Rabatt bleibt.
 - [click] Unter zwei Dollar, unter drei Minuten.
 - Link: github.com/alexanderop/otto-nuxt-shop/pull/1
 -->
@@ -1100,7 +1068,7 @@ TIME: 22:15–23:00 (45s)
 <div v-click class="mt-4 text-center opacity-70">Alle Bausteine sind dokumentiert. Gebaut habe ich es noch nicht.</div>
 
 <!--
-TIME: 23:00–23:30 (30s)
+TIME: 22:15–22:45 (30s)
 
 - Noch ein Schritt weiter: Kein Label mehr. Der Status im Ticket ist der Auslöser.
 - [click] Ein Dev schiebt das Ticket auf „In QA“.
@@ -1128,7 +1096,7 @@ class: text-center
 <div class="mt-1 text-sm opacity-60">Shop, Verification-Skill, Ticket, QA-Report mit Video</div>
 
 <!--
-TIME: 23:30–23:45 (15s)
+TIME: 22:45–23:00 (15s)
 
 - Das Repo enthält den Shop, den Skill mit Feature Map, das Ticket und den echten QA-Report mit Video.
 - TODO vor dem Talk: Branch `feat/gutschein` pushen, sonst sieht das Publikum Ticket und Report nicht.
@@ -1149,7 +1117,7 @@ TIME: 23:30–23:45 (15s)
 </v-clicks>
 
 <!--
-TIME: 23:45–24:45 (60s)
+TIME: 23:00–24:00 (60s)
 
 - Ich will euch nichts verkaufen. Das hier hat echte Grenzen.
 - [click] Derselbe Prompt nimmt nicht zweimal denselben Weg. Darum feste Urteile und Belege.
@@ -1182,7 +1150,7 @@ TIME: 23:45–24:45 (60s)
 </div>
 
 <!--
-TIME: 24:45–25:30 (45s)
+TIME: 24:00–24:45 (45s)
 
 - Der Agent liefert Belege. Entscheiden tut ein Mensch.
 - [click] Freigabe bleibt beim Menschen.
@@ -1202,8 +1170,9 @@ background: /bild-rolle.jpeg
 </div>
 
 <!--
-TIME: 25:30–26:00 (30s)
+TIME: 24:45–25:15 (30s)
 
+- **Rückgriff:** „Am Anfang habe ich euch eine Antwort versprochen. Hier ist sie.“
 - Diese Frage stellt sich gerade jeder hier im Saal. Also spreche ich sie offen aus.
 - Kurz Pause lassen.
 - Meine Antwort: Ja. Aber die Rolle verändert sich.
@@ -1217,39 +1186,18 @@ layout: quote
 
 — Boris Cherny, Creator von Claude Code
 
+<div v-click class="mt-10 text-lg opacity-80">„Our roles are <span class="text-[#ff6bed]">blending together</span>: designers ship code, engineers make product decisions, product managers build prototypes and evals.“<br/><span class="text-sm opacity-70">Cat Wu, Head of Product, Claude Code</span></div>
+
 <!--
-TIME: 26:00–26:45 (45s)
+TIME: 25:15–26:00 (45s)
 
 - Boris Cherny hat Claude Code bei Anthropic gebaut.
-- Übersetzt: Der Titel Software Engineer verschwindet an manchen Stellen. Stattdessen heißt es einfach **Builder**.
-- SOURCE: Lenny's Podcast, 19.02.2026, bei 43:06. Aus dem Volltranskript, Audio nicht selbst gehört. research/raw/rollen-verschmelzen-notiz.md
--->
-
----
-
-# Bei Anthropic <span class="text-[#ff6bed]">codet jeder</span>
-
-<div class="mt-8 text-2xl leading-relaxed opacity-90">
-„Our product manager codes, our engineering manager codes, our designer codes, our finance guy codes, our data scientist codes. <span class="text-[#ff6bed]">Everyone on the team codes.</span>“
-</div>
-
-<div class="mt-2 text-base opacity-60">Boris Cherny</div>
-
-<div v-click class="mt-10 text-2xl leading-relaxed opacity-90">
-„Our roles are <span class="text-[#ff6bed]">blending together</span>: designers ship code, engineers make product decisions, product managers build prototypes and evals.“
-</div>
-
-<div v-after class="mt-2 text-base opacity-60">Cat Wu, Head of Product, Claude Code</div>
-
-<!--
-TIME: 26:45–27:30 (45s)
-
-- Cherny bei 41:25: Bei uns codet jeder. PM, Engineering Manager, Designerin, sogar der Finanzer.
+- Übersetzt: Der Titel Software Engineer verschwindet an manchen Stellen. Stattdessen heißt es einfach **Builder**. Bei Anthropic codet laut ihm jeder: PM, Designerin, sogar der Finanzer.
 - [click] Cat Wu, Head of Product bei Claude Code, schreibt das auch offiziell: Die Rollen verschmelzen.
-- **Ehrlich sagen:** Beide nennen Engineering, PM und Design. QA nennen sie nicht ausdrücklich.
-- „Boris sagt es für Entwickler. Ich sage: Das gilt auch für euch.“
-- SOURCE: Lenny's Podcast 41:25; claude.com/resources/articles/product-management-on-the-ai-exponential
+- **Ehrlich sagen:** Beide nennen Engineering, PM und Design. QA nennen sie nicht ausdrücklich. „Ich sage: Das gilt auch für euch.“
+- SOURCE: Lenny's Podcast, 19.02.2026, bei 43:06 und 41:25. Aus dem Volltranskript, Audio nicht selbst gehört. research/raw/rollen-verschmelzen-notiz.md; claude.com/resources/articles/product-management-on-the-ai-exponential
 -->
+
 
 ---
 
@@ -1268,7 +1216,7 @@ TIME: 26:45–27:30 (45s)
 </v-click>
 
 <!--
-TIME: 27:30–27:45 (15s)
+TIME: 26:00–26:15 (15s)
 
 - James Bach kennt hier jeder. Er sagt: Ein Tool kann keine Verantwortung tragen.
 - Da hat er recht. Darum bleibt die Freigabe beim Menschen.
@@ -1303,7 +1251,7 @@ TIME: 27:30–27:45 (15s)
 <div v-click class="mt-8 text-center text-lg opacity-80">Risiken einschätzen. Gute Akzeptanzkriterien schreiben. Wissen, wo es kracht.</div>
 
 <!--
-TIME: 27:45–28:30 (45s)
+TIME: 26:15–27:00 (45s)
 
 - Cherny bei 42:46: Die Rollen überlappen zu etwa 50 Prozent, und manche Leute haben Spezialitäten.
 - Mein Bild: Jeder kann alles ein bisschen. Code, Design, Produkt.
@@ -1320,7 +1268,7 @@ layout: statement
 <div class="mt-8 text-2xl opacity-80">Gherkin-Szenarien, Test-Charter, Feature Map.<br/>Das ist <b>eure</b> Arbeit, nur eine Ebene höher.</div>
 
 <!--
-TIME: 28:30–29:00 (30s)
+TIME: 27:00–27:30 (30s)
 
 - Die Wendung, die Mut machen soll.
 - Erinnert euch an die Demo: Der Agent kannte die Szenarien, weil sie jemand gut aufgeschrieben hat.
@@ -1341,7 +1289,7 @@ background: /bild-builder.jpeg
 </div>
 
 <!--
-TIME: 29:00–29:15 (15s)
+TIME: 27:30–27:45 (15s)
 
 - Der Schlusssatz. Langsam sagen, dann kurz stehen lassen.
 -->
@@ -1367,7 +1315,7 @@ TIME: 29:00–29:15 (15s)
 </div>
 
 <!--
-TIME: 29:15–29:45 (30s)
+TIME: 27:45–28:15 (30s)
 
 - [click] Kriterien zuerst. Das ist der größte Hebel.
 - [click] Browser und Feature Map. Ein Nachmittag Arbeit.
@@ -1385,7 +1333,7 @@ class: text-center
 <div class="mt-6 text-xl opacity-70">alexop.dev</div>
 
 <!--
-TIME: 29:45–30:00 + Q&A
+TIME: 28:15 + Q&A (1:45 Puffer bis 30:00)
 
 - Diese Folie bleibt während der Fragen stehen.
 - Wenn keiner fragt: „Wer von euch hat heute Morgen noch gestanden? Was nutzt ihr dafür?“
