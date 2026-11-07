@@ -2,7 +2,7 @@
 
 ## Working title
 
-Vom Ticket zum Beweis: Agents, die ihre Arbeit selbst prüfen (QS-Tag Frankfurt 2026, 30 Minuten, Deutsch, letzter Talk des Tages, direkt nach Robert Fey)
+KI-Agenten als QA-Engineer: Automatisierte Qualitätssicherung mit Claude Code & GitHub Actions (QS-Tag Frankfurt 2026, 30 Minuten, Deutsch, letzter Talk des Tages, direkt nach Robert Fey)
 
 ## Audience
 

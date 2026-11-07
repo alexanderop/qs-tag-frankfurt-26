@@ -2,7 +2,7 @@
 theme: '@alexop/slidev-theme-brand'
 addons:
   - '@alexop/slidev-addon-utils'
-title: 'Vom Ticket zum Beweis: Agents, die ihre Arbeit selbst prüfen'
+title: 'KI-Agenten als QA-Engineer: Automatisierte Qualitätssicherung mit Claude Code & GitHub Actions'
 layout: cover
 transition: slide-left
 comark: true
@@ -18,15 +18,15 @@ timer: countdown
 drawings:
   persist: false
 info: |
-  ## Vom Ticket zum Beweis
+  ## KI-Agenten als QA-Engineer
 
-  Agents, die ihre Arbeit selbst prüfen.
+  Automatisierte Qualitätssicherung mit Claude Code & GitHub Actions.
   Alexander Opalic, QS-Tag Frankfurt 2026
 ---
 
-# Vom Ticket zum <span class="text-[#ff6bed]">Beweis</span>
+# KI-Agenten als <span class="text-[#ff6bed]">QA-Engineer</span>
 
-Agents, die ihre Arbeit selbst prüfen
+Automatisierte Qualitätssicherung mit Claude Code & GitHub Actions
 
 <div class="mt-8 text-lg opacity-70">Alexander Opalic · QS-Tag Frankfurt 2026</div>
 
