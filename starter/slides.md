@@ -440,14 +440,25 @@ TIME: 9:00–9:45 (45s)
 -->
 
 ---
-layout: statement
----
 
-# Beim Erstellen hat der Agent schon einen <span class="text-[#ff6bed]">echten Bug</span> gefunden.
+<div class="grid grid-cols-[0.9fr_1.1fr] gap-8 h-full items-center">
+<div>
 
-<div class="mt-8 text-2xl opacity-80">Pfeil nach unten in der Suche markiert keinen Vorschlag.</div>
+<h1 class="!text-[2.4rem] !leading-tight">Beim Erstellen hat der Agent schon einen <span class="text-[#ff6bed]">echten Bug</span> gefunden.</h1>
 
-<div class="mt-6 text-lg opacity-60">9 Minuten · 56 Schritte · 3,37 $</div>
+<div class="mt-6 text-xl opacity-80">Pfeil nach unten in der Suche markiert keinen Vorschlag. Enter landet auf der Ergebnisseite statt beim Produkt.</div>
+
+<div class="mt-6 text-base opacity-60">9 Minuten · 56 Schritte · 3,37 $</div>
+
+</div>
+<div>
+
+<img src="/suche-bug.gif" alt="Aufnahme: In der Otto-Suche wird mascara getippt, dreimal Pfeil nach unten markiert keinen Vorschlag, Enter öffnet die Ergebnisseite" class="rounded-xl border border-white/15 w-full" />
+
+<div class="mt-2 text-sm opacity-60 text-center">Nachgestellt im Otto-Klon mit agent-browser</div>
+
+</div>
+</div>
 
 <!--
 TIME: 9:45–10:15 (30s)
