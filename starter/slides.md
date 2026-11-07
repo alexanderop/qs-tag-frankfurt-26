@@ -66,7 +66,7 @@ backgroundSize: cover
 </div>
 
 <!--
-TIME: 0:45–1:00 (15s)
+TIME: 0:45–1:15 (30s)
 
 - Name, Entwickler aus Deutschland, alexop.dev.
 - Foto: „Das bin ich auf der TACON. Das hier ist meine zweite Testing-Konferenz, und ich finde die Testing-Szene richtig nice.“
@@ -86,7 +86,7 @@ layout: statement
 </div>
 
 <!--
-TIME: 1:00–2:15 (75s)
+TIME: 1:15–2:30 (75s)
 
 - [Ask for hands] Erst sollen **alle** aufstehen.
 - [click] Wer KI im Alltag nutzt, bleibt stehen. Die anderen setzen sich.
@@ -97,19 +97,6 @@ TIME: 1:00–2:15 (75s)
 
 ---
 layout: statement
----
-
-# Robert hat gezeigt, wo der <span class="text-[#ff6bed]">Determinismus</span> anfängt.
-
-<div class="mt-8 text-2xl opacity-80">Ich zeige euch, was der Agent <b>davor</b> schon leisten kann.</div>
-
-<!--
-TIME: 2:15–2:30 (15s)
-
-- Brücke zum Talk von **Robert Fey** direkt vor mir.
-- Er hat gezeigt, wo der Determinismus anfängt. Ich gehe einen Schritt davor: Was kann ein Agent prüfen, bevor überhaupt ein deterministischer Test existiert?
-- STREICHKANDIDAT, wenn die Zeit knapp wird.
--->
 
 ---
 
