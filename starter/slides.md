@@ -204,27 +204,42 @@ TIME: 5:30–6:00 (30s)
 
 # Claude Code ist mehr als ein <span class="text-[#ff6bed]">Chatbot</span>
 
-<div class="flex justify-center mt-6">
+<div class="hub mt-4">
+  <div class="hub__node"><img src="/funnel/mensch.webp" alt="" /><b>Du</b></div>
+  <div class="hub__arrow">→</div>
+  <div class="hub__node is-main"><img src="/icons/claude-code.webp" alt="" /><b>Claude Code</b><span>Agent im Terminal</span></div>
+</div>
 
-```mermaid {scale: 0.75}
-flowchart LR
-  you@{ shape: person, label: "Du" } --> cc@{ shape: console, label: "Claude Code" }
-  cc --> tools[Tools<br/>Bash, Read, Edit, Browser]
-  cc --> hooks[Hooks<br/>laufen bei jedem Schritt]
-  cc --> skills[Skills<br/>Wissen auf Abruf]
-```
+<div class="w-[640px] mx-auto mt-4">
+
+<IconCards :columns="3" :items="[
+  { icon: '/icons/tools.webp', title: 'Tools', sub: 'Bash, Read, Edit, Browser' },
+  { icon: '/icons/hooks.webp', title: 'Hooks', sub: 'laufen bei jedem Schritt' },
+  { icon: '/funnel/prosa.webp', title: 'Skills', sub: 'Wissen auf Abruf' },
+]" />
 
 </div>
 
-<div v-click class="mt-8 text-center text-xl opacity-80"><b>LLM denkt, Tools handeln, die Schleife wiederholt.</b></div>
+<div v-click class="mt-5 text-center text-xl"><b>LLM denkt, Tools handeln, die <span class="text-[#ff6bed]">Schleife</span> wiederholt.</b></div>
+
+<style>
+.hub { display: flex; justify-content: center; align-items: center; gap: 10px; }
+.hub__node { display: flex; align-items: center; gap: 10px; border: 1px solid rgba(255,255,255,.15); border-radius: 12px; padding: 8px 16px; background: rgba(255,255,255,.04); }
+.hub__node img { width: 52px; height: 52px; }
+.hub__node b { font-size: 18px; }
+.hub__node span { font-size: 13px; opacity: .7; }
+.hub__node.is-main { border-color: #ff6bed; background: rgba(255,107,237,.12); }
+.hub__node.is-main img { width: 72px; height: 72px; }
+.hub__arrow { color: #ff6bed; font-size: 28px; font-weight: 700; }
+</style>
 
 <!--
 TIME: 6:00–6:45 (45s)
 
 - Claude Code in einem Bild. Ein Agent, der im Terminal läuft.
-- **Tools:** lesen, schreiben, Bash ausführen. Damit kann er auch einen Browser steuern.
-- **Hooks:** Code, der automatisch bei bestimmten Schritten läuft. Zum Beispiel nach jedem Edit den Linter.
-- **Skills:** Markdown-Dateien mit Wissen, die der Agent nur lädt, wenn er sie braucht.
+- [click] **Tools:** lesen, schreiben, Bash ausführen. Damit kann er auch einen Browser steuern.
+- [click] **Hooks:** Code, der automatisch bei bestimmten Schritten läuft. Zum Beispiel nach jedem Edit den Linter.
+- [click] **Skills:** Markdown-Dateien mit Wissen, die der Agent nur lädt, wenn er sie braucht.
 - [click] Mehr ist ein Agent nicht.
 -->
 

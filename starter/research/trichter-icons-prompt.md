@@ -17,3 +17,4 @@ Drei weitere Bögen im gleichen Stil (`ref.png` = Trichter-Bogen), Ergebnis `pub
 - s1: Terminal mit Cursor (playwright-cli), Stecker in Browser (playwright-mcp), Browser mit Auge (agent-browser), Monitor mit Mauszeiger (computer-use), Kompass mit Lupe und Bug (explorativ)
 - s2: Rakete (launch), Stethoskop um Server (doctor), Hand klickt Button (drive), Kamera mit Fotos (evidence), Besen (cleanup)
 - s3: Etikett (label), Ticket mit Checkboxen (issue), Sprechblase mit Screenshot und Richterhammer (urteil), Faltkarte mit Pins (feature-map), Report mit Foto, Film und Stempel (report)
+- s4: Roboter am Terminal mit Schleifenpfeilen (claude-code), Werkzeugkasten (tools), Haken mit Zahnrad und Haken-Badge (hooks)
