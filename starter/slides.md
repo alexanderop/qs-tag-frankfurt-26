@@ -80,7 +80,7 @@ layout: statement
 <div class="mt-8 text-2xl opacity-80">Ich zeige euch, was der Agent <b>davor</b> schon leisten kann.</div>
 
 <!--
-TIME: 2:15–2:45 (30s)
+TIME: 2:15–2:30 (15s)
 
 - Brücke zum Talk von **Robert Fey** direkt vor mir.
 - Er hat gezeigt, wo der Determinismus anfängt. Ich gehe einen Schritt davor: Was kann ein Agent prüfen, bevor überhaupt ein deterministischer Test existiert?
@@ -94,7 +94,7 @@ TIME: 2:15–2:45 (30s)
 <DeliveryFactory era="2022" />
 
 <!--
-TIME: 2:45–3:45 (60s)
+TIME: 2:30–3:30 (60s)
 
 - Das ist meine **Delivery Factory** von alexop.dev/lab, gebaut wie eine Fabrik in Factorio. Jede Maschine ist eine Station im Team.
 - Gelbes Band: **Business** macht aus Ideen Tickets. Rotes Band: **Dev** macht daraus PRs. Blaues Band: **Code Review**.
@@ -111,7 +111,7 @@ TIME: 2:45–3:45 (60s)
 <DeliveryFactory era="2026" />
 
 <!--
-TIME: 3:45–4:45 (60s)
+TIME: 3:30–4:30 (60s)
 
 - Gleiche Fabrik, Jahr 2026. Die blauen **Beacons** an Dev sind die Coding-Agents.
 - Dev ist jetzt schnell. Das rote Band läuft voll mit PRs.
@@ -129,7 +129,7 @@ layout: statement
 <div class="mt-8 text-2xl opacity-80">Wer PRs mergen will, ohne jede Zeile zu lesen,<br/>braucht bessere <span class="text-[#ff6bed]">automatische Verifikation</span>.</div>
 
 <!--
-TIME: 4:45–5:45 (60s)
+TIME: 4:30–5:30 (60s)
 
 - **Die Kernthese** des Talks.
 - „Weitgehend“ ist bewusst gewählt. Es gibt noch harte Probleme. Aber für einen typischen Frontend-Ticket schreibt der Agent den Code.
@@ -155,7 +155,7 @@ Ein PR, der seinen Beweis gleich mitbringt.
 </v-clicks>
 
 <!--
-TIME: 5:45–6:30 (45s)
+TIME: 5:30–6:00 (30s)
 
 - So soll ein PR aussehen: nicht nur Code, sondern **Belege**.
 - [click] Screenshots von jedem geprüften Szenario.
@@ -183,7 +183,7 @@ flowchart LR
 <div v-click class="mt-8 text-center text-xl opacity-80"><b>LLM denkt, Tools handeln, die Schleife wiederholt.</b></div>
 
 <!--
-TIME: 6:30–7:15 (45s)
+TIME: 6:00–6:45 (45s)
 
 - Claude Code in einem Bild. Ein Agent, der im Terminal läuft.
 - **Tools:** lesen, schreiben, Bash ausführen. Damit kann er auch einen Browser steuern.
@@ -216,7 +216,7 @@ TIME: 6:30–7:15 (45s)
 </div>
 
 <!--
-TIME: 7:15–8:00 (45s)
+TIME: 6:45–7:30 (45s)
 
 - Ohne Browser ist der Agent blind. Also geben wir ihm Augen und Hände.
 - [click] **Playwright CLI:** Kennt ihr schon. Der Agent ruft es über Bash auf.
@@ -243,7 +243,7 @@ TIME: 7:15–8:00 (45s)
 <div v-click class="mt-12 text-center text-xl opacity-80">MCP zum Erkunden. CLI für alles, was jeden Tag läuft.</div>
 
 <!--
-TIME: 8:00–8:15 (15s)
+TIME: 7:30–7:45 (15s)
 
 - Gleicher Smoketest, zwei Werkzeuge.
 - MCP schiebt jeden Snapshot direkt in den Kontext. Die CLI schreibt auf die Platte, und der Agent liest nur, was er braucht.
@@ -292,7 +292,7 @@ TIME: 8:00–8:15 (15s)
 </div>
 
 <!--
-TIME: 8:15–9:15 (60s)
+TIME: 7:45–8:45 (60s)
 
 - Ein Agent startet jede Session ohne Erinnerung. Er kennt euren Shop nicht.
 - Das hier ist echt: Ich habe `/create-verification-skill` aus pstack im Otto-Klon laufen lassen.
@@ -337,7 +337,7 @@ ok   internet reachable
 </div>
 
 <!--
-TIME: 9:15–10:15 (60s)
+TIME: 8:45–9:45 (60s)
 
 - Der Skill ist ein Rezept, das jeder Agent gleich abarbeitet.
 - [click] Launch: startet den Shop. Bei mir auf Port 3100, weil 3000 belegt war. Das hat der Agent selbst gemerkt und eingebaut.
@@ -359,7 +359,7 @@ layout: statement
 <div class="mt-6 text-lg opacity-60">9 Minuten · 56 Schritte · 3,37 $</div>
 
 <!--
-TIME: 10:15–10:45 (30s)
+TIME: 9:45–10:15 (30s)
 
 - Den Bug habe ich nicht eingebaut. Den hat der Agent beim Erkunden des Shops gefunden.
 - In der Suche springt ArrowDown immer wieder auf -1. Enter landet dann auf der Ergebnisseite statt beim Produkt.
@@ -377,7 +377,7 @@ backgroundSize: contain
 <h1 class="sr-only">Unser Beispiel: ein Otto-Klon in Nuxt</h1>
 
 <!--
-TIME: 10:45–11:15 (30s)
+TIME: 10:15–10:45 (30s)
 
 - Das ist unser laufendes Beispiel: ein Otto-Klon in Nuxt 4 mit dem offenen B2B-Designsystem von OTTO.
 - Startseite, Suche, Kategorien, Produktseite, Warenkorb, Merkzettel.
@@ -409,7 +409,7 @@ Szenario: Gutschein entfernen
 ```
 
 <!--
-TIME: 11:15–12:00 (45s)
+TIME: 10:45–11:30 (45s)
 
 - Ein ganz normales Ticket. User Story plus drei Gherkin-Szenarien.
 - [click] Gültiger Code, Summe sinkt.
@@ -427,7 +427,7 @@ layout: statement
 <div class="mt-8 text-2xl opacity-80">Gutes Requirements Engineering ist die halbe Verifikation.</div>
 
 <!--
-TIME: 12:00–12:15 (15s)
+TIME: 11:30–11:45 (15s)
 
 - Der Agent braucht ein **Orakel**: Was ist richtig, was ist falsch?
 - Unklare Kriterien heißt unklares Urteil. Das gilt für Menschen und für Agents.
@@ -458,7 +458,7 @@ flowchart LR
 </div>
 
 <!--
-TIME: 12:15–12:45 (30s)
+TIME: 11:45–12:15 (30s)
 
 - Der ganze Ablauf auf einer Folie.
 - [click] Ticket mit Gherkin-Szenarien.
@@ -492,7 +492,7 @@ Implementiere das Ticket docs/tickets/SHOP-42-gutschein.md.
 </style>
 
 <!--
-TIME: 12:45–13:30 (45s)
+TIME: 12:15–13:00 (45s)
 
 - Das ist der ganze Prompt. Gekürzt um den Port-Hinweis, den Skill-Pfad und „Antworte auf Deutsch mit einer Zusammenfassung“.
 - [click] Das Ticket ist die Quelle, nicht mein Chat-Text.
@@ -524,7 +524,7 @@ TIME: 12:45–13:30 (45s)
 <div v-click class="mt-8 text-center text-xl"><b>15 Tool-Aufrufe · 16 Turns · 0,90 $</b> · alle drei Szenarien grün</div>
 
 <!--
-TIME: 13:30–14:45 (75s)
+TIME: 13:00–14:15 (75s)
 
 - Das ist der echte Ablauf aus dem Log. Ein Prompt: „Implementiere SHOP-42, prüfe jedes Szenario mit dem Skill, ergänze die Feature Map, committe.“
 - Er liest zuerst das Ticket **und** den Verification-Skill. Er weiß also vorher, wie er prüfen wird.
@@ -564,7 +564,7 @@ Ticket: docs/tickets/SHOP-42-gutschein.md
 </style>
 
 <!--
-TIME: 14:45–15:45 (60s)
+TIME: 14:15–15:15 (60s)
 
 - Ein **zweiter** Agent. Er hat den Code nicht geschrieben, und er darf ihn nicht ändern.
 - [click] Rolle und Grenze: QA-Agent, kein Code.
@@ -596,7 +596,7 @@ TIME: 14:45–15:45 (60s)
 </div>
 
 <!--
-TIME: 15:45–16:30 (45s)
+TIME: 15:15–16:00 (45s)
 
 LIVE-OPTION (wenn WLAN stabil):
 - Im Repo otto-nuxt-shop auf Branch `feat/gutschein`: `claude` starten.
@@ -630,7 +630,7 @@ LIVE-OPTION (wenn WLAN stabil):
 />
 
 <!--
-TIME: 16:30–17:45 (75s)
+TIME: 16:00–17:15 (75s)
 
 - Das ist das echte Video des QA-Agenten, von ihm selbst mit `agent-browser record` aufgenommen. Rechts die Kapitel, ein Klick springt hin.
 - Das Video ist 1:20 lang. Sprich einfach mit, die Einblendung sagt dir, wo du bist.
@@ -665,7 +665,7 @@ VOICE-OVER:
 </div>
 
 <!--
-TIME: 17:45–18:30 (45s)
+TIME: 17:15–18:00 (45s)
 
 - Fund F2, Severity Critical.
 - Repro: 9 Stück in den Warenkorb, SPAR10 einlösen, auf 1 Stück reduzieren.
@@ -685,7 +685,7 @@ backgroundSize: contain
 <div v-click class="absolute bottom-16 right-12 bg-[#ff6bed] text-black font-bold text-3xl px-6 py-3 rounded rotate-[-3deg]">Gesamt: −1,39 €</div>
 
 <!--
-TIME: 18:30–19:00 (30s)
+TIME: 18:00–18:30 (30s)
 
 - Und dann geht er noch weiter. Fund F3, Critical.
 - Rabatt bei 9 Stück einlösen, Artikel entfernen, eine Zitrone für 0,71 € reinlegen.
@@ -726,7 +726,7 @@ TIME: 18:30–19:00 (30s)
 <div v-click class="mt-6 text-center opacity-80">Mit Repro-Schritten, Erwartet vs. Ist, 12 Screenshots, Video und Ursache. <b>20 Turns · 1,00 $</b></div>
 
 <!--
-TIME: 19:00–19:30 (30s)
+TIME: 18:30–19:00 (30s)
 
 - Das Urteil ist eines von drei festen Werten: HEALTHY, MINOR_ISSUES, CRITICAL_BUGS.
 - Links: Alle Ticket-Szenarien grün.
@@ -746,7 +746,7 @@ layout: statement
 <div class="mt-8 text-2xl opacity-80">Weil keiner daran gedacht hat.</div>
 
 <!--
-TIME: 19:30–20:00 (30s)
+TIME: 19:00–19:30 (30s)
 
 - **Die Pointe.** Kurz Pause lassen.
 - Alle drei Szenarien waren grün. Ein klassischer E2E-Test wäre durchgelaufen.
@@ -767,7 +767,7 @@ TIME: 19:30–20:00 (30s)
 </v-clicks>
 
 <!--
-TIME: 20:00–20:45 (45s)
+TIME: 19:30–20:15 (45s)
 
 - Vier Schritte, alle an einem Nachmittag machbar.
 - [click] Ohne gute Kriterien kein gutes Urteil.
@@ -803,7 +803,7 @@ flowchart LR
 <div v-click class="mt-6 text-center text-xl opacity-80">Dieselbe Schleife wie lokal. Nur der <b>Auslöser</b> ist jetzt ein Label.</div>
 
 <!--
-TIME: 20:45–21:30 (45s)
+TIME: 20:15–21:00 (45s)
 
 - Lokal funktioniert's. Jetzt soll es ohne mich laufen.
 - [click] Ich setze am PR das Label `qa-verify`. Bewusst ein Label, nicht jeder Push: Ich entscheide, wann sich ein Lauf lohnt.
@@ -853,7 +853,7 @@ jobs:
 ```
 
 <!--
-TIME: 21:30–22:45 (75s)
+TIME: 21:00–22:15 (75s)
 
 - Das ist der echte Workflow aus dem Repo, gekürzt. Er ist am 07.11. mehrfach echt gelaufen.
 - [click] **Trigger:** nur wenn ein Label gesetzt wird.
@@ -882,7 +882,7 @@ TIME: 21:30–22:45 (75s)
 </div>
 
 <!--
-TIME: 22:45–23:30 (45s)
+TIME: 22:15–23:00 (45s)
 
 - Das ist der echte Kommentar in PR #1 vom 07.11., kein Mockup.
 - [click] Gepostet vom Report-Job, nicht vom Agenten.
@@ -891,6 +891,50 @@ TIME: 22:45–23:30 (45s)
 - [click] Jeder Lauf findet einen anderen Weg zum selben Fehler: lokal die Zitrone, in der Cloud das Sofa, dann die Rolex.
 - [click] Unter zwei Dollar, unter drei Minuten.
 - Link: github.com/alexanderop/otto-nuxt-shop/pull/1
+-->
+
+---
+
+# Teaser: Ticket auf „In QA“, und der <span class="text-[#ff6bed]">Agent legt los</span>
+
+<div class="flex justify-center mt-2">
+
+<MermaidSteps :steps="['dev status', 'auto', 'gha agent', 'rovo', 'back']">
+
+```mermaid {scale: 0.58}
+flowchart LR
+  dev@{ shape: person, label: "Dev" } --> status[Jira-Ticket<br/>→ In QA]
+  status --> auto[Jira Automation<br/>Send web request]
+  auto --> gha[GitHub Actions<br/>repository_dispatch]
+  gha --> agent@{ shape: console, label: "Claude Code<br/>+ Agent Browser" }
+  agent --> rovo[Jira-Ticket lesen<br/>Rovo MCP]
+  agent --> back[Funde + Screenshots<br/>ins Ticket]
+```
+
+</MermaidSteps>
+
+</div>
+
+<div v-click class="mt-6 grid grid-cols-3 gap-4 text-sm">
+  <div class="border border-white/20 rounded px-3 py-2 bg-white/5"><b>Auslöser:</b> Trigger „Work item transitioned“ auf den Status In QA</div>
+  <div class="border border-white/20 rounded px-3 py-2 bg-white/5"><b>Agent:</b> derselbe Workflow, nur <code>on: repository_dispatch</code> statt Label</div>
+  <div class="border border-white/20 rounded px-3 py-2 bg-white/5"><b>Rückweg:</b> Kommentar + Anhänge über die Jira REST API</div>
+</div>
+
+<div v-click class="mt-4 text-center opacity-70">Alle Bausteine sind dokumentiert. Gebaut habe ich es noch nicht.</div>
+
+<!--
+TIME: 23:00–23:30 (30s)
+
+- Noch ein Schritt weiter: Kein Label mehr. Der Status im Ticket ist der Auslöser.
+- [click] Ein Dev schiebt das Ticket auf „In QA“.
+- [click] Jira Automation feuert („Work item transitioned“) und schickt einen Web-Request an GitHub.
+- [click] GitHub startet denselben QA-Workflow über `repository_dispatch`. Ticket-Key im `client_payload`.
+- [click] Claude liest das Ticket direkt aus Jira, über den Atlassian Rovo MCP Server.
+- [click] Die Funde mit Screenshots landen als Kommentar und Anhang im Ticket. Bei CRITICAL_BUGS zurück auf „In Arbeit“.
+- [click] Die drei Bausteine.
+- [click] **Ehrlich sagen:** Das ist ein Teaser. Alle Teile gibt es und sie sind dokumentiert, aber ich habe die Kette noch nicht gebaut.
+- SOURCE: research/wiki/jira-cloud-agent.md
 -->
 
 ---

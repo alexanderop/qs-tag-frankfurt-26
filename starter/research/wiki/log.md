@@ -21,3 +21,9 @@ The agent appends entries in this form:
 - Raw: `research/raw/2026-11-07-otto-shop-agent-runs.md`
 - Result: new
 - Wiki: `agent-verifikation-otto-shop.md`
+
+## [2026-11-07] ingest | Bausteine Jira → Cloud-Agent
+
+- Raw: `research/raw/2026-11-07-jira-cloud-agent-bausteine.md`
+- Result: new
+- Wiki: `jira-cloud-agent.md`
