@@ -774,12 +774,17 @@ TIME: 18:30–19:00 (30s)
 -->
 
 ---
-layout: statement
+layout: cover
+background: /bild-gherkin.jpeg
 ---
 
-# Das stand in <span class="text-[#ff6bed]">keinem</span> Gherkin-Szenario.
+<div class="w-[42%] text-left">
 
-<div class="mt-8 text-2xl opacity-80">Weil keiner daran gedacht hat.</div>
+<h1 class="!text-[2.6rem] !leading-tight">Das stand in <span class="text-[#ff6bed]">keinem</span> <span class="whitespace-nowrap">Gherkin-Szenario.</span></h1>
+
+<div class="mt-6 text-2xl opacity-80">Weil keiner daran gedacht hat.</div>
+
+</div>
 
 <!--
 TIME: 19:00–19:30 (30s)
@@ -1051,10 +1056,15 @@ TIME: 24:45–25:30 (45s)
 -->
 
 ---
-layout: statement
+layout: cover
+background: /bild-rolle.jpeg
 ---
 
-# „Wenn ein Agent testen kann,<br/>braucht es <span class="text-[#ff6bed]">mich</span> dann noch?“
+<div class="w-[36%] text-left">
+
+<h1 class="!text-[2.6rem] !leading-tight">„Wenn ein Agent testen kann, braucht es <span class="text-[#ff6bed]">mich</span> dann noch?“</h1>
+
+</div>
 
 <!--
 TIME: 25:30–26:00 (30s)
@@ -1185,10 +1195,15 @@ TIME: 28:30–29:00 (30s)
 -->
 
 ---
-layout: statement
+layout: cover
+background: /bild-builder.jpeg
 ---
 
-# Werdet <span class="text-[#ff6bed]">Builder</span><br/>mit Qualitäts-Spezialität.
+<div class="w-[42%] text-left">
+
+<h1 class="!text-5xl !leading-tight">Werdet <span class="text-[#ff6bed]">Builder</span> mit Qualitäts-Spezialität.</h1>
+
+</div>
 
 <!--
 TIME: 29:00–29:15 (15s)
