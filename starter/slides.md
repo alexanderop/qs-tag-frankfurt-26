@@ -515,21 +515,16 @@ TIME: 11:30–11:45 (15s)
 
 # Die <span class="text-[#ff6bed]">Verifikationsschleife</span>
 
-<div class="flex justify-center mt-6">
+<div class="mt-8">
 
-<MermaidSteps :steps="['ticket', 'impl', 'start', 'check', 'explore', 'report']">
-
-```mermaid {scale: 0.6}
-flowchart LR
-  ticket[Ticket<br/>+ Gherkin] --> impl[Implementierung]
-  impl --> start[App starten]
-  start --> check[Szenarien prüfen]
-  check --> explore[Explorativ testen]
-  explore --> report[Report]
-  report -.->|Fehler gefunden| impl
-```
-
-</MermaidSteps>
+<IconCards flow :width="122" :loop="{ from: 5, to: 1, label: 'Fehler gefunden' }" :items="[
+  { icon: '/icons/issue.webp', title: 'Ticket', sub: 'mit Gherkin-Szenarien' },
+  { icon: '/funnel/codebasis.webp', title: 'Umsetzen', sub: 'der Agent baut' },
+  { icon: '/icons/launch.webp', title: 'App starten', sub: 'mit dem Skill' },
+  { icon: '/jira/agent.webp', title: 'Szenarien prüfen', sub: 'im echten Browser' },
+  { icon: '/icons/explorativ.webp', title: 'Explorativ testen', sub: 'was keiner aufschrieb', accent: true },
+  { icon: '/icons/report.webp', title: 'Report', sub: 'Urteil + Belege' },
+]" />
 
 </div>
 

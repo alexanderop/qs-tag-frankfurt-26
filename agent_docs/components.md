@@ -184,3 +184,5 @@ Cards with a Codex sticker icon, title, optional `sub` and pink `tag`. One `v-cl
 - `flow`: row with `→` between cards (a process). Without it: grid, `:columns` defaults to the item count.
 - `size="lg"`: bigger icons and text for 3–4 cards.
 - Icons live in `starter/public/icons/` and `starter/public/jira/` (256 px WebP, transparent). Prompts: `starter/research/trichter-icons-prompt.md`.
+- `:width="122"`: card width in px for `flow` (default 150). Six cards fit at about 122.
+- `:loop="{ from: 5, to: 1, label: 'Fehler gefunden' }"`: dashed arrow back under the row, from card `from` to card `to` (0-based). It appears with the last card.

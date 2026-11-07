@@ -8,17 +8,25 @@ export interface IconCard {
   accent?: boolean
 }
 
-const { items, flow = false, columns, size = 'md' } = defineProps<{
+const { items, flow = false, columns, size = 'md', width = 150, loop } = defineProps<{
   items: IconCard[]
   /** Row with arrows between cards (a process). Otherwise a grid. */
   flow?: boolean
   columns?: number
   size?: 'md' | 'lg'
+  /** Card width in px for `flow`. */
+  width?: number
+  /** Dashed arrow back from card `from` to card `to` (0-based), shown with the last card. */
+  loop?: { from: number, to: number, label: string }
 }>()
+
+const arrow = 28
+const center = (i: number) => i * (width + arrow) + width / 2
 </script>
 
 <template>
-  <div class="cards" :class="[flow ? 'cards--flow' : 'cards--grid', `cards--${size}`]" :style="!flow ? { gridTemplateColumns: `repeat(${columns ?? items.length}, minmax(0, 1fr))` } : undefined">
+  <div class="cards-wrap">
+  <div class="cards" :class="[flow ? 'cards--flow' : 'cards--grid', `cards--${size}`]" :style="!flow ? { gridTemplateColumns: `repeat(${columns ?? items.length}, minmax(0, 1fr))` } : { '--card-w': `${width}px` }">
     <div v-for="(item, i) in items" :key="item.title" v-click class="cards__step">
       <div v-if="flow && i > 0" class="cards__arrow">→</div>
       <div class="cards__card" :class="{ 'is-accent': item.accent }">
@@ -28,6 +36,10 @@ const { items, flow = false, columns, size = 'md' } = defineProps<{
         <div v-if="item.tag" class="cards__tag">{{ item.tag }}</div>
       </div>
     </div>
+  </div>
+  <div v-if="flow && loop" v-after class="cards__loop" :style="{ marginLeft: `${center(loop.to)}px`, width: `${center(loop.from) - center(loop.to)}px` }">
+    <span>{{ loop.label }}</span>
+  </div>
   </div>
 </template>
 
@@ -49,11 +61,12 @@ const { items, flow = false, columns, size = 'md' } = defineProps<{
 }
 
 .cards__arrow {
+  width: 28px;
+  text-align: center;
   align-self: center;
   color: #ff6bed;
   font-size: 28px;
   font-weight: 700;
-  padding: 0 6px;
 }
 
 .cards__card {
@@ -69,7 +82,42 @@ const { items, flow = false, columns, size = 'md' } = defineProps<{
 }
 
 .cards--flow .cards__card {
-  width: 150px;
+  width: var(--card-w);
+}
+
+.cards-wrap {
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.cards__loop {
+  position: relative;
+  height: 30px;
+  border: 2px dashed #ff6bed;
+  border-top: none;
+  border-radius: 0 0 10px 10px;
+}
+
+.cards__loop::before {
+  content: '▲';
+  position: absolute;
+  left: -8px;
+  top: -12px;
+  color: #ff6bed;
+  font-size: 14px;
+}
+
+.cards__loop span {
+  position: absolute;
+  left: 50%;
+  bottom: -12px;
+  transform: translateX(-50%);
+  padding: 0 10px;
+  background: var(--slidev-theme-background, #141414);
+  color: #ff6bed;
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
 }
 
 .cards__card.is-accent {
