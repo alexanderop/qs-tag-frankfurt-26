@@ -6,3 +6,4 @@ Gemeinsamer Stilblock: gleiche Figuren (QA-Engineerin mit Dutt, runder cremefarb
 - `bild-gherkin.jpeg`: Engineerin zufrieden vor Checkliste mit drei Haken, hinter der Tafel sitzt der Bug im Warenkorb, der Roboter zeigt mit der Lupe drauf.
 - `bild-rolle.jpeg`: Engineerin sitzt nachdenklich, pinkes Fragezeichen, der Roboter hält ihre Lupe und prüft einen Browser.
 - `bild-builder.jpeg`: Baustelle, Engineerin mit Bauhelm, Bauplan und Lupen-Abzeichen dirigiert, der Roboter setzt ein Browser-Bauteil ein.
+- `bild-mappe.jpeg` (quadratisch): erster Arbeitstag, der Roboter liest eine Einarbeitungsmappe mit Registern, Kaffee, leeres Namensschild.

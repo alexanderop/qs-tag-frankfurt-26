@@ -291,52 +291,61 @@ TIME: 7:30–7:45 (15s)
 
 ---
 
-# Das <span class="text-[#ff6bed]">Gedächtnis</span> des Agenten
+# Die <span class="text-[#ff6bed]">Einarbeitungsmappe</span> des Agenten
 
-<div class="grid grid-cols-[1fr_1.1fr] gap-8 mt-4 items-start">
+<div class="grid grid-cols-[0.8fr_1.2fr] gap-8 mt-2 items-center">
 <div>
 
-```text
-.claude/skills/verify-otto-shop/
-├── SKILL.md
-├── scripts/
-│   └── otto-verify.sh
-└── features/
-    ├── README.md
-    ├── startseite.md
-    ├── suche.md
-    ├── kategorie-listing.md
-    ├── produktseite.md
-    ├── warenkorb.md
-    └── merkzettel.md
-```
+<img src="/bild-mappe.jpeg" alt="Roboter am ersten Arbeitstag liest eine Mappe mit Registern" class="rounded-xl w-full" />
 
 </div>
 <div>
 
-<v-clicks>
+<div class="mappe">
+  <div class="mappe__file">features/warenkorb.md</div>
+  <div v-click class="mappe__row">
+    <div class="mappe__label">Was gibt es?</div>
+    <code>cart-coupon-valid</code>: <code>SPAR10</code> gibt −10 % auf die Zwischensumme
+  </div>
+  <div v-click class="mappe__row">
+    <div class="mappe__label">Wie komme ich hin?</div>
+    Im Header „Warenkorb“ wählen
+  </div>
+  <div v-click class="mappe__row">
+    <div class="mappe__label">Wie bediene ich es?</div>
+    <code>agent-browser find role button click --name "+" --exact</code>
+  </div>
+  <div v-click class="mappe__row is-gotcha">
+    <div class="mappe__label">Worauf muss ich achten?</div>
+    Der Minus-Button ist „−“ (U+2212), <b>kein Bindestrich</b>.
+  </div>
+</div>
 
-- **SKILL.md:** App starten, prüfen, bedienen, aufräumen
-- **features/:** eine Datei pro Feature, auf Deutsch
-- Jede Datei sagt: Wie komme ich hin? Wie bediene ich es? Woran sehe ich, dass es klappt?
-
-</v-clicks>
-
-<div v-click class="mt-6 text-lg">Der Agent muss nicht raten, was es gibt. Er <span class="text-[#ff6bed]">schlägt nach</span>.</div>
+<div v-click class="mt-5 text-lg">Der Agent muss nicht raten. Er <span class="text-[#ff6bed]">schlägt nach</span>.</div>
 
 </div>
 </div>
+
+<style>
+.mappe { border: 1px solid rgba(255,255,255,.15); border-radius: 12px; padding: 14px 16px; background: rgba(255,255,255,.03); font-size: 15px; line-height: 1.4; }
+.mappe__file { font-family: ui-monospace, monospace; font-size: 13px; opacity: .6; margin-bottom: 8px; }
+.mappe__row { padding: 8px 10px; border-left: 3px solid #7a5ca8; margin-top: 8px; border-radius: 4px; background: rgba(122,92,168,.12); }
+.mappe__row.is-gotcha { border-left-color: #ff6bed; background: rgba(255,107,237,.14); }
+.mappe__label { font-weight: 700; color: #ff6bed; font-size: 13px; text-transform: uppercase; letter-spacing: .04em; margin-bottom: 2px; }
+.mappe code { font-size: 13px; }
+</style>
 
 <!--
 TIME: 7:45–8:45 (60s)
 
-- Ein Agent startet jede Session ohne Erinnerung. Er kennt euren Shop nicht.
-- Das hier ist echt: Ich habe `/create-verification-skill` aus pstack im Otto-Klon laufen lassen.
-- [click] Die SKILL.md erklärt Launch, Doctor, Drive, Evidence, Cleanup.
-- [click] Die **Feature Map**: sechs Dateien, eine pro Feature.
-- [click] Jede Datei hat dieselben vier Abschnitte: Unterfeatures, Einstiege aus Nutzersicht, Rezept mit echten Befehlen, Gotchas.
+- **Analogie:** Ein Agent ist wie ein neuer Kollege am ersten Tag. Schlau, aber er kennt euren Shop nicht. Und er vergisst jeden Abend alles.
+- Also geben wir ihm eine **Einarbeitungsmappe**: die Feature Map. Echt erzeugt mit `/create-verification-skill` aus pstack im Otto-Klon. Eine Datei pro Feature (Startseite, Suche, Listing, Produktseite, Warenkorb, Merkzettel), dazu SKILL.md mit dem Start-Skript.
+- [click] Was gibt es? Jedes Unterfeature mit erwartetem Verhalten.
+- [click] Wie komme ich als Nutzer hin?
+- [click] Wie bediene ich es? Echte Befehle, die der Agent kopieren kann.
+- [click] Die Gotchas. Mein Lieblingsbeispiel: Der Minus-Button ist ein typografisches Minus, kein Bindestrich. Genau das Wissen, das sonst nur im Kopf einer Testerin steckt.
 - [click] Das ist im Grunde ein Testkonzept, das der Agent lesen kann.
-- SOURCE: otto-nuxt-shop, Commit 01f006e, `.claude/skills/verify-otto-shop/`
+- SOURCE: otto-nuxt-shop, Commit 01f006e, `.claude/skills/verify-otto-shop/features/warenkorb.md`
 -->
 
 ---
