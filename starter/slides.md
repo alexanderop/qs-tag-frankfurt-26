@@ -172,7 +172,7 @@ clicks: 1
 TIME: 5:00–5:30 (30s)
 
 - Ein Trichter: Oben fängt man am meisten ab, unten kommt nur noch durch, was alle Schichten davor übersehen haben.
-- Codebase, statische Analyse, Verifikation, Prosa (Regeln, Skills, AGENTS.md), ganz unten der Mensch im Review.
+- Codebasis, statische Analyse, Verifikation, Prosa (Regeln für den Agenten, z. B. Skills und AGENTS.md), ganz unten der Mensch im Review.
 - [click] **Heute** geht es um die Mitte: Verifikation. Der Agent prüft empirisch im echten Browser, ob das Ticket erfüllt ist.
 - Je mehr die oberen Schichten abfangen, desto kleiner wird das menschliche Review.
 

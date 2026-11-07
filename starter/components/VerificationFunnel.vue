@@ -9,10 +9,10 @@ interface Layer {
 }
 
 const layers: Layer[] = [
-  { title: 'Codebase', detail: 'gutes API-Design, Architektur, Refactoring' },
-  { title: 'Statische Analyse', detail: 'Linter, Typen, Compiler, Tests, CI' },
+  { title: 'Codebasis', detail: 'saubere Schnittstellen, Architektur, Aufräumen' },
+  { title: 'Statische Analyse', detail: 'Lint-Regeln, Typen, Compiler, Tests, Pipeline' },
   { title: 'Verifikation', detail: 'formal, empirisch', focus: true },
-  { title: 'Prosa', detail: 'Skills, AGENTS.md' },
+  { title: 'Prosa', detail: 'Regeln für den Agenten' },
   { title: 'Mensch', detail: '' },
 ]
 
@@ -45,7 +45,7 @@ const arrowTip = cx + half(arrowY) + 16
 </script>
 
 <template>
-  <svg viewBox="0 0 1000 560" class="funnel" role="img" aria-label="Umgekehrte Pyramide: Codebase, statische Analyse, Verifikation, Prosa, menschliches Review. Heute geht es um Verifikation.">
+  <svg viewBox="0 0 1000 560" class="funnel" role="img" aria-label="Umgekehrte Pyramide: Codebasis, statische Analyse, Verifikation, Prosa, menschliches Review. Heute geht es um Verifikation.">
     <defs>
       <marker id="funnel-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
         <path d="M0,0 L10,5 L0,10 z" fill="#ff6bed" />
