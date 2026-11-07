@@ -283,6 +283,48 @@ TIME: 7:30–7:45 (15s)
 
 ---
 
+# Ein Befehl baut die <span class="text-[#ff6bed]">Einarbeitungsmappe</span>
+
+<div class="cmds mt-3">
+  <div><span>1 · Installieren</span><code>/plugin install pstack --marketplace alexanderop/pstack-claude</code></div>
+  <div><span>2 · Im Repo ausführen</span><code>/pstack:create-verification-skill</code></div>
+</div>
+
+<style>
+.cmds { display: grid; gap: 6px; }
+.cmds div { display: grid; grid-template-columns: 170px 1fr; align-items: center; gap: 12px; }
+.cmds span { font-size: 13px; font-weight: 700; color: #ff6bed; text-transform: uppercase; letter-spacing: .04em; }
+.cmds code { font-size: 15px; padding: 6px 10px; }
+</style>
+
+<div class="mt-5">
+
+<IconCards flow :items="[
+  { icon: '/funnel/statisch.webp', title: 'Repo befragen', sub: 'Wie startet die App? Wie bedient man sie?' },
+  { icon: '/funnel/prosa.webp', title: 'Skill schreiben', sub: 'SKILL.md + Start-Skript' },
+  { icon: '/icons/feature-map.webp', title: 'Feature Map', sub: 'eine Datei pro Feature', accent: true },
+  { icon: '/funnel/verifikation.webp', title: 'Selbst beweisen', sub: 'einmal komplett durchspielen' },
+  { icon: '/jira/workflow.webp', title: 'Pflegen', sub: '/maintain-verification-skill' },
+]" />
+
+</div>
+
+<div class="mt-5 text-center text-sm opacity-60">pstack: Skills von Lauren Tan (poteto) bei Cursor · Claude-Code-Port: alexanderop/pstack-claude</div>
+
+<!--
+TIME: 7:45–8:15 (30s)
+
+- Die Mappe müsst ihr nicht von Hand schreiben. Dafür gibt es **pstack**: eine Sammlung von Skills von Lauren Tan (poteto) bei Cursor. Ich habe sie nach Claude Code portiert.
+- Ein Befehl: `/create-verification-skill`.
+- [click] Er befragt das Repo, nicht euch: Wie startet die App, wie bedient man sie, welche Belege gibt es?
+- [click] Er schreibt einen Skill mit Start-Skript.
+- [click] Er legt die Feature Map an, eine Datei pro Feature.
+- [click] Wichtig: Er beweist den Skill selbst, einmal komplett durchgespielt. Ein ungetesteter Skill ist nur ein Entwurf.
+- [click] Danach pflegt ihr die Map mit `/maintain-verification-skill`, wenn sich die App ändert.
+- SOURCE: pstack `skills/create-verification-skill/SKILL.md` (v0.15.36); otto-nuxt-shop Commit 01f006e.
+-->
+---
+
 # Die <span class="text-[#ff6bed]">Einarbeitungsmappe</span> des Agenten
 
 <div class="grid grid-cols-[0.8fr_1.2fr] gap-8 mt-2 items-center">
@@ -328,10 +370,10 @@ TIME: 7:30–7:45 (15s)
 </style>
 
 <!--
-TIME: 7:45–8:45 (60s)
+TIME: 8:15–9:00 (45s)
 
 - **Analogie:** Ein Agent ist wie ein neuer Kollege am ersten Tag. Schlau, aber er kennt euren Shop nicht. Und er vergisst jeden Abend alles.
-- Also geben wir ihm eine **Einarbeitungsmappe**: die Feature Map. Echt erzeugt mit `/create-verification-skill` aus pstack im Otto-Klon. Eine Datei pro Feature (Startseite, Suche, Listing, Produktseite, Warenkorb, Merkzettel), dazu SKILL.md mit dem Start-Skript.
+- So sieht die Mappe im Otto-Klon aus: eine Datei pro Feature (Startseite, Suche, Listing, Produktseite, Warenkorb, Merkzettel).
 - [click] Was gibt es? Jedes Unterfeature mit erwartetem Verhalten.
 - [click] Wie komme ich als Nutzer hin?
 - [click] Wie bediene ich es? Echte Befehle, die der Agent kopieren kann.
@@ -371,7 +413,7 @@ ok   /api/products total=184
 </div>
 
 <!--
-TIME: 8:45–9:45 (60s)
+TIME: 9:00–9:45 (45s)
 
 - Der Skill ist ein Rezept, das jeder Agent gleich abarbeitet.
 - [click] Launch: startet den Shop. Bei mir auf Port 3100, weil 3000 belegt war. Das hat der Agent selbst gemerkt und eingebaut.
