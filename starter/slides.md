@@ -79,25 +79,33 @@ TIME: 0:45–1:15 (30s)
 -->
 
 ---
-layout: statement
----
 
 # 🙋 Alle <span class="text-[#ff6bed]">aufstehen</span>, bitte
 
-<div class="mt-8 text-2xl opacity-80 space-y-3">
-  <div v-click>Stehen bleiben: Ihr nutzt KI im Alltag.</div>
-  <div v-click>Hinsetzen: Ihr schreibt alle Tests noch von Hand.</div>
-  <div v-click class="text-[#ff6bed]">Wer noch steht: Ihr habt automatische Verifikationsschleifen.</div>
+<div class="text-xl opacity-70 -mt-2">Setzt euch, sobald es nicht mehr passt.</div>
+
+<div class="mt-8">
+
+<IconCards flow :width="170" :items="[
+  { icon: '/funnel/mensch.webp', title: 'Alle stehen', sub: 'einmal kurz bewegen' },
+  { icon: '/icons/claude-code.webp', title: 'KI im Alltag', sub: 'ChatGPT, Copilot, Claude …', tag: 'stehen bleiben' },
+  { icon: '/funnel/statisch.webp', title: 'KI schreibt Tests', sub: 'Tests oder Testfälle mit KI', tag: 'stehen bleiben' },
+  { icon: '/jira/agent.webp', title: 'Ein Agent testet selbst', sub: 'automatisch, ohne dass ihr klickt', tag: 'stehen bleiben', accent: true },
+]" />
+
 </div>
+
+<div v-click class="mt-8 text-center text-2xl">Wer jetzt noch steht: <b class="text-[#ff6bed]">Lasst uns nachher reden!</b></div>
 
 <!--
 TIME: 1:15–2:30 (75s)
 
-- [Ask for hands] Erst sollen **alle** aufstehen.
-- [click] Wer KI im Alltag nutzt, bleibt stehen. Die anderen setzen sich.
-- [click] Wer alle Tests noch von Hand schreibt, setzt sich.
-- [click] Wer jetzt noch steht, hat automatische Verifikationsschleifen. **Applaus** für die!
-- Danach alle hinsetzen lassen. „Für alle, die jetzt sitzen: Genau darum geht's in den nächsten 30 Minuten.“
+- [Ask for hands] Erst sollen **alle** aufstehen. „Letzter Talk des Tages, wir bewegen uns kurz.“
+- [click] Stehen bleibt, wer KI im Alltag nutzt. ChatGPT, Copilot, egal was. Die anderen setzen sich.
+- [click] Stehen bleibt, wer KI Tests oder Testfälle schreiben lässt.
+- [click] Stehen bleibt, wer einen **Agenten** hat, der selbst testet. Automatisch, im Browser oder in der Pipeline, ohne dass jemand klickt.
+- [click] Wer jetzt noch steht: Applaus, und ich will nach dem Talk mit euch reden. Kurz fragen: „Was nutzt ihr dafür?“
+- Danach alle hinsetzen lassen. „Für alle, die sitzen: Genau darum geht's in den nächsten 30 Minuten.“
 -->
 
 ---
