@@ -138,7 +138,7 @@ TIME: 4:30–5:30 (60s)
 
 ---
 layout: image-right
-image: /pr-136.png
+image: /ci-pr-kommentar-video.png
 backgroundSize: contain
 ---
 
@@ -161,7 +161,8 @@ TIME: 5:30–6:00 (30s)
 - [click] Screenshots von jedem geprüften Szenario.
 - [click] Ein Video, damit ich sehe, was der Agent gemacht hat.
 - [click] Ein klares Urteil. Dann muss ich nicht raten.
-- Rechts ein echter PR aus meinem Workout-Projekt, mit Szenarien in der Beschreibung.
+- Rechts der echte Kommentar des QA-Agenten in PR #1 des Otto-Klons: Urteil oben, darunter das Video als GIF, dann Screenshots. Genau da wollen wir am Ende des Talks hin.
+- SOURCE: github.com/alexanderop/otto-nuxt-shop/pull/1 (Lauf 5, Run 42368915488)
 -->
 
 ---
