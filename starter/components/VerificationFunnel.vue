@@ -5,15 +5,16 @@ import { computed } from 'vue'
 interface Layer {
   title: string
   detail: string
+  icon: string
   focus?: boolean
 }
 
 const layers: Layer[] = [
-  { title: 'Codebasis', detail: 'saubere Schnittstellen, Architektur, Aufräumen' },
-  { title: 'Statische Analyse', detail: 'Lint-Regeln, Typen, Compiler, Tests, Pipeline' },
-  { title: 'Verifikation', detail: 'formal, empirisch', focus: true },
-  { title: 'Prosa', detail: 'Regeln für den Agenten' },
-  { title: 'Mensch', detail: '' },
+  { icon: 'codebasis', title: 'Codebasis', detail: 'saubere Schnittstellen, Architektur, Aufräumen' },
+  { icon: 'statisch', title: 'Statische Analyse', detail: 'Lint-Regeln, Typen, Compiler, Tests, Pipeline' },
+  { icon: 'verifikation', title: 'Verifikation', detail: 'formal, empirisch', focus: true },
+  { icon: 'prosa', title: 'Prosa', detail: 'Regeln für den Agenten' },
+  { icon: 'mensch', title: 'Mensch', detail: '' },
 ]
 
 const { $clicks } = useSlideContext()
@@ -21,9 +22,10 @@ const focused = computed(() => $clicks.value >= 1)
 
 const top = 20
 const apex = 540
-const cx = 380
+const cx = 500
 const halfTop = 320
 const bounds = [20, 118, 216, 326, 436, 540]
+const iconSize = 64
 const half = (y: number) => halfTop * (apex - y) / (apex - top)
 
 const shapes = layers.map((layer, i) => {
@@ -36,7 +38,8 @@ const shapes = layers.map((layer, i) => {
     [cx - half(y1), y1],
   ].map(p => p.join(',')).join(' ')
   const last = i === layers.length - 1
-  return { ...layer, points, mid: last ? y0 + 30 : (y0 + y1) / 2, last }
+  const mid = last ? y0 + 30 : (y0 + y1) / 2
+  return { ...layer, points, mid, last, iconX: cx - half(mid) - iconSize - 18 }
 })
 
 const focusLayer = shapes.find(s => s.focus)!
@@ -54,14 +57,15 @@ const arrowTip = cx + half(arrowY) + 16
 
     <g v-for="s in shapes" :key="s.title" class="layer" :class="{ 'is-focus': focused && s.focus, 'is-dim': focused && !s.focus }">
       <polygon :points="s.points" />
+      <image :href="`/funnel/${s.icon}.webp`" :x="s.iconX" :y="s.mid - iconSize / 2" :width="iconSize" :height="iconSize" class="layer__icon" />
       <text :x="cx" :y="s.last ? s.mid : s.mid - 10" text-anchor="middle" class="layer__title" :class="{ 'is-small': s.last }">{{ s.title }}</text>
       <text v-if="s.detail" :x="cx" :y="s.mid + 14" text-anchor="middle" class="layer__detail">({{ s.detail }})</text>
     </g>
 
     <g class="pointer" :class="{ 'is-on': focused }">
-      <path :d="`M 790 ${arrowY} C 720 ${arrowY - 40}, 660 ${arrowY - 20}, ${arrowTip} ${arrowY}`" marker-end="url(#funnel-arrow)" />
-      <text x="800" :y="arrowY - 6" class="pointer__title">Heute</text>
-      <text x="800" :y="arrowY + 22" class="pointer__detail">Darauf schauen wir</text>
+      <path :d="`M 850 ${arrowY} C 790 ${arrowY - 40}, 740 ${arrowY - 20}, ${arrowTip} ${arrowY}`" marker-end="url(#funnel-arrow)" />
+      <text x="860" :y="arrowY - 6" class="pointer__title">Heute</text>
+      <text x="860" :y="arrowY + 22" class="pointer__detail">Darauf schauen wir</text>
     </g>
   </svg>
 </template>
@@ -103,6 +107,16 @@ const arrowTip = cx + half(arrowY) + 16
 
 .layer.is-dim {
   opacity: 0.35;
+}
+
+.layer__icon {
+  transition: transform 0.4s;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.layer.is-focus .layer__icon {
+  transform: scale(1.25);
 }
 
 .layer.is-focus polygon {
