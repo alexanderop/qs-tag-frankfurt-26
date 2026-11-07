@@ -947,23 +947,25 @@ TIME: 22:15–23:00 (45s)
 
 # Teaser: Ticket auf „In QA“, und der <span class="text-[#ff6bed]">Agent legt los</span>
 
-<div class="flex justify-center mt-2">
-
-<MermaidSteps :steps="['dev status', 'auto', 'gha agent', 'rovo', 'back']">
-
-```mermaid {scale: 0.58}
-flowchart LR
-  dev@{ shape: person, label: "Dev" } --> status[Jira-Ticket<br/>→ In QA]
-  status --> auto[Jira Automation<br/>Send web request]
-  auto --> gha[GitHub Actions<br/>repository_dispatch]
-  gha --> agent@{ shape: console, label: "Claude Code<br/>+ Agent Browser" }
-  agent --> rovo[Jira-Ticket lesen<br/>Rovo MCP]
-  agent --> back[Funde + Screenshots<br/>ins Ticket]
-```
-
-</MermaidSteps>
-
+<div class="flow mt-4">
+  <div v-click class="flow__step"><div class="flow__card"><img src="/jira/ticket.webp" alt="" class="flow__icon" /><div class="flow__title">Dev schiebt Ticket</div><div class="flow__sub">auf „In QA“</div><div class="flow__tool">Jira</div></div></div>
+  <div v-click class="flow__step"><div class="flow__arrow">→</div><div class="flow__card"><img src="/jira/trigger.webp" alt="" class="flow__icon" /><div class="flow__title">Automation feuert</div><div class="flow__sub">Send web request</div><div class="flow__tool">Jira Automation</div></div></div>
+  <div v-click class="flow__step"><div class="flow__arrow">→</div><div class="flow__card"><img src="/jira/workflow.webp" alt="" class="flow__icon" /><div class="flow__title">Workflow startet</div><div class="flow__sub">repository_dispatch</div><div class="flow__tool">GitHub Actions</div></div></div>
+  <div v-click class="flow__step"><div class="flow__arrow">→</div><div class="flow__card is-agent"><img src="/jira/agent.webp" alt="" class="flow__icon" /><div class="flow__title">Agent liest & testet</div><div class="flow__sub">Ticket via Rovo MCP, Browser</div><div class="flow__tool">Claude Code</div></div></div>
+  <div v-click class="flow__step"><div class="flow__arrow">→</div><div class="flow__card"><img src="/jira/funde.webp" alt="" class="flow__icon" /><div class="flow__title">Funde ins Ticket</div><div class="flow__sub">Kommentar + Screenshots</div><div class="flow__tool">Jira REST API</div></div></div>
 </div>
+
+<style>
+.flow { display: flex; align-items: stretch; justify-content: center; }
+.flow__step { display: flex; align-items: stretch; }
+.flow__arrow { align-self: center; color: #ff6bed; font-size: 28px; font-weight: 700; padding: 0 6px; }
+.flow__card { display: flex; flex-direction: column; align-items: center; width: 150px; text-align: center; border: 1px solid rgba(255,255,255,.15); border-radius: 12px; padding: 12px 8px; background: rgba(255,255,255,.04); }
+.flow__card.is-agent { border-color: #ff6bed; background: rgba(255,107,237,.12); }
+.flow__icon { width: 72px; height: 72px; margin: 0 auto 6px; }
+.flow__title { font-weight: 700; font-size: 15px; line-height: 1.25; }
+.flow__sub { font-size: 12px; opacity: .7; margin-top: 2px; }
+.flow__tool { font-size: 11px; color: #ff6bed; margin-top: auto; padding-top: 6px; text-transform: uppercase; letter-spacing: .05em; }
+</style>
 
 <div v-click class="mt-6 grid grid-cols-3 gap-4 text-sm">
   <div class="border border-white/20 rounded px-3 py-2 bg-white/5"><b>Auslöser:</b> Trigger „Work item transitioned“ auf den Status In QA</div>
@@ -980,7 +982,7 @@ TIME: 23:00–23:30 (30s)
 - [click] Ein Dev schiebt das Ticket auf „In QA“.
 - [click] Jira Automation feuert („Work item transitioned“) und schickt einen Web-Request an GitHub.
 - [click] GitHub startet denselben QA-Workflow über `repository_dispatch`. Ticket-Key im `client_payload`.
-- [click] Claude liest das Ticket direkt aus Jira, über den Atlassian Rovo MCP Server.
+- [click] Claude liest das Ticket direkt aus Jira, über den Atlassian Rovo MCP Server, und testet im Browser.
 - [click] Die Funde mit Screenshots landen als Kommentar und Anhang im Ticket. Bei CRITICAL_BUGS zurück auf „In Arbeit“.
 - [click] Die drei Bausteine.
 - [click] **Ehrlich sagen:** Das ist ein Teaser. Alle Teile gibt es und sie sind dokumentiert, aber ich habe die Kette noch nicht gebaut.
