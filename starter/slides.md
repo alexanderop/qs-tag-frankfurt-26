@@ -280,6 +280,88 @@ TIME: 6:45–7:45 (60s)
 
 ---
 
+<div class="grid grid-cols-[0.85fr_1.15fr] gap-8 h-full items-center">
+<div>
+
+<h1 class="!text-[2.3rem] !leading-tight">Unser Beispiel: ein <span class="text-[#ff6bed]">Otto-Klon</span> in Nuxt</h1>
+
+<div class="mt-5 text-lg opacity-80 space-y-1">
+  <div>Nuxt 4 + das offene B2B-Designsystem von OTTO</div>
+  <div>Startseite, Suche, Produktseite, Warenkorb</div>
+</div>
+
+<div v-click class="mt-6 text-xl">Unser Auftrag: <b class="text-[#ff6bed]">Gutscheincode im Warenkorb</b></div>
+
+</div>
+<div>
+
+<img src="/otto-klon.png" alt="Startseite des Otto-Klons in Nuxt" class="rounded-xl border border-white/15 w-full" />
+
+<div class="mt-2 text-sm opacity-60 text-center">Inoffizielle Demo, nicht von OTTO · github.com/alexanderop/otto-nuxt-shop</div>
+
+</div>
+</div>
+
+<!--
+TIME: 7:45–8:15 (30s)
+
+- Bevor wir dem Agenten etwas beibringen: Woran arbeiten wir?
+- Unser laufendes Beispiel: ein Otto-Klon in Nuxt 4 mit dem offenen B2B-Designsystem von OTTO. Startseite, Suche, Kategorien, Produktseite, Warenkorb, Merkzettel.
+- Inoffizielle Demo, nicht von OTTO. Repo: github.com/alexanderop/otto-nuxt-shop
+- [click] **Das wollen wir bauen:** Kunden sollen im Warenkorb einen Gutscheincode einlösen. Und der Agent soll selbst beweisen, dass es funktioniert.
+-->
+
+---
+
+# Das <span class="text-[#ff6bed]">Ticket</span>: SHOP-42
+
+<div class="text-lg opacity-80 mb-3">„Als Kunde möchte ich einen Gutscheincode im Warenkorb einlösen.“</div>
+
+```gherkin {1-4|6-9|11-14}
+Szenario: Gültiger Gutschein
+  Angenommen ein Artikel liegt im Warenkorb
+  Wenn ich den Code "SPAR10" einlöse
+  Dann sinkt die Gesamtsumme um 10 % der Zwischensumme
+
+Szenario: Ungültiger Gutschein
+  Angenommen ein Artikel liegt im Warenkorb
+  Wenn ich den Code "GIBTSNICHT" einlöse
+  Dann sehe ich "Dieser Gutschein ist ungültig"
+
+Szenario: Gutschein entfernen
+  Angenommen der Code "SPAR10" ist eingelöst
+  Wenn ich den Gutschein entferne
+  Dann gilt wieder die volle Gesamtsumme
+```
+
+<!--
+TIME: 8:15–9:00 (45s)
+
+- Ein ganz normales Ticket. User Story plus drei Gherkin-Szenarien.
+- [click] Gültiger Code, Summe sinkt.
+- [click] Ungültiger Code, Fehlermeldung.
+- [click] Gutschein entfernen, voller Preis.
+- Auf der Folie leicht gekürzt. Original: `docs/tickets/SHOP-42-gutschein.md`, Commit c6c529e.
+-->
+
+---
+layout: statement
+---
+
+# Akzeptanzkriterien sind das <span class="text-[#ff6bed]">Testorakel</span>.
+
+<div class="mt-8 text-2xl opacity-80">Gutes Requirements Engineering ist die halbe Verifikation.</div>
+
+<!--
+TIME: 9:00–9:15 (15s)
+
+- Der Agent braucht ein **Orakel**: Was ist richtig, was ist falsch?
+- Unklare Kriterien heißt unklares Urteil. Das gilt für Menschen und für Agents.
+- Das ist euer Handwerk. Ich komme am Ende darauf zurück.
+- STREICHKANDIDAT, wenn die Zeit knapp wird.
+-->
+---
+
 # Ein Befehl baut die <span class="text-[#ff6bed]">Einarbeitungsmappe</span>
 
 <div class="cmds mt-3">
@@ -309,8 +391,9 @@ TIME: 6:45–7:45 (60s)
 <div class="mt-5 text-center text-sm opacity-60">pstack: Skills von Lauren Tan (poteto) bei Cursor · Claude-Code-Port: alexanderop/pstack-claude</div>
 
 <!--
-TIME: 7:45–8:15 (30s)
+TIME: 9:15–9:45 (30s)
 
+- Brücke: Der Agent kennt unseren Otto-Klon nicht. Bevor er SHOP-42 prüfen kann, braucht er eine Einarbeitung.
 - Die Mappe müsst ihr nicht von Hand schreiben. Dafür gibt es **pstack**: eine Sammlung von Skills von Lauren Tan (poteto) bei Cursor. Ich habe sie nach Claude Code portiert.
 - Ein Befehl: `/create-verification-skill`.
 - [click] Er befragt das Repo, nicht euch: Wie startet die App, wie bedient man sie, welche Belege gibt es?
@@ -367,7 +450,7 @@ TIME: 7:45–8:15 (30s)
 </style>
 
 <!--
-TIME: 8:15–9:00 (45s)
+TIME: 9:45–10:30 (45s)
 
 - **Analogie:** Ein Agent ist wie ein neuer Kollege am ersten Tag. Schlau, aber er kennt euren Shop nicht. Und er vergisst jeden Abend alles.
 - So sieht die Mappe im Otto-Klon aus: eine Datei pro Feature (Startseite, Suche, Listing, Produktseite, Warenkorb, Merkzettel).
@@ -410,7 +493,7 @@ ok   /api/products total=184
 </div>
 
 <!--
-TIME: 9:00–9:45 (45s)
+TIME: 10:30–11:15 (45s)
 
 - Der Skill ist ein Rezept, das jeder Agent gleich abarbeitet.
 - [click] Launch: startet den Shop. Bei mir auf Port 3100, weil 3000 belegt war. Das hat der Agent selbst gemerkt und eingebaut.
@@ -443,7 +526,7 @@ TIME: 9:00–9:45 (45s)
 </div>
 
 <!--
-TIME: 9:45–10:15 (30s)
+TIME: 11:15–11:45 (30s)
 
 - Den Bug habe ich nicht eingebaut. Den hat der Agent beim Erkunden des Shops gefunden.
 - In der Suche springt ArrowDown immer wieder auf -1. Enter landet dann auf der Ergebnisseite statt beim Produkt.
@@ -452,72 +535,6 @@ TIME: 9:45–10:15 (30s)
 - SOURCE: otto-nuxt-shop `app/components/SearchBox.vue:39`, Log `.talk-logs/01-create-verification-skill.jsonl`
 -->
 
----
-layout: image
-image: /otto-klon.png
-backgroundSize: contain
----
-
-<h1 class="sr-only">Unser Beispiel: ein Otto-Klon in Nuxt</h1>
-
-<!--
-TIME: 10:15–10:45 (30s)
-
-- Das ist unser laufendes Beispiel: ein Otto-Klon in Nuxt 4 mit dem offenen B2B-Designsystem von OTTO.
-- Startseite, Suche, Kategorien, Produktseite, Warenkorb, Merkzettel.
-- Inoffizielle Demo, nicht von OTTO.
-- Repo: github.com/alexanderop/otto-nuxt-shop
--->
-
----
-
-# Das <span class="text-[#ff6bed]">Ticket</span>: SHOP-42
-
-<div class="text-lg opacity-80 mb-3">„Als Kunde möchte ich einen Gutscheincode im Warenkorb einlösen.“</div>
-
-```gherkin {1-4|6-9|11-14}
-Szenario: Gültiger Gutschein
-  Angenommen ein Artikel liegt im Warenkorb
-  Wenn ich den Code "SPAR10" einlöse
-  Dann sinkt die Gesamtsumme um 10 % der Zwischensumme
-
-Szenario: Ungültiger Gutschein
-  Angenommen ein Artikel liegt im Warenkorb
-  Wenn ich den Code "GIBTSNICHT" einlöse
-  Dann sehe ich "Dieser Gutschein ist ungültig"
-
-Szenario: Gutschein entfernen
-  Angenommen der Code "SPAR10" ist eingelöst
-  Wenn ich den Gutschein entferne
-  Dann gilt wieder die volle Gesamtsumme
-```
-
-<!--
-TIME: 10:45–11:30 (45s)
-
-- Ein ganz normales Ticket. User Story plus drei Gherkin-Szenarien.
-- [click] Gültiger Code, Summe sinkt.
-- [click] Ungültiger Code, Fehlermeldung.
-- [click] Gutschein entfernen, voller Preis.
-- Auf der Folie leicht gekürzt. Original: `docs/tickets/SHOP-42-gutschein.md`, Commit c6c529e.
--->
-
----
-layout: statement
----
-
-# Akzeptanzkriterien sind das <span class="text-[#ff6bed]">Testorakel</span>.
-
-<div class="mt-8 text-2xl opacity-80">Gutes Requirements Engineering ist die halbe Verifikation.</div>
-
-<!--
-TIME: 11:30–11:45 (15s)
-
-- Der Agent braucht ein **Orakel**: Was ist richtig, was ist falsch?
-- Unklare Kriterien heißt unklares Urteil. Das gilt für Menschen und für Agents.
-- Das ist euer Handwerk. Ich komme am Ende darauf zurück.
-- STREICHKANDIDAT, wenn die Zeit knapp wird.
--->
 
 ---
 
