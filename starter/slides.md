@@ -52,13 +52,24 @@ TIME: 0:00–0:45 (45s)
 -->
 
 ---
+layout: image-right
+image: /alex-tacon.jpeg
+backgroundSize: cover
+---
 
-<About />
+# Alexander Opalic
+
+<div class="mt-6 text-xl space-y-3 opacity-90">
+  <div>Entwickler aus Deutschland</div>
+  <div>Blog: <span class="text-[#ff6bed]">alexop.dev</span></div>
+  <div class="mt-8">Meine <span class="text-[#ff6bed] font-bold">zweite</span> Testing-Konferenz.<br/>Die erste: TACON.</div>
+</div>
 
 <!--
 TIME: 0:45–1:00 (15s)
 
 - Name, Entwickler aus Deutschland, alexop.dev.
+- Foto: „Das bin ich auf der TACON. Das hier ist meine zweite Testing-Konferenz, und ich finde die Testing-Szene richtig nice.“
 - **Ehrlich sagen:** Ich bin Entwickler, kein QA-Engineer. Ich zeige euch meinen Blick von der Entwicklerseite.
 -->
 
