@@ -3,7 +3,10 @@ theme: '@alexop/slidev-theme-brand'
 addons:
   - '@alexop/slidev-addon-utils'
 title: 'KI-Agenten als QA-Engineer: Automatisierte Qualitätssicherung mit Claude Code & GitHub Actions'
-layout: cover
+hideFooter: true
+layout: image
+image: /qs-tag-frankfurt-2026.jpeg
+backgroundSize: contain
 transition: slide-left
 comark: true
 pwa: build
@@ -22,6 +25,16 @@ info: |
 
   Automatisierte Qualitätssicherung mit Claude Code & GitHub Actions.
   Alexander Opalic, QS-Tag Frankfurt 2026
+---
+
+<h1 class="sr-only">QS-Tag Frankfurt 2026</h1>
+
+<!--
+Event-Cover. Steht, während der Raum sich setzt. Nicht getimt.
+-->
+
+---
+layout: cover
 ---
 
 # KI-Agenten als <span class="text-[#ff6bed]">QA-Engineer</span>
