@@ -1,0 +1,45 @@
+{
+  "name": "alexop-slidev-stack",
+  "version": "1.0.0",
+  "description": "Reusable Slidev theme, addon, and starter template by @alexop",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "pnpm --filter slidev-starter dev",
+    "build": "pnpm --filter slidev-starter build",
+    "export": "pnpm --filter slidev-starter export",
+    "research:check": "pnpm --filter slidev-starter research:check",
+    "research:test": "pnpm --filter slidev-starter research:test",
+    "test": "vitest run",
+    "test:unit": "vitest run --project unit --project components",
+    "test:deck": "vitest run --project deck"
+  },
+  "keywords": [
+    "slidev",
+    "theme",
+    "addon",
+    "template"
+  ],
+  "author": "Alexander Opalic",
+  "license": "MIT",
+  "packageManager": "pnpm@9.12.3",
+  "engines": {
+    "node": ">=24"
+  },
+  "pnpm": {
+    "overrides": {
+      "dompurify@<3.4.13": ">=3.4.13 <4"
+    },
+    "patchedDependencies": {
+      "gray-matter@4.0.3": "patches/gray-matter@4.0.3.patch"
+    }
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.10",
+    "@vitest/browser-playwright": "^5.1.0",
+    "playwright": "^1.65.0",
+    "vitest": "^5.1.0",
+    "vitest-browser-vue": "^3.1.0",
+    "vue": "^3.5.45"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "name": "@alexop/slidev-addon-utils",
+  "version": "0.1.0",
+  "description": "Reusable components and utilities for Slidev by Alexander Opalic",
+  "author": "Alexander Opalic",
+  "license": "MIT",
+  "type": "module",
+  "keywords": [
+    "slidev-addon",
+    "slidev"
+  ],
+  "engines": {
+    "node": ">=24",
+    "slidev": ">=53.0.0"
+  },
+  "scripts": {
+    "dev": "slidev slides.md",
+    "build": "slidev build slides.md",
+    "export": "slidev export slides.md"
+  },
+  "dependencies": {
+    "@vueuse/core": "^15.0.0",
+    "roughjs": "^4.6.6",
+    "shiki": "^4.6.0"
+  },
+  "devDependencies": {
+    "@iconify-json/ph": "^1.2.2",
+    "@iconify-json/vscode-icons": "^1.2.96",
+    "@slidev/cli": "^53.1.0",
+    "@slidev/client": "^53.1.0",
+    "mermaid": "^12.3.0",
+    "vue": "^3.5.45"
+  }
+}

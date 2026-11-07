@@ -1,0 +1,62 @@
+/* Scoped to slides so the presenter UI keeps Slidev's own styles */
+.slidev-layout {
+  color: var(--brand-text);
+  background-color: var(--brand-bg);
+
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--brand-text);
+  }
+
+  a {
+    color: var(--brand-accent);
+  }
+
+  a:hover {
+    color: var(--brand-accent);
+    opacity: 0.8;
+  }
+
+  pre, code {
+    background-color: var(--brand-card) !important;
+    color: var(--brand-text);
+  }
+
+  blockquote {
+    border-left-color: var(--brand-accent);
+    background-color: var(--brand-card);
+    color: var(--brand-text);
+  }
+
+  ul, ol {
+    color: var(--brand-text);
+  }
+
+  table {
+    color: var(--brand-text);
+  }
+
+  th {
+    background-color: var(--brand-card);
+    color: var(--brand-text);
+  }
+
+  td {
+    border-color: var(--brand-border);
+  }
+
+  strong, b {
+    color: var(--brand-accent);
+  }
+
+  ::selection {
+    background-color: var(--brand-accent);
+    color: var(--brand-bg);
+  }
+}
+
+/* PWA badge: never in exports/og-image, and not on visits where the deck is already cached */
+html.slidev-print .slidev-pwa-indicator,
+html.slidev-pwa-cached .slidev-pwa-indicator,
+body:has(.print-slide-container) .slidev-pwa-indicator {
+  display: none;
+}

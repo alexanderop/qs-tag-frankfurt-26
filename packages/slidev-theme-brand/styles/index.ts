@@ -1,0 +1,6 @@
+import '@fontsource-variable/geist'
+import '@fontsource-variable/geist-mono'
+import '@slidev/client/styles/layouts-base.css'
+import './layouts.css'
+import './global.css'
+import './twoslash.css'
