@@ -155,7 +155,7 @@ Ein PR, der seinen Beweis gleich mitbringt.
 </v-clicks>
 
 <!--
-TIME: 5:45–6:45 (60s)
+TIME: 5:45–6:30 (45s)
 
 - So soll ein PR aussehen: nicht nur Code, sondern **Belege**.
 - [click] Screenshots von jedem geprüften Szenario.
@@ -183,7 +183,7 @@ flowchart LR
 <div v-click class="mt-8 text-center text-xl opacity-80"><b>LLM denkt, Tools handeln, die Schleife wiederholt.</b></div>
 
 <!--
-TIME: 6:45–7:45 (60s)
+TIME: 6:30–7:30 (60s)
 
 - Claude Code in einem Bild. Ein Agent, der im Terminal läuft.
 - **Tools:** lesen, schreiben, Bash ausführen. Damit kann er auch einen Browser steuern.
@@ -216,7 +216,7 @@ TIME: 6:45–7:45 (60s)
 </div>
 
 <!--
-TIME: 7:45–8:45 (60s)
+TIME: 7:30–8:15 (45s)
 
 - Ohne Browser ist der Agent blind. Also geben wir ihm Augen und Hände.
 - [click] **Playwright CLI:** Kennt ihr schon. Der Agent ruft es über Bash auf.
@@ -243,7 +243,7 @@ TIME: 7:45–8:45 (60s)
 <div v-click class="mt-12 text-center text-xl opacity-80">MCP zum Erkunden. CLI für alles, was jeden Tag läuft.</div>
 
 <!--
-TIME: 8:45–9:30 (45s)
+TIME: 8:15–8:45 (30s)
 
 - Gleicher Smoketest, zwei Werkzeuge.
 - MCP schiebt jeden Snapshot direkt in den Kontext. Die CLI schreibt auf die Platte, und der Agent liest nur, was er braucht.
@@ -292,7 +292,7 @@ TIME: 8:45–9:30 (45s)
 </div>
 
 <!--
-TIME: 9:30–10:30 (60s)
+TIME: 8:45–9:45 (60s)
 
 - Ein Agent startet jede Session ohne Erinnerung. Er kennt euren Shop nicht.
 - Das hier ist echt: Ich habe `/create-verification-skill` aus pstack im Otto-Klon laufen lassen.
@@ -337,7 +337,7 @@ ok   internet reachable
 </div>
 
 <!--
-TIME: 10:30–11:30 (60s)
+TIME: 9:45–10:45 (60s)
 
 - Der Skill ist ein Rezept, das jeder Agent gleich abarbeitet.
 - [click] Launch: startet den Shop. Bei mir auf Port 3100, weil 3000 belegt war. Das hat der Agent selbst gemerkt und eingebaut.
@@ -359,7 +359,7 @@ layout: statement
 <div class="mt-6 text-lg opacity-60">9 Minuten · 56 Schritte · 3,37 $</div>
 
 <!--
-TIME: 11:30–12:15 (45s)
+TIME: 10:45–11:30 (45s)
 
 - Den Bug habe ich nicht eingebaut. Den hat der Agent beim Erkunden des Shops gefunden.
 - In der Suche springt ArrowDown immer wieder auf -1. Enter landet dann auf der Ergebnisseite statt beim Produkt.
@@ -377,7 +377,7 @@ backgroundSize: contain
 <h1 class="sr-only">Unser Beispiel: ein Otto-Klon in Nuxt</h1>
 
 <!--
-TIME: 12:15–12:45 (30s)
+TIME: 11:30–12:00 (30s)
 
 - Das ist unser laufendes Beispiel: ein Otto-Klon in Nuxt 4 mit dem offenen B2B-Designsystem von OTTO.
 - Startseite, Suche, Kategorien, Produktseite, Warenkorb, Merkzettel.
@@ -409,7 +409,7 @@ Szenario: Gutschein entfernen
 ```
 
 <!--
-TIME: 12:45–13:45 (60s)
+TIME: 12:00–13:00 (60s)
 
 - Ein ganz normales Ticket. User Story plus drei Gherkin-Szenarien.
 - [click] Gültiger Code, Summe sinkt.
@@ -427,7 +427,7 @@ layout: statement
 <div class="mt-8 text-2xl opacity-80">Gutes Requirements Engineering ist die halbe Verifikation.</div>
 
 <!--
-TIME: 13:45–14:15 (30s)
+TIME: 13:00–13:15 (15s)
 
 - Der Agent braucht ein **Orakel**: Was ist richtig, was ist falsch?
 - Unklare Kriterien heißt unklares Urteil. Das gilt für Menschen und für Agents.
@@ -458,7 +458,7 @@ flowchart LR
 </div>
 
 <!--
-TIME: 14:15–15:00 (45s)
+TIME: 13:15–14:00 (45s)
 
 - Der ganze Ablauf auf einer Folie.
 - [click] Ticket mit Gherkin-Szenarien.
@@ -488,7 +488,7 @@ TIME: 14:15–15:00 (45s)
 <div v-click class="mt-8 text-center text-xl"><b>15 Tool-Aufrufe · 16 Turns · 0,90 $</b> · alle drei Szenarien grün</div>
 
 <!--
-TIME: 15:00–16:15 (75s)
+TIME: 14:00–15:15 (75s)
 
 - Das ist der echte Ablauf aus dem Log. Ein Prompt: „Implementiere SHOP-42, prüfe jedes Szenario mit dem Skill, ergänze die Feature Map, committe.“
 - Er liest zuerst das Ticket **und** den Verification-Skill. Er weiß also vorher, wie er prüfen wird.
@@ -515,7 +515,7 @@ TIME: 15:00–16:15 (75s)
 </div>
 
 <!--
-TIME: 16:15–17:15 (60s)
+TIME: 15:15–16:15 (60s)
 
 LIVE-OPTION (wenn WLAN stabil):
 - Im Repo otto-nuxt-shop auf Branch `feat/gutschein`: `claude` starten.
@@ -549,7 +549,7 @@ LIVE-OPTION (wenn WLAN stabil):
 />
 
 <!--
-TIME: 17:15–18:30 (75s)
+TIME: 16:15–17:30 (75s)
 
 - Das ist das echte Video des QA-Agenten, von ihm selbst mit `agent-browser record` aufgenommen. Rechts die Kapitel, ein Klick springt hin.
 - Das Video ist 1:20 lang. Sprich einfach mit, die Einblendung sagt dir, wo du bist.
@@ -584,7 +584,7 @@ VOICE-OVER:
 </div>
 
 <!--
-TIME: 18:30–19:15 (45s)
+TIME: 17:30–18:15 (45s)
 
 - Fund F2, Severity Critical.
 - Repro: 9 Stück in den Warenkorb, SPAR10 einlösen, auf 1 Stück reduzieren.
@@ -604,7 +604,7 @@ backgroundSize: contain
 <div v-click class="absolute bottom-16 right-12 bg-[#ff6bed] text-black font-bold text-3xl px-6 py-3 rounded rotate-[-3deg]">Gesamt: −1,39 €</div>
 
 <!--
-TIME: 19:15–19:45 (30s)
+TIME: 18:15–18:45 (30s)
 
 - Und dann geht er noch weiter. Fund F3, Critical.
 - Rabatt bei 9 Stück einlösen, Artikel entfernen, eine Zitrone für 0,71 € reinlegen.
@@ -645,7 +645,7 @@ TIME: 19:15–19:45 (30s)
 <div v-click class="mt-6 text-center opacity-80">Mit Repro-Schritten, Erwartet vs. Ist, 12 Screenshots, Video und Ursache. <b>20 Turns · 1,00 $</b></div>
 
 <!--
-TIME: 19:45–20:30 (45s)
+TIME: 18:45–19:30 (45s)
 
 - Das Urteil ist eines von drei festen Werten: HEALTHY, MINOR_ISSUES, CRITICAL_BUGS.
 - Links: Alle Ticket-Szenarien grün.
@@ -665,7 +665,7 @@ layout: statement
 <div class="mt-8 text-2xl opacity-80">Weil keiner daran gedacht hat.</div>
 
 <!--
-TIME: 20:30–21:00 (30s)
+TIME: 19:30–20:00 (30s)
 
 - **Die Pointe.** Kurz Pause lassen.
 - Alle drei Szenarien waren grün. Ein klassischer E2E-Test wäre durchgelaufen.
@@ -686,7 +686,7 @@ TIME: 20:30–21:00 (30s)
 </v-clicks>
 
 <!--
-TIME: 21:00–21:45 (45s)
+TIME: 20:00–20:45 (45s)
 
 - Vier Schritte, alle an einem Nachmittag machbar.
 - [click] Ohne gute Kriterien kein gutes Urteil.
@@ -697,47 +697,94 @@ TIME: 21:00–21:45 (45s)
 
 ---
 
-# Derselbe Ablauf bei <span class="text-[#ff6bed]">jedem PR</span>
+# Label setzen, und der Agent testet <span class="text-[#ff6bed]">in der Cloud</span>
 
-<div class="flex justify-center mt-2">
+<div class="flex justify-center mt-4">
 
-```mermaid {scale: 0.6}
+<MermaidSteps :steps="['dev label', 'gha shop', 'agent ticket', 'browser', 'comment gate']">
+
+```mermaid {scale: 0.62}
 flowchart LR
-  pr[Pull Request] --> gha[GitHub Actions]
-  gha --> agent@{ shape: console, label: "claude -p" }
-  agent --> verdict{Urteil}
-  verdict -->|HEALTHY| ok[Merge frei]
-  verdict -->|CRITICAL_BUGS| block[PR blockiert]
+  dev@{ shape: person, label: "Du" } --> label[Label<br/>qa-verify]
+  label --> gha[GitHub Actions]
+  gha --> shop[Shop starten<br/>mit Skill]
+  shop --> agent@{ shape: console, label: "Claude Code" }
+  ticket[Ticket aus der<br/>PR-Beschreibung] --> agent
+  agent --> browser@{ shape: browser, label: "Agent Browser" }
+  browser --> comment[Report als<br/>PR-Kommentar]
+  browser --> gate{Urteil}
 ```
+
+</MermaidSteps>
 
 </div>
 
-<div class="w-2/3 mx-auto mt-2">
-
-```yaml
-on: pull_request
-jobs:
-  verify:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v5
-      - run: pnpm install
-      - run: >
-          claude -p "/verify-otto-shop Prüfe das
-          Ticket aus der PR-Beschreibung"
-          --output-format json
-```
-
-</div>
+<div v-click class="mt-6 text-center text-xl opacity-80">Dieselbe Schleife wie lokal. Nur der <b>Auslöser</b> ist jetzt ein Label.</div>
 
 <!--
-TIME: 21:45–22:45 (60s)
+TIME: 20:45–21:30 (45s)
 
 - Lokal funktioniert's. Jetzt soll es ohne mich laufen.
-- `claude -p` ist Claude Code ohne Chat: ein Prompt rein, ein Ergebnis raus.
-- Derselbe Skill, dieselbe Feature Map. Nur der Auslöser ist jetzt der PR.
-- Das Urteil wird zum Merge-Gate: CRITICAL_BUGS heißt `exit 1`.
-- Der Report landet als Kommentar im PR, mit Screenshots als Artefakt.
+- [click] Ich setze am PR das Label `qa-verify`. Bewusst ein Label, nicht jeder Push: Ich entscheide, wann sich ein Lauf lohnt.
+- [click] GitHub Actions startet den Shop. Mit demselben Skript aus dem Verification-Skill.
+- [click] Claude Code liest die PR-Beschreibung. Da steht „Ticket: SHOP-42“, also liest er das Ticket.
+- [click] Er prüft im echten Browser, headless in der Cloud.
+- [click] Der Report kommt als Kommentar in den PR. Das Urteil entscheidet, ob der Job grün oder rot wird.
+- [click] Gleicher Skill, gleiche Feature Map, gleicher Report wie lokal.
+- SOURCE: alexop.dev „Building an AI QA Engineer with Claude Code and Playwright MCP“ (Label-Trigger) und „How to Use Claude Code as an AI QA Tester with Agent Browser“ (--json-schema).
+-->
+
+---
+zoom: 0.72
+---
+
+# Der echte <span class="text-[#ff6bed]">Workflow</span>
+
+<div class="text-sm opacity-60 -mt-2 mb-2">otto-nuxt-shop · .github/workflows/claude-qa.yml (gekürzt)</div>
+
+```yaml {1-3|5-7|9-10|12-20|21-24|26-30|all}
+on:
+  pull_request:
+    types: [labeled]
+jobs:
+  qa:
+    if: github.event.label.name == 'qa-verify'
+    permissions: { contents: read, pull-requests: write }
+    steps:
+      - name: Start shop (verify-otto-shop skill)
+        run: .claude/skills/verify-otto-shop/scripts/otto-verify.sh launch
+      - uses: anthropics/claude-code-action@61a9c27… # v1.0.269
+        with:
+          prompt: |
+            Du bist der QA-Agent für PR #${{ github.event.pull_request.number }}.
+            1. Lies die PR-Beschreibung mit `gh pr view`. Sie nennt die Ticket-ID.
+               Lies das Ticket unter docs/tickets/.
+            2. Prüfe jedes Gherkin-Szenario mit dem Skill verify-otto-shop.
+            3. Teste danach explorativ.
+            4. Poste den Report mit `gh pr comment`.
+          claude_args: |
+            --max-turns 60
+            --allowedTools "Skill,Read,Write,Bash(agent-browser:*),Bash(gh pr comment:*)"
+            --json-schema '{… "verdict": enum [HEALTHY, MINOR_ISSUES, CRITICAL_BUGS] …}'
+      - name: Merge gate
+        env:
+          VERDICT: ${{ fromJSON(steps.qa.outputs.structured_output).verdict }}
+        run: |
+          if [ "$VERDICT" = "CRITICAL_BUGS" ]; then exit 1; fi
+```
+
+<!--
+TIME: 21:30–22:45 (75s)
+
+- Das ist der echte Workflow aus dem Repo, nur gekürzt. Commit ae7d693.
+- [click] **Trigger:** nur wenn ein Label gesetzt wird.
+- [click] **Nur das Label qa-verify**, und nur die Rechte, die er braucht: Code lesen, PR kommentieren.
+- [click] **Shop starten** mit dem Skript aus dem Verification-Skill. Kein eigenes CI-Setup.
+- [click] **Der Prompt:** Ticket aus der PR-Beschreibung, Szenarien mit dem Skill, explorativ, Report als Kommentar.
+- [click] **Leitplanken:** max. 60 Turns, nur erlaubte Tools. `--json-schema` zwingt ein festes Urteil.
+- [click] **Merge-Gate:** Bei CRITICAL_BUGS wird der Job rot. Freitext für Menschen, festes Feld für die Pipeline.
+- [click] Dazu im echten File: Actions per SHA gepinnt, zizmor im Pedantic-Modus ohne Befund, Belege als Artefakt.
+- STAND 07.11.: In GitHub noch nicht gelaufen (Branch nicht gepusht, Secret `ANTHROPIC_API_KEY` fehlt). Lokal ist derselbe Ablauf mit `claude -p` gelaufen (1,00 $). Vor dem Talk einmal echt laufen lassen und diese Zeile anpassen.
 -->
 
 ---
