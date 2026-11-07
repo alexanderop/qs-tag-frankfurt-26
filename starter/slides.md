@@ -35,13 +35,18 @@ Event-Cover. Steht, während der Raum sich setzt. Nicht getimt.
 
 ---
 layout: cover
+background: /titel-mensch-roboter.jpeg
 ---
 
-# KI-Agenten als <span class="text-[#ff6bed]">QA-Engineer</span>
+<div class="w-[40%] text-left">
 
-Automatisierte Qualitätssicherung mit Claude Code & GitHub Actions
+<h1 class="!text-5xl !leading-tight">KI-Agenten als<br/><span class="text-[#ff6bed] whitespace-nowrap">QA-Engineer</span></h1>
 
-<div class="mt-8 text-lg opacity-70">Alexander Opalic · QS-Tag Frankfurt 2026</div>
+<div class="mt-4 text-lg opacity-80">Automatisierte Qualitäts&shy;sicherung mit Claude Code & GitHub Actions</div>
+
+<div class="mt-10 text-base opacity-70">Alexander Opalic · QS-Tag Frankfurt 2026</div>
+
+</div>
 
 <!--
 TIME: 0:00–0:45 (45s)
