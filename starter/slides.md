@@ -267,42 +267,16 @@ TIME: 6:00–6:45 (45s)
 </div>
 
 <!--
-TIME: 6:45–7:30 (45s)
+TIME: 6:45–7:45 (60s)
 
 - Ohne Browser ist der Agent blind. Also geben wir ihm Augen und Hände.
 - [click] **Playwright CLI:** Kennt ihr schon. Der Agent ruft es über Bash auf.
 - [click] **Playwright MCP:** Gut, um lokal zu erkunden. Schiebt aber bei jedem Schritt viel in den Kontext.
 - [click] **Agent Browser** von Vercel Labs: Rust-CLI, Accessibility-Snapshot mit Refs wie @e1. Das nutze ich.
 - [click] **Computer Use:** Der Agent sieht den Bildschirm und klickt per Maus. Langsam, aber geht überall.
+- Meine Regel: MCP lokal zum Erkunden, CLI in der Pipeline. Gleicher Smoketest: etwa 114k Tokens mit MCP, 27k mit der CLI (Quelle: „Playwright CLI vs MCP“, siehe Quality-Night-Deck).
 -->
 
----
-
-# CLI schlägt MCP, sobald es <span class="text-[#ff6bed]">ernst</span> wird
-
-<div class="grid grid-cols-2 gap-10 mt-12 items-end">
-  <div class="text-center">
-    <div class="text-7xl font-bold opacity-60">114k</div>
-    <div class="mt-3 text-xl opacity-80">Tokens pro Test mit <b>MCP</b></div>
-  </div>
-  <div class="text-center">
-    <div class="text-7xl font-bold text-[#ff6bed]">27k</div>
-    <div class="mt-3 text-xl opacity-80">Tokens pro Test mit der <b>CLI</b></div>
-  </div>
-</div>
-
-<div v-click class="mt-12 text-center text-xl opacity-80">MCP zum Erkunden. CLI für alles, was jeden Tag läuft.</div>
-
-<!--
-TIME: 7:30–7:45 (15s)
-
-- Gleicher Smoketest, zwei Werkzeuge.
-- MCP schiebt jeden Snapshot direkt in den Kontext. Die CLI schreibt auf die Platte, und der Agent liest nur, was er braucht.
-- Etwa **4-mal weniger** Tokens. Das heißt günstiger und stabiler, weil der Kontext nicht vollläuft.
-- [click] Meine Regel: MCP lokal zum Erkunden, CLI in der Pipeline.
-- SOURCE: „Playwright CLI vs MCP: A New Tool for Your Coding Agent“ (114k vs 26,8k), siehe Quality-Night-Deck.
-- STREICHKANDIDAT, wenn die Zeit knapp wird.
--->
 
 ---
 
