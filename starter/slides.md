@@ -183,7 +183,7 @@ flowchart LR
 <div v-click class="mt-8 text-center text-xl opacity-80"><b>LLM denkt, Tools handeln, die Schleife wiederholt.</b></div>
 
 <!--
-TIME: 6:30–7:30 (60s)
+TIME: 6:30–7:15 (45s)
 
 - Claude Code in einem Bild. Ein Agent, der im Terminal läuft.
 - **Tools:** lesen, schreiben, Bash ausführen. Damit kann er auch einen Browser steuern.
@@ -216,7 +216,7 @@ TIME: 6:30–7:30 (60s)
 </div>
 
 <!--
-TIME: 7:30–8:15 (45s)
+TIME: 7:15–8:00 (45s)
 
 - Ohne Browser ist der Agent blind. Also geben wir ihm Augen und Hände.
 - [click] **Playwright CLI:** Kennt ihr schon. Der Agent ruft es über Bash auf.
@@ -243,7 +243,7 @@ TIME: 7:30–8:15 (45s)
 <div v-click class="mt-12 text-center text-xl opacity-80">MCP zum Erkunden. CLI für alles, was jeden Tag läuft.</div>
 
 <!--
-TIME: 8:15–8:45 (30s)
+TIME: 8:00–8:30 (30s)
 
 - Gleicher Smoketest, zwei Werkzeuge.
 - MCP schiebt jeden Snapshot direkt in den Kontext. Die CLI schreibt auf die Platte, und der Agent liest nur, was er braucht.
@@ -292,7 +292,7 @@ TIME: 8:15–8:45 (30s)
 </div>
 
 <!--
-TIME: 8:45–9:45 (60s)
+TIME: 8:30–9:30 (60s)
 
 - Ein Agent startet jede Session ohne Erinnerung. Er kennt euren Shop nicht.
 - Das hier ist echt: Ich habe `/create-verification-skill` aus pstack im Otto-Klon laufen lassen.
@@ -337,7 +337,7 @@ ok   internet reachable
 </div>
 
 <!--
-TIME: 9:45–10:45 (60s)
+TIME: 9:30–10:30 (60s)
 
 - Der Skill ist ein Rezept, das jeder Agent gleich abarbeitet.
 - [click] Launch: startet den Shop. Bei mir auf Port 3100, weil 3000 belegt war. Das hat der Agent selbst gemerkt und eingebaut.
@@ -359,7 +359,7 @@ layout: statement
 <div class="mt-6 text-lg opacity-60">9 Minuten · 56 Schritte · 3,37 $</div>
 
 <!--
-TIME: 10:45–11:30 (45s)
+TIME: 10:30–11:00 (30s)
 
 - Den Bug habe ich nicht eingebaut. Den hat der Agent beim Erkunden des Shops gefunden.
 - In der Suche springt ArrowDown immer wieder auf -1. Enter landet dann auf der Ergebnisseite statt beim Produkt.
@@ -377,7 +377,7 @@ backgroundSize: contain
 <h1 class="sr-only">Unser Beispiel: ein Otto-Klon in Nuxt</h1>
 
 <!--
-TIME: 11:30–12:00 (30s)
+TIME: 11:00–11:30 (30s)
 
 - Das ist unser laufendes Beispiel: ein Otto-Klon in Nuxt 4 mit dem offenen B2B-Designsystem von OTTO.
 - Startseite, Suche, Kategorien, Produktseite, Warenkorb, Merkzettel.
@@ -409,7 +409,7 @@ Szenario: Gutschein entfernen
 ```
 
 <!--
-TIME: 12:00–13:00 (60s)
+TIME: 11:30–12:15 (45s)
 
 - Ein ganz normales Ticket. User Story plus drei Gherkin-Szenarien.
 - [click] Gültiger Code, Summe sinkt.
@@ -427,7 +427,7 @@ layout: statement
 <div class="mt-8 text-2xl opacity-80">Gutes Requirements Engineering ist die halbe Verifikation.</div>
 
 <!--
-TIME: 13:00–13:15 (15s)
+TIME: 12:15–12:30 (15s)
 
 - Der Agent braucht ein **Orakel**: Was ist richtig, was ist falsch?
 - Unklare Kriterien heißt unklares Urteil. Das gilt für Menschen und für Agents.
@@ -458,7 +458,7 @@ flowchart LR
 </div>
 
 <!--
-TIME: 13:15–14:00 (45s)
+TIME: 12:30–13:00 (30s)
 
 - Der ganze Ablauf auf einer Folie.
 - [click] Ticket mit Gherkin-Szenarien.
@@ -467,6 +467,42 @@ TIME: 13:15–14:00 (45s)
 - [click] Er prüft jedes Szenario im Browser.
 - [click] Dann testet er explorativ: Was hat keiner aufgeschrieben?
 - [click] Am Ende ein Report. Findet er einen Fehler, geht's zurück in die Implementierung.
+-->
+
+---
+
+# Prompt 1: Das <span class="text-[#ff6bed]">Feature bauen</span>
+
+<div class="text-sm opacity-60 -mt-2 mb-3">Der echte Prompt, leicht gekürzt</div>
+
+```text {1|3|4-5|6|7|all}
+Implementiere das Ticket docs/tickets/SHOP-42-gutschein.md.
+
+1. Baue das Feature im Warenkorb (/warenkorb).
+2. Prüfe danach jedes Gherkin-Szenario im echten Browser
+   mit dem Skill verify-otto-shop.
+3. Ergänze die Feature Map (features/warenkorb.md) um den Gutschein.
+4. Committe die Arbeit auf dem aktuellen Branch. Kein Push.
+```
+
+<div v-click class="mt-6 text-lg">Kein Wort dazu, <b>wie</b> er testen soll. Das steht im <span class="text-[#ff6bed]">Skill</span>.</div>
+
+<style>
+.slidev-code { font-size: 1.05rem !important; line-height: 1.65 !important; }
+</style>
+
+<!--
+TIME: 13:00–13:45 (45s)
+
+- Das ist der ganze Prompt. Gekürzt um den Port-Hinweis, den Skill-Pfad und „Antworte auf Deutsch mit einer Zusammenfassung“.
+- [click] Das Ticket ist die Quelle, nicht mein Chat-Text.
+- [click] Bauen.
+- [click] Selbst prüfen: jedes Szenario, im echten Browser, mit dem Skill.
+- [click] Die Feature Map wächst mit dem Feature. Der nächste Agent kennt den Gutschein dann schon.
+- [click] Committen, nicht pushen. Ein Mensch entscheidet.
+- [click] Wie man den Shop startet und bedient, steht nicht im Prompt. Das weiß der Agent aus dem Skill.
+- Aufruf: `claude -p "…" --model opus --permission-mode bypassPermissions`
+- SOURCE: otto-nuxt-shop `.talk-logs/02-implement-gutschein.jsonl`
 -->
 
 ---
@@ -488,7 +524,7 @@ TIME: 13:15–14:00 (45s)
 <div v-click class="mt-8 text-center text-xl"><b>15 Tool-Aufrufe · 16 Turns · 0,90 $</b> · alle drei Szenarien grün</div>
 
 <!--
-TIME: 14:00–15:15 (75s)
+TIME: 13:45–15:00 (75s)
 
 - Das ist der echte Ablauf aus dem Log. Ein Prompt: „Implementiere SHOP-42, prüfe jedes Szenario mit dem Skill, ergänze die Feature Map, committe.“
 - Er liest zuerst das Ticket **und** den Verification-Skill. Er weiß also vorher, wie er prüfen wird.
@@ -497,6 +533,51 @@ TIME: 14:00–15:15 (75s)
 - [click] Kosten unter einem Dollar. Commit b70393e.
 - Er ergänzt auch die Feature Map um den Gutschein. Die Doku wächst mit dem Feature.
 - SOURCE: Log `.talk-logs/02-implement-gutschein.jsonl`
+-->
+
+---
+
+# Prompt 2: Der <span class="text-[#ff6bed]">QA-Agent</span>
+
+<div class="text-sm opacity-60 -mt-2 mb-3">Der echte Prompt, leicht gekürzt. Dieser Prompt hat das Video erzeugt.</div>
+
+```text {1|3|5|6-8|9-10|11-13|all}
+Du bist der QA-Agent für den PR auf dem Branch feat/gutschein. Ändere keinen Code.
+
+Ticket: docs/tickets/SHOP-42-gutschein.md
+
+1. Prüfe mit dem Skill verify-otto-shop jedes Gherkin-Szenario im echten Browser.
+2. Teste danach explorativ rund um den Gutschein, wie ein erfahrener Tester:
+   Dinge, die nicht im Ticket stehen (z. B. Schreibweise, doppeltes Einlösen,
+   Mengenänderungen, Entfernen von Artikeln, Reload).
+3. Nimm den ganzen Browser-Lauf als Video auf (agent-browser record)
+   und mache Screenshots von jedem Szenario und jedem Fund.
+4. Schreibe einen Report: Urteil (genau eins von HEALTHY, MINOR_ISSUES,
+   CRITICAL_BUGS), Szenarien-Tabelle, Funde mit Severity, Repro-Schritten,
+   Erwartet vs. Ist und Beleg.
+```
+
+<div v-click class="mt-3 text-lg">Punkt 2 ist eine <span class="text-[#ff6bed]">Test-Charter</span>: euer QA-Wissen, als Prompt.</div>
+
+<style>
+.slidev-code { font-size: 0.95rem !important; line-height: 1.45 !important; }
+</style>
+
+<!--
+TIME: 15:00–16:00 (60s)
+
+- Ein **zweiter** Agent. Er hat den Code nicht geschrieben, und er darf ihn nicht ändern.
+- [click] Rolle und Grenze: QA-Agent, kein Code.
+- [click] Wieder ist das Ticket die Quelle.
+- [click] Szenarien zuerst, mit dem Skill.
+- [click] **Ehrlich sagen:** Hier steht meine Test-Charter. „Mengenänderungen“ habe ich als Beispiel reingeschrieben. Den eingebauten Bug kannte der Agent nicht, aber ich habe ihm gesagt, wo erfahrene Tester suchen.
+  - Negative Gesamtsumme und Cookie-Manipulation standen nicht drin. Die hat er selbst gefunden.
+  - Genau das ist der Punkt für euch: Diese Liste ist **QA-Wissen**. Wer weiß, wo es kracht, schreibt die bessere Charter.
+- [click] Video und Screenshots: Daher kommt das Video, das ihr gleich seht.
+- [click] Festes Urteil und feste Report-Struktur. Damit kann die Pipeline später arbeiten.
+- [click:2] Die Charter-Zeile. Darauf komme ich am Ende zurück: Das ist eure Arbeit, eine Ebene höher.
+- Danach noch: „Committe nur den Report. Kein Push.“
+- SOURCE: otto-nuxt-shop `.talk-logs/03-verify-gutschein.jsonl`, Report-Commit 302bad8
 -->
 
 ---
@@ -515,7 +596,7 @@ TIME: 14:00–15:15 (75s)
 </div>
 
 <!--
-TIME: 15:15–16:15 (60s)
+TIME: 16:00–16:45 (45s)
 
 LIVE-OPTION (wenn WLAN stabil):
 - Im Repo otto-nuxt-shop auf Branch `feat/gutschein`: `claude` starten.
@@ -549,7 +630,7 @@ LIVE-OPTION (wenn WLAN stabil):
 />
 
 <!--
-TIME: 16:15–17:30 (75s)
+TIME: 16:45–18:00 (75s)
 
 - Das ist das echte Video des QA-Agenten, von ihm selbst mit `agent-browser record` aufgenommen. Rechts die Kapitel, ein Klick springt hin.
 - Das Video ist 1:20 lang. Sprich einfach mit, die Einblendung sagt dir, wo du bist.
@@ -584,7 +665,7 @@ VOICE-OVER:
 </div>
 
 <!--
-TIME: 17:30–18:15 (45s)
+TIME: 18:00–18:45 (45s)
 
 - Fund F2, Severity Critical.
 - Repro: 9 Stück in den Warenkorb, SPAR10 einlösen, auf 1 Stück reduzieren.
@@ -604,7 +685,7 @@ backgroundSize: contain
 <div v-click class="absolute bottom-16 right-12 bg-[#ff6bed] text-black font-bold text-3xl px-6 py-3 rounded rotate-[-3deg]">Gesamt: −1,39 €</div>
 
 <!--
-TIME: 18:15–18:45 (30s)
+TIME: 18:45–19:15 (30s)
 
 - Und dann geht er noch weiter. Fund F3, Critical.
 - Rabatt bei 9 Stück einlösen, Artikel entfernen, eine Zitrone für 0,71 € reinlegen.
@@ -645,7 +726,7 @@ TIME: 18:15–18:45 (30s)
 <div v-click class="mt-6 text-center opacity-80">Mit Repro-Schritten, Erwartet vs. Ist, 12 Screenshots, Video und Ursache. <b>20 Turns · 1,00 $</b></div>
 
 <!--
-TIME: 18:45–19:30 (45s)
+TIME: 19:15–19:45 (30s)
 
 - Das Urteil ist eines von drei festen Werten: HEALTHY, MINOR_ISSUES, CRITICAL_BUGS.
 - Links: Alle Ticket-Szenarien grün.
@@ -665,7 +746,7 @@ layout: statement
 <div class="mt-8 text-2xl opacity-80">Weil keiner daran gedacht hat.</div>
 
 <!--
-TIME: 19:30–20:00 (30s)
+TIME: 19:45–20:15 (30s)
 
 - **Die Pointe.** Kurz Pause lassen.
 - Alle drei Szenarien waren grün. Ein klassischer E2E-Test wäre durchgelaufen.
@@ -686,7 +767,7 @@ TIME: 19:30–20:00 (30s)
 </v-clicks>
 
 <!--
-TIME: 20:00–20:45 (45s)
+TIME: 20:15–21:00 (45s)
 
 - Vier Schritte, alle an einem Nachmittag machbar.
 - [click] Ohne gute Kriterien kein gutes Urteil.
@@ -722,7 +803,7 @@ flowchart LR
 <div v-click class="mt-6 text-center text-xl opacity-80">Dieselbe Schleife wie lokal. Nur der <b>Auslöser</b> ist jetzt ein Label.</div>
 
 <!--
-TIME: 20:45–21:30 (45s)
+TIME: 21:00–21:45 (45s)
 
 - Lokal funktioniert's. Jetzt soll es ohne mich laufen.
 - [click] Ich setze am PR das Label `qa-verify`. Bewusst ein Label, nicht jeder Push: Ich entscheide, wann sich ein Lauf lohnt.
@@ -774,7 +855,7 @@ jobs:
 ```
 
 <!--
-TIME: 21:30–22:45 (75s)
+TIME: 21:45–23:00 (75s)
 
 - Das ist der echte Workflow aus dem Repo, nur gekürzt. Commit ae7d693.
 - [click] **Trigger:** nur wenn ein Label gesetzt wird.
@@ -802,7 +883,7 @@ class: text-center
 <div class="mt-1 text-sm opacity-60">Shop, Verification-Skill, Ticket, QA-Report mit Video</div>
 
 <!--
-TIME: 22:45–23:15 (30s)
+TIME: 23:00–23:30 (30s)
 
 - Das Repo enthält den Shop, den Skill mit Feature Map, das Ticket und den echten QA-Report mit Video.
 - TODO vor dem Talk: Branch `feat/gutschein` pushen, sonst sieht das Publikum Ticket und Report nicht.
@@ -823,7 +904,7 @@ TIME: 22:45–23:15 (30s)
 </v-clicks>
 
 <!--
-TIME: 23:15–24:15 (60s)
+TIME: 23:30–24:30 (60s)
 
 - Ich will euch nichts verkaufen. Das hier hat echte Grenzen.
 - [click] Derselbe Prompt nimmt nicht zweimal denselben Weg. Darum feste Urteile und Belege.
@@ -856,7 +937,7 @@ TIME: 23:15–24:15 (60s)
 </div>
 
 <!--
-TIME: 24:15–25:00 (45s)
+TIME: 24:30–25:15 (45s)
 
 - Der Agent liefert Belege. Entscheiden tut ein Mensch.
 - [click] Freigabe bleibt beim Menschen.
@@ -871,7 +952,7 @@ layout: statement
 # „Wenn ein Agent testen kann,<br/>braucht es <span class="text-[#ff6bed]">mich</span> dann noch?“
 
 <!--
-TIME: 25:00–25:30 (30s)
+TIME: 25:15–25:45 (30s)
 
 - Diese Frage stellt sich gerade jeder hier im Saal. Also spreche ich sie offen aus.
 - Kurz Pause lassen.
@@ -887,7 +968,7 @@ layout: quote
 — Boris Cherny, Creator von Claude Code
 
 <!--
-TIME: 25:30–26:15 (45s)
+TIME: 25:45–26:30 (45s)
 
 - Boris Cherny hat Claude Code bei Anthropic gebaut.
 - Übersetzt: Der Titel Software Engineer verschwindet an manchen Stellen. Stattdessen heißt es einfach **Builder**.
@@ -911,7 +992,7 @@ TIME: 25:30–26:15 (45s)
 <div v-after class="mt-2 text-base opacity-60">Cat Wu, Head of Product, Claude Code</div>
 
 <!--
-TIME: 26:15–27:15 (60s)
+TIME: 26:30–27:15 (45s)
 
 - Cherny bei 41:25: Bei uns codet jeder. PM, Engineering Manager, Designerin, sogar der Finanzer.
 - [click] Cat Wu, Head of Product bei Claude Code, schreibt das auch offiziell: Die Rollen verschmelzen.
@@ -986,13 +1067,14 @@ layout: statement
 
 # Der Agent hat den Bug gefunden,<br/>weil jemand gute <span class="text-[#ff6bed]">Vorarbeit</span> gemacht hat.
 
-<div class="mt-8 text-2xl opacity-80">Gherkin-Szenarien, Feature Map, Report-Format.<br/>Das ist <b>eure</b> Arbeit, nur eine Ebene höher.</div>
+<div class="mt-8 text-2xl opacity-80">Gherkin-Szenarien, Test-Charter, Feature Map.<br/>Das ist <b>eure</b> Arbeit, nur eine Ebene höher.</div>
 
 <!--
 TIME: 28:30–29:00 (30s)
 
 - Die Wendung, die Mut machen soll.
 - Erinnert euch an die Demo: Der Agent kannte die Szenarien, weil sie jemand gut aufgeschrieben hat.
+- Er hat bei Mengenänderungen gesucht, weil die Test-Charter im Prompt es ihm gesagt hat.
 - Er wusste, wie der Warenkorb funktioniert, weil jemand die Feature Map gepflegt hat.
 - Ihr klickt weniger. Ihr baut die Systeme, mit denen geprüft wird.
 -->

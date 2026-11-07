@@ -13,6 +13,7 @@ Mit einem generierten Verification-Skill (Feature Map + Helper-Skript) baut ein 
 ## Tensions and open questions
 
 - Der Bug wurde absichtlich eingebaut. Der erste QA-Lauf hat ihn über die Commit-Message erkannt und wurde verworfen. Das muss auf der Bühne transparent sein.
+- Der QA-Prompt nannte „Mengenänderungen“ und „Entfernen von Artikeln“ als Beispiele für explorative Tests (Test-Charter). Den eingebauten Bug kannte der Agent nicht, die Suchrichtung war aber vorgegeben. Negative Gesamtsumme und Cookie-Manipulation standen nicht im Prompt. [raw](../raw/2026-11-07-otto-shop-agent-runs.md)
 - Der QA-Agent liest Diff und Code (White-Box). Ein reiner Black-Box-Lauf ohne Code-Zugriff ist nicht getestet.
 - Ein Lauf ist eine Stichprobe. Nicht-Determinismus wurde nicht gemessen.
 
