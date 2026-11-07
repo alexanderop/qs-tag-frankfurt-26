@@ -527,24 +527,47 @@ LIVE-OPTION (wenn WLAN stabil):
 -->
 
 ---
-layout: center
-class: text-center
----
 
 # Demo 2: Jetzt wird's <span class="text-[#ff6bed]">explorativ</span>
 
-<div class="flex justify-center mt-4">
-  <video src="/shop42-qa-run.webm" controls muted class="rounded-lg max-h-[380px]" />
-</div>
+<AnnotatedVideo
+  class="mt-2"
+  src="/shop42-qa-run.webm"
+  :chapters="[
+    { t: 0, text: 'Startseite öffnen, Mascara in den Warenkorb legen' },
+    { t: 4, text: 'Szenario 1: SPAR10 einlösen → −0,89 €', kind: 'pass' },
+    { t: 9, text: 'Szenario 2: GIBTSNICHT → „ungültig“', kind: 'pass' },
+    { t: 15, text: 'Explorativ: „ spar10 “ klein und mit Leerzeichen', kind: 'pass' },
+    { t: 20, text: 'Menge 1 → 5: Rabatt bleibt bei −0,89 €', kind: 'bug' },
+    { t: 29, text: 'Bei 9 Stück einlösen, auf 1 reduzieren: −8,05 €', kind: 'bug' },
+    { t: 37, text: 'Szenario 3: Gutschein entfernen → 14,89 €', kind: 'pass' },
+    { t: 40, text: 'Leere Eingabe und Reload prüfen', kind: 'info' },
+    { t: 62, text: 'Zweiter Artikel: Zitrone für 0,71 €' },
+    { t: 70, text: 'Nur Zitrone übrig: Gesamt −1,39 €', kind: 'bug' },
+    { t: 75, text: 'Cookie auf 500 gesetzt: −493,34 €', kind: 'bug' },
+  ]"
+/>
 
 <!--
 TIME: 17:15–18:30 (75s)
 
-- Das ist das echte Video des QA-Agenten. Er hat es selbst mit `agent-browser record` aufgenommen.
-- Nach den Szenarien probiert er Dinge, die nicht im Ticket stehen: Kleinschreibung mit Leerzeichen („  spar10 “), Enter-Taste, Reload, Menge hoch, Menge runter, Artikel entfernen.
-- Kleinschreibung und Reload: alles gut.
-- Dann ändert er die Menge nach dem Einlösen. Und da wird's interessant.
-- Bei Bedarf vorspulen: der Teil mit der negativen Summe kommt gegen Ende.
+- Das ist das echte Video des QA-Agenten, von ihm selbst mit `agent-browser record` aufgenommen. Rechts die Kapitel, ein Klick springt hin.
+- Das Video ist 1:20 lang. Sprich einfach mit, die Einblendung sagt dir, wo du bist.
+
+VOICE-OVER:
+- **0:00** „Der Agent startet auf der Startseite und legt eine Mascara in den Warenkorb.“
+- **0:04** „Szenario 1: Er löst SPAR10 ein. 89 Cent Rabatt, Gesamt 14 Euro. Grün.“
+- **0:09** „Szenario 2: GIBTSNICHT. Die Fehlermeldung kommt. Grün.“
+- **0:15** „Ab hier steht nichts mehr im Ticket. Er tippt den Code klein und mit Leerzeichen. Funktioniert.“
+- **0:20** „Jetzt erhöht er die Menge auf 5. Achtet auf den Rabatt: Er bleibt bei 89 Cent. Das ist der erste Fund.“
+- **0:29** „Er dreht es um: bei 9 Stück einlösen, dann auf 1 runter. 8,05 Euro Rabatt auf 8,94 Euro. Das sind 90 Prozent.“
+- **0:37** „Szenario 3 nebenbei: Gutschein entfernen, voller Preis. Grün.“
+- **0:40** „Leere Eingabe, Reload. Hier sagt der Shop ‚ungültig‘ statt ‚bitte Code eingeben‘. Kleinigkeit.“
+- **1:02** „Jetzt wird er gemein: Er legt eine Zitrone für 71 Cent dazu …“
+- **1:10** „… und entfernt die Mascara. Gesamtsumme: minus 1,39 Euro.“
+- **1:15** „Zum Schluss manipuliert er das Cookie. 500 Euro Rabatt. Das wäre ein echter Preis-Exploit.“
+
+- Kapitel-Zeiten sind aus einzelnen Frames des Videos abgelesen (±1 s). Zwischen 0:40 und 1:02 passiert wenig: Zeit für die Erklärung, dass bisher alles nach Ticket grün ist.
 -->
 
 ---
