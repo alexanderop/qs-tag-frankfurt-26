@@ -112,39 +112,62 @@ TIME: 1:15–2:30 (75s)
 -->
 
 ---
-layout: statement
-
----
-
-# So haben wir Software <span class="text-[#ff6bed]">ohne KI</span> gebaut
-
-<DeliveryFactory era="2022" />
-
-<!--
-TIME: 2:30–3:30 (60s)
-
-- Das ist meine **Delivery Factory** von alexop.dev/lab, gebaut wie eine Fabrik in Factorio. Jede Maschine ist eine Station im Team.
-- Gelbes Band: **Business** macht aus Ideen Tickets. Rotes Band: **Dev** macht daraus PRs. Blaues Band: **Code Review**.
-- **QA & Testing** prüft jeden PR von Hand. Jeder vierte wird ein Bug, und der Splitter schickt ihn zurück zu Dev.
-- **Release** shippt den Rest. 2022 staut es sich **vor Dev**: Code schreiben war der teure Schritt.
-- Testen war damals Klickarbeit am Ende des Bands, wenn alles andere schon fertig war.
-- SOURCE: alexop.dev/lab/delivery-factory, Blogpost „The Factory Must Grow: AI moved the bottleneck“
--->
-
----
 
 # Mit KI wandert der <span class="text-[#ff6bed]">Engpass</span>
 
-<DeliveryFactory era="2026" />
+<div class="flows mt-5">
+  <div class="flow">
+    <div class="flow__tag">Ohne KI</div>
+    <div class="flow__title">Code schreiben war teuer</div>
+    <div class="flow__row"><div class="flow__name">Anforderungen</div><div class="flow__track"><div class="flow__bar" style="width:80%"></div></div></div>
+    <div class="flow__row"><div class="flow__name">Entwicklung</div><div class="flow__track"><div class="flow__bar is-hot" style="width:22%"></div><span class="flow__jam">Engpass</span></div></div>
+    <div class="flow__row"><div class="flow__name">Code Review</div><div class="flow__track"><div class="flow__bar" style="width:70%"></div></div></div>
+    <div class="flow__row"><div class="flow__name">QA</div><div class="flow__track"><div class="flow__bar" style="width:60%"></div></div></div>
+    <div class="flow__row"><div class="flow__name">Release</div><div class="flow__track"><div class="flow__bar" style="width:75%"></div></div></div>
+    <div class="flow__sub">Alles wartet auf Dev.</div>
+  </div>
+  <div class="flow is-now">
+    <div class="flow__tag">Mit KI</div>
+    <div class="flow__title">Code ist billig</div>
+    <div class="flow__row"><div class="flow__name">Anforderungen</div><div class="flow__track"><div class="flow__bar is-hot" style="width:28%"></div><span class="flow__jam">Engpass</span></div></div>
+    <div class="flow__row"><div class="flow__name">Entwicklung <span class="flow__ai">+ KI</span></div><div class="flow__track"><div class="flow__bar" style="width:95%"></div></div></div>
+    <div class="flow__row"><div class="flow__name">Code Review</div><div class="flow__track"><div class="flow__bar is-hot" style="width:25%"></div><span class="flow__jam">Engpass</span></div></div>
+    <div class="flow__row"><div class="flow__name">QA</div><div class="flow__track"><div class="flow__bar is-hot" style="width:22%"></div><span class="flow__jam">Engpass</span></div></div>
+    <div class="flow__row"><div class="flow__name">Release</div><div class="flow__track"><div class="flow__bar" style="width:40%"></div></div></div>
+    <div class="flow__sub">Dev ist schnell. Jetzt wartet alles auf <b>klare Anforderungen</b>, <b>Review</b> und <b>QA</b>.</div>
+  </div>
+</div>
+
+<div class="mt-4 text-center text-sm opacity-60">Durchsatz pro Station · nach meiner Delivery Factory, alexop.dev/lab/delivery-factory</div>
+
+<style>
+.flows { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.flow { border: 1px solid rgba(255,255,255,.15); border-radius: 14px; padding: 14px 18px; background: rgba(255,255,255,.04); }
+.flow.is-now { border-color: #ff6bed; background: rgba(255,107,237,.06); }
+.flow__tag { font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; opacity: .6; }
+.flow.is-now .flow__tag { color: #ff6bed; opacity: 1; }
+.flow__title { font-size: 20px; font-weight: 700; color: #eaedf3; margin: 2px 0 12px; }
+.flow__row { display: grid; grid-template-columns: 130px 1fr; align-items: center; gap: 10px; padding: 5px 0; }
+.flow__name { font-size: 14px; color: #eaedf3; white-space: nowrap; }
+.flow__ai { font-size: 11px; font-weight: 700; color: #1a1d29; background: #f3e6c4; border-radius: 6px; padding: 1px 5px; margin-left: 4px; }
+.flow__track { position: relative; height: 22px; background: rgba(255,255,255,.05); border-radius: 6px; display: flex; align-items: center; }
+.flow__bar { height: 100%; border-radius: 6px; background: rgba(255,255,255,.28); }
+.flow__bar.is-hot { background: #ff6bed; }
+.flow__jam { margin-left: 8px; font-size: 11px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; color: #ff6bed; }
+.flow__sub { margin-top: 10px; font-size: 14px; opacity: .8; }
+.flow__sub b { color: #ff6bed; }
+</style>
 
 <!--
-TIME: 3:30–4:30 (60s)
+TIME: 2:30–4:00 (90s)
 
-- Gleiche Fabrik, Jahr 2026. Die blauen **Beacons** an Dev sind die Coding-Agents.
-- Dev ist jetzt schnell. Das rote Band läuft voll mit PRs.
-- Der Stau wandert zu **Code Review** und **QA**. „Shipped / day“ bewegt sich kaum, egal wie viele Beacons ich baue.
+- Links: So haben wir Software **ohne KI** gebaut. Der Balken ist, wie viel eine Station pro Tag schafft. Entwicklung war der schmalste Balken: Code schreiben war der teure Schritt. Alles hat auf Dev gewartet.
+- Testen war damals Klickarbeit am Ende des Bands, wenn alles andere schon fertig war.
+- Rechts: **mit KI**. Coding-Agents machen Dev breit und schnell. Der Engpass verschwindet nicht, er wandert.
+- Jetzt warten wir auf **klare Anforderungen** (was genau soll gebaut werden?), auf **Code Review** (wer liest all die PRs?) und auf **QA** (stimmt es wirklich?).
 - Ich merge mehr PRs als je zuvor und lese immer weniger davon Zeile für Zeile.
-- Wer live spielen will: alexop.dev/lab/delivery-factory, da gibt's auch die Research-Upgrades.
+- Das Bild kommt aus meiner Delivery Factory, gebaut wie eine Fabrik in Factorio. Wer live spielen will: alexop.dev/lab/delivery-factory.
+- SOURCE: alexop.dev/lab/delivery-factory, Blogpost „The Factory Must Grow: AI moved the bottleneck“. Die Balkenlängen sind illustrativ, keine Messwerte.
 -->
 
 ---
@@ -776,41 +799,55 @@ TIME: 13:30–14:45 (75s)
 
 <div class="text-sm opacity-60 -mt-2 mb-3">Der echte Prompt, leicht gekürzt. Dieser Prompt hat das Video erzeugt.</div>
 
-```text {1|3|5|6-8|9-10|11-13|all}
-Du bist der QA-Agent für den PR auf dem Branch feat/gutschein. Ändere keinen Code.
+<div class="prompt">
+  <div class="prompt__bar"><i></i><i></i><i></i><span>Claude Code · Prompt</span></div>
+  <div class="prompt__body">
+    <div class="prompt__lead"><b>›</b> Du bist der <em>QA-Agent</em> für den PR auf <code class="is-file">feat/gutschein</code>. Ändere keinen Code.</div>
+    <div class="prompt__lead opacity-80">Ticket: <code class="is-file">docs/tickets/SHOP-42-gutschein.md</code></div>
+    <ol>
+      <li><span>1</span><div>Prüfe mit dem Skill <code class="is-skill">verify-otto-shop</code> jedes <em>Gherkin-Szenario</em> im echten Browser</div></li>
+      <li class="is-charter"><span>2</span><div>Teste danach <em>explorativ</em> rund um den Gutschein, wie ein erfahrener Tester<small>Schreibweise, doppeltes Einlösen, Mengenänderungen, Artikel entfernen, Reload</small></div></li>
+      <li><span>3</span><div>Nimm den ganzen Lauf als <em>Video</em> auf und mache <em>Screenshots</em> von jedem Szenario und Fund</div></li>
+      <li><span>4</span><div>Schreibe einen <em>Report</em> mit festem Urteil: <code class="is-skill">HEALTHY</code> <code class="is-skill">MINOR_ISSUES</code> <code class="is-skill">CRITICAL_BUGS</code></div></li>
+    </ol>
+  </div>
+</div>
 
-Ticket: docs/tickets/SHOP-42-gutschein.md
-
-1. Prüfe mit dem Skill verify-otto-shop jedes Gherkin-Szenario im echten Browser.
-2. Teste danach explorativ rund um den Gutschein, wie ein erfahrener Tester:
-   Dinge, die nicht im Ticket stehen (z. B. Schreibweise, doppeltes Einlösen,
-   Mengenänderungen, Entfernen von Artikeln, Reload).
-3. Nimm den ganzen Browser-Lauf als Video auf (agent-browser record)
-   und mache Screenshots von jedem Szenario und jedem Fund.
-4. Schreibe einen Report: Urteil (genau eins von HEALTHY, MINOR_ISSUES,
-   CRITICAL_BUGS), Szenarien-Tabelle, Funde mit Severity, Repro-Schritten,
-   Erwartet vs. Ist und Beleg.
-```
-
-<div v-click class="mt-3 text-lg">Punkt 2 ist eine <span class="text-[#ff6bed]">Test-Charter</span>: euer QA-Wissen, als Prompt.</div>
+<div class="mt-4 text-lg">Punkt 2 ist eine <span class="text-[#ff6bed]">Test-Charter</span>: euer QA-Wissen, als Prompt.</div>
 
 <style>
-.slidev-code { font-size: 0.95rem !important; line-height: 1.45 !important; }
+.prompt { border: 1px solid rgba(255,255,255,.15); border-radius: 12px; overflow: hidden; background: #1a1d29; }
+.prompt__bar { display: flex; align-items: center; gap: 6px; padding: 8px 12px; background: rgba(255,255,255,.05); border-bottom: 1px solid rgba(255,255,255,.08); }
+.prompt__bar i { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,.2); }
+.prompt__bar span { margin-left: 8px; font-size: 12px; opacity: .6; }
+.prompt__body { padding: 16px 20px; font-size: 18px; }
+.prompt__lead b { color: #ff6bed; margin-right: 6px; }
+.prompt ol { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 10px; }
+.prompt li { display: flex; gap: 12px; align-items: flex-start; margin: 0; }
+.prompt li > span { flex: none; width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; background: #ff6bed; color: #1a1d29; font-weight: 700; font-size: 14px; margin-top: 1px; }
+.prompt em { font-style: normal; font-weight: 700; color: #f3e6c4; }
+.prompt code { font-size: 15px; padding: 1px 8px; border-radius: 6px; }
+.prompt code.is-file { background: rgba(255,107,237,.14); color: #ff9ff3; }
+.prompt code.is-skill { background: rgba(122,92,192,.35); color: #d9c9ff; }
+.prompt li.is-charter { margin: 0 -10px; padding: 6px 10px; border: 1px solid #ff6bed; border-radius: 10px; background: rgba(255,107,237,.08); }
+.prompt__body { font-size: 16px; padding: 12px 18px; }
+.prompt ol { gap: 6px; margin-top: 10px; }
+.prompt small { display: block; font-size: 14px; opacity: .7; margin-top: 2px; }
 </style>
 
 <!--
 TIME: 14:45–15:45 (60s)
 
 - Ein **zweiter** Agent. Er hat den Code nicht geschrieben, und er darf ihn nicht ändern.
-- [click] Rolle und Grenze: QA-Agent, kein Code.
-- [click] Wieder ist das Ticket die Quelle.
-- [click] Szenarien zuerst, mit dem Skill.
-- [click] **Ehrlich sagen:** Hier steht meine Test-Charter. „Mengenänderungen“ habe ich als Beispiel reingeschrieben. Den eingebauten Bug kannte der Agent nicht, aber ich habe ihm gesagt, wo erfahrene Tester suchen.
+- Rolle und Grenze: QA-Agent, kein Code.
+- Wieder ist das Ticket die Quelle.
+- Szenarien zuerst, mit dem Skill.
+- **Ehrlich sagen:** Hier steht meine Test-Charter. „Mengenänderungen“ habe ich als Beispiel reingeschrieben. Den eingebauten Bug kannte der Agent nicht, aber ich habe ihm gesagt, wo erfahrene Tester suchen.
   - Negative Gesamtsumme und Cookie-Manipulation standen nicht drin. Die hat er selbst gefunden.
   - Genau das ist der Punkt für euch: Diese Liste ist **QA-Wissen**. Wer weiß, wo es kracht, schreibt die bessere Charter.
-- [click] Video und Screenshots: Daher kommt das Video, das ihr gleich seht.
-- [click] Festes Urteil und feste Report-Struktur. Damit kann die Pipeline später arbeiten.
-- [click:2] Die Charter-Zeile. Darauf komme ich am Ende zurück: Das ist eure Arbeit, eine Ebene höher.
+- Video und Screenshots: Daher kommt das Video, das ihr gleich seht.
+- Festes Urteil und feste Report-Struktur. Damit kann die Pipeline später arbeiten.
+- Die Charter-Zeile. Darauf komme ich am Ende zurück: Das ist eure Arbeit, eine Ebene höher.
 - Danach noch: „Committe nur den Report. Kein Push.“
 - SOURCE: otto-nuxt-shop `.talk-logs/03-verify-gutschein.jsonl`, Report-Commit 302bad8
 -->
@@ -1079,6 +1116,42 @@ TIME: 20:30–21:30 (60s)
 - **Job report, ohne Claude:** Er legt die Screenshots auf einen eigenen Branch, damit sie im Kommentar sichtbar sind, postet den Report und ist das Merge-Gate. Schreibrechte bekommt nur dieser Job.
 - Dazu im echten File: Actions per SHA gepinnt, zizmor im Pedantic-Modus ohne Befund.
 - SOURCE: otto-nuxt-shop Commits 25d6d59 (live log, budget) und e2f5950 (zwei Jobs, Screenshots); Blogposts „Building an AI QA Engineer…“ und „How to Use Claude Code as an AI QA Tester…“
+-->
+
+---
+
+# Der QA-Agent kommentiert <span class="text-[#ff6bed]">direkt im PR</span>
+
+<div class="prshot mt-3">
+  <figure>
+    <img class="is-contain" src="/pr-report-kopf.png" alt="Bot-Kommentar von github-actions: Urteil CRITICAL_BUGS, QA-Report zu PR #1 und Issue #2, Testumgebung, Video-Link und Kurzfassung" />
+    <figcaption><b>1</b> Urteil, Umgebung, Video, Kurzfassung, Screenshots</figcaption>
+  </figure>
+  <figure>
+    <img src="/pr-report-szenarien.png" alt="Tabelle Szenarien aus dem Issue: S1 bis S3 und R1, R2 bestanden, R3 10 Prozent auf die Zwischensumme nicht erfüllt" />
+    <figcaption><b>2</b> Jedes Szenario aus dem Issue, mit Beobachtung</figcaption>
+  </figure>
+</div>
+
+<div class="mt-3 text-center text-sm opacity-60">Echter Kommentar · github.com/alexanderop/otto-nuxt-shop/pull/1</div>
+
+<style>
+.prshot { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.prshot figure { margin: 0; }
+.prshot img { width: 100%; height: 300px; object-fit: cover; object-position: top left; border-radius: 10px; border: 1px solid rgba(255,255,255,.18); }
+.prshot img.is-contain { object-fit: contain; object-position: top; background: #0d1117; }
+.prshot figcaption { margin-top: 8px; font-size: 14px; opacity: .8; }
+.prshot figcaption b { display: inline-grid; place-items: center; width: 20px; height: 20px; border-radius: 50%; background: #ff6bed; color: #1a1d29; font-size: 12px; margin-right: 6px; }
+</style>
+
+<!--
+TIME: 21:15–21:45 (30s)
+
+- So sieht das Ergebnis im echten PR aus. Kein Mockup, das ist PR #1 im Otto-Klon.
+- Links der Kopf: Erste Zeile ist das Urteil, CRITICAL_BUGS. Darunter, wogegen getestet wurde, der Link zum Video und eine Kurzfassung in zwei Sätzen. Ein Reviewer weiß nach zehn Sekunden, was los ist.
+- Rechts die Szenarien aus dem Issue: Jede Zeile hat ein Ergebnis und eine Beobachtung. S1 bis R2 bestanden, R3 nicht: Die 10-%-Regel bricht, sobald sich der Warenkorb ändert.
+- Darunter im echten Kommentar: die Funde mit Screenshots. Die zeige ich auf der nächsten Folie.
+- SOURCE: github.com/alexanderop/otto-nuxt-shop/pull/1 (Bot-Kommentar von github-actions)
 -->
 
 ---
