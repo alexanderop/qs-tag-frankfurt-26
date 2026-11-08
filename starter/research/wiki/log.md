@@ -27,3 +27,9 @@ The agent appends entries in this form:
 - Raw: `research/raw/2026-11-07-jira-cloud-agent-bausteine.md`
 - Result: new
 - Wiki: `jira-cloud-agent.md`
+
+## [2026-11-08] ingest | Ismail Amla: O-Shaped People
+
+- Raw: `research/raw/2026-08-12-o-shaped-people.md`
+- Result: updated
+- Wiki: `rollen-verschmelzen.md`

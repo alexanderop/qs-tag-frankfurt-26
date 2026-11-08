@@ -1159,7 +1159,7 @@ class: text-center
 # Alles zum <span class="text-[#ff6bed]">Nachbauen</span>
 
 <div class="flex justify-center mt-6">
-  <img src="https://api.qrserver.com/v1/create-qr-code/?size=320x320&data=https%3A%2F%2Fgithub.com%2Falexanderop%2Fotto-nuxt-shop" class="w-64 h-64 bg-white p-3 rounded" alt="QR-Code zu github.com/alexanderop/otto-nuxt-shop" />
+  <img src="/qr-otto-shop.png" class="w-64 h-64 bg-white p-3 rounded" alt="QR-Code zu github.com/alexanderop/otto-nuxt-shop" />
 </div>
 
 <div class="mt-4 text-lg opacity-80">github.com/alexanderop/otto-nuxt-shop</div>
@@ -1292,38 +1292,67 @@ TIME: 25:15–26:00 (45s)
 
 ---
 
-# Jeder kann alles. Jeder hat eine <span class="text-[#ff6bed]">Spezialität</span>.
+# Von <span class="text-[#ff6bed]">T-shaped</span> zu <span class="text-[#ff6bed]">O-shaped</span>
 
-<div class="flex justify-center items-end gap-6 mt-10 h-56">
-  <div class="flex flex-col items-center gap-2">
-    <div class="w-24 h-16 bg-white/15 rounded-t"></div>
-    <div class="text-sm opacity-70">Code</div>
+<div class="shapes mt-4">
+  <div class="shape">
+    <div class="shape__tag">Vor KI</div>
+    <svg viewBox="0 0 300 260" class="shape__svg" aria-label="T-Form: breiter Balken Code, Design, Produkt, tiefer Stamm Qualität">
+      <rect x="20" y="20" width="260" height="56" rx="10" class="t__bar" />
+      <text x="63" y="54" text-anchor="middle" class="t__lbl">Code</text>
+      <text x="150" y="54" text-anchor="middle" class="t__lbl">Design</text>
+      <text x="237" y="54" text-anchor="middle" class="t__lbl">Produkt</text>
+      <rect x="118" y="84" width="64" height="160" rx="10" class="t__stem" />
+      <text x="150" y="170" text-anchor="middle" class="t__stem-lbl" transform="rotate(-90 150 166)">Qualität</text>
+    </svg>
+    <div class="shape__name">T-shaped</div>
+    <div class="shape__sub">Breit ein bisschen, tief in <b>einer</b> Box. Dafür wurde man eingestellt.</div>
   </div>
-  <div class="flex flex-col items-center gap-2">
-    <div class="w-24 h-16 bg-white/15 rounded-t"></div>
-    <div class="text-sm opacity-70">Design</div>
-  </div>
-  <div class="flex flex-col items-center gap-2">
-    <div class="w-24 h-16 bg-white/15 rounded-t"></div>
-    <div class="text-sm opacity-70">Produkt</div>
-  </div>
-  <div v-click class="flex flex-col items-center gap-2">
-    <div class="w-24 h-48 bg-[#ff6bed]/70 rounded-t"></div>
-    <div class="text-sm text-[#ff6bed] font-bold">Qualität</div>
+  <div class="shape">
+    <div class="shape__tag is-now">Mit KI</div>
+    <svg viewBox="0 0 300 260" class="shape__svg" aria-label="O-Form: Ring aus Code, Design, Produkt, Qualität">
+      <path d="M 92.1 58.5 A 92 92 0 0 1 207.9 58.5" class="o__seg" /><path d="M 221.5 72.1 A 92 92 0 0 1 221.5 187.9" class="o__seg" /><path d="M 207.9 201.5 A 92 92 0 0 1 92.1 201.5" class="o__seg" /><path d="M 78.5 187.9 A 92 92 0 0 1 78.5 72.1" class="o__seg is-q" />
+      <text x="150.0" y="13.0" text-anchor="middle" class="o__lbl">Code</text><text x="272.0" y="135.0" text-anchor="start" class="o__lbl">Design</text><text x="150.0" y="257.0" text-anchor="middle" class="o__lbl">Produkt</text><text x="28.0" y="135.0" text-anchor="end" class="o__lbl is-q">Qualität</text>
+      <text x="150" y="126" text-anchor="middle" class="o__center">KI</text>
+      <text x="150" y="146" text-anchor="middle" class="o__center-sub">baut die Brücken</text>
+    </svg>
+    <div class="shape__name">O-shaped</div>
+    <div class="shape__sub">Rund. Die Stärke wechselt je nach Problem. Eure Basis bleibt <b>Qualität</b>.</div>
   </div>
 </div>
 
-<div v-click class="mt-8 text-center text-lg opacity-80">Risiken einschätzen. Gute Akzeptanzkriterien schreiben. Wissen, wo es kracht.</div>
+<div class="mt-4 text-center text-sm opacity-50">Begriff: Ismail Amla, „O-Shaped People: How AI Is Blowing Up Titles“, LinkedIn, Aug. 2026</div>
+
+<style>
+.shapes { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+.shape { border: 1px solid rgba(255,255,255,.15); border-radius: 14px; padding: 12px 18px 14px; background: rgba(255,255,255,.04); text-align: center; position: relative; }
+.shape__tag { position: absolute; top: 12px; left: 14px; font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; opacity: .6; }
+.shape__tag.is-now { color: #ff6bed; opacity: 1; }
+.shape__svg { width: 100%; height: 210px; }
+.shape__name { font-size: 22px; font-weight: 700; color: #eaedf3; }
+.shape__sub { font-size: 14px; opacity: .75; margin-top: 2px; }
+.shape__sub b { color: #ff6bed; }
+.t__bar { fill: rgba(255,255,255,.12); }
+.t__lbl { fill: #eaedf3; opacity: .8; font-size: 15px; }
+.t__stem { fill: rgba(255,107,237,.7); }
+.t__stem-lbl { fill: #1a1d29; font-size: 16px; font-weight: 700; }
+.o__seg { fill: none; stroke: rgba(255,255,255,.28); stroke-width: 20; stroke-linecap: round; }
+.o__seg.is-q { stroke: #ff6bed; stroke-width: 26; }
+.o__lbl { fill: #eaedf3; opacity: .8; font-size: 15px; }
+.o__lbl.is-q { fill: #ff6bed; opacity: 1; font-weight: 700; }
+.o__center { fill: #eaedf3; font-size: 22px; font-weight: 700; }
+.o__center-sub { fill: #eaedf3; opacity: .6; font-size: 12px; }
+</style>
 
 <!--
 TIME: 26:15–27:00 (45s)
 
-- Cherny bei 42:46: Die Rollen überlappen zu etwa 50 Prozent, und manche Leute haben Spezialitäten.
-- Mein Bild: Jeder kann alles ein bisschen. Code, Design, Produkt.
-- [click] Und jeder hat eine Spezialität. Eure ist **Qualität**.
-- [click] Das heißt: Risiken einschätzen, gute Kriterien schreiben, wissen, wo es kracht. Das kann der Agent nicht für euch.
+- Links: So haben wir vor KI eingestellt. **T-shaped**: ein bisschen Code, Design, Produkt, und tief in einer Box. Bei euch: Qualität.
+- Rechts: Mit KI werden Leute **O-shaped**. Ismail Amla nennt das so: rund und flexibel, die stärkste Stärke wechselt je nach Problem. KI liefert das Gerüst, um kurz in eine andere Disziplin zu gehen und wieder zurück.
+- Cherny bei 42:46 sagt Ähnliches: Die Rollen überlappen zu etwa 50 Prozent, manche Leute haben Spezialitäten.
+- **Meine Wendung fürs Publikum:** Ihr könnt jetzt überall mit anpacken. Aber eure Basis bleibt Qualität: Risiken einschätzen, gute Kriterien schreiben, wissen, wo es kracht. Amla sagt selbst: Spezialisten werden zu denen, die Arbeit aus anderen Bereichen prüfen und stärker machen.
+- SOURCE: research/raw/2026-08-12-o-shaped-people.md; research/wiki/rollen-verschmelzen.md
 -->
-
 ---
 layout: statement
 ---
@@ -1370,11 +1399,11 @@ TIME: 27:30–27:45 (15s)
   { icon: '/icons/issue.webp', title: 'Akzeptanzkriterien', sub: 'die ein Agent prüfen kann' },
   { icon: '/icons/feature-map.webp', title: 'Browser + Feature Map', sub: 'für euren Agenten' },
   { icon: '/icons/explorativ.webp', title: 'Explorativ suchen', sub: 'nicht nur bestätigen lassen', accent: true },
-]" />
+]" no-clicks />
 
 </div>
 <div class="flex flex-col items-center">
-  <img src="https://api.qrserver.com/v1/create-qr-code/?size=320x320&data=https%3A%2F%2Fgithub.com%2Falexanderop%2Fotto-nuxt-shop" class="w-56 h-56 bg-white p-3 rounded" alt="QR-Code zu github.com/alexanderop/otto-nuxt-shop" />
+  <img src="/qr-otto-shop.png" class="w-56 h-56 bg-white p-3 rounded" alt="QR-Code zu github.com/alexanderop/otto-nuxt-shop" />
   <div class="mt-2 text-sm opacity-70">otto-nuxt-shop</div>
 </div>
 </div>
@@ -1382,9 +1411,9 @@ TIME: 27:30–27:45 (15s)
 <!--
 TIME: 27:45–28:15 (30s)
 
-- [click] Kriterien zuerst. Das ist der größte Hebel.
-- [click] Browser und Feature Map. Ein Nachmittag Arbeit.
-- [click] Bestätigen kann jeder Test. Der Wert kommt aus dem Explorativen.
+- Kriterien zuerst. Das ist der größte Hebel.
+- Browser und Feature Map. Ein Nachmittag Arbeit.
+- Bestätigen kann jeder Test. Der Wert kommt aus dem Explorativen.
 - Repo-QR noch einmal.
 -->
 
@@ -1395,11 +1424,24 @@ class: text-center
 
 # Danke! <span class="text-[#ff6bed]">Fragen?</span>
 
-<div class="mt-6 text-xl opacity-70">alexop.dev</div>
+<div class="flex justify-center gap-16 mt-8">
+  <div class="flex flex-col items-center">
+    <img src="/qr-slides.png" class="w-52 h-52 rounded" alt="QR-Code zu den Slides: alexanderop.github.io/qs-tag-frankfurt-26" />
+    <div class="mt-3 text-lg font-bold">Die Slides</div>
+    <div class="text-sm opacity-60">alexanderop.github.io/qs-tag-frankfurt-26</div>
+  </div>
+  <div class="flex flex-col items-center">
+    <img src="/qr-otto-shop.png" class="w-52 h-52 rounded" alt="QR-Code zu github.com/alexanderop/otto-nuxt-shop" />
+    <div class="mt-3 text-lg font-bold">Der Otto-Klon</div>
+    <div class="text-sm opacity-60">github.com/alexanderop/otto-nuxt-shop</div>
+  </div>
+</div>
+
+<div class="mt-6 text-lg opacity-70">alexop.dev</div>
 
 <!--
 TIME: 28:15 + Q&A (1:45 Puffer bis 30:00)
 
-- Diese Folie bleibt während der Fragen stehen.
+- Diese Folie bleibt während der Fragen stehen. Links die Slides, rechts das Repo mit Skill, Workflow und Report.
 - Wenn keiner fragt: „Wer von euch hat heute Morgen noch gestanden? Was nutzt ihr dafür?“
 -->
