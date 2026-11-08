@@ -3,6 +3,7 @@ theme: '@alexop/slidev-theme-brand'
 addons:
   - '@alexop/slidev-addon-utils'
 title: 'KI-Agenten als QA-Engineer: Automatisierte Qualitätssicherung mit Claude Code & GitHub Actions'
+footerEvent: 'QS-Tag Frankfurt 2026'
 hideFooter: true
 layout: image
 image: /qs-tag-frankfurt-2026.jpeg
@@ -65,15 +66,17 @@ backgroundSize: cover
 # Alexander Opalic
 
 <div class="mt-6 text-xl space-y-3 opacity-90">
-  <div>Entwickler aus Deutschland</div>
+  <div>Entwickler bei <span class="text-[#ff6bed] font-bold">Otto Payments</span></div>
+  <div class="opacity-70">Entwickler, kein QA-Engineer.</div>
   <div>Blog: <span class="text-[#ff6bed]">alexop.dev</span></div>
-  <div class="mt-8">Meine <span class="text-[#ff6bed] font-bold">zweite</span> Testing-Konferenz.<br/>Die erste: TACON.</div>
+  <div class="mt-8 text-lg opacity-70">Meine <span class="text-[#ff6bed] font-bold">zweite</span> Testing-Konferenz.<br/>Die erste: TACON (Foto).</div>
 </div>
 
 <!--
 TIME: 0:45–1:15 (30s)
 
-- Name, Entwickler aus Deutschland, alexop.dev.
+- Name, Entwickler bei Otto Payments, alexop.dev.
+- „Der Shop, den ihr gleich seht, ist ein privater Nachbau, kein Otto-Code.“
 - Foto: „Das bin ich auf der TACON. Das hier ist meine zweite Testing-Konferenz, und ich finde die Testing-Szene richtig nice.“
 - **Ehrlich sagen:** Ich bin Entwickler, kein QA-Engineer. Ich zeige euch meinen Blick von der Entwicklerseite.
 -->
@@ -152,28 +155,31 @@ layout: statement
 
 <div class="mt-8 text-2xl opacity-80">Wer PRs mergen will, ohne jede Zeile zu lesen,<br/>braucht bessere <span class="text-[#ff6bed]">automatische Verifikation</span>.</div>
 
-<div v-click class="mt-10 text-xl">Und braucht es dann noch <b class="text-[#ff6bed]">uns</b>? Die Antwort gibt's am Ende.</div>
-
 <!--
 TIME: 4:30–5:15 (45s)
 
 - **Die Kernthese** des Talks.
 - „Weitgehend“ ist bewusst gewählt. Es gibt noch harte Probleme. Aber für einen typischen Frontend-Ticket schreibt der Agent den Code.
 - Die Frage ist also nicht mehr „Wer schreibt das?“, sondern „Woher weiß ich, dass es stimmt?“
-- [click] **Die Frage aussprechen, die jetzt im Saal hängt:** „Wenn ein Agent codet und testet, braucht es uns dann noch?“ Nicht beantworten. „Die Antwort bekommt ihr am Ende.“
+- **Nur aussprechen, nicht auf der Slide:** „Wenn ein Agent codet und testet, braucht es uns dann noch?“ Nicht beantworten. „Die Antwort bekommt ihr am Ende.“
 -->
 
 ---
 clicks: 1
 ---
 
-# Wo fangen wir Fehler <span class="text-[#ff6bed]">ab</span>?
+# Was braucht die Codebase, damit Agents <span class="text-[#ff6bed]">selbstständig</span> Features bauen?
 
 <VerificationFunnel />
+
+<style>
+.funnel { max-height: 360px; }
+</style>
 
 <!--
 TIME: 5:15–5:45 (30s)
 
+- **Frage an den Saal:** Wie muss ich meine Codebase und Struktur aufbauen, damit ein Agent ein Feature komplett allein umsetzen kann? Antwort: mehrere Schichten, die Fehler abfangen.
 - Ein Trichter: Oben fängt man am meisten ab, unten kommt nur noch durch, was alle Schichten davor übersehen haben.
 - Codebasis, statische Analyse, Verifikation, Prosa (Regeln für den Agenten, z. B. Skills und AGENTS.md), ganz unten der Mensch im Review.
 - [click] **Heute** geht es um die Mitte: Verifikation. Der Agent prüft empirisch im echten Browser, ob das Ticket erfüllt ist.
@@ -192,21 +198,17 @@ backgroundSize: contain
 
 Ein PR, der seinen Beweis gleich mitbringt.
 
-<v-clicks>
-
 - 📸 Screenshots
 - 🎬 Ein Video vom Durchlauf
 - ⚖️ Ein Urteil: Ist das Ticket erfüllt?
-
-</v-clicks>
 
 <!--
 TIME: 5:45–6:15 (30s)
 
 - So soll ein PR aussehen: nicht nur Code, sondern **Belege**.
-- [click] Screenshots von jedem geprüften Szenario.
-- [click] Ein Video, damit ich sehe, was der Agent gemacht hat.
-- [click] Ein klares Urteil. Dann muss ich nicht raten.
+- Screenshots von jedem geprüften Szenario.
+- Ein Video, damit ich sehe, was der Agent gemacht hat.
+- Ein klares Urteil. Dann muss ich nicht raten.
 - Rechts der echte Kommentar des QA-Agenten in PR #1 des Otto-Klons: Urteil oben, darunter das Video als GIF, dann Screenshots. Genau da wollen wir am Ende des Talks hin.
 - SOURCE: github.com/alexanderop/otto-nuxt-shop/pull/1 (Lauf 5, Run 42368915488)
 -->
@@ -265,18 +267,20 @@ TIME: 6:15–7:00 (45s)
   { icon: '/icons/playwright-mcp.webp', title: 'Playwright MCP', sub: 'Zum lokalen Erkunden. Bequem, aber teuer im Kontext.' },
   { icon: '/icons/agent-browser.webp', title: 'Agent Browser', sub: 'Mein Favorit. Snapshot mit Refs, gebaut für Agents.', accent: true },
   { icon: '/icons/computer-use.webp', title: 'Computer Use', sub: 'Wenn es keinen Browser gibt: Desktop-Apps, Legacy-UIs.' },
-]" size="lg" />
+]" size="lg" no-clicks />
 
 </div>
+
+<div class="mt-8 text-center text-xl">Soll der Agent den <b class="text-[#ff6bed]">Browser</b> oder eine <b class="text-[#ff6bed]">App</b> bedienen, braucht er ein Tool dafür.</div>
 
 <!--
 TIME: 7:00–8:00 (60s)
 
-- Ohne Browser ist der Agent blind. Also geben wir ihm Augen und Hände.
-- [click] **Playwright CLI:** Kennt ihr schon. Der Agent ruft es über Bash auf.
-- [click] **Playwright MCP:** Gut, um lokal zu erkunden. Schiebt aber bei jedem Schritt viel in den Kontext.
-- [click] **Agent Browser** von Vercel Labs: Rust-CLI, Accessibility-Snapshot mit Refs wie @e1. Das nutze ich.
-- [click] **Computer Use:** Der Agent sieht den Bildschirm und klickt per Maus. Langsam, aber geht überall.
+- Ohne Browser ist der Agent blind. Wenn Claude Code einen Browser oder eine App bedienen soll, braucht er ein Tool dafür. Also geben wir ihm Augen und Hände.
+- **Playwright CLI:** Kennt ihr schon. Der Agent ruft es über Bash auf.
+- **Playwright MCP:** Gut, um lokal zu erkunden. Schiebt aber bei jedem Schritt viel in den Kontext.
+- **Agent Browser** von Vercel Labs: Rust-CLI, Accessibility-Snapshot mit Refs wie @e1. Das nutze ich.
+- **Computer Use:** Der Agent sieht den Bildschirm und klickt per Maus. Langsam, aber geht überall.
 - Meine Regel: MCP lokal zum Erkunden, CLI in der Pipeline. Gleicher Smoketest: etwa 114k Tokens mit MCP, 27k mit der CLI (Quelle: „Playwright CLI vs MCP“, siehe Quality-Night-Deck).
 -->
 
@@ -365,11 +369,45 @@ TIME: 9:00–9:15 (15s)
 -->
 ---
 
+# <span class="text-[#ff6bed]">pstack</span>: Skills von poteto
+
+<div class="text-lg opacity-80 -mt-2">Lauren Tan: React-Compiler-Team, vorher Meta, Netflix und Cursor. pstack macht den Agenten zu einem <b class="text-[#ff6bed]">gründlichen Engineer</b>, nicht zu einem schnellen.</div>
+
+<div class="grid grid-cols-2 gap-6 mt-5">
+  <figure class="shot">
+    <img src="/poteto-x.png" alt="X-Profil von poteto (Lauren Tan)" />
+    <figcaption>x.com/poteto</figcaption>
+  </figure>
+  <figure class="shot">
+    <img class="is-contain" src="/pstack-plugin.png" alt="pstack-Plugin im Repo cursor/plugins auf GitHub" />
+    <figcaption>github.com/cursor/plugins · pstack</figcaption>
+  </figure>
+</div>
+
+<style>
+.shot { margin: 0; }
+.shot img { width: 100%; height: 300px; object-fit: cover; object-position: top; border-radius: 12px; border: 1px solid rgba(255,255,255,.15); }
+.shot img.is-contain { object-fit: contain; background: #0d1117; }
+.shot figcaption { margin-top: 6px; font-size: 13px; opacity: .6; text-align: center; }
+</style>
+
+<!--
+TIME: 9:15–9:45 (30s, neu eingefügt: ab hier alle Zeiten +30s)
+
+- Wer ist poteto? Lauren Tan. Im React-Compiler-Core-Team, vorher bei Meta, Netflix und Cursor (X-Bio, Stand Nov 2026).
+- **pstack** ist die Sammlung von Skills, Playbooks und Prinzipien. Das Ziel: weniger Code, aber besserer. „If you want to go fast, go deep first.“
+- Entstanden als Cursor-Plugin im Repo cursor/plugins. Inzwischen offiziell auch für Claude Code, im selben Repo.
+- SOURCE: github.com/cursor/plugins/tree/main/pstack (README), x.com/poteto
+-->
+
+---
+
 # Ein Befehl baut die <span class="text-[#ff6bed]">Einarbeitungsmappe</span>
 
 <div class="cmds mt-3">
-  <div><span>1 · Installieren</span><code>/plugin install pstack --marketplace alexanderop/pstack-claude</code></div>
-  <div><span>2 · Im Repo ausführen</span><code>/pstack:create-verification-skill</code></div>
+  <div><span>1 · Marketplace</span><code>/plugin marketplace add cursor/plugins</code></div>
+  <div><span>2 · Installieren</span><code>/plugin install pstack@cursor-plugins</code></div>
+  <div><span>3 · Im Repo ausführen</span><code>/pstack:create-verification-skill</code></div>
 </div>
 
 <style>
@@ -387,23 +425,26 @@ TIME: 9:00–9:15 (15s)
   { icon: '/icons/feature-map.webp', title: 'Feature Map', sub: 'eine Datei pro Feature', accent: true },
   { icon: '/funnel/verifikation.webp', title: 'Selbst beweisen', sub: 'einmal komplett durchspielen' },
   { icon: '/jira/workflow.webp', title: 'Pflegen', sub: '/maintain-verification-skill' },
-]" />
+]" no-clicks />
 
 </div>
 
-<div class="mt-5 text-center text-sm opacity-60">pstack: Skills von Lauren Tan (poteto) bei Cursor · Claude-Code-Port: alexanderop/pstack-claude</div>
+<div class="mt-5 text-center text-lg">Bei mir steuert der Skill den Browser mit <b class="text-[#ff6bed]">Agent Browser</b>. Playwright CLI oder MCP gehen genauso.</div>
+
+<div class="mt-2 text-center text-sm opacity-60">pstack: Skills von Lauren Tan (poteto) · offizieller Claude-Code-Support: github.com/cursor/plugins</div>
 
 <!--
 TIME: 9:15–9:45 (30s)
 
 - Brücke: Der Agent kennt unseren Otto-Klon nicht. Bevor er SHOP-42 prüfen kann, braucht er eine Einarbeitung.
-- Die Mappe müsst ihr nicht von Hand schreiben. Dafür gibt es **pstack**: eine Sammlung von Skills von Lauren Tan (poteto) bei Cursor. Ich habe sie nach Claude Code portiert.
+- Die Mappe müsst ihr nicht von Hand schreiben. Dafür gibt es **pstack**: eine Sammlung von Skills von Lauren Tan (poteto), entstanden bei Cursor. Inzwischen gibt es einen **offiziellen Claude-Code-Port** direkt im Repo cursor/plugins.
 - Ein Befehl: `/create-verification-skill`.
-- [click] Er befragt das Repo, nicht euch: Wie startet die App, wie bedient man sie, welche Belege gibt es?
-- [click] Er schreibt einen Skill mit Start-Skript.
-- [click] Er legt die Feature Map an, eine Datei pro Feature.
-- [click] Wichtig: Er beweist den Skill selbst, einmal komplett durchgespielt. Ein ungetesteter Skill ist nur ein Entwurf.
-- [click] Danach pflegt ihr die Map mit `/maintain-verification-skill`, wenn sich die App ändert.
+- Er befragt das Repo, nicht euch: Wie startet die App, wie bedient man sie, welche Belege gibt es?
+- Er schreibt einen Skill mit Start-Skript.
+- Er legt die Feature Map an, eine Datei pro Feature.
+- Wichtig: Er beweist den Skill selbst, einmal komplett durchgespielt. Ein ungetesteter Skill ist nur ein Entwurf.
+- Danach pflegt ihr die Map mit `/maintain-verification-skill`, wenn sich die App ändert.
+- **Werkzeug ist austauschbar:** In meinem Setup nimmt der Agent automatisch Agent Browser, weil es installiert ist. Ihr könnt genauso Playwright CLI oder Playwright MCP nutzen. Der Skill beschreibt, was geprüft wird, nicht womit.
 - SOURCE: pstack `skills/create-verification-skill/SKILL.md` (v0.15.36); otto-nuxt-shop Commit 01f006e.
 -->
 ---
@@ -419,11 +460,11 @@ TIME: 9:15–9:45 (30s)
 <div>
 
 <div class="space-y-5 text-xl">
-  <div v-click class="mappe-row"><img src="/funnel/prosa.webp" alt="" /><div><b>SKILL.md</b><br/><span>die Anleitung: starten, prüfen, bedienen, belegen, aufräumen</span></div></div>
-  <div v-click class="mappe-row"><img src="/icons/feature-map.webp" alt="" /><div><b>features/*.md</b><br/><span>die Feature Map: eine Datei pro Feature</span></div></div>
+  <div class="mappe-row"><img src="/funnel/prosa.webp" alt="" /><div><b>SKILL.md</b><br/><span>die Anleitung: starten, prüfen, bedienen, belegen, aufräumen</span></div></div>
+  <div class="mappe-row"><img src="/icons/feature-map.webp" alt="" /><div><b>features/*.md</b><br/><span>die Feature Map: eine Datei pro Feature</span></div></div>
 </div>
 
-<div v-click class="mt-6 text-lg">Der Agent muss nicht raten. Er <span class="text-[#ff6bed]">schlägt nach</span>.</div>
+<div class="mt-6 text-lg">Der Agent muss nicht raten. Er <span class="text-[#ff6bed]">schlägt nach</span>.</div>
 
 </div>
 </div>
@@ -439,9 +480,9 @@ TIME: 9:45–10:05 (20s)
 
 - **Analogie:** Ein Agent ist wie ein neuer Kollege am ersten Tag. Schlau, aber er kennt euren Shop nicht. Und er vergisst jeden Abend alles.
 - Also bekommt er eine **Einarbeitungsmappe**. Zwei Teile:
-- [click] Die Anleitung: SKILL.md.
-- [click] Die Feature Map: eine Datei pro Feature.
-- [click] Schauen wir rein.
+- Die Anleitung: SKILL.md.
+- Die Feature Map: eine Datei pro Feature.
+- Schauen wir rein.
 -->
 
 ---
@@ -564,14 +605,14 @@ TIME: 10:40–11:15 (35s)
   { icon: '/icons/drive.webp', title: 'Drive', sub: 'bedient die App wie ein Mensch', accent: true },
   { icon: '/icons/evidence.webp', title: 'Evidence', sub: 'Screenshot, Snapshot, Cookies pro Schritt' },
   { icon: '/icons/cleanup.webp', title: 'Cleanup', sub: 'räumt auf, Belege bleiben' },
-]" />
+]" no-clicks />
 
 </div>
 
-<div v-click class="grid grid-cols-[1.1fr_1fr] gap-6 mt-5 items-center">
+<div class="grid grid-cols-[1.1fr_1fr] gap-6 mt-5 items-center">
 <div>
 
-```text
+```console
 $ otto-verify.sh doctor
 ok   port 3100 owned by our run
 ok   GET / renders OTTO homepage (SSR)
@@ -586,73 +627,66 @@ ok   /api/products total=184
 TIME: 11:15–11:45 (30s)
 
 - Der Skill ist ein Rezept, das jeder Agent gleich abarbeitet.
-- [click] Launch: startet den Shop. Bei mir auf Port 3100, weil 3000 belegt war. Das hat der Agent selbst gemerkt und eingebaut.
-- [click] Doctor: Läuft die richtige Instanz? Sind die Daten da?
-- [click] Drive: echte Klicks über agent-browser, mit ARIA-Rollen statt fragiler Selektoren.
-- [click] Evidence: Vorher-Nachher-Belege pro Schritt.
-- [click] Cleanup: Er stoppt nur, was er selbst gestartet hat.
-- [click] Das ist echter Output. Ohne den Skill würde jeder Agent-Lauf anders anfangen.
+- Launch: startet den Shop. Bei mir auf Port 3100, weil 3000 belegt war. Das hat der Agent selbst gemerkt und eingebaut.
+- Doctor: Läuft die richtige Instanz? Sind die Daten da?
+- Drive: echte Klicks über agent-browser, mit ARIA-Rollen statt fragiler Selektoren.
+- Evidence: Vorher-Nachher-Belege pro Schritt.
+- Cleanup: Er stoppt nur, was er selbst gestartet hat.
+- Das ist echter Output. Ohne den Skill würde jeder Agent-Lauf anders anfangen.
 -->
-
----
-
-<div class="grid grid-cols-[0.9fr_1.1fr] gap-8 h-full items-center">
-<div>
-
-<h1 class="!text-[2.4rem] !leading-tight">Beim Erstellen hat der Agent schon einen <span class="text-[#ff6bed]">echten Bug</span> gefunden.</h1>
-
-<div class="mt-6 text-xl opacity-80">Pfeil nach unten in der Suche markiert keinen Vorschlag. Enter landet auf der Ergebnisseite statt beim Produkt.</div>
-
-<div class="mt-6 text-base opacity-60">9 Minuten · 56 Schritte · 3,37 $</div>
-
-</div>
-<div>
-
-<img src="/suche-bug.gif" alt="Aufnahme: In der Otto-Suche wird mascara getippt, dreimal Pfeil nach unten markiert keinen Vorschlag, Enter öffnet die Ergebnisseite" class="rounded-xl border border-white/15 w-full" />
-
-<div class="mt-2 text-sm opacity-60 text-center">Nachgestellt im Otto-Klon mit agent-browser</div>
-
-</div>
-</div>
-
-<!--
-TIME: 11:45–12:15 (30s)
-
-- Den Bug habe ich nicht eingebaut. Den hat der Agent beim Erkunden des Shops gefunden.
-- In der Suche springt ArrowDown immer wieder auf -1. Enter landet dann auf der Ergebnisseite statt beim Produkt.
-- Er hat ihn nicht gefixt, sondern in `suche.md` als erwarteten Fehler dokumentiert.
-- Kosten für den ganzen Skill: unter 4 Dollar.
-- SOURCE: otto-nuxt-shop `app/components/SearchBox.vue:39`, Log `.talk-logs/01-create-verification-skill.jsonl`
--->
-
 
 ---
 
 # Die <span class="text-[#ff6bed]">Verifikationsschleife</span>
 
-<div class="mt-8">
-
-<IconCards flow :width="122" :loop="{ from: 5, to: 1, label: 'Fehler gefunden' }" :items="[
-  { icon: '/icons/issue.webp', title: 'Ticket', sub: 'mit Gherkin-Szenarien' },
-  { icon: '/funnel/codebasis.webp', title: 'Umsetzen', sub: 'der Agent baut' },
-  { icon: '/icons/launch.webp', title: 'App starten', sub: 'mit dem Skill' },
-  { icon: '/jira/agent.webp', title: 'Szenarien prüfen', sub: 'im echten Browser' },
-  { icon: '/icons/explorativ.webp', title: 'Explorativ testen', sub: 'was keiner aufschrieb', accent: true },
-  { icon: '/icons/report.webp', title: 'Report', sub: 'Urteil + Belege' },
-]" />
-
+<div class="loop mt-2">
+<svg class="loop__svg" viewBox="0 0 880 380" aria-hidden="true">
+  <defs><marker id="loop-head" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#ff6bed" /></marker></defs>
+    <path d="M 252.1 143.8 A 200 135 0 0 1 371.6 63.1" class="loop__arc" marker-end="url(#loop-head)" />
+  <path d="M 508.4 63.1 A 200 135 0 0 1 627.9 143.8" class="loop__arc" marker-end="url(#loop-head)" />
+  <path d="M 627.9 236.2 A 200 135 0 0 1 546.0 304.5" class="loop__arc" marker-end="url(#loop-head)" />
+  <path d="M 316.9 296.4 A 200 135 0 0 1 252.1 236.2" class="loop__arc loop__arc--back" marker-end="url(#loop-head)" />
+  <path d="M 112 190 L 128 190" class="loop__arc" marker-end="url(#loop-head)" />
+  <path d="M 545 325 L 718 325" class="loop__arc" marker-end="url(#loop-head)" />
+  <text x="264.2" y="283.4" class="loop__label" text-anchor="end">Fehler gefunden</text>
+  <text x="631" y="314" class="loop__label" text-anchor="middle">alles grün</text>
+  <text x="440" y="186" class="loop__center" text-anchor="middle">Schleife</text>
+  <text x="440" y="210" class="loop__center-sub" text-anchor="middle">bis alles grün ist</text>
+</svg>
+  <div class="loop__card is-io" style="left:55px; top:190px"><img src="/icons/issue.webp" alt="" /><div><b>Ticket</b><span>mit Gherkin</span></div></div>
+  <div class="loop__card" style="left:240px; top:190px"><img src="/funnel/codebasis.webp" alt="" /><div><b>Umsetzen</b><span>der Agent baut</span></div></div>
+  <div class="loop__card" style="left:440px; top:55px"><img src="/icons/launch.webp" alt="" /><div><b>App starten</b><span>mit dem Skill</span></div></div>
+  <div class="loop__card" style="left:640px; top:190px"><img src="/jira/agent.webp" alt="" /><div><b>Szenarien prüfen</b><span>im echten Browser</span></div></div>
+  <div class="loop__card is-accent" style="left:440px; top:325px"><img src="/icons/explorativ.webp" alt="" /><div><b>Explorativ testen</b><span>was keiner aufschrieb</span></div></div>
+  <div class="loop__card is-io" style="left:800px; top:325px"><img src="/icons/report.webp" alt="" /><div><b>Report</b><span>Urteil + Belege</span></div></div>
 </div>
+
+<style>
+.loop { position: relative; width: 880px; height: 380px; margin: 0 auto; }
+.loop__svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.loop__arc { fill: none; stroke: #ff6bed; stroke-width: 3; }
+.loop__arc--back { stroke-dasharray: 7 6; }
+.loop__label { fill: #ff6bed; font-size: 15px; font-weight: 700; }
+.loop__center { fill: #eaedf3; font-size: 26px; font-weight: 700; }
+.loop__center-sub { fill: #eaedf3; opacity: .6; font-size: 14px; }
+.loop__card { position: absolute; transform: translate(-50%, -50%); display: flex; align-items: center; gap: 10px; padding: 8px 12px; border-radius: 12px; border: 1px solid rgba(255,255,255,.15); background: #1c1c1c; white-space: nowrap; }
+.loop__card img { width: 44px; height: 44px; }
+.loop__card b { display: block; font-size: 15px; }
+.loop__card span { display: block; font-size: 12px; opacity: .7; }
+.loop__card.is-accent { border-color: #ff6bed; background: #2a1a28; }
+.loop__card.is-io { flex-direction: column; gap: 4px; text-align: center; padding: 8px 10px; }
+</style>
 
 <!--
 TIME: 12:15–12:45 (30s)
 
 - Der ganze Ablauf auf einer Folie.
-- [click] Ticket mit Gherkin-Szenarien.
-- [click] Der Agent implementiert.
-- [click] Er startet die App mit dem Skill.
-- [click] Er prüft jedes Szenario im Browser.
-- [click] Dann testet er explorativ: Was hat keiner aufgeschrieben?
-- [click] Am Ende ein Report. Findet er einen Fehler, geht's zurück in die Implementierung.
+- Ticket mit Gherkin-Szenarien.
+- Der Agent implementiert.
+- Er startet die App mit dem Skill.
+- Er prüft jedes Szenario im Browser.
+- Dann testet er explorativ: Was hat keiner aufgeschrieben?
+- Findet er einen Fehler, geht's zurück ins Umsetzen. Die Schleife läuft, bis alles grün ist. Erst dann kommt der Report.
 -->
 
 ---
@@ -661,31 +695,46 @@ TIME: 12:15–12:45 (30s)
 
 <div class="text-sm opacity-60 -mt-2 mb-3">Der echte Prompt, leicht gekürzt</div>
 
-```text {1|3|4-5|6|7|all}
-Implementiere das Ticket docs/tickets/SHOP-42-gutschein.md.
-
-1. Baue das Feature im Warenkorb (/warenkorb).
-2. Prüfe danach jedes Gherkin-Szenario im echten Browser
-   mit dem Skill verify-otto-shop.
-3. Ergänze die Feature Map (features/warenkorb.md) um den Gutschein.
-4. Committe die Arbeit auf dem aktuellen Branch. Kein Push.
-```
+<div class="prompt">
+  <div class="prompt__bar"><i></i><i></i><i></i><span>Claude Code · Prompt</span></div>
+  <div class="prompt__body">
+    <div class="prompt__lead"><b>›</b> Implementiere das Ticket <code class="is-file">docs/tickets/SHOP-42-gutschein.md</code></div>
+    <ol>
+      <li><span>1</span><div>Baue das Feature im <em>Warenkorb</em> <code class="is-file">/warenkorb</code></div></li>
+      <li><span>2</span><div>Prüfe jedes <em>Gherkin-Szenario</em> im echten Browser<br/>mit dem Skill <code class="is-skill">verify-otto-shop</code></div></li>
+      <li><span>3</span><div>Ergänze die <em>Feature Map</em> <code class="is-file">features/warenkorb.md</code> um den Gutschein</div></li>
+      <li><span>4</span><div><em>Committe</em> auf dem aktuellen Branch. Kein Push.</div></li>
+    </ol>
+  </div>
+</div>
 
 <div v-click class="mt-6 text-lg">Kein Wort dazu, <b>wie</b> er testen soll. Das steht im <span class="text-[#ff6bed]">Skill</span>.</div>
 
 <style>
-.slidev-code { font-size: 1.05rem !important; line-height: 1.65 !important; }
+.prompt { border: 1px solid rgba(255,255,255,.15); border-radius: 12px; overflow: hidden; background: #1a1d29; }
+.prompt__bar { display: flex; align-items: center; gap: 6px; padding: 8px 12px; background: rgba(255,255,255,.05); border-bottom: 1px solid rgba(255,255,255,.08); }
+.prompt__bar i { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,.2); }
+.prompt__bar span { margin-left: 8px; font-size: 12px; opacity: .6; }
+.prompt__body { padding: 16px 20px; font-size: 18px; }
+.prompt__lead b { color: #ff6bed; margin-right: 6px; }
+.prompt ol { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 10px; }
+.prompt li { display: flex; gap: 12px; align-items: flex-start; margin: 0; }
+.prompt li > span { flex: none; width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; background: #ff6bed; color: #1a1d29; font-weight: 700; font-size: 14px; margin-top: 1px; }
+.prompt em { font-style: normal; font-weight: 700; color: #f3e6c4; }
+.prompt code { font-size: 15px; padding: 1px 8px; border-radius: 6px; }
+.prompt code.is-file { background: rgba(255,107,237,.14); color: #ff9ff3; }
+.prompt code.is-skill { background: rgba(122,92,192,.35); color: #d9c9ff; }
 </style>
 
 <!--
 TIME: 12:45–13:30 (45s)
 
 - Das ist der ganze Prompt. Gekürzt um den Port-Hinweis, den Skill-Pfad und „Antworte auf Deutsch mit einer Zusammenfassung“.
-- [click] Das Ticket ist die Quelle, nicht mein Chat-Text.
-- [click] Bauen.
-- [click] Selbst prüfen: jedes Szenario, im echten Browser, mit dem Skill.
-- [click] Die Feature Map wächst mit dem Feature. Der nächste Agent kennt den Gutschein dann schon.
-- [click] Committen, nicht pushen. Ein Mensch entscheidet.
+- Das Ticket ist die Quelle, nicht mein Chat-Text.
+- Bauen.
+- Selbst prüfen: jedes Szenario, im echten Browser, mit dem Skill.
+- Die Feature Map wächst mit dem Feature. Der nächste Agent kennt den Gutschein dann schon.
+- Committen, nicht pushen. Ein Mensch entscheidet.
 - [click] Wie man den Shop startet und bedient, steht nicht im Prompt. Das weiß der Agent aus dem Skill.
 - Aufruf: `claude -p "…" --model opus --permission-mode bypassPermissions`
 - SOURCE: otto-nuxt-shop `.talk-logs/02-implement-gutschein.jsonl`
@@ -841,44 +890,63 @@ TIME: 17:15–18:00 (45s)
 
 ---
 
-# Der Report: <span class="text-[#ff6bed]">CRITICAL_BUGS</span>
+# Der <span class="text-[#ff6bed]">Report</span> des QA-Agenten
 
-<div class="grid grid-cols-[1fr_1.3fr] gap-8 mt-6 items-start">
-<div>
-
-| Szenario | |
-|---|---|
-| Gültiger Gutschein | ✅ |
-| Ungültiger Gutschein | ✅ |
-| Gutschein entfernen | ✅ |
-| Reload | ✅ |
-
+<div class="rep">
+  <div class="rep__head">
+    <div>
+      <div class="rep__title">QA-Report SHOP-42: Gutscheincode im Warenkorb</div>
+      <div class="rep__meta">feat/gutschein · Chromium via agent-browser · 12 Screenshots · Video · 20 Turns · 1,00 $</div>
+    </div>
+    <div class="rep__verdict">CRITICAL_BUGS</div>
+  </div>
+  <div class="rep__body">
+    <div>
+      <div class="rep__h">Szenarien aus dem Ticket</div>
+      <div class="rep__row"><span class="pill is-pass">PASS</span>Gültiger Gutschein</div>
+      <div class="rep__row"><span class="pill is-pass">PASS</span>Ungültiger Gutschein</div>
+      <div class="rep__row"><span class="pill is-pass">PASS</span>Gutschein entfernen</div>
+      <div class="rep__row"><span class="pill is-pass">PASS</span>Bleibt nach Reload</div>
+      <div class="rep__row"><span class="pill is-pass">PASS</span>Höchstens ein Gutschein</div>
+    </div>
+    <div>
+      <div class="rep__h">Funde (explorativ)</div>
+      <div class="rep__row"><span class="pill is-crit">CRITICAL</span><b>F2</b> Rabatt bleibt hoch bei weniger Menge</div>
+      <div class="rep__row"><span class="pill is-crit">CRITICAL</span><b>F3</b> Gesamtsumme wird negativ</div>
+      <div class="rep__row"><span class="pill is-major">MAJOR</span><b>F1</b> Rabatt wächst nicht mit</div>
+      <div class="rep__row"><span class="pill is-major">MAJOR</span><b>F4</b> Rabatt ungeprüft aus Cookie</div>
+      <div class="rep__row"><span class="pill is-minor">MINOR</span><b>F5</b> Leere Eingabe meldet „ungültig“</div>
+    </div>
+  </div>
+  <div class="rep__foot">Pro Fund: Repro-Schritte · Erwartet vs. Ist · Beleg · Ursache (<code>useCoupon.ts:14</code>)</div>
 </div>
-<div>
 
-<v-clicks>
-
-- 🔴 **F2:** Rabatt bleibt hoch bei weniger Menge
-- 🔴 **F3:** Gesamtsumme wird negativ
-- 🟠 **F1:** Rabatt wächst nicht mit
-- 🟠 **F4:** Rabatt kommt ungeprüft aus einem Cookie
-- 🟡 **F5:** leere Eingabe meldet „ungültig“
-
-</v-clicks>
-
-</div>
-</div>
-
-<div v-click class="mt-6 text-center opacity-80">Mit Repro-Schritten, Erwartet vs. Ist, 12 Screenshots, Video und Ursache. <b>20 Turns · 1,00 $</b></div>
+<style>
+.rep { margin-top: 10px; border: 1px solid rgba(255,255,255,.15); border-radius: 12px; overflow: hidden; background: #1a1d29; }
+.rep__head { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 12px 18px; background: rgba(255,255,255,.05); border-bottom: 1px solid rgba(255,255,255,.08); }
+.rep__title { font-weight: 700; font-size: 17px; }
+.rep__meta { font-size: 12px; opacity: .6; margin-top: 2px; }
+.rep__verdict { flex: none; padding: 6px 12px; border-radius: 8px; background: rgba(255,77,77,.18); border: 1px solid #ff4d4d; color: #ff8a8a; font-weight: 800; font-family: var(--slidev-code-font-family, monospace); font-size: 15px; letter-spacing: .03em; }
+.rep__body { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 24px; padding: 14px 18px 8px; }
+.rep__h { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: #ff6bed; margin-bottom: 8px; }
+.rep__row { display: flex; align-items: center; gap: 10px; font-size: 15px; padding: 5px 0; border-bottom: 1px solid rgba(255,255,255,.06); }
+.rep__row b { color: #f3e6c4; }
+.pill { flex: none; width: 74px; text-align: center; font-size: 11px; font-weight: 800; letter-spacing: .04em; padding: 2px 0; border-radius: 999px; }
+.pill.is-pass { background: rgba(74,222,128,.15); color: #6ee7a0; }
+.pill.is-crit { background: rgba(255,77,77,.18); color: #ff8a8a; }
+.pill.is-major { background: rgba(251,146,60,.18); color: #fdba74; }
+.pill.is-minor { background: rgba(250,204,21,.16); color: #fde047; }
+.rep__foot { padding: 10px 18px; font-size: 13px; opacity: .7; border-top: 1px solid rgba(255,255,255,.08); }
+</style>
 
 <!--
 TIME: 18:00–18:30 (30s)
 
 - Das Urteil ist eines von drei festen Werten: HEALTHY, MINOR_ISSUES, CRITICAL_BUGS.
-- Links: Alle Ticket-Szenarien grün.
-- [click] Rechts: fünf Funde, zwei davon kritisch.
-- [click:4] F4 ist sogar ein Sicherheitsproblem. Mit einem manipulierten Cookie bekommt man 500 € Rabatt.
-- [click] Dazu Belege und die Ursache für den Entwickler: `useCoupon.ts:14`. Er schlägt sogar den Fix vor.
+- Links: Alle Ticket-Szenarien und Regeln grün.
+- Rechts: fünf Funde, zwei davon kritisch.
+- F4 ist sogar ein Sicherheitsproblem. Mit einem manipulierten Cookie bekommt man 500 € Rabatt.
+- Dazu Belege und die Ursache für den Entwickler: `useCoupon.ts:14`. Er schlägt sogar den Fix vor.
 - Ein Dollar für einen QA-Lauf, der mich als Mensch eine halbe Stunde gekostet hätte.
 - SOURCE: otto-nuxt-shop Commit 302bad8, docs/reports/SHOP-42-qa-report.md
 -->
@@ -910,10 +978,11 @@ TIME: 18:30–19:00 (30s)
 
 <div class="mt-10">
 
-<IconCards :columns="4" size="lg" :items="[
+<IconCards :columns="5" no-clicks :items="[
   { icon: '/icons/issue.webp', title: 'Akzeptanzkriterien', sub: 'als Gherkin ins Ticket schreiben' },
   { icon: '/icons/agent-browser.webp', title: 'Einen Browser geben', sub: 'Agent Browser oder Playwright CLI' },
   { icon: '/icons/feature-map.webp', title: 'Feature Map', sub: '/create-verification-skill laufen lassen und pflegen' },
+  { icon: '/icons/explorativ.webp', title: 'Rubrik fürs Explorative', sub: 'was euch wichtig ist. Bei uns: Accessibility, geht alles per Tab?', accent: true },
   { icon: '/icons/report.webp', title: 'Festes Report-Format', sub: 'Urteil, Screenshots, Video' },
 ]" />
 
@@ -922,11 +991,12 @@ TIME: 18:30–19:00 (30s)
 <!--
 TIME: 19:00–19:45 (45s)
 
-- Vier Schritte, alle an einem Nachmittag machbar.
-- [click] Ohne gute Kriterien kein gutes Urteil.
-- [click] Eine CLI reicht. `npm i -g agent-browser` oder Playwright CLI.
-- [click] Der Skill erzeugt die Feature Map aus eurem Code. Danach pflegt ihr sie wie Testdoku.
-- [click] Feste Urteile machen den Output maschinenlesbar. Das brauchen wir gleich für die CI.
+- Fünf Schritte, alle an einem Nachmittag machbar.
+- Ohne gute Kriterien kein gutes Urteil.
+- Eine CLI reicht. `npm i -g agent-browser` oder Playwright CLI.
+- Der Skill erzeugt die Feature Map aus eurem Code. Danach pflegt ihr sie wie Testdoku.
+- **Rubrik fürs explorative Testen:** Sagt dem Agenten, worauf er nebenbei achten soll. Was euch wichtig ist, ist von Projekt zu Projekt anders. Bei uns zum Beispiel Accessibility: Kommt man per Tab überall hin? Hat jedes Feld ein Label? Ohne Rubrik testet er nur, was ihm selbst einfällt.
+- Feste Urteile machen den Output maschinenlesbar. Das brauchen wir gleich für die CI.
 -->
 
 ---
@@ -941,22 +1011,22 @@ TIME: 19:00–19:45 (45s)
   { icon: '/icons/issue.webp', title: 'Ticket lesen', sub: 'verlinktes GitHub-Issue', tag: 'Claude Code' },
   { icon: '/jira/agent.webp', title: 'Im Browser testen', sub: 'headless in der Cloud', tag: 'Agent Browser', accent: true },
   { icon: '/icons/urteil.webp', title: 'Report + Urteil', sub: 'Kommentar mit Screenshots, Check grün oder rot', tag: 'PR' },
-]" />
+]" no-clicks />
 
 </div>
 
-<div v-click class="mt-6 text-center text-xl opacity-80">Dieselbe Schleife wie lokal. Nur der <b>Auslöser</b> ist jetzt ein Label.</div>
+<div class="mt-6 text-center text-xl opacity-80">Dieselbe Schleife wie lokal. Nur der <b>Auslöser</b> ist jetzt ein Label.</div>
 
 <!--
 TIME: 19:45–20:30 (45s)
 
 - Lokal funktioniert's. Jetzt soll es ohne mich laufen.
-- [click] Ich setze am PR das Label `qa-verify`. Bewusst ein Label, nicht jeder Push: Ich entscheide, wann sich ein Lauf lohnt.
-- [click] GitHub Actions startet den Shop. Mit demselben Skript aus dem Verification-Skill.
-- [click] Claude Code findet über den PR das verlinkte GitHub-Issue (`Closes #2`). Das Issue ist das Ticket mit den Gherkin-Szenarien.
-- [click] Er prüft im echten Browser, headless in der Cloud.
-- [click] Der Report kommt mit Screenshots als Kommentar in den PR. Das Urteil entscheidet, ob der Check grün oder rot wird.
-- [click] Gleicher Skill, gleiche Feature Map, gleicher Report wie lokal.
+- Ich setze am PR das Label `qa-verify`. Bewusst ein Label, nicht jeder Push: Ich entscheide, wann sich ein Lauf lohnt.
+- GitHub Actions startet den Shop. Mit demselben Skript aus dem Verification-Skill.
+- Claude Code findet über den PR das verlinkte GitHub-Issue (`Closes #2`). Das Issue ist das Ticket mit den Gherkin-Szenarien.
+- Er prüft im echten Browser, headless in der Cloud.
+- Der Report kommt mit Screenshots als Kommentar in den PR. Das Urteil entscheidet, ob der Check grün oder rot wird.
+- Gleicher Skill, gleiche Feature Map, gleicher Report wie lokal.
 - SOURCE: alexop.dev „Building an AI QA Engineer with Claude Code and Playwright MCP“ (Label-Trigger) und „How to Use Claude Code as an AI QA Tester with Agent Browser“ (--json-schema).
 -->
 
@@ -968,7 +1038,7 @@ zoom: 0.72
 
 <div class="text-sm opacity-60 -mt-2 mb-2">otto-nuxt-shop · .github/workflows/claude-qa.yml (gekürzt)</div>
 
-```yaml {1-3|4-7|8-9|10-17|18-19|20-27|all}
+```yaml
 on:
   pull_request:
     types: [labeled]
@@ -1001,13 +1071,13 @@ jobs:
 TIME: 20:30–21:30 (60s)
 
 - Das ist der echte Workflow aus dem Repo, gekürzt. Er ist am 07.11. mehrfach echt gelaufen.
-- [click] **Trigger:** nur wenn ein Label gesetzt wird.
-- [click] **Job qa:** nur das Label qa-verify, und **nur Lesezugriff**. Der Agent kann nichts pushen und nichts kommentieren.
-- [click] **Shop starten** mit dem Skript aus dem Verification-Skill. Kein eigenes CI-Setup.
-- [click] **Claude Code über meine Subscription** (`claude setup-token`), kein API-Key. Budget-Deckel **10 $**, nur freigegebene Tools. `curl` ist bewusst nicht erlaubt. Der Prompt liegt als Datei im Repo. `stream-json` plus ein kleiner Formatter zeigt jeden Schritt live im Log.
-- [click] Die Belege gehen als Artefakt raus.
-- [click] **Job report, ohne Claude:** Er legt die Screenshots auf einen eigenen Branch, damit sie im Kommentar sichtbar sind, postet den Report und ist das Merge-Gate. Schreibrechte bekommt nur dieser Job.
-- [click] Dazu im echten File: Actions per SHA gepinnt, zizmor im Pedantic-Modus ohne Befund.
+- **Trigger:** nur wenn ein Label gesetzt wird.
+- **Job qa:** nur das Label qa-verify, und **nur Lesezugriff**. Der Agent kann nichts pushen und nichts kommentieren.
+- **Shop starten** mit dem Skript aus dem Verification-Skill. Kein eigenes CI-Setup.
+- **Claude Code über meine Subscription** (`claude setup-token`), kein API-Key. Budget-Deckel **10 $**, nur freigegebene Tools. `curl` ist bewusst nicht erlaubt. Der Prompt liegt als Datei im Repo. `stream-json` plus ein kleiner Formatter zeigt jeden Schritt live im Log.
+- Die Belege gehen als Artefakt raus.
+- **Job report, ohne Claude:** Er legt die Screenshots auf einen eigenen Branch, damit sie im Kommentar sichtbar sind, postet den Report und ist das Merge-Gate. Schreibrechte bekommt nur dieser Job.
+- Dazu im echten File: Actions per SHA gepinnt, zizmor im Pedantic-Modus ohne Befund.
 - SOURCE: otto-nuxt-shop Commits 25d6d59 (live log, budget) und e2f5950 (zwei Jobs, Screenshots); Blogposts „Building an AI QA Engineer…“ und „How to Use Claude Code as an AI QA Tester…“
 -->
 
@@ -1023,11 +1093,11 @@ TIME: 20:30–21:30 (60s)
     <img src="/run5-f2-nachher.jpg" class="rounded border border-white/20 h-[165px] w-full object-cover object-left-top" alt="Warenkorb nur mit Mascara, Rabatt 215,79 Euro, Gesamt minus 191,96 Euro" />
   </div>
   <div class="space-y-4 text-lg">
-    <div v-click>🤖 Kommentar vom <b>github-actions</b> Bot</div>
-    <div v-click>⚖️ <b>Urteil: CRITICAL_BUGS</b>, der Merge ist blockiert</div>
-    <div v-click>📸 <b>14 Screenshots</b> und ein Video-GIF direkt im Kommentar</div>
-    <div v-click class="text-[#ff6bed] font-bold">Diesmal mit einem Sofa: Gesamt −191,96 €</div>
-    <div v-click class="opacity-70">110 Turns · 1,33 $ · 3,1 Min</div>
+    <div>🤖 Kommentar vom <b>github-actions</b> Bot</div>
+    <div>⚖️ <b>Urteil: CRITICAL_BUGS</b>, der Merge ist blockiert</div>
+    <div>📸 <b>14 Screenshots</b> und ein Video-GIF direkt im Kommentar</div>
+    <div class="text-[#ff6bed] font-bold">Diesmal mit einem Sofa: Gesamt −191,96 €</div>
+    <div class="opacity-70">110 Turns · 1,33 $ · 3,1 Min</div>
   </div>
 </div>
 
@@ -1035,11 +1105,11 @@ TIME: 20:30–21:30 (60s)
 TIME: 21:30–22:15 (45s)
 
 - Das ist derselbe Bot-Kommentar wie auf dem Zielbild am Anfang (Lauf 5, Run 42368915488), kein Mockup.
-- [click] Gepostet vom Report-Job, nicht vom Agenten.
-- [click] Urteil in der ersten Zeile, der Check ist rot.
-- [click] Jedes Szenario und jeder Fund ist mit Screenshot belegt. Ich muss nichts nachklicken, um zu glauben, was da steht.
-- [click] Jeder Lauf findet einen anderen Weg zum selben Fehler: lokal die Zitrone, in der Cloud ein Sofa für 2.139,99 €. Rabatt beim Sofa eingelöst, Sofa raus, Rabatt bleibt.
-- [click] Unter zwei Dollar, unter drei Minuten.
+- Gepostet vom Report-Job, nicht vom Agenten.
+- Urteil in der ersten Zeile, der Check ist rot.
+- Jedes Szenario und jeder Fund ist mit Screenshot belegt. Ich muss nichts nachklicken, um zu glauben, was da steht.
+- Jeder Lauf findet einen anderen Weg zum selben Fehler: lokal die Zitrone, in der Cloud ein Sofa für 2.139,99 €. Rabatt beim Sofa eingelöst, Sofa raus, Rabatt bleibt.
+- Unter zwei Dollar, rund drei Minuten.
 - Link: github.com/alexanderop/otto-nuxt-shop/pull/1
 -->
 
@@ -1055,29 +1125,29 @@ TIME: 21:30–22:15 (45s)
   { icon: '/jira/workflow.webp', title: 'Workflow startet', sub: 'repository_dispatch', tag: 'GitHub Actions' },
   { icon: '/jira/agent.webp', title: 'Agent liest & testet', sub: 'Ticket via Rovo MCP, Browser', tag: 'Claude Code', accent: true },
   { icon: '/jira/funde.webp', title: 'Funde ins Ticket', sub: 'Kommentar + Screenshots', tag: 'Jira REST API' },
-]" />
+]" no-clicks />
 
 </div>
 
-<div v-click class="mt-6 grid grid-cols-3 gap-4 text-sm">
+<div class="mt-6 grid grid-cols-3 gap-4 text-sm">
   <div class="border border-white/20 rounded px-3 py-2 bg-white/5"><b>Auslöser:</b> Trigger „Work item transitioned“ auf den Status In QA</div>
   <div class="border border-white/20 rounded px-3 py-2 bg-white/5"><b>Agent:</b> derselbe Workflow, nur <code>on: repository_dispatch</code> statt Label</div>
   <div class="border border-white/20 rounded px-3 py-2 bg-white/5"><b>Rückweg:</b> Kommentar + Anhänge über die Jira REST API</div>
 </div>
 
-<div v-click class="mt-4 text-center opacity-70">Alle Bausteine sind dokumentiert. Gebaut habe ich es noch nicht.</div>
+<div class="mt-4 text-center opacity-70">Alle Bausteine sind dokumentiert. Gebaut habe ich es noch nicht.</div>
 
 <!--
 TIME: 22:15–22:45 (30s)
 
 - Noch ein Schritt weiter: Kein Label mehr. Der Status im Ticket ist der Auslöser.
-- [click] Ein Dev schiebt das Ticket auf „In QA“.
-- [click] Jira Automation feuert („Work item transitioned“) und schickt einen Web-Request an GitHub.
-- [click] GitHub startet denselben QA-Workflow über `repository_dispatch`. Ticket-Key im `client_payload`.
-- [click] Claude liest das Ticket direkt aus Jira, über den Atlassian Rovo MCP Server, und testet im Browser.
-- [click] Die Funde mit Screenshots landen als Kommentar und Anhang im Ticket. Bei CRITICAL_BUGS zurück auf „In Arbeit“.
-- [click] Die drei Bausteine.
-- [click] **Ehrlich sagen:** Das ist ein Teaser. Alle Teile gibt es und sie sind dokumentiert, aber ich habe die Kette noch nicht gebaut.
+- Ein Dev schiebt das Ticket auf „In QA“.
+- Jira Automation feuert („Work item transitioned“) und schickt einen Web-Request an GitHub.
+- GitHub startet denselben QA-Workflow über `repository_dispatch`. Ticket-Key im `client_payload`.
+- Claude liest das Ticket direkt aus Jira, über den Atlassian Rovo MCP Server, und testet im Browser.
+- Die Funde mit Screenshots landen als Kommentar und Anhang im Ticket. Bei CRITICAL_BUGS zurück auf „In Arbeit“.
+- Die drei Bausteine.
+- **Ehrlich sagen:** Das ist ein Teaser. Alle Teile gibt es und sie sind dokumentiert, aber ich habe die Kette noch nicht gebaut.
 - SOURCE: research/wiki/jira-cloud-agent.md
 -->
 
@@ -1105,57 +1175,64 @@ TIME: 22:45–23:00 (15s)
 
 ---
 
-# Ehrliche <span class="text-[#ff6bed]">Grenzen</span>
+# Der Agent prüft. Ob wir es wollen, entscheidet ein <span class="text-[#ff6bed]">Mensch</span>.
 
-<v-clicks>
+<div class="grenze mt-8">
+  <div class="grenze__col">
+    <div class="grenze__h">Das kann der QA-Agent</div>
+    <div class="grenze__item"><span>✅</span><div><b>Funktioniert es so, wie wir es wollten?</b><small>jedes Szenario aus dem Ticket, mit Beleg</small></div></div>
+    <div class="grenze__item"><span>🧭</span><div><b>Was haben wir nicht bedacht?</b><small>explorativ: Fälle, die keiner aufschrieb</small></div></div>
+  </div>
+  <div class="grenze__col is-human">
+    <div class="grenze__h">Das bleibt beim Menschen</div>
+    <div class="grenze__item"><span>🚢</span><div><b>Wollen wir das überhaupt shippen?</b><small>Freigabe und Produktentscheidung</small></div></div>
+    <div class="grenze__item"><span>💗</span><div><b>Fühlt es sich gut an?</b><small>Geschmack lässt sich nicht als Gherkin schreiben</small></div></div>
+  </div>
+</div>
 
-- 🎲 **Nicht deterministisch:** zwei Läufe, zwei Wege durch die App
-- 💸 **Kosten:** 3,37 $ Skill · 0,90 $ Feature · 1,00 $ QA-Lauf
-- 🔐 **Secrets und Fork-PRs:** kein API-Key für fremden Code
-- 📉 **4,2 % Recall** im QA-Bench: Der Agent findet längst nicht alle Bugs
+<div class="mt-8 text-center text-lg opacity-70">Morgen vielleicht: <b class="text-[#ff6bed]">KPIs</b> aus echter Nutzung, und das Produkt verbessert sich selbst.</div>
 
-</v-clicks>
+<style>
+.grenze { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.grenze__col { border: 1px solid rgba(255,255,255,.15); border-radius: 12px; padding: 16px 18px; background: rgba(255,255,255,.04); }
+.grenze__col.is-human { border-color: #ff6bed; background: rgba(255,107,237,.08); }
+.grenze__h { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: #ff6bed; margin-bottom: 10px; }
+.grenze__item { display: flex; gap: 12px; align-items: flex-start; padding: 8px 0; }
+.grenze__item > span { font-size: 22px; line-height: 1.2; }
+.grenze__item b { display: block; font-size: 17px; color: #eaedf3; }
+.grenze__item small { display: block; font-size: 13px; opacity: .65; margin-top: 2px; }
+</style>
 
 <!--
 TIME: 23:00–24:00 (60s)
 
-- Ich will euch nichts verkaufen. Das hier hat echte Grenzen.
-- [click] Derselbe Prompt nimmt nicht zweimal denselben Weg. Darum feste Urteile und Belege.
-- [click] Kosten aus meinen echten Läufen mit Opus: Skill einmalig 3,37 $, Feature 0,90 $, QA-Lauf 1,00 $. Mit max-turns und Timeout deckeln.
-- [click] Fork-PRs bekommen keine Secrets. Und ein Agent mit Shell-Zugriff auf fremden Code ist ein Risiko.
-- [click] Die harte Zahl: **4,2 % Recall** im QA-Bench. Der Agent ergänzt Tests, er ersetzt sie nicht.
-- TODO: QA-Bench-Quelle in research/ ablegen und hier verlinken.
+- Das eine Problem, das ich sehe. Der QA-Agent sagt mir zwei Dinge: Funktioniert das Feature so, wie wir es wollten? Und durch das explorative Testen: Was haben wir nicht bedacht?
+- Was er mir nicht sagt: Wollen wir das überhaupt shippen? Fühlt es sich gut an?
+- Dafür brauchen wir trotzdem einen Menschen. Ich sage: zum Glück. Der bestätigt am Ende und entscheidet.
+- **Ausblick, meine Vermutung:** In Zukunft arbeiten wir wahrscheinlich mehr mit KPIs. Das Produkt passt sich automatisch an, je nachdem, wie Endnutzer es benutzen. Dann verbessert es sich selbst. Da sind wir aber noch nicht.
+- Falls gefragt, Grenzen aus meinen Läufen: nicht deterministisch (zwei Läufe, zwei Wege), Kosten (3,37 $ Skill, 0,90 $ Feature, 1,00 $ QA-Lauf), Fork-PRs bekommen keine Secrets, 4,2 % Recall im QA-Bench. TODO: QA-Bench-Quelle in research/ ablegen.
 -->
-
 ---
 
 # Wann der <span class="text-[#ff6bed]">Mensch</span> eingreift
 
-<div class="grid grid-cols-3 gap-5 mt-12 text-center">
-  <div v-click class="border border-white/20 rounded px-4 py-6 bg-white/5">
-    <div class="text-3xl">✅</div>
-    <div class="font-bold text-lg mt-2">Freigabe</div>
-    <div class="text-sm opacity-70 mt-1">Ein Mensch entscheidet über den Merge</div>
-  </div>
-  <div v-click class="border border-white/20 rounded px-4 py-6 bg-white/5">
-    <div class="text-3xl">❓</div>
-    <div class="font-bold text-lg mt-2">Unklare Anforderungen</div>
-    <div class="text-sm opacity-70 mt-1">Der Agent fragt, statt zu raten</div>
-  </div>
-  <div v-click class="border border-[#ff6bed] rounded px-4 py-6 bg-[#ff6bed]/10">
-    <div class="text-3xl">🔴</div>
-    <div class="font-bold text-lg mt-2">Kritische Funde</div>
-    <div class="text-sm opacity-70 mt-1">Jemand prüft nach, bevor es eskaliert</div>
-  </div>
+<div class="mt-10">
+
+<IconCards :columns="3" size="lg" no-clicks :items="[
+  { icon: '/icons/urteil.webp', title: 'Freigabe', sub: 'Ein Mensch entscheidet über den Merge' },
+  { icon: '/icons/issue.webp', title: 'Unklare Anforderungen', sub: 'Der Agent fragt, statt zu raten' },
+  { icon: '/jira/funde.webp', title: 'Kritische Funde', sub: 'Jemand prüft nach, bevor es eskaliert', accent: true },
+]" />
+
 </div>
 
 <!--
 TIME: 24:00–24:45 (45s)
 
 - Der Agent liefert Belege. Entscheiden tut ein Mensch.
-- [click] Freigabe bleibt beim Menschen.
-- [click] Wenn die Kriterien unklar sind, soll der Agent nachfragen.
-- [click] Bei CRITICAL_BUGS schaut jemand drauf. Ein Agent kann sich auch irren.
+- Freigabe bleibt beim Menschen.
+- Wenn die Kriterien unklar sind, soll der Agent nachfragen.
+- Bei CRITICAL_BUGS schaut jemand drauf. Ein Agent kann sich auch irren.
 -->
 
 ---
@@ -1179,51 +1256,39 @@ TIME: 24:45–25:15 (30s)
 -->
 
 ---
-layout: quote
----
 
-> „In some places the title software engineer is going to start to go away, and it's just going to be replaced by **builder**.“
+<div class="bq">
+  <div class="bq__who">
+    <img src="/boris-cherny.jpg" alt="Boris Cherny" />
+    <b>Boris Cherny</b>
+    <span>Creator von Claude Code</span>
+  </div>
+  <blockquote class="bq__text">
+    <span class="bq__mark">“</span>In some places the title software engineer is going to start to go away, and it's just going to be replaced by <em>builder</em>.
+  </blockquote>
+</div>
 
-— Boris Cherny, Creator von Claude Code
-
-<div v-click class="mt-10 text-lg opacity-80">„Our roles are <span class="text-[#ff6bed]">blending together</span>: designers ship code, engineers make product decisions, product managers build prototypes and evals.“<br/><span class="text-sm opacity-70">Cat Wu, Head of Product, Claude Code</span></div>
+<style>
+.bq { display: grid; grid-template-columns: 220px 1fr; gap: 48px; align-items: center; height: 100%; }
+.bq__who { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 4px; }
+.bq__who img { width: 200px; height: 200px; border-radius: 50%; object-fit: cover; border: 4px solid #ff6bed; margin-bottom: 12px; }
+.bq__who b { font-size: 20px; color: #eaedf3; }
+.bq__who span { font-size: 14px; opacity: .65; }
+.bq__text { margin: 0; padding: 0; border: none; background: none; font-size: 2.6rem; line-height: 1.25; font-weight: 600; color: #eaedf3; text-wrap: balance; position: relative; }
+.bq__mark { position: absolute; left: -0.55em; top: -0.35em; font-size: 2.2em; color: #ff6bed; line-height: 1; }
+.bq__text em { font-style: normal; color: #ff6bed; }
+</style>
 
 <!--
 TIME: 25:15–26:00 (45s)
 
 - Boris Cherny hat Claude Code bei Anthropic gebaut.
 - Übersetzt: Der Titel Software Engineer verschwindet an manchen Stellen. Stattdessen heißt es einfach **Builder**. Bei Anthropic codet laut ihm jeder: PM, Designerin, sogar der Finanzer.
-- [click] Cat Wu, Head of Product bei Claude Code, schreibt das auch offiziell: Die Rollen verschmelzen.
+- Cat Wu, Head of Product bei Claude Code, schreibt das auch offiziell (nicht mehr auf der Slide, nur sagen): „Our roles are blending together: designers ship code, engineers make product decisions, product managers build prototypes and evals.“
 - **Ehrlich sagen:** Beide nennen Engineering, PM und Design. QA nennen sie nicht ausdrücklich. „Ich sage: Das gilt auch für euch.“
 - SOURCE: Lenny's Podcast, 19.02.2026, bei 43:06 und 41:25. Aus dem Volltranskript, Audio nicht selbst gehört. research/raw/rollen-verschmelzen-notiz.md; claude.com/resources/articles/product-management-on-the-ai-exponential
 -->
 
-
----
-
-# Die <span class="text-[#ff6bed]">Gegenstimme</span>
-
-> „Since an AI tool cannot be accountable for anything, it cannot enact or embody a responsible process.“
->
-> — James Bach
-
-<v-click>
-
-> „You still want a human looking at the code.“
->
-> — Boris Cherny
-
-</v-click>
-
-<!--
-TIME: 26:00–26:15 (15s)
-
-- James Bach kennt hier jeder. Er sagt: Ein Tool kann keine Verantwortung tragen.
-- Da hat er recht. Darum bleibt die Freigabe beim Menschen.
-- Spannend: In einem anderen Beitrag erwartet Bach selbst, dass Tester zu „generalist thinkers“ werden.
-- [click] Und sogar Cherny sagt bei 17:13: Ein Mensch soll weiter auf den Code schauen.
-- SOURCE: satisfice.com/blog/archives/488069 und /488216; Lenny's Podcast 17:13
--->
 
 ---
 

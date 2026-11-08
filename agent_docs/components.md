@@ -36,6 +36,8 @@ hideFooter: true
 ---
 ```
 
+Show the event name in the footer center: set `footerEvent: 'QS-Tag Frankfurt 2026'` in the deck headmatter (read via `configs` from `@slidev/client`). Unset means no center text.
+
 To change what the footer shows, edit `packages/slidev-theme-brand/components/LayoutFooter.vue` directly — plain Vue/UnoCSS, hot-reloaded, no build step.
 
 ## Addon components (`packages/slidev-addon-utils/components/`)
@@ -172,7 +174,7 @@ Building blocks: `EditorTitleBar.vue`, `EditorFileTree.vue`, `EditorFileNode.vue
 
 ## IconCards (starter/components, QS-Tag deck)
 
-Cards with a Codex sticker icon, title, optional `sub` and pink `tag`. One `v-click` per card.
+Cards with a Codex sticker icon, title, optional `sub` and pink `tag`. One `v-click` per card; pass `no-clicks` to show all cards at once.
 
 ```md
 <IconCards flow :items="[

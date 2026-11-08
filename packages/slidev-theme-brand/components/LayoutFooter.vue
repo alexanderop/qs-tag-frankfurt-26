@@ -1,8 +1,11 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useNav } from '@slidev/client'
+import { configs, useNav } from '@slidev/client'
 
 const { currentSlideRoute } = useNav()
+
+/** Event name shown in the footer center, set via `footerEvent` in the deck headmatter. */
+const footerEvent = computed(() => (configs as { footerEvent?: string }).footerEvent)
 
 const hideFooter = computed(() => currentSlideRoute.value?.meta?.slide?.frontmatter?.hideFooter === true)
 </script>
@@ -19,11 +22,12 @@ const hideFooter = computed(() => currentSlideRoute.value?.meta?.slide?.frontmat
     </div>
 
     <!-- Footer content -->
-    <div class="flex justify-between items-center w-full px-4 py-1 border-t border-gray-700/20">
+    <div class="relative flex justify-between items-center w-full px-4 py-1 border-t border-gray-700/20">
       <div class="flex items-center gap-2">
         <div class="i-carbon-earth text-sm opacity-60" style="color: var(--brand-accent);"></div>
         <span class="font-medium text-sm" style="color: var(--brand-accent);">alexop.dev</span>
       </div>
+      <span v-if="footerEvent" class="absolute left-1/2 -translate-x-1/2 text-sm opacity-60" style="color: var(--brand-text);">{{ footerEvent }}</span>
       <span class="text-sm" style="color: var(--brand-text);">{{ $slidev.nav.currentPage }}</span>
     </div>
   </footer>

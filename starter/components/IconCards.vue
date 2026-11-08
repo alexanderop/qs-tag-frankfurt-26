@@ -8,7 +8,7 @@ export interface IconCard {
   accent?: boolean
 }
 
-const { items, flow = false, columns, size = 'md', width = 150, loop } = defineProps<{
+const { items, flow = false, columns, size = 'md', width = 150, loop, noClicks = false } = defineProps<{
   items: IconCard[]
   /** Row with arrows between cards (a process). Otherwise a grid. */
   flow?: boolean
@@ -18,6 +18,8 @@ const { items, flow = false, columns, size = 'md', width = 150, loop } = defineP
   width?: number
   /** Dashed arrow back from card `from` to card `to` (0-based), shown with the last card. */
   loop?: { from: number, to: number, label: string }
+  /** Show all cards at once instead of one `v-click` per card. */
+  noClicks?: boolean
 }>()
 
 const arrow = 28
@@ -27,7 +29,7 @@ const center = (i: number) => i * (width + arrow) + width / 2
 <template>
   <div class="cards-wrap">
   <div class="cards" :class="[flow ? 'cards--flow' : 'cards--grid', `cards--${size}`]" :style="!flow ? { gridTemplateColumns: `repeat(${columns ?? items.length}, minmax(0, 1fr))` } : { '--card-w': `${width}px` }">
-    <div v-for="(item, i) in items" :key="item.title" v-click class="cards__step">
+    <div v-for="(item, i) in items" :key="item.title" v-click="noClicks ? false : undefined" class="cards__step">
       <div v-if="flow && i > 0" class="cards__arrow">→</div>
       <div class="cards__card" :class="{ 'is-accent': item.accent }">
         <img :src="item.icon" alt="" class="cards__icon">
