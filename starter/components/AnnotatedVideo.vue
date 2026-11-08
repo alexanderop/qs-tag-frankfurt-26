@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, nextTick, ref, watch } from 'vue'
+import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 
 export interface VideoChapter {
   /** Start in seconds. */
@@ -35,6 +35,37 @@ watch(active, async (i) => {
   el.scrollTo({ top: row.offsetTop - (el.clientHeight - row.offsetHeight) / 2, behavior: 'smooth' })
 })
 
+// The presenter view drives the video, the audience tab follows. One direction only, so no echo loops.
+const isPresenter = typeof location !== 'undefined' && location.pathname.includes('/presenter')
+let channel: BroadcastChannel | undefined
+
+function broadcast() {
+  const v = video.value
+  if (!v || !isPresenter)
+    return
+  channel?.postMessage({ src: props.src, t: v.currentTime, playing: !v.paused })
+}
+
+onMounted(() => {
+  channel = new BroadcastChannel('annotated-video')
+  if (isPresenter)
+    return
+  channel.onmessage = ({ data }) => {
+    const v = video.value
+    if (!v || data.src !== props.src)
+      return
+    if (Math.abs(v.currentTime - data.t) > 0.4)
+      v.currentTime = data.t
+    now.value = data.t
+    if (data.playing && v.paused)
+      v.play().catch(() => {})
+    if (!data.playing && !v.paused)
+      v.pause()
+  }
+})
+
+onBeforeUnmount(() => channel?.close())
+
 const icon = { pass: '✅', bug: '🐛', info: '▶' } as const
 
 function seek(t: number) {
@@ -52,7 +83,7 @@ function stamp(t: number) {
 <template>
   <div class="annotated">
     <div class="annotated__stage">
-      <video ref="video" :src="src" controls muted class="annotated__video" @timeupdate="now = ($event.target as HTMLVideoElement).currentTime" @seeked="now = ($event.target as HTMLVideoElement).currentTime" />
+      <video ref="video" :src="src" controls muted class="annotated__video" @timeupdate="now = ($event.target as HTMLVideoElement).currentTime" @seeked="now = ($event.target as HTMLVideoElement).currentTime; broadcast()" @play="broadcast" @pause="broadcast" />
       <div v-if="active >= 0" :key="active" class="annotated__caption" :class="`is-${chapters[active].kind ?? 'info'}`">
         {{ chapters[active].text }}
         <div v-if="chapters[active].finding" class="annotated__caption-finding">
