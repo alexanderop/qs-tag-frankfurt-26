@@ -182,7 +182,7 @@ layout: statement
 TIME: 4:30–5:15 (45s)
 
 - **Die Kernthese** des Talks.
-- „Weitgehend“ ist bewusst gewählt. Es gibt noch harte Probleme. Aber für einen typischen Frontend-Ticket schreibt der Agent den Code.
+- „Weitgehend“ ist bewusst gewählt. Es gibt noch harte Probleme. Aber für ein typisches Frontend-Ticket schreibt der Agent den Code.
 - Die Frage ist also nicht mehr „Wer schreibt das?“, sondern „Woher weiß ich, dass es stimmt?“
 - **Nur aussprechen, nicht auf der Slide:** „Wenn ein Agent codet und testet, braucht es uns dann noch?“ Nicht beantworten. „Die Antwort bekommt ihr am Ende.“
 -->
@@ -219,16 +219,16 @@ backgroundSize: contain
 
 # Das <span class="text-[#ff6bed]">Zielbild</span>
 
-Ein PR, der seinen Beweis gleich mitbringt.
+Ein PR, an dem die Belege schon hängen.
 
-- 📸 Screenshots
-- 🎬 Ein Video vom Durchlauf
-- ⚖️ Ein Urteil: Ist das Ticket erfüllt?
+- Screenshots
+- Ein Video vom Durchlauf
+- Ein Urteil: Ist das Ticket erfüllt?
 
 <!--
 TIME: 5:45–6:15 (30s)
 
-- So soll ein PR aussehen: nicht nur Code, sondern **Belege**.
+- So soll ein PR aussehen: Code plus **Belege**.
 - Screenshots von jedem geprüften Szenario.
 - Ein Video, damit ich sehe, was der Agent gemacht hat.
 - Ein klares Urteil. Dann muss ich nicht raten.
@@ -240,7 +240,7 @@ TIME: 5:45–6:15 (30s)
 
 # Claude Code kann mehr als <span class="text-[#ff6bed]">Code schreiben</span>
 
-<div class="text-lg opacity-70 -mt-2">Ein Agent im Terminal. Ihr sagt, was ihr wollt. Er erledigt es.</div>
+<div class="text-lg opacity-70 -mt-2">Ein Agent im Terminal, der eure Aufgabe selbst ausführt.</div>
 
 <div class="mt-6">
 
@@ -255,21 +255,21 @@ TIME: 5:45–6:15 (30s)
 
 </div>
 
-<div class="mt-5 text-center text-xl">Alles, wofür er ein <b class="text-[#ff6bed]">Werkzeug</b> hat.</div>
+<div class="mt-5 text-center text-xl">Er kann alles, wofür er ein <b class="text-[#ff6bed]">Werkzeug</b> hat.</div>
 
 <!--
 TIME: 6:15–7:00 (45s)
 
-- Viele kennen Claude Code als Coding-Tool. Das ist zu klein gedacht.
+- Viele kennen Claude Code nur als Coding-Tool.
 - Claude Code ist ein Agent im Terminal. Ihr sagt, was ihr wollt, und er arbeitet, bis es erledigt ist.
 - Code schreiben ist nur eine Sache. Er liest Tickets, testet im Browser, sammelt Screenshots, schreibt Reports, bedient sogar Apps.
-- Für uns als QA ist das spannend: Fast alles in dieser Liste ist eigentlich Testarbeit.
+- Fast alles in dieser Liste ist Testarbeit. Darum ist er für QA interessant.
 - **Überleitung:** Er kann alles, wofür er ein Werkzeug hat. Also: Welche Werkzeuge braucht er, um einen Browser zu bedienen?
 -->
 
 ---
 
-# Die <span class="text-[#ff6bed]">Augen und Hände</span> des Agenten
+# Womit der Agent den <span class="text-[#ff6bed]">Browser</span> bedient
 
 <div class="mt-10">
 
@@ -287,7 +287,7 @@ TIME: 6:15–7:00 (45s)
 <!--
 TIME: 7:00–8:00 (60s)
 
-- Ohne Browser ist der Agent blind. Wenn Claude Code einen Browser oder eine App bedienen soll, braucht er ein Tool dafür. Also geben wir ihm Augen und Hände.
+- Ohne Browser sieht der Agent die App nicht. Wenn Claude Code einen Browser oder eine App bedienen soll, braucht er ein Tool dafür. Hier sind vier.
 - **Playwright CLI:** Kennt ihr schon. Der Agent ruft es über Bash auf.
 - **Playwright MCP:** Gut, um lokal zu erkunden. Schiebt aber bei jedem Schritt viel in den Kontext.
 - **Agent Browser** von Vercel Labs: Rust-CLI, Accessibility-Snapshot mit Refs wie @e1. Das nutze ich.
@@ -368,11 +368,11 @@ TIME: 7:00–8:00 (60s)
 <!--
 TIME: 8:00–8:45 (45s)
 
-- Kurz: Was macht Agent Browser eigentlich? Ein Programm im Terminal, das einen echten Browser steuert.
+- Was macht Agent Browser? Es ist ein Programm im Terminal, das einen echten Browser steuert.
 - Links: Was ihr seht. Eine Seite mit Überschrift, Eingabefeld und Knopf.
 - Rechts: Was der Agent sieht. Mit `snapshot` bekommt er die Seite als **Liste**. Jedes Element, das man anklicken oder ausfüllen kann, bekommt eine **Nummer**: e1, e2, e3.
-- Dann zeigt er auf die Nummer, wie mit dem Finger: „Tippe SPAR10 in e3, klicke e2.“ Kein Raten, keine Pixel-Koordinaten.
-- Unten die Befehle, die er dafür braucht. Mehr nicht: öffnen, hinschauen, klicken, tippen, Beweisfoto, Video.
+- Dann nutzt er die Nummer im Befehl: „Tippe SPAR10 in e3, klicke e2.“ Er muss nicht raten und braucht keine Pixel-Koordinaten.
+- Unten stehen alle Befehle, die er dafür braucht: öffnen, hinschauen, klicken, tippen, Beweisfoto, Video.
 - Danach wieder `snapshot`: Hat sich die Gesamtsumme geändert? So prüft er sein eigenes Ergebnis.
 - SOURCE: `agent-browser --help` (v0.38.2); Snapshot-Format aus einem echten Lauf.
 -->
@@ -464,7 +464,7 @@ TIME: 9:00–9:15 (15s)
 
 # <span class="text-[#ff6bed]">pstack</span>: Skills von poteto
 
-<div class="text-lg opacity-80 -mt-2">Lauren Tan: React-Compiler-Team, vorher Meta, Netflix und Cursor. pstack macht den Agenten zu einem <b class="text-[#ff6bed]">gründlichen Engineer</b>, nicht zu einem schnellen.</div>
+<div class="text-lg opacity-80 -mt-2">Lauren Tan: React-Compiler-Team, vorher Meta, Netflix und Cursor. Mit pstack arbeitet der Agent <b class="text-[#ff6bed]">gründlich</b>: erst verstehen, dann wenig Code schreiben.</div>
 
 <div class="grid grid-cols-2 gap-6 mt-5">
   <figure class="shot">
@@ -535,7 +535,7 @@ TIME: 9:15–9:45 (30s)
 - Er befragt das Repo, nicht euch: Wie startet die App, wie bedient man sie, welche Belege gibt es?
 - Er schreibt einen Skill mit Start-Skript.
 - Er legt die Feature Map an, eine Datei pro Feature.
-- Wichtig: Er beweist den Skill selbst, einmal komplett durchgespielt. Ein ungetesteter Skill ist nur ein Entwurf.
+- Wichtig: Er beweist den Skill selbst, einmal komplett durchgespielt. Erst danach kann man sich auf den Skill verlassen.
 - Danach pflegt ihr die Map mit `/maintain-verification-skill`, wenn sich die App ändert.
 - **Werkzeug ist austauschbar:** In meinem Setup nimmt der Agent automatisch Agent Browser, weil es installiert ist. Ihr könnt genauso Playwright CLI oder Playwright MCP nutzen. Der Skill beschreibt, was geprüft wird, nicht womit.
 - SOURCE: pstack `skills/create-verification-skill/SKILL.md` (v0.15.36); otto-nuxt-shop Commit 01f006e.
@@ -682,7 +682,7 @@ TIME: 10:40–11:15 (35s)
 - [click] **Wie komme ich hin?** Aus Sicht der Nutzerin.
 - [click] **Wie bediene ich es?** Echte Befehle, die der Agent kopieren kann.
 - [click] **Gotchas.** Mein Lieblingsbeispiel: Der Minus-Button ist ein typografisches Minus, kein Bindestrich. Genau das Wissen, das sonst nur im Kopf einer Testerin steckt.
-- [click] Das ist im Grunde ein Testkonzept, das der Agent lesen kann.
+- [click] Das ist ein Testkonzept, das der Agent lesen kann.
 - SOURCE: otto-nuxt-shop Commit 01f006e, `.claude/skills/verify-otto-shop/features/warenkorb.md` (gekürzt)
 -->
 
@@ -713,13 +713,13 @@ ok   /api/products total=184
 ```
 
 </div>
-<div class="text-lg opacity-80">Jeder Agent startet <b>gleich</b>. Nicht jeder erfindet seinen eigenen Weg.</div>
+<div class="text-lg opacity-80">Jeder Agent startet den Shop auf <b>dieselbe</b> Weise.</div>
 </div>
 
 <!--
 TIME: 11:15–11:45 (30s)
 
-- Der Skill ist ein Rezept, das jeder Agent gleich abarbeitet.
+- Jeder Agent arbeitet den Skill in derselben Reihenfolge ab.
 - Launch: startet den Shop. Bei mir auf Port 3100, weil 3000 belegt war. Das hat der Agent selbst gemerkt und eingebaut.
 - Doctor: Läuft die richtige Instanz? Sind die Daten da?
 - Drive: echte Klicks über agent-browser, mit ARIA-Rollen statt fragiler Selektoren.
@@ -735,24 +735,24 @@ TIME: 11:15–11:45 (30s)
 <div class="loop mt-2">
 <svg class="loop__svg" viewBox="0 0 880 380" aria-hidden="true">
   <defs><marker id="loop-head" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#ff6bed" /></marker></defs>
-    <path d="M 252.1 143.8 A 200 135 0 0 1 371.6 63.1" class="loop__arc" marker-end="url(#loop-head)" />
-  <path d="M 508.4 63.1 A 200 135 0 0 1 627.9 143.8" class="loop__arc" marker-end="url(#loop-head)" />
-  <path d="M 627.9 236.2 A 200 135 0 0 1 546.0 304.5" class="loop__arc" marker-end="url(#loop-head)" />
-  <path d="M 316.9 296.4 A 200 135 0 0 1 252.1 236.2" class="loop__arc loop__arc--back" marker-end="url(#loop-head)" />
-  <path d="M 112 190 L 128 190" class="loop__arc" marker-end="url(#loop-head)" />
-  <path d="M 545 325 L 718 325" class="loop__arc" marker-end="url(#loop-head)" />
-  <text x="264.2" y="283.4" class="loop__label" text-anchor="end">Fehler gefunden</text>
-  <text x="631" y="314" class="loop__label" text-anchor="middle">alles grün</text>
-  <text x="440" y="186" class="loop__center" text-anchor="middle">Schleife</text>
-  <text x="440" y="210" class="loop__center-sub" text-anchor="middle">bis alles grün ist</text>
+  <path d="M 108 190 L 124 190" class="loop__arc" marker-end="url(#loop-head)" />
+  <path d="M 222 156 Q 236 78 300 60" class="loop__arc" marker-end="url(#loop-head)" />
+  <path d="M 478 60 Q 542 78 554 156" class="loop__arc" marker-end="url(#loop-head)" />
+  <path d="M 560 224 Q 385 350 216 226" class="loop__arc loop__arc--back" marker-end="url(#loop-head)" />
+  <path d="M 678 190 L 756 190" class="loop__arc" marker-end="url(#loop-head)" />
+  <text x="388" y="318" class="loop__label" text-anchor="middle">Fehler gefunden</text>
+  <text x="716" y="174" class="loop__label" text-anchor="middle">alles grün</text>
+  <text x="388" y="186" class="loop__center" text-anchor="middle">Schleife</text>
+  <text x="388" y="210" class="loop__center-sub" text-anchor="middle">bis alles grün ist</text>
 </svg>
   <div class="loop__card is-io" style="left:55px; top:190px"><img src="/icons/issue.webp" alt="" /><div><b>Ticket</b><span>mit Gherkin</span></div></div>
-  <div class="loop__card" style="left:240px; top:190px"><img src="/funnel/codebasis.webp" alt="" /><div><b>Umsetzen</b><span>der Agent baut</span></div></div>
-  <div class="loop__card" style="left:440px; top:55px"><img src="/icons/launch.webp" alt="" /><div><b>App starten</b><span>mit dem Skill</span></div></div>
-  <div class="loop__card" style="left:640px; top:190px"><img src="/jira/agent.webp" alt="" /><div><b>Szenarien prüfen</b><span>im echten Browser</span></div></div>
-  <div class="loop__card is-accent" style="left:440px; top:325px"><img src="/icons/explorativ.webp" alt="" /><div><b>Explorativ testen</b><span>was keiner aufschrieb</span></div></div>
-  <div class="loop__card is-io" style="left:800px; top:325px"><img src="/icons/report.webp" alt="" /><div><b>Report</b><span>Urteil + Belege</span></div></div>
+  <div class="loop__card" style="left:205px; top:190px"><img src="/funnel/codebasis.webp" alt="" /><div><b>Umsetzen</b><span>Code + Tests</span></div></div>
+  <div class="loop__card is-accent" style="left:390px; top:55px"><img src="/icons/launch.webp" alt="" /><div><b>App starten</b><span>mit dem Skill</span></div></div>
+  <div class="loop__card is-accent" style="left:570px; top:190px"><img src="/jira/agent.webp" alt="" /><div><b>Szenarien prüfen</b><span>im echten Browser</span></div></div>
+  <div class="loop__card is-io" style="left:828px; top:190px"><img src="/icons/report.webp" alt="" /><div><b>PR erstellen</b><span>mit Screenshots</span></div></div>
 </div>
+
+<div class="-mt-12 text-center text-base opacity-80">Der Agent schreibt auch <b>deterministische Tests</b>. Aber nicht alles hat einen E2E-Test.<br/>Darum prüft er zusätzlich <span class="text-[#ff6bed]">im echten Browser</span>.</div>
 
 <style>
 .loop { position: relative; width: 880px; height: 380px; margin: 0 auto; }
@@ -773,13 +773,13 @@ TIME: 11:15–11:45 (30s)
 <!--
 TIME: 12:15–12:45 (30s)
 
-- Der ganze Ablauf auf einer Folie.
-- Ticket mit Gherkin-Szenarien.
-- Der Agent implementiert.
-- Er startet die App mit dem Skill.
-- Er prüft jedes Szenario im Browser.
-- Dann testet er explorativ: Was hat keiner aufgeschrieben?
-- Findet er einen Fehler, geht's zurück ins Umsetzen. Die Schleife läuft, bis alles grün ist. Erst dann kommt der Report.
+- Der Agent nutzt den Verification-Skill nicht erst in der QA. Er nutzt ihn schon, während er das Feature baut.
+- Ticket mit Gherkin-Szenarien rein.
+- Er setzt um, und natürlich schreibt er dabei auch neue deterministische Tests: Unit-Tests, Komponenten-Tests.
+- Aber ehrlich: In den meisten Projekten haben wir nicht für alles E2E-Tests. Genau diese Lücke schließt die Prüfung im Browser.
+- Er startet die App mit dem Skill und prüft jedes Szenario im echten Browser.
+- Findet er einen Fehler, geht's zurück ins Umsetzen. Die Schleife läuft, bis alles grün ist.
+- Erst dann erstellt er den PR, mit Screenshots als Beleg.
 -->
 
 ---
@@ -837,16 +837,16 @@ TIME: 12:45–13:30 (45s)
 
 # So baut der Agent das <span class="text-[#ff6bed]">Feature</span>
 
-<div class="grid grid-cols-3 gap-3 mt-6 text-base">
-  <div class="border border-white/20 bg-white/5 rounded px-3 py-3 flex gap-3 items-baseline"><span class="text-[#ff6bed] font-mono text-sm">01</span><span>Ticket + Skill lesen</span></div>
-  <div class="border border-white/20 bg-white/5 rounded px-3 py-3 flex gap-3 items-baseline"><span class="text-[#ff6bed] font-mono text-sm">02</span><span>Code lesen</span></div>
-  <div class="border border-white/20 bg-white/5 rounded px-3 py-3 flex gap-3 items-baseline"><span class="text-[#ff6bed] font-mono text-sm">03</span><span><code>useCoupon.ts</code> + <code>warenkorb.vue</code> schreiben</span></div>
-  <div class="border border-white/20 bg-white/5 rounded px-3 py-3 flex gap-3 items-baseline"><span class="text-[#ff6bed] font-mono text-sm">04</span><span>Typecheck</span></div>
-  <div class="border border-[#ff6bed] bg-[#ff6bed]/10 rounded px-3 py-3 flex gap-3 items-baseline"><span class="text-[#ff6bed] font-mono text-sm">05</span><span>Shop mit dem Skill starten</span></div>
-  <div class="border border-[#ff6bed] bg-[#ff6bed]/10 rounded px-3 py-3 flex gap-3 items-baseline"><span class="text-[#ff6bed] font-mono text-sm">06</span><span>3 Szenarien im Browser</span></div>
-  <div class="border border-[#ff6bed] bg-[#ff6bed]/10 rounded px-3 py-3 flex gap-3 items-baseline"><span class="text-[#ff6bed] font-mono text-sm">07</span><span>Eigene Screenshots ansehen</span></div>
-  <div class="border border-white/20 bg-white/5 rounded px-3 py-3 flex gap-3 items-baseline"><span class="text-[#ff6bed] font-mono text-sm">08</span><span>CSS-Detail fixen</span></div>
-  <div class="border border-white/20 bg-white/5 rounded px-3 py-3 flex gap-3 items-baseline"><span class="text-[#ff6bed] font-mono text-sm">09</span><span>Feature Map ergänzen + Commit</span></div>
+<div class="mt-10">
+
+<IconCards flow no-clicks :width="146" :loop="{ from: 3, to: 1, label: 'CSS-Detail nachgebessert' }" :items="[
+  { icon: '/icons/issue.webp', title: 'Lesen', sub: 'Ticket, Skill, Code' },
+  { icon: '/funnel/codebasis.webp', title: 'Bauen', sub: 'useCoupon.ts, warenkorb.vue', tag: '+ Typecheck' },
+  { icon: '/jira/agent.webp', title: 'Im Browser prüfen', sub: '3 Szenarien mit dem Skill', accent: true },
+  { icon: '/icons/evidence.webp', title: 'Screenshots ansehen', sub: 'die eigenen Belege' },
+  { icon: '/icons/feature-map.webp', title: 'Commit', sub: 'Feature Map ergänzt' },
+]" />
+
 </div>
 
 <div v-click class="mt-8 text-center text-xl"><b>15 Tool-Aufrufe · 16 Turns · 0,90 $</b> · alle drei Szenarien grün</div>
@@ -857,7 +857,7 @@ TIME: 13:30–14:45 (75s)
 - Das ist der echte Ablauf aus dem Log. Ein Prompt: „Implementiere SHOP-42, prüfe jedes Szenario mit dem Skill, ergänze die Feature Map, committe.“
 - Er liest zuerst das Ticket **und** den Verification-Skill. Er weiß also vorher, wie er prüfen wird.
 - Nach dem Code startet er den Shop über den Skill und klickt die drei Szenarien durch.
-- Spannend: Er schaut sich seine eigenen Screenshots an und fixt danach noch ein CSS-Detail.
+- Spannend ist der Pfeil zurück: Er schaut sich seine eigenen Screenshots an, sieht ein CSS-Detail und baut nach.
 - [click] Kosten unter einem Dollar. Commit b70393e.
 - Er ergänzt auch die Feature Map um den Gutschein. Die Doku wächst mit dem Feature.
 - SOURCE: Log `.talk-logs/02-implement-gutschein.jsonl`
@@ -883,7 +883,7 @@ TIME: 13:30–14:45 (75s)
   </div>
 </div>
 
-<div class="mt-4 text-lg">Punkt 2 ist eine <span class="text-[#ff6bed]">Test-Charter</span>: euer QA-Wissen, als Prompt.</div>
+<div class="mt-4 text-lg">Punkt 2 ist eine <span class="text-[#ff6bed]">Test-Charter</span>. Darin steckt euer QA-Wissen.</div>
 
 <style>
 .prompt { border: 1px solid rgba(255,255,255,.15); border-radius: 12px; overflow: hidden; background: #1a1d29; }
@@ -1122,7 +1122,7 @@ TIME: 19:00–19:45 (45s)
 
 </div>
 
-<div class="mt-6 text-center text-xl opacity-80">Dieselbe Schleife wie lokal. Nur der <b>Auslöser</b> ist jetzt ein Label.</div>
+<div class="mt-6 text-center text-xl opacity-80">Die Schleife ist dieselbe wie lokal. Nur der <b>Auslöser</b> ist jetzt ein Label.</div>
 
 <!--
 TIME: 19:45–20:30 (45s)
@@ -1236,9 +1236,9 @@ TIME: 21:15–21:45 (30s)
     <img src="/run5-f2-nachher.jpg" class="rounded border border-white/20 h-[165px] w-full object-cover object-left-top" alt="Warenkorb nur mit Mascara, Rabatt 215,79 Euro, Gesamt minus 191,96 Euro" />
   </div>
   <div class="space-y-4 text-lg">
-    <div>🤖 Kommentar vom <b>github-actions</b> Bot</div>
-    <div>⚖️ <b>Urteil: CRITICAL_BUGS</b>, der Merge ist blockiert</div>
-    <div>📸 <b>14 Screenshots</b> und ein Video-GIF direkt im Kommentar</div>
+    <div>Kommentar vom <b>github-actions</b> Bot</div>
+    <div><b>Urteil: CRITICAL_BUGS</b>, der Merge ist blockiert</div>
+    <div><b>14 Screenshots</b> und ein Video-GIF direkt im Kommentar</div>
     <div class="text-[#ff6bed] font-bold">Diesmal mit einem Sofa: Gesamt −191,96 €</div>
     <div class="opacity-70">110 Turns · 1,33 $ · 3,1 Min</div>
   </div>
@@ -1333,7 +1333,7 @@ TIME: 22:45–23:00 (15s)
   </div>
 </div>
 
-<div class="mt-8 text-center text-lg opacity-70">Morgen vielleicht: <b class="text-[#ff6bed]">KPIs</b> aus echter Nutzung, und das Produkt verbessert sich selbst.</div>
+<div class="mt-8 text-center text-lg opacity-70">Meine Vermutung: Später passt sich das Produkt anhand von <b class="text-[#ff6bed]">KPIs</b> aus echter Nutzung an.</div>
 
 <style>
 .grenze { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
@@ -1449,7 +1449,7 @@ TIME: 25:15–26:00 (45s)
       <text x="150" y="170" text-anchor="middle" class="t__stem-lbl" transform="rotate(-90 150 166)">Qualität</text>
     </svg>
     <div class="shape__name">T-shaped</div>
-    <div class="shape__sub">Breit ein bisschen, tief in <b>einer</b> Box. Dafür wurde man eingestellt.</div>
+    <div class="shape__sub">Ein bisschen Breite, viel Tiefe in <b>einem</b> Fach. Dafür wurde man eingestellt.</div>
   </div>
   <div class="shape">
     <div class="shape__tag is-now">Mit KI</div>
@@ -1457,10 +1457,10 @@ TIME: 25:15–26:00 (45s)
       <path d="M 92.1 58.5 A 92 92 0 0 1 207.9 58.5" class="o__seg" /><path d="M 221.5 72.1 A 92 92 0 0 1 221.5 187.9" class="o__seg" /><path d="M 207.9 201.5 A 92 92 0 0 1 92.1 201.5" class="o__seg" /><path d="M 78.5 187.9 A 92 92 0 0 1 78.5 72.1" class="o__seg is-q" />
       <text x="150.0" y="13.0" text-anchor="middle" class="o__lbl">Code</text><text x="272.0" y="135.0" text-anchor="start" class="o__lbl">Design</text><text x="150.0" y="257.0" text-anchor="middle" class="o__lbl">Produkt</text><text x="28.0" y="135.0" text-anchor="end" class="o__lbl is-q">Qualität</text>
       <text x="150" y="126" text-anchor="middle" class="o__center">KI</text>
-      <text x="150" y="146" text-anchor="middle" class="o__center-sub">baut die Brücken</text>
+      <text x="150" y="146" text-anchor="middle" class="o__center-sub">hilft beim Wechseln</text>
     </svg>
     <div class="shape__name">O-shaped</div>
-    <div class="shape__sub">Rund. Die Stärke wechselt je nach Problem. Eure Basis bleibt <b>Qualität</b>.</div>
+    <div class="shape__sub">Die Stärke wechselt je nach Problem. Eure Basis bleibt <b>Qualität</b>.</div>
   </div>
 </div>
 
@@ -1491,7 +1491,7 @@ TIME: 25:15–26:00 (45s)
 TIME: 26:15–27:00 (45s)
 
 - Links: So haben wir vor KI eingestellt. **T-shaped**: ein bisschen Code, Design, Produkt, und tief in einer Box. Bei euch: Qualität.
-- Rechts: Mit KI werden Leute **O-shaped**. Ismail Amla nennt das so: rund und flexibel, die stärkste Stärke wechselt je nach Problem. KI liefert das Gerüst, um kurz in eine andere Disziplin zu gehen und wieder zurück.
+- Rechts: Mit KI werden Leute **O-shaped**. Ismail Amla nennt das so: rund und flexibel, die stärkste Stärke wechselt je nach Problem. Mit KI kann man kurz in eine andere Disziplin wechseln und wieder zurück.
 - Cherny bei 42:46 sagt Ähnliches: Die Rollen überlappen zu etwa 50 Prozent, manche Leute haben Spezialitäten.
 - **Meine Wendung fürs Publikum:** Ihr könnt jetzt überall mit anpacken. Aber eure Basis bleibt Qualität: Risiken einschätzen, gute Kriterien schreiben, wissen, wo es kracht. Amla sagt selbst: Spezialisten werden zu denen, die Arbeit aus anderen Bereichen prüfen und stärker machen.
 - SOURCE: research/raw/2026-08-12-o-shaped-people.md; research/wiki/rollen-verschmelzen.md
@@ -1554,7 +1554,7 @@ TIME: 27:30–27:45 (15s)
 <!--
 TIME: 27:45–28:15 (30s)
 
-- Kriterien zuerst. Das ist der größte Hebel.
+- Kriterien zuerst. Das bringt am meisten.
 - Browser und Feature Map. Ein Nachmittag Arbeit.
 - Bestätigen kann jeder Test. Der Wert kommt aus dem Explorativen.
 - Repo-QR noch einmal.
@@ -1624,14 +1624,14 @@ flowchart LR
   <div class="hood__step">
     <div class="hood__h"><code>click @e2</code></div>
     <ol>
-      <li>Ref → Node-ID, Element in den Sichtbereich scrollen</li>
+      <li>Ref zur Node-ID auflösen, Element in den Sichtbereich scrollen</li>
       <li>Box messen, <b>Mitte</b> berechnen, prüfen, dass nichts darüber liegt</li>
       <li>Echte Maus-Events: bewegen, drücken, loslassen</li>
     </ol>
   </div>
 </div>
 
-<div class="mt-3 text-center text-sm opacity-60">Kein Playwright, kein Node im Daemon. Ohne Befehle beendet sich der Daemon nach 1 Stunde.</div>
+<div class="mt-3 text-center text-sm opacity-60">Kein Playwright, kein Node im Daemon. Kommt 1 Stunde lang kein Befehl, beendet sich der Daemon.</div>
 
 <style>
 .cdp { border: 1px solid #ff6bed; background: rgba(255,107,237,.08); border-radius: 10px; padding: 8px 14px; font-size: 14px; }
@@ -1648,9 +1648,9 @@ Nur bei Fragen. „Wie funktioniert Agent Browser eigentlich?“
 
 - Drei Teile: Claude Code ruft die CLI per Bash auf. Die CLI redet über einen Unix-Socket mit einem Daemon. Der Daemon steuert Chrome direkt über das Chrome DevTools Protocol (CDP), dasselbe Protokoll, das auch die DevTools nutzen.
 - Der Daemon startet beim ersten Befehl und bleibt laufen. Darum ist jeder weitere Befehl schnell, und der Browser behält Cookies und Tabs zwischen den Befehlen. Nach einer Stunde ohne Befehl räumt er sich selbst auf.
-- **CDP ist der Kern:** Das Chrome DevTools Protocol ist die offizielle Fernsteuerung von Chrome. Wenn ihr F12 drückt, reden die DevTools über genau dieses Protokoll mit der Seite. Playwright und Puppeteer setzen darauf auf; Agent Browser lässt die Zwischenschicht weg und schickt die CDP-Befehle selbst. Alles auf dieser Folie (Baum holen, Box messen, Maus klicken) sind einzelne CDP-Befehle.
+- **CDP.** Über das Chrome DevTools Protocol steuern Programme Chrome von außen. Wenn ihr F12 drückt, reden die DevTools über genau dieses Protokoll mit der Seite. Playwright und Puppeteer setzen darauf auf; Agent Browser lässt die Zwischenschicht weg und schickt die CDP-Befehle selbst. Alles auf dieser Folie (Baum holen, Box messen, Maus klicken) sind einzelne CDP-Befehle.
 - **snapshot:** CDP-Befehl `Accessibility.getFullAXTree`. Das ist derselbe Baum, den ein Screenreader liest. Interaktive Rollen bekommen Refs `e1`, `e2`; jede Ref zeigt auf die `backendNodeId` des Elements. Darum funktioniert es gut auf barrierearmen Seiten, und schlecht auf Seiten ohne Labels.
-- **click @e2:** Ref → `backendNodeId` → `DOM.getBoxModel` → Mittelpunkt. Vorher prüft er, ob ein anderes Element darüberliegt (z. B. ein Cookie-Banner). Dann `Input.dispatchMouseEvent`: mouseMoved, mousePressed, mouseReleased. Für die Seite ist das ein echter Klick.
-- Kein Playwright im Spiel: Chrome kommt aus „Chrome for Testing“, der Rest ist Rust.
+- **click @e2:** Er löst die Ref zur `backendNodeId` auf, misst mit `DOM.getBoxModel` die Box und berechnet den Mittelpunkt. Vorher prüft er, ob ein anderes Element darüberliegt (z. B. ein Cookie-Banner). Dann `Input.dispatchMouseEvent`: mouseMoved, mousePressed, mouseReleased. Für die Seite ist das ein echter Klick.
+- Playwright ist nicht beteiligt. Chrome kommt aus „Chrome for Testing“, der Rest ist Rust.
 - SOURCE: github.com/vercel-labs/agent-browser @4b0e9f0, README „Architecture“; cli/src/native/snapshot.rs (INTERACTIVE_ROLES, getFullAXTree), cli/src/native/element.rs (resolve_element_center, DOM.getBoxModel), cli/src/native/interaction.rs (click, dispatch_click). Installierte Version 0.38.2.
 -->
