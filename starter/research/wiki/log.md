@@ -33,3 +33,4 @@ The agent appends entries in this form:
 - Raw: `research/raw/2026-08-12-o-shaped-people.md`
 - Result: updated
 - Wiki: `rollen-verschmelzen.md`
+- 2026-11-08: Raw-Capture `raw/2026-11-08-lokaler-qa-lauf.md`: lokaler QA-Lauf, CRITICAL_BUGS, 87 Turns, 2,12 $, 4,1 Min, Funde F1–F3 wie in CI. Für die Terminal-Folie.
