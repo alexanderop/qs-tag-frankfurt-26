@@ -85,15 +85,15 @@ TIME: 0:45–1:15 (30s)
 
 # 🙋 Alle <span class="text-[#ff6bed]">aufstehen</span>, bitte
 
-<div class="text-xl opacity-70 -mt-2">Setzt euch, sobald es nicht mehr passt.</div>
+<div class="text-xl opacity-70 -mt-2">Dann setzt euch hin, wenn …</div>
 
 <div class="mt-8">
 
 <IconCards flow :width="170" :items="[
   { icon: '/funnel/mensch.webp', title: 'Alle stehen', sub: 'einmal kurz bewegen' },
-  { icon: '/icons/claude-code.webp', title: 'KI im Alltag', sub: 'ChatGPT, Copilot, Claude …', tag: 'stehen bleiben' },
-  { icon: '/funnel/statisch.webp', title: 'KI schreibt Tests', sub: 'Tests oder Testfälle mit KI', tag: 'stehen bleiben' },
-  { icon: '/jira/agent.webp', title: 'Ein Agent testet selbst', sub: 'automatisch, ohne dass ihr klickt', tag: 'stehen bleiben', accent: true },
+  { icon: '/icons/claude-code.webp', title: '… ihr KI nicht im Alltag nutzt', sub: 'ChatGPT, Copilot, Claude …', tag: 'hinsetzen' },
+  { icon: '/funnel/statisch.webp', title: '… KI bei euch keine Tests schreibt', sub: 'weder Tests noch Testfälle', tag: 'hinsetzen' },
+  { icon: '/jira/agent.webp', title: '… bei euch kein Agent selbst testet', sub: 'automatisch, ohne dass ihr klickt', tag: 'hinsetzen', accent: true },
 ]" />
 
 </div>
@@ -104,9 +104,9 @@ TIME: 0:45–1:15 (30s)
 TIME: 1:15–2:30 (75s)
 
 - [Ask for hands] Erst sollen **alle** aufstehen. „Letzter Talk des Tages, wir bewegen uns kurz.“
-- [click] Stehen bleibt, wer KI im Alltag nutzt. ChatGPT, Copilot, egal was. Die anderen setzen sich.
-- [click] Stehen bleibt, wer KI Tests oder Testfälle schreiben lässt.
-- [click] Stehen bleibt, wer einen **Agenten** hat, der selbst testet. Automatisch, im Browser oder in der Pipeline, ohne dass jemand klickt.
+- [click] „Setzt euch hin, wenn ihr KI nicht im Alltag nutzt.“ ChatGPT, Copilot, egal was.
+- [click] „Setzt euch hin, wenn KI bei euch keine Tests oder Testfälle schreibt.“
+- [click] „Setzt euch hin, wenn bei euch kein **Agent** selbst testet.“ Automatisch, im Browser oder in der Pipeline, ohne dass jemand klickt.
 - [click] Wer jetzt noch steht: Applaus, und ich will nach dem Talk mit euch reden. Kurz fragen: „Was nutzt ihr dafür?“
 - Danach alle hinsetzen lassen. „Für alle, die sitzen: Genau darum geht's in den nächsten 30 Minuten.“
 -->
@@ -238,45 +238,33 @@ TIME: 5:45–6:15 (30s)
 
 ---
 
-# Claude Code ist mehr als ein <span class="text-[#ff6bed]">Chatbot</span>
+# Claude Code kann mehr als <span class="text-[#ff6bed]">Code schreiben</span>
 
-<div class="hub mt-4">
-  <div class="hub__node"><img src="/funnel/mensch.webp" alt="" /><b>Du</b></div>
-  <div class="hub__arrow">→</div>
-  <div class="hub__node is-main"><img src="/icons/claude-code.webp" alt="" /><b>Claude Code</b><span>Agent im Terminal</span></div>
-</div>
+<div class="text-lg opacity-70 -mt-2">Ein Agent im Terminal. Ihr sagt, was ihr wollt. Er erledigt es.</div>
 
-<div class="w-[640px] mx-auto mt-4">
+<div class="mt-6">
 
-<IconCards :columns="3" :items="[
-  { icon: '/icons/tools.webp', title: 'Tools', sub: 'Bash, Read, Edit, Browser' },
-  { icon: '/icons/hooks.webp', title: 'Hooks', sub: 'laufen bei jedem Schritt' },
-  { icon: '/funnel/prosa.webp', title: 'Skills', sub: 'Wissen auf Abruf' },
+<IconCards :columns="3" no-clicks :items="[
+  { icon: '/funnel/codebasis.webp', title: 'Code schreiben', sub: 'das Feature aus dem Ticket' },
+  { icon: '/icons/issue.webp', title: 'Tickets lesen', sub: 'Anforderungen und Szenarien' },
+  { icon: '/icons/agent-browser.webp', title: 'Im Browser testen', sub: 'klicken wie ein Mensch', accent: true },
+  { icon: '/icons/evidence.webp', title: 'Belege sammeln', sub: 'Screenshots und Video' },
+  { icon: '/icons/report.webp', title: 'Reports schreiben', sub: 'mit Urteil und Repro' },
+  { icon: '/icons/computer-use.webp', title: 'Apps bedienen', sub: 'auch ohne Browser' },
 ]" />
 
 </div>
 
-<div v-click class="mt-5 text-center text-xl"><b>LLM denkt, Tools handeln, die <span class="text-[#ff6bed]">Schleife</span> wiederholt.</b></div>
-
-<style>
-.hub { display: flex; justify-content: center; align-items: center; gap: 10px; }
-.hub__node { display: flex; align-items: center; gap: 10px; border: 1px solid rgba(255,255,255,.15); border-radius: 12px; padding: 8px 16px; background: rgba(255,255,255,.04); }
-.hub__node img { width: 52px; height: 52px; }
-.hub__node b { font-size: 18px; }
-.hub__node span { font-size: 13px; opacity: .7; }
-.hub__node.is-main { border-color: #ff6bed; background: rgba(255,107,237,.12); }
-.hub__node.is-main img { width: 72px; height: 72px; }
-.hub__arrow { color: #ff6bed; font-size: 28px; font-weight: 700; }
-</style>
+<div class="mt-5 text-center text-xl">Alles, wofür er ein <b class="text-[#ff6bed]">Werkzeug</b> hat.</div>
 
 <!--
 TIME: 6:15–7:00 (45s)
 
-- Claude Code in einem Bild. Ein Agent, der im Terminal läuft.
-- [click] **Tools:** lesen, schreiben, Bash ausführen. Damit kann er auch einen Browser steuern.
-- [click] **Hooks:** Code, der automatisch bei bestimmten Schritten läuft. Zum Beispiel nach jedem Edit den Linter.
-- [click] **Skills:** Markdown-Dateien mit Wissen, die der Agent nur lädt, wenn er sie braucht.
-- [click] Mehr ist ein Agent nicht.
+- Viele kennen Claude Code als Coding-Tool. Das ist zu klein gedacht.
+- Claude Code ist ein Agent im Terminal. Ihr sagt, was ihr wollt, und er arbeitet, bis es erledigt ist.
+- Code schreiben ist nur eine Sache. Er liest Tickets, testet im Browser, sammelt Screenshots, schreibt Reports, bedient sogar Apps.
+- Für uns als QA ist das spannend: Fast alles in dieser Liste ist eigentlich Testarbeit.
+- **Überleitung:** Er kann alles, wofür er ein Werkzeug hat. Also: Welche Werkzeuge braucht er, um einen Browser zu bedienen?
 -->
 
 ---
@@ -305,6 +293,88 @@ TIME: 7:00–8:00 (60s)
 - **Agent Browser** von Vercel Labs: Rust-CLI, Accessibility-Snapshot mit Refs wie @e1. Das nutze ich.
 - **Computer Use:** Der Agent sieht den Bildschirm und klickt per Maus. Langsam, aber geht überall.
 - Meine Regel: MCP lokal zum Erkunden, CLI in der Pipeline. Gleicher Smoketest: etwa 114k Tokens mit MCP, 27k mit der CLI (Quelle: „Playwright CLI vs MCP“, siehe Quality-Night-Deck).
+-->
+
+---
+
+# So <span class="text-[#ff6bed]">sieht</span> der Agent eine Webseite
+
+<div class="ab mt-4">
+  <div class="ab__col">
+    <div class="ab__h">Was ihr seht</div>
+    <div class="ab__page">
+      <div class="ab__pagebar"><i></i><i></i><i></i><span>otto-shop / warenkorb</span></div>
+      <div class="ab__pagebody">
+        <div class="ab__el ab__title">Warenkorb <em>e1</em></div>
+        <div class="ab__label">Gutscheincode</div>
+        <div class="ab__row">
+          <div class="ab__el ab__input">SPAR10 <em>e3</em></div>
+          <div class="ab__el ab__btn">Einlösen <em>e2</em></div>
+        </div>
+        <div class="ab__total">Gesamt 14,89 €</div>
+      </div>
+    </div>
+  </div>
+  <div class="ab__arrow">→</div>
+  <div class="ab__col">
+    <div class="ab__h">Was der Agent sieht</div>
+    <div class="ab__term">
+      <div><span class="c-dim">$</span> agent-browser <b>snapshot</b></div>
+      <div>- heading "Warenkorb" <span class="c-ref">[ref=e1]</span></div>
+      <div>- textbox "Gutscheincode" <span class="c-ref">[ref=e3]</span></div>
+      <div>- button "Einlösen" <span class="c-ref">[ref=e2]</span></div>
+      <div class="mt-2"><span class="c-dim">$</span> agent-browser <b>fill</b> <span class="c-ref">@e3</span> "SPAR10"</div>
+      <div><span class="c-dim">$</span> agent-browser <b>click</b> <span class="c-ref">@e2</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="ab__cmds mt-5">
+  <div><code>open</code><span>Seite öffnen</span></div>
+  <div><code>snapshot</code><span>hinschauen</span></div>
+  <div><code>click</code><span>klicken</span></div>
+  <div><code>fill</code><span>tippen</span></div>
+  <div><code>screenshot</code><span>Beweisfoto</span></div>
+  <div><code>record</code><span>Video</span></div>
+</div>
+
+<style>
+.ab { display: grid; grid-template-columns: 1fr auto 1fr; gap: 16px; align-items: start; }
+.ab__h { font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #ff6bed; margin-bottom: 8px; }
+.ab__arrow { color: #ff6bed; font-size: 32px; font-weight: 700; padding-top: 110px; }
+.ab__page { border-radius: 10px; overflow: hidden; background: #f4f4f4; color: #222; border: 1px solid rgba(255,255,255,.2); }
+.ab__pagebar { display: flex; gap: 5px; align-items: center; padding: 6px 10px; background: #ddd; }
+.ab__pagebar i { width: 8px; height: 8px; border-radius: 50%; background: #aaa; }
+.ab__pagebar span { margin-left: 8px; font-size: 11px; color: #666; }
+.ab__pagebody { padding: 14px 16px 16px; }
+.ab__el { position: relative; }
+.ab__el em { position: absolute; top: -9px; right: -9px; font-style: normal; font-size: 10px; font-weight: 800; background: #ff6bed; color: #1a1d29; border-radius: 999px; padding: 1px 6px; font-family: var(--slidev-code-font-family, monospace); }
+.ab__title { display: inline-block; font-size: 22px; font-weight: 700; padding-right: 10px; }
+.ab__label { font-size: 12px; font-weight: 700; margin-top: 12px; }
+.ab__row { display: flex; gap: 10px; margin-top: 6px; }
+.ab__input { flex: 1; border: 1px solid #bbb; border-radius: 6px; padding: 6px 10px; background: #fff; font-size: 14px; }
+.ab__btn { border: 1.5px solid #222; border-radius: 6px; padding: 6px 12px; font-weight: 700; font-size: 14px; background: #fff; }
+.ab__total { margin-top: 14px; font-weight: 700; font-size: 15px; }
+.ab__term { border-radius: 10px; background: #1a1d29; border: 1px solid rgba(255,255,255,.15); padding: 12px 14px; font-family: var(--slidev-code-font-family, monospace); font-size: 13.5px; line-height: 1.7; color: #eaedf3; }
+.ab__term b { color: #f3e6c4; }
+.c-dim { opacity: .5; }
+.c-ref { color: #ff6bed; font-weight: 700; }
+.ab__cmds { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; }
+.ab__cmds div { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 8px 4px; border: 1px solid rgba(255,255,255,.12); border-radius: 10px; background: rgba(255,255,255,.04); }
+.ab__cmds code { font-size: 13px; }
+.ab__cmds span { font-size: 13px; opacity: .75; }
+</style>
+
+<!--
+TIME: 8:00–8:45 (45s)
+
+- Kurz: Was macht Agent Browser eigentlich? Ein Programm im Terminal, das einen echten Browser steuert.
+- Links: Was ihr seht. Eine Seite mit Überschrift, Eingabefeld und Knopf.
+- Rechts: Was der Agent sieht. Mit `snapshot` bekommt er die Seite als **Liste**. Jedes Element, das man anklicken oder ausfüllen kann, bekommt eine **Nummer**: e1, e2, e3.
+- Dann zeigt er auf die Nummer, wie mit dem Finger: „Tippe SPAR10 in e3, klicke e2.“ Kein Raten, keine Pixel-Koordinaten.
+- Unten die Befehle, die er dafür braucht. Mehr nicht: öffnen, hinschauen, klicken, tippen, Beweisfoto, Video.
+- Danach wieder `snapshot`: Hat sich die Gesamtsumme geändert? So prüft er sein eigenes Ergebnis.
+- SOURCE: `agent-browser --help` (v0.38.2); Snapshot-Format aus einem echten Lauf.
 -->
 
 
@@ -1517,4 +1587,70 @@ TIME: 28:15 + Q&A (1:45 Puffer bis 30:00)
 
 - Diese Folie bleibt während der Fragen stehen. Links die Slides, rechts das Repo mit Skill, Workflow und Report.
 - Wenn keiner fragt: „Wer von euch hat heute Morgen noch gestanden? Was nutzt ihr dafür?“
+-->
+
+---
+layout: statement
+---
+
+# Backup
+
+<!--
+Ab hier nur bei Fragen zeigen.
+-->
+
+---
+
+# Agent Browser <span class="text-[#ff6bed]">unter der Haube</span>
+
+```mermaid {scale: 0.65}
+flowchart LR
+  A@{ shape: rounded, label: "Claude Code" } -->|"Bash"| B@{ shape: console, label: "CLI" }
+  B -->|"Socket"| C@{ shape: rounded, label: "Daemon (Rust)" }
+  C -->|"CDP"| D@{ shape: browser, label: "Chrome" }
+```
+
+<div class="cdp mt-2"><b>CDP</b> = Chrome DevTools Protocol. Die Schnittstelle, über die auch eure DevTools (F12) mit Chrome sprechen. Playwright und Puppeteer nutzen sie auch. Agent Browser spricht sie <b>direkt</b>.</div>
+
+<div class="hood mt-4">
+  <div class="hood__step">
+    <div class="hood__h"><code>snapshot</code></div>
+    <ol>
+      <li>Holt den <b>Accessibility-Baum</b> von Chrome</li>
+      <li>Nur klickbare Rollen (button, link, textbox …) bekommen eine Ref <code>e1</code>, <code>e2</code></li>
+      <li>Jede Ref merkt sich die interne Node-ID im Browser</li>
+    </ol>
+  </div>
+  <div class="hood__step">
+    <div class="hood__h"><code>click @e2</code></div>
+    <ol>
+      <li>Ref → Node-ID, Element in den Sichtbereich scrollen</li>
+      <li>Box messen, <b>Mitte</b> berechnen, prüfen, dass nichts darüber liegt</li>
+      <li>Echte Maus-Events: bewegen, drücken, loslassen</li>
+    </ol>
+  </div>
+</div>
+
+<div class="mt-3 text-center text-sm opacity-60">Kein Playwright, kein Node im Daemon. Ohne Befehle beendet sich der Daemon nach 1 Stunde.</div>
+
+<style>
+.cdp { border: 1px solid #ff6bed; background: rgba(255,107,237,.08); border-radius: 10px; padding: 8px 14px; font-size: 14px; }
+.cdp b { color: #ff6bed; }
+.hood { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.hood__step { border: 1px solid rgba(255,255,255,.15); border-radius: 12px; padding: 12px 16px; background: rgba(255,255,255,.04); }
+.hood__h { margin-bottom: 6px; }
+.hood ol { margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.55; }
+.hood li { margin: 2px 0; }
+</style>
+
+<!--
+Nur bei Fragen. „Wie funktioniert Agent Browser eigentlich?“
+
+- Drei Teile: Claude Code ruft die CLI per Bash auf. Die CLI redet über einen Unix-Socket mit einem Daemon. Der Daemon steuert Chrome direkt über das Chrome DevTools Protocol (CDP), dasselbe Protokoll, das auch die DevTools nutzen.
+- Der Daemon startet beim ersten Befehl und bleibt laufen. Darum ist jeder weitere Befehl schnell, und der Browser behält Cookies und Tabs zwischen den Befehlen. Nach einer Stunde ohne Befehl räumt er sich selbst auf.
+- **CDP ist der Kern:** Das Chrome DevTools Protocol ist die offizielle Fernsteuerung von Chrome. Wenn ihr F12 drückt, reden die DevTools über genau dieses Protokoll mit der Seite. Playwright und Puppeteer setzen darauf auf; Agent Browser lässt die Zwischenschicht weg und schickt die CDP-Befehle selbst. Alles auf dieser Folie (Baum holen, Box messen, Maus klicken) sind einzelne CDP-Befehle.
+- **snapshot:** CDP-Befehl `Accessibility.getFullAXTree`. Das ist derselbe Baum, den ein Screenreader liest. Interaktive Rollen bekommen Refs `e1`, `e2`; jede Ref zeigt auf die `backendNodeId` des Elements. Darum funktioniert es gut auf barrierearmen Seiten, und schlecht auf Seiten ohne Labels.
+- **click @e2:** Ref → `backendNodeId` → `DOM.getBoxModel` → Mittelpunkt. Vorher prüft er, ob ein anderes Element darüberliegt (z. B. ein Cookie-Banner). Dann `Input.dispatchMouseEvent`: mouseMoved, mousePressed, mouseReleased. Für die Seite ist das ein echter Klick.
+- Kein Playwright im Spiel: Chrome kommt aus „Chrome for Testing“, der Rest ist Rust.
+- SOURCE: github.com/vercel-labs/agent-browser @4b0e9f0, README „Architecture“; cli/src/native/snapshot.rs (INTERACTIVE_ROLES, getFullAXTree), cli/src/native/element.rs (resolve_element_center, DOM.getBoxModel), cli/src/native/interaction.rs (click, dispatch_click). Installierte Version 0.38.2.
 -->
