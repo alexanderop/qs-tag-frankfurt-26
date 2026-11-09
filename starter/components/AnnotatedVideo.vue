@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import { resolveAssetUrl } from '@alexop/slidev-theme-brand/layoutHelper'
 
 export interface VideoChapter {
   /** Start in seconds. */
@@ -83,7 +84,7 @@ function stamp(t: number) {
 <template>
   <div class="annotated">
     <div class="annotated__stage">
-      <video ref="video" :src="src" controls muted class="annotated__video" @timeupdate="now = ($event.target as HTMLVideoElement).currentTime" @seeked="now = ($event.target as HTMLVideoElement).currentTime; broadcast()" @play="broadcast" @pause="broadcast" />
+      <video ref="video" :src="resolveAssetUrl(src)" controls muted class="annotated__video" @timeupdate="now = ($event.target as HTMLVideoElement).currentTime" @seeked="now = ($event.target as HTMLVideoElement).currentTime; broadcast()" @play="broadcast" @pause="broadcast" />
       <div v-if="active >= 0" :key="active" class="annotated__caption" :class="`is-${chapters[active].kind ?? 'info'}`">
         {{ chapters[active].text }}
         <div v-if="chapters[active].finding" class="annotated__caption-finding">

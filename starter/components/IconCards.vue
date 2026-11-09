@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { resolveAssetUrl } from '@alexop/slidev-theme-brand/layoutHelper'
+
 export interface IconCard {
   /** Path under public/, e.g. "/icons/rakete.webp". */
   icon: string
@@ -32,7 +34,7 @@ const center = (i: number) => i * (width + arrow) + width / 2
     <div v-for="(item, i) in items" :key="item.title" v-click="noClicks ? false : undefined" class="cards__step">
       <div v-if="flow && i > 0" class="cards__arrow">→</div>
       <div class="cards__card" :class="{ 'is-accent': item.accent }">
-        <img :src="item.icon" alt="" class="cards__icon">
+        <img :src="resolveAssetUrl(item.icon)" alt="" class="cards__icon">
         <div class="cards__title">{{ item.title }}</div>
         <div v-if="item.sub" class="cards__sub">{{ item.sub }}</div>
         <div v-if="item.tag" class="cards__tag">{{ item.tag }}</div>

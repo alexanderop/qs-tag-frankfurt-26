@@ -413,7 +413,7 @@ TIME: 8:15–8:40 (25s)
 - [click] Ungültiger Code, Fehlermeldung.
 - [click] Gutschein entfernen, voller Preis.
 - Die Akzeptanzkriterien sind das **Testorakel**: Was ist richtig, was ist falsch? Unklare Kriterien, unklares Urteil. Das ist euer Handwerk, ich komme am Ende darauf zurück.
-- Auf der Folie leicht gekürzt. Original: `docs/tickets/SHOP-42-gutschein.md`, Commit c6c529e.
+- Auf der Folie leicht gekürzt: Die zwei Regeln (Gutschein bleibt nach Reload, höchstens ein Gutschein) fehlen, sie tauchen im Report wieder auf. Original: `docs/tickets/SHOP-42-gutschein.md`, Commit c6c529e.
 -->
 
 ---
@@ -887,7 +887,7 @@ VOICE-OVER:
   </div>
   <div class="rep__body">
     <div>
-      <div class="rep__h">Szenarien aus dem Ticket</div>
+      <div class="rep__h">Ticket: Szenarien + Regeln</div>
       <div class="rep__row"><span class="pill is-pass">PASS</span>Gültiger Gutschein</div>
       <div class="rep__row"><span class="pill is-pass">PASS</span>Ungültiger Gutschein</div>
       <div class="rep__row"><span class="pill is-pass">PASS</span>Gutschein entfernen</div>
@@ -903,7 +903,7 @@ VOICE-OVER:
       <div class="rep__row"><span class="pill is-minor">MINOR</span><b>F5</b> Leere Eingabe meldet „ungültig“</div>
     </div>
   </div>
-  <div class="rep__foot">Pro Fund: Repro-Schritte · Erwartet vs. Ist · Beleg · Ursache (<code>useCoupon.ts:14</code>)</div>
+  <div class="rep__foot">Pro Fund: Repro-Schritte · Erwartet vs. Ist · Beleg · Ursache (<code>useCoupon.ts:15</code>)</div>
 </div>
 
 <style>
@@ -928,10 +928,10 @@ VOICE-OVER:
 TIME: 15:25–15:55 (30s)
 
 - Das Urteil ist eines von drei festen Werten: HEALTHY, MINOR_ISSUES, CRITICAL_BUGS.
-- Links: Alle Ticket-Szenarien und Regeln grün.
+- Links: Alle Ticket-Szenarien grün, dazu die zwei Regeln aus dem Ticket (Reload, höchstens ein Gutschein), die ich auf der Ticket-Folie weggelassen habe.
 - Rechts: fünf Funde, zwei davon kritisch.
 - F4 ist sogar ein Sicherheitsproblem. Mit einem manipulierten Cookie bekommt man 500 € Rabatt.
-- Dazu Belege und die Ursache für den Entwickler: `useCoupon.ts:14`. Er schlägt sogar den Fix vor.
+- Dazu Belege und die Ursache für den Entwickler: `useCoupon.ts:15`. Er schlägt sogar den Fix vor.
 - Ein Dollar für einen QA-Lauf, der mich als Mensch eine halbe Stunde gekostet hätte.
 - **Ehrlich sagen:** Einen Bug habe ich absichtlich eingebaut: Der Rabatt wird beim Einlösen als fester Betrag gespeichert. Der QA-Agent wusste das nicht, der Commit heißt neutral „Rabatt beim Einlösen berechnen und speichern“. Aus dem einen Bug hat er vier Funde gemacht.
 - SOURCE: otto-nuxt-shop Commit 302bad8, docs/reports/SHOP-42-qa-report.md
@@ -1009,7 +1009,7 @@ claude -p "$(envsubst < .github/prompts/qa.md)" \
 
 <div class="qa-x mt-5">
   <template v-if="$clicks === 0"><span>Testauftrag</span>Der Prompt liegt als Datei im Repo: versioniert und reviewbar. PR-Nummer und Branch werden eingesetzt.</template>
-  <template v-else-if="$clicks === 1"><span>Timebox</span>Bei 10 $ ist Schluss. Wie eine Timebox im explorativen Testen. Echte Läufe: etwa 1,30 $.</template>
+  <template v-else-if="$clicks === 1"><span>Timebox</span>Bei 10 $ ist Schluss. Wie eine Timebox im explorativen Testen. Echte Läufe: 1 bis 2 $.</template>
   <template v-else-if="$clicks === 2"><span>Rechte</span>Er darf den Browser bedienen, das Ticket lesen und den Report schreiben. Sonst nichts.</template>
   <template v-else-if="$clicks === 3"><span>Testergebnis</span><div class="qa-json"><pre>{ "verdict": "CRITICAL_BUGS",
   "summary": "3 Fehler, Ursache useCoupon.ts:15" }</pre><div>Ein fester Wert statt Prosa. Daran hängt ein <code>if</code>: <b class="text-[#ff6bed]">rot oder grün</b>.</div></div></template>
@@ -1031,7 +1031,7 @@ TIME: 16:55–17:40 (45s)
 
 - Bevor wir den ganzen Workflow sehen: die eine Zeile, in der der Agent läuft. Für euch übersetzt.
 - **Prompt als Datei:** Das ist der Testauftrag. Er liegt im Repo, wird reviewt wie Code. `envsubst` setzt PR-Nummer und Branch ein.
-- [click] **Budget:** 10 $ Deckel. Das ist eure Timebox. Echte Läufe kosten etwa 1,20 bis 1,30 $.
+- [click] **Budget:** 10 $ Deckel. Das ist eure Timebox. Echte Läufe kosten 1 bis gut 2 $, je nachdem, wie weit er explorativ sucht.
 - [click] **Erlaubte Tools:** eine Whitelist. Browser, Ticket lesen, Report schreiben. `curl` ist bewusst nicht dabei.
 - [click] **JSON-Schema:** Das ist der Trick, warum das in einer Pipeline funktioniert. Ein LLM antwortet normalerweise in Prosa: „Sieht größtenteils gut aus …“. Ist das grün oder rot? Mit `--json-schema` muss es dieses JSON liefern, und Claude Code prüft das Format. Der Weg dahin ist kreativ, das Urteil ist ein fester Wert. Danach ist es ein ganz normales `if`: CRITICAL_BUGS heißt `exit 1`, PR rot. Wie in Xray: passed, failed, blocked. Niemand trägt „fast bestanden“ ein.
 - [click] **Live-Log:** Jeder Tool-Aufruf steht im Actions-Log. Nachvollziehbar wie ein Testprotokoll.
@@ -1043,7 +1043,7 @@ TIME: 16:55–17:40 (45s)
 
 # So sieht der Lauf <span class="text-[#ff6bed]">im Terminal</span> aus
 
-<div class="text-sm opacity-60 -mt-2 mb-2">Echter lokaler Lauf auf feat/gutschein, Ausgabe gekürzt</div>
+<div class="text-sm opacity-60 -mt-2 mb-2">Echter lokaler Lauf auf feat/gutschein, Ausgabe gekürzt · ein neuer Lauf, nicht der Report von vorhin</div>
 
 <div class="term">
 
@@ -1075,6 +1075,7 @@ $ claude -p "$(envsubst < .github/prompts/qa.md)" … | node claude-live-log.mjs
 TIME: 17:40–18:10 (30s)
 
 - Genau dieser Befehl, bei mir lokal gestartet. Im Actions-Log sieht es genauso aus.
+- **Sagen:** „Das ist ein neuer Lauf, nicht der Report von vorhin. Darum andere Zahlen: andere Schritte, andere Kosten, gleiche Ursache.“
 - Jede Zeile ist ein Schritt. 💬 sagt, **warum** er etwas tut. 🔧 ist der echte Befehl.
 - Erst Ticket und Skill lesen, dann im Browser die Szenarien, dann explorativ.
 - [click] Die drei Funde, jeder mit Zahlen.
@@ -1538,4 +1539,53 @@ Nur bei Fragen. „Wie funktioniert Agent Browser eigentlich?“
 - **click @e2:** Er löst die Ref zur `backendNodeId` auf, misst mit `DOM.getBoxModel` die Box und berechnet den Mittelpunkt. Vorher prüft er, ob ein anderes Element darüberliegt (z. B. ein Cookie-Banner). Dann `Input.dispatchMouseEvent`: mouseMoved, mousePressed, mouseReleased. Für die Seite ist das ein echter Klick.
 - Playwright ist nicht beteiligt. Chrome kommt aus „Chrome for Testing“, der Rest ist Rust.
 - SOURCE: github.com/vercel-labs/agent-browser @4b0e9f0, README „Architecture“; cli/src/native/snapshot.rs (INTERACTIVE_ROLES, getFullAXTree), cli/src/native/element.rs (resolve_element_center, DOM.getBoxModel), cli/src/native/interaction.rs (click, dispatch_click). Installierte Version 0.38.2.
+-->
+
+---
+
+# <span class="text-[#ff6bed]">Quellen</span>
+
+<div class="src">
+  <div>
+    <h3>Zitate &amp; Artikel</h3>
+    <ul>
+      <li>Boris Cherny bei Lenny's Podcast, 19.02.2026 (41:25, 43:06)<br><span>youtube.com/watch?v=We7BZVKbCVw</span></li>
+      <li>Cat Wu: „Product management on the AI exponential“<br><span>claude.com/resources/articles/product-management-on-the-ai-exponential</span></li>
+      <li>Ismail Amla: „O-Shaped People: How AI Is Blowing Up Titles“, LinkedIn, 12.08.2026</li>
+    </ul>
+    <h3>Tools</h3>
+    <ul>
+      <li>Agent Browser (v0.38.2)<br><span>github.com/vercel-labs/agent-browser</span></li>
+      <li>pstack, <code>/create-verification-skill</code> (v0.15.36)<br><span>github.com/cursor/plugins/tree/main/pstack · x.com/poteto</span></li>
+      <li>Atlassian Remote MCP &amp; Jira Automation<br><span>support.atlassian.com/rovo · support.atlassian.com/cloud-automation</span></li>
+    </ul>
+  </div>
+  <div>
+    <h3>Demo</h3>
+    <ul>
+      <li>Otto-Klon mit Skill, Workflow, QA-Report<br><span>github.com/alexanderop/otto-nuxt-shop</span></li>
+      <li>Echter QA-Kommentar im PR<br><span>github.com/alexanderop/otto-nuxt-shop/pull/1</span></li>
+    </ul>
+    <h3>Mein Blog · alexop.dev</h3>
+    <ul>
+      <li>The Factory Must Grow<br><span>alexop.dev/posts/the-factory-must-grow-ai-moved-the-bottleneck</span></li>
+      <li>Delivery Factory (spielbar)<br><span>alexop.dev/lab/delivery-factory</span></li>
+      <li>Building an AI QA Engineer with Claude Code and Playwright MCP<br><span>alexop.dev/posts/building_ai_qa_engineer_claude_code_playwright</span></li>
+      <li>How to Use Claude Code as an AI QA Tester with Agent Browser<br><span>alexop.dev/posts/automated-qa-claude-code-agent-browser-cli-github-actions</span></li>
+      <li>Playwright CLI vs MCP<br><span>alexop.dev/notes/playwright-cli-vs-mcp</span></li>
+    </ul>
+  </div>
+</div>
+
+<style>
+.src { display: grid; grid-template-columns: 1fr 1.15fr; gap: 28px; margin-top: -8px; }
+.src h3 { color: #ff6bed; font-size: 13px; margin: 8px 0 2px; text-transform: uppercase; letter-spacing: .05em; }
+.src ul { margin: 0; padding-left: 14px; font-size: 12px; line-height: 1.3; }
+.src li { margin: 2px 0; }
+.src li span { opacity: .55; font-size: 10.5px; white-space: nowrap; }
+</style>
+
+<!--
+Letzte Folie. Alle Quellen aus dem Talk an einem Ort. Wer den Link zu den Slides hat (QR-Code auf der Danke-Folie), findet sie hier.
+- Fehlt noch: Urheber des Trichter-Diagramms (siehe TODO auf der Trichter-Folie).
 -->
