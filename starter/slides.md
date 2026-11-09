@@ -191,7 +191,7 @@ TIME: 4:00–4:45 (45s)
 clicks: 1
 ---
 
-# Was braucht die Codebase, damit Agents <span class="text-[#ff6bed]">selbstständig</span> Features bauen?
+# Wie fangen wir Fehler ab, wenn Agents <span class="text-[#ff6bed]">selbstständig</span> Features bauen?
 
 <VerificationFunnel />
 
@@ -202,7 +202,7 @@ clicks: 1
 <!--
 TIME: 4:45–5:15 (30s)
 
-- **Frage an den Saal:** Wie muss ich meine Codebase und Struktur aufbauen, damit ein Agent ein Feature komplett allein umsetzen kann? Antwort: mehrere Schichten, die Fehler abfangen.
+- **Frage an den Saal:** Wie fangen wir Fehler ab, wenn ein Agent ein Feature komplett allein umsetzt? Anders gefragt: Was braucht es, damit wir Agenten-Code abnehmen können? Antwort: mehrere Schichten, die Fehler abfangen.
 - Ein Trichter: Oben fängt man am meisten ab, unten kommt nur noch durch, was alle Schichten davor übersehen haben.
 - Codebasis, statische Analyse, Verifikation, Prosa (Regeln für den Agenten, z. B. Skills und AGENTS.md), ganz unten der Mensch im Review.
 - [click] **Heute** geht es um die Mitte: Verifikation. Der Agent prüft empirisch im echten Browser, ob das Ticket erfüllt ist.
@@ -827,6 +827,67 @@ TIME: 12:55–13:55 (60s)
 
 ---
 
+# <span class="text-[#ff6bed]">Testmatrix</span> für das Bekannte, Charter für den Rest
+
+<div class="text-sm opacity-60 -mt-2 mb-3">Erst der Testentwurf, dann der Browser. Sortiert nach Risiko.</div>
+
+<div class="rub">
+  <div class="rub__row rub__head"><span>Risiko</span><span>Technik</span><span>Testfälle für SHOP-42</span></div>
+  <div class="rub__row"><i class="is-must">Pflicht</i><b>Akzeptanzkriterien</b><span>ein Testfall pro Gherkin-Szenario</span></div>
+  <div class="rub__row"><i class="is-high">hoch</i><b>Zustandsübergänge</b><span>einlösen → Menge ändern → Artikel entfernen → Reload</span></div>
+  <div class="rub__row"><i class="is-high">hoch</i><b>Grenzwerte</b><span>Menge 1 · Höchstmenge · letzter Artikel raus</span></div>
+  <div class="rub__row"><i class="is-high">hoch</i><b>Manipulation</b><span>Cookie und URL von Hand ändern</span></div>
+  <div class="rub__row"><i class="is-mid">mittel</i><b>Fehlerfall</b><span>Einlösen schlägt im Netzwerk fehl</span></div>
+  <div class="rub__row"><i class="is-low">niedrig</i><b>Barrierefreiheit</b><span>Einlösen nur per Tastatur</span></div>
+</div>
+
+<div v-click class="rub__results">
+  <span class="pill is-pass">PASS</span>
+  <span class="pill is-crit">FAIL</span>
+  <span class="pill is-major">FAIL · Bestandsfehler</span>
+  <span class="pill is-minor">BLOCKIERT</span>
+  <span class="pill is-info">INFO</span>
+  <span class="rub__per">pro Testfall: Soll · Ist · Beleg</span>
+</div>
+
+<div v-click class="mt-4 text-lg"><span class="text-[#ff6bed]">PASS</span> nur mit Beleg aus dem Browser. Danach explorative Sessions nach Charter.</div>
+
+<style>
+.rub { border: 1px solid rgba(255,255,255,.15); border-radius: 12px; overflow: hidden; background: #1a1d29; }
+.rub__row { display: grid; grid-template-columns: 90px 200px 1fr; gap: 16px; align-items: center; padding: 6px 18px; font-size: 16px; border-bottom: 1px solid rgba(255,255,255,.06); }
+.rub__row:last-child { border-bottom: 0; }
+.rub__row b { color: #f3e6c4; }
+.rub__row i { font-style: normal; font-size: 12px; font-weight: 700; }
+.rub__row i.is-must { color: #ff6bed; }
+.rub__row i.is-high { color: #ff8a8a; }
+.rub__row i.is-mid { color: #fdba74; }
+.rub__row i.is-low { color: #fde047; }
+.rub__head { background: rgba(255,255,255,.05); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: #ff6bed; }
+.rub__results { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 14px; }
+.rub__per { font-size: 14px; opacity: .7; margin-left: 8px; }
+.pill { font-size: 11px; font-weight: 800; letter-spacing: .04em; padding: 3px 12px; border-radius: 999px; }
+.pill.is-pass { background: rgba(74,222,128,.15); color: #6ee7a0; }
+.pill.is-crit { background: rgba(255,77,77,.18); color: #ff8a8a; }
+.pill.is-major { background: rgba(251,146,60,.18); color: #fdba74; }
+.pill.is-minor { background: rgba(250,204,21,.16); color: #fde047; }
+.pill.is-info { background: rgba(122,92,192,.35); color: #d9c9ff; }
+</style>
+
+<!--
+TIME: 13:55–14:40 (45s)
+
+- Meine Charter war eine Zeile Stichworte. Das reicht für die explorative Session, aber das Bekannte sollte ich nicht dem Zufall überlassen.
+- Also: **Testentwurf vor dem Browser.** Der Agent baut aus dem Ticket eine Testmatrix mit den Techniken, die ihr kennt: Akzeptanzkriterien, **Zustandsübergänge**, **Grenzwerte**, Manipulation, Fehlerfall, Barrierefreiheit. Sortiert nach **Risiko**: Preis- und Rabattlogik zuerst.
+  - Alle echten Funde aus dem Video waren Zustandsübergänge: einlösen, dann Menge ändern, dann Artikel entfernen. Die Technik hätte sie geplant gefunden statt zufällig.
+  - Der Testfall kommt aus dem Akzeptanzkriterium, nicht aus den vorhandenen Tests. „Nur X wird angezeigt“ heißt: IDs vergleichen, nicht „Liste ist nicht leer“.
+- [click] Feste Ergebnisse pro Testfall. **Bestandsfehler:** Bei FAIL prüft der Agent denselben Fall auf main. Ist er dort auch rot, wird das ein eigenes Ticket und blockiert diesen PR nicht. BLOCKIERT heißt: nicht ausführbar oder nicht reproduzierbar, mit Begründung.
+- [click] Abnahme-PASS nur mit Beleg aus der echten Oberfläche. Ein grüner Unit-Test allein reicht nicht. Und die Charter bleibt: Die Matrix deckt das Bekannte ab, die explorative Session das Unbekannte.
+- So baue ich das: Testmatrix-Vorlage, Report-Vorlage und **ein fertiger Beispiel-Report** liegen im Skill. Der Prompt sagt nur noch: „Erst Testmatrix nach Vorlage, dann ausführen, dann explorativ nach Charter.“
+- Die Zeilen Fehlerfall und Barrierefreiheit hat mein Lauf nicht ausgeführt. Das ist die Erweiterung.
+- SOURCE: QA-Skill aus einem Kundenprojekt (Idee: Yannick Foelsing), privater Gist alexopotto/2e5b7f09afd15fd3dfdd825515ba9d1d. Kundennamen nicht nennen.
+-->
+---
+
 # Demo: Erst das Ticket, dann <span class="text-[#ff6bed]">explorativ</span>
 
 <AnnotatedVideo
@@ -848,7 +909,7 @@ TIME: 12:55–13:55 (60s)
 />
 
 <!--
-TIME: 13:55–15:25 (90s)
+TIME: 14:40–16:10 (90s)
 
 - Ein **zweiter** Agent, der QA-Agent, prüft den PR. Er hat den Code nicht geschrieben.
 - Das ist das echte Video des QA-Agenten, von ihm selbst mit `agent-browser record` aufgenommen. Rechts die Kapitel, ein Klick springt hin.
@@ -903,7 +964,7 @@ VOICE-OVER:
       <div class="rep__row"><span class="pill is-minor">MINOR</span><b>F5</b> Leere Eingabe meldet „ungültig“</div>
     </div>
   </div>
-  <div class="rep__foot">Pro Fund: Repro-Schritte · Erwartet vs. Ist · Beleg · Ursache (<code>useCoupon.ts:15</code>)</div>
+  <div class="rep__foot">Pro Fund: Repro-Schritte · Soll vs. Ist · Beleg · Ursache (<code>useCoupon.ts:15</code>)</div>
 </div>
 
 <style>
@@ -925,7 +986,7 @@ VOICE-OVER:
 </style>
 
 <!--
-TIME: 15:25–15:55 (30s)
+TIME: 16:10–16:40 (30s)
 
 - Das Urteil ist eines von drei festen Werten: HEALTHY, MINOR_ISSUES, CRITICAL_BUGS.
 - Links: Alle Ticket-Szenarien grün, dazu die zwei Regeln aus dem Ticket (Reload, höchstens ein Gutschein), die ich auf der Ticket-Folie weggelassen habe.
@@ -951,7 +1012,7 @@ background: /bild-gherkin.jpeg
 </div>
 
 <!--
-TIME: 15:55–16:25 (30s)
+TIME: 16:40–17:10 (30s)
 
 - **Die Pointe.** Kurz Pause lassen.
 - Alle drei Szenarien waren grün. Ein klassischer E2E-Test wäre durchgelaufen.
@@ -977,7 +1038,7 @@ TIME: 15:55–16:25 (30s)
 <div class="mt-6 text-center text-xl opacity-80">Die Schleife ist dieselbe wie lokal. Nur der <b>Auslöser</b> ist jetzt ein Label.</div>
 
 <!--
-TIME: 16:25–16:55 (30s)
+TIME: 17:10–17:40 (30s)
 
 - Lokal funktioniert's. Jetzt soll es ohne mich laufen.
 - Ich setze am PR das Label `qa-verify`. Bewusst ein Label, nicht jeder Push: Ich entscheide, wann sich ein Lauf lohnt.
@@ -1027,7 +1088,7 @@ claude -p "$(envsubst < .github/prompts/qa.md)" \
 </style>
 
 <!--
-TIME: 16:55–17:40 (45s)
+TIME: 17:40–18:25 (45s)
 
 - Bevor wir den ganzen Workflow sehen: die eine Zeile, in der der Agent läuft. Für euch übersetzt.
 - **Prompt als Datei:** Das ist der Testauftrag. Er liegt im Repo, wird reviewt wie Code. `envsubst` setzt PR-Nummer und Branch ein.
@@ -1072,7 +1133,7 @@ $ claude -p "$(envsubst < .github/prompts/qa.md)" … | node claude-live-log.mjs
 </style>
 
 <!--
-TIME: 17:40–18:10 (30s)
+TIME: 18:25–18:55 (30s)
 
 - Genau dieser Befehl, bei mir lokal gestartet. Im Actions-Log sieht es genauso aus.
 - **Sagen:** „Das ist ein neuer Lauf, nicht der Report von vorhin. Darum andere Zahlen: andere Schritte, andere Kosten, gleiche Ursache.“
@@ -1122,7 +1183,7 @@ jobs:
 ```
 
 <!--
-TIME: 18:10–18:40 (30s)
+TIME: 18:55–19:25 (30s)
 
 - Das ist der echte Workflow aus dem Repo, gekürzt. Er ist am 07.11. mehrfach echt gelaufen.
 - **Trigger:** nur wenn ein Label gesetzt wird.
@@ -1150,7 +1211,7 @@ TIME: 18:10–18:40 (30s)
   </figure>
 </div>
 
-<div class="mt-4 text-center text-lg">Diesmal mit einem Sofa: <b class="text-[#ff6bed]">Gesamt −191,96 €</b>, Merge blockiert · <span class="opacity-70">110 Turns · 1,33 $ · 3,1 Min</span></div>
+<div class="mt-4 text-center text-lg">Diesmal mit einem Sofa: <b class="text-[#ff6bed]">Gesamt −191,96 €</b>, Quality Gate rot, Merge blockiert · <span class="opacity-70">110 Turns · 1,33 $ · 3,1 Min</span></div>
 
 <div class="mt-1 text-center text-sm opacity-60">Echter Kommentar · github.com/alexanderop/otto-nuxt-shop/pull/1</div>
 
@@ -1164,7 +1225,7 @@ TIME: 18:10–18:40 (30s)
 </style>
 
 <!--
-TIME: 18:40–19:10 (30s)
+TIME: 19:25–19:55 (30s)
 
 - So sieht das Ergebnis im echten PR aus. Kein Mockup, das ist PR #1 im Otto-Klon.
 - Links der Kopf: Erste Zeile ist das Urteil, CRITICAL_BUGS. Darunter, wogegen getestet wurde, der Link zum Video und eine Kurzfassung in zwei Sätzen. Ein Reviewer weiß nach zehn Sekunden, was los ist.
@@ -1201,7 +1262,7 @@ TIME: 18:40–19:10 (30s)
 <div class="mt-4 text-center opacity-70">Alle Bausteine sind dokumentiert. Gebaut habe ich es noch nicht.</div>
 
 <!--
-TIME: 19:10–19:40 (30s)
+TIME: 19:55–20:25 (30s)
 
 - Noch ein Schritt weiter: Kein Label mehr. Der Status im Ticket ist der Auslöser.
 - Ein Dev schiebt das Ticket auf „In QA“.
@@ -1220,15 +1281,15 @@ TIME: 19:10–19:40 (30s)
 
 <div class="grenze mt-8">
   <div class="grenze__col">
-    <div class="grenze__h">Das kann der QA-Agent</div>
+    <div class="grenze__h">Verifikation · der QA-Agent</div>
     <div class="grenze__item"><img src="/icons/szenario-ok.webp" alt="Klemmbrett mit Haken" /><div><b>Funktioniert es so, wie wir es wollten?</b><small>jedes Szenario aus dem Ticket, mit Beleg</small></div></div>
     <div class="grenze__item"><img src="/icons/explorativ.webp" alt="Kompass mit Lupe und Käfer" /><div><b>Was haben wir nicht bedacht?</b><small>explorativ: Fälle, die keiner aufschrieb</small></div></div>
   </div>
   <div class="grenze__col is-human">
-    <div class="grenze__h">Das bleibt beim Menschen</div>
+    <div class="grenze__h">Validierung + Freigabe · der Mensch</div>
     <div class="grenze__item"><img src="/icons/shippen.webp" alt="Schiff und Hand auf Knopf" /><div><b>Wollen wir das überhaupt shippen?</b><small>Freigabe und Produktentscheidung</small></div></div>
     <div class="grenze__item"><img src="/icons/gefuehl.webp" alt="Herz mit Daumen hoch" /><div><b>Fühlt es sich gut an?</b><small>Geschmack lässt sich nicht als Gherkin schreiben</small></div></div>
-    <div class="grenze__item"><img src="/icons/fund-pruefen.webp" alt="Auge in Lupe über Käfer" /><div><b>Stimmt der kritische Fund?</b><small>bei CRITICAL_BUGS schaut jemand nach, ein Agent kann sich irren</small></div></div>
+    <div class="grenze__item"><img src="/icons/fund-pruefen.webp" alt="Auge in Lupe über Käfer" /><div><b>Stimmt der kritische Fund?</b><small>bei CRITICAL_BUGS schaut jemand nach: False Positive?</small></div></div>
   </div>
 </div>
 
@@ -1246,12 +1307,12 @@ TIME: 19:10–19:40 (30s)
 </style>
 
 <!--
-TIME: 19:40–20:55 (75s)
+TIME: 20:25–21:40 (75s)
 
-- Das eine Problem, das ich sehe. Der QA-Agent sagt mir zwei Dinge: Funktioniert das Feature so, wie wir es wollten? Und durch das explorative Testen: Was haben wir nicht bedacht?
+- Das eine Problem, das ich sehe. Links **Verifikation**, rechts **Validierung**. Der QA-Agent sagt mir zwei Dinge: Funktioniert das Feature so, wie wir es wollten? Und durch das explorative Testen: Was haben wir nicht bedacht?
 - Was er mir nicht sagt: Wollen wir das überhaupt shippen? Fühlt es sich gut an?
 - Dafür brauchen wir trotzdem einen Menschen. Ich sage: zum Glück. Der bestätigt am Ende und entscheidet über den Merge.
-- Bei CRITICAL_BUGS schaut jemand drauf, bevor es eskaliert. Ein Agent kann sich auch irren. Und wenn die Kriterien unklar sind, soll der Agent nachfragen statt raten.
+- Bei CRITICAL_BUGS schaut jemand drauf, bevor es eskaliert. Ein Agent kann sich auch irren: Ein **False Positive** kostet sonst einen Entwickler einen halben Tag. Und wenn die Kriterien unklar sind, soll der Agent nachfragen statt raten.
 - **Ausblick, meine Vermutung:** In Zukunft arbeiten wir wahrscheinlich mehr mit KPIs. Das Produkt passt sich automatisch an, je nachdem, wie Endnutzer es benutzen. Dann verbessert es sich selbst. Da sind wir aber noch nicht.
 - Falls gefragt, Grenzen aus meinen Läufen: nicht deterministisch (zwei Läufe, zwei Wege), Kosten (3,37 $ Skill, 0,90 $ Feature, 1,00 $ QA-Lauf), Fork-PRs bekommen keine Secrets, 4,2 % Recall im QA-Bench. TODO: QA-Bench-Quelle in research/ ablegen.
 -->
@@ -1265,7 +1326,7 @@ TIME: 19:40–20:55 (75s)
 2. **Mappe** per pstack: Skill plus Feature Map. <span>pstack</span>
 3. **Dev-Agent** baut das Feature und prüft es selbst im Browser. <span>Dev-Agent</span>
 4. **QA-Agent** prüft die Szenarien und testet explorativ. <span>QA-Agent</span>
-5. **GitHub Action** macht daraus ein festes Urteil: JSON, rot oder grün. <span>GitHub Action</span>
+5. **GitHub Action** ist das Quality Gate: JSON-Urteil, rot oder grün. <span>GitHub Action</span>
 6. **Ein Mensch** entscheidet über den Merge. <span>Ihr</span>
 
 </div>
@@ -1280,14 +1341,14 @@ TIME: 19:40–20:55 (75s)
 </style>
 
 <!--
-TIME: 20:55–21:25 (30s)
+TIME: 21:40–22:10 (30s)
 
 - Kurz zusammengefasst, was wir gesehen haben.
 - Ein normales Ticket mit Gherkin-Szenarien. Das ist das Testorakel.
 - Ein Befehl aus pstack baut die Einarbeitungsmappe: Skill plus Feature Map.
 - Der Dev-Agent baut das Feature und prüft es selbst im Browser.
 - Der QA-Agent prüft dieselben Szenarien und testet explorativ. Drei echte Bugs.
-- Die GitHub Action macht daraus ein festes Urteil. JSON, also rot oder grün.
+- Die GitHub Action ist das **Quality Gate**: ein festes JSON-Urteil, also rot oder grün.
 - Und am Ende entscheidet ein Mensch.
 - Die Fleißarbeit macht der Agent. Das Orakel schreibt ihr, und ihr entscheidet.
 -->
@@ -1304,7 +1365,7 @@ background: /bild-rolle.jpeg
 </div>
 
 <!--
-TIME: 21:25–21:55 (30s)
+TIME: 22:10–22:40 (30s)
 
 - **Rückgriff:** „Am Anfang habe ich euch eine Antwort versprochen. Hier ist sie.“
 - Diese Frage stellt sich gerade jeder hier im Saal. Also spreche ich sie offen aus.
@@ -1337,7 +1398,7 @@ TIME: 21:25–21:55 (30s)
 </style>
 
 <!--
-TIME: 21:55–22:40 (45s)
+TIME: 22:40–23:25 (45s)
 
 - Boris Cherny hat Claude Code bei Anthropic gebaut.
 - Übersetzt: Der Titel Software Engineer verschwindet an manchen Stellen. Stattdessen heißt es einfach **Builder**. Bei Anthropic codet laut ihm jeder: PM, Designerin, sogar der Finanzer.
@@ -1380,7 +1441,7 @@ TIME: 21:55–22:40 (45s)
 </style>
 
 <!--
-TIME: 22:40–23:25 (45s)
+TIME: 23:25–24:10 (45s)
 
 - Links: So haben wir vor KI eingestellt. **T-shaped**: ein bisschen Code, Design, Produkt, und tief in einer Box. Bei euch: Qualität.
 - Rechts: Mit KI werden Leute **O-shaped**. Ismail Amla nennt das so: rund und flexibel, die stärkste Stärke wechselt je nach Problem. Mit KI kann man kurz in eine andere Disziplin wechseln und wieder zurück.
@@ -1394,10 +1455,10 @@ layout: statement
 
 # Der Agent hat den Bug gefunden,<br/>weil jemand gute <span class="text-[#ff6bed]">Vorarbeit</span> gemacht hat.
 
-<div class="mt-8 text-2xl opacity-80">Gherkin-Szenarien, Test-Charter, Feature Map.<br/>Das ist <b>eure</b> Arbeit, nur eine Ebene höher.</div>
+<div class="mt-8 text-2xl opacity-80">Gherkin-Szenarien, Testentwurf, Test-Charter, Feature Map.<br/>Das ist <b>eure</b> Arbeit, nur eine Ebene höher.</div>
 
 <!--
-TIME: 23:25–23:55 (30s)
+TIME: 24:10–24:40 (30s)
 
 - Die Wendung, die Mut machen soll.
 - Erinnert euch an die Demo: Der Agent kannte die Szenarien, weil sie jemand gut aufgeschrieben hat.
@@ -1418,7 +1479,7 @@ background: /bild-builder.jpeg
 </div>
 
 <!--
-TIME: 23:55–24:10 (15s)
+TIME: 24:40–24:55 (15s)
 
 - Der Schlusssatz. Langsam sagen, dann kurz stehen lassen.
 -->
@@ -1432,17 +1493,17 @@ TIME: 23:55–24:10 (15s)
 <IconCards :columns="3" size="lg" :items="[
   { icon: '/icons/issue.webp', title: 'Akzeptanzkriterien', sub: 'als Gherkin, die ein Agent prüfen kann' },
   { icon: '/icons/feature-map.webp', title: 'Browser + Feature Map', sub: 'ein Befehl, ein Nachmittag' },
-  { icon: '/icons/explorativ.webp', title: 'Explorativ suchen', sub: 'mit Rubrik, z. B. Accessibility', accent: true },
+  { icon: '/icons/explorativ.webp', title: 'Explorativ suchen', sub: 'mit Charter, z. B. Barrierefreiheit', accent: true },
 ]" no-clicks />
 
 </div>
 
 <!--
-TIME: 24:10–24:40 (30s)
+TIME: 24:55–25:25 (30s)
 
 - Kriterien zuerst. Ohne gute Kriterien kein gutes Urteil. Das bringt am meisten.
 - Browser und Feature Map: `npm i -g agent-browser` oder Playwright CLI, dann `/create-verification-skill`. Ein Nachmittag Arbeit. Danach pflegt ihr die Map wie Testdoku.
-- Bestätigen kann jeder Test. Der Wert kommt aus dem Explorativen. Gebt dem Agenten eine **Rubrik**, worauf er nebenbei achten soll. Bei uns Accessibility: Kommt man per Tab überall hin? Hat jedes Feld ein Label?
+- Bestätigen kann jeder Test. Der Wert kommt aus dem Explorativen. Gebt dem Agenten eine **Charter**, worauf er nebenbei achten soll. Bei uns Barrierefreiheit: Kommt man per Tab überall hin? Hat jedes Feld ein Label?
 - TODO vor dem Talk: Branch `feat/gutschein` pushen, sonst sieht das Publikum Ticket und Report nicht.
 -->
 
@@ -1469,7 +1530,7 @@ class: text-center
 <div class="mt-6 text-lg opacity-70">alexop.dev</div>
 
 <!--
-TIME: 24:40 + Q&A (5:20 Puffer bis 30:00)
+TIME: 25:25 + Q&A (4:35 Puffer bis 30:00)
 
 - Diese Folie bleibt während der Fragen stehen. Links die Slides, rechts das Repo mit Skill, Workflow und Report.
 - Wenn keiner fragt: „Wer von euch hat heute Morgen noch gestanden? Was nutzt ihr dafür?“
