@@ -103,7 +103,7 @@ TIME: 0:45–1:15 (30s)
 <!--
 TIME: 1:15–2:30 (75s)
 
-- [Ask for hands] Erst sollen **alle** aufstehen. „Letzter Talk des Tages, wir bewegen uns kurz.“
+- [click] [Ask for hands] Erst sollen **alle** aufstehen. „Letzter Talk des Tages, wir bewegen uns kurz.“
 - [click] „Setzt euch hin, wenn ihr KI nicht im Alltag nutzt.“ ChatGPT, Copilot, egal was.
 - [click] „Setzt euch hin, wenn KI bei euch keine Tests oder Testfälle schreibt.“
 - [click] „Setzt euch hin, wenn bei euch kein **Agent** selbst testet.“ Automatisch, im Browser oder in der Pipeline, ohne dass jemand klickt.
@@ -409,7 +409,7 @@ Szenario: Gutschein entfernen
 TIME: 8:15–8:40 (25s)
 
 - Ein ganz normales Ticket. User Story plus drei Gherkin-Szenarien.
-- [click] Gültiger Code, Summe sinkt.
+- Gültiger Code, Summe sinkt.
 - [click] Ungültiger Code, Fehlermeldung.
 - [click] Gutschein entfernen, voller Preis.
 - Die Akzeptanzkriterien sind das **Testorakel**: Was ist richtig, was ist falsch? Unklare Kriterien, unklares Urteil. Das ist euer Handwerk, ich komme am Ende darauf zurück.
@@ -555,7 +555,7 @@ $V proof warenkorb-nachher ; $V stop   # Belege bleiben
 TIME: 9:45–10:20 (35s)
 
 - So sieht ein Skill aus: eine Markdown-Datei in `.claude/skills/`. Links die ganze Mappe.
-- [click] Oben die **Beschreibung**. Nur die liest der Agent immer. Daran erkennt er: Wenn ich die UI beweisen soll, lade ich diesen Skill.
+- Oben die **Beschreibung**. Nur die liest der Agent immer. Daran erkennt er: Wenn ich die UI beweisen soll, lade ich diesen Skill.
 - [click] Harte Regeln. Port 3000 gehört einem anderen Projekt. Nur stoppen, was man selbst gestartet hat.
 - [click] Launch, [click] Doctor, [click] Drive, [click] Evidence und Cleanup: echte Befehle aus diesem Repo, keine Beispiele.
 - [click] Alles zusammen: eine Anleitung, die jeder Agent gleich abarbeitet. Jeder Agent startet den Shop auf **dieselbe** Weise. Ohne den Skill würde jeder Lauf anders anfangen.
@@ -609,7 +609,7 @@ files: |
 TIME: 10:20–10:45 (25s)
 
 - Und das ist eine Seite aus der Feature Map: der Warenkorb.
-- [click] Jede Datei hat dieselben vier Abschnitte.
+- Jede Datei hat dieselben vier Abschnitte.
 - [click] **Was gibt es?** Jedes Unterfeature mit erwartetem Verhalten.
 - [click] **Wie komme ich hin?** Aus Sicht der Nutzerin.
 - [click] **Wie bediene ich es?** Echte Befehle, die der Agent kopieren kann.
@@ -1041,11 +1041,11 @@ TIME: 16:40–17:10 (30s)
 TIME: 17:10–17:40 (30s)
 
 - Lokal funktioniert's. Jetzt soll es ohne mich laufen.
-- Ich setze am PR das Label `qa-verify`. Bewusst ein Label, nicht jeder Push: Ich entscheide, wann sich ein Lauf lohnt.
-- GitHub Actions startet den Shop. Mit demselben Skript aus dem Verification-Skill.
-- Claude Code findet über den PR das verlinkte GitHub-Issue (`Closes #2`). Das Issue ist das Ticket mit den Gherkin-Szenarien.
-- Er prüft im echten Browser, headless in der Cloud.
-- Der Report kommt mit Screenshots als Kommentar in den PR. Das Urteil entscheidet, ob der Check grün oder rot wird.
+- [click] Ich setze am PR das Label `qa-verify`. Bewusst ein Label, nicht jeder Push: Ich entscheide, wann sich ein Lauf lohnt.
+- [click] GitHub Actions startet den Shop. Mit demselben Skript aus dem Verification-Skill.
+- [click] Claude Code findet über den PR das verlinkte GitHub-Issue (`Closes #2`). Das Issue ist das Ticket mit den Gherkin-Szenarien.
+- [click] Er prüft im echten Browser, headless in der Cloud.
+- [click] Der Report kommt mit Screenshots als Kommentar in den PR. Das Urteil entscheidet, ob der Check grün oder rot wird.
 - Gleicher Skill, gleiche Feature Map, gleicher Report wie lokal.
 - SOURCE: alexop.dev „Building an AI QA Engineer with Claude Code and Playwright MCP“ (Label-Trigger) und „How to Use Claude Code as an AI QA Tester with Agent Browser“ (--json-schema).
 -->
