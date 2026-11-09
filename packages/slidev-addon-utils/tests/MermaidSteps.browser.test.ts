@@ -69,6 +69,21 @@ describe('given Mermaid 12 renders a flowchart with the theme config', () => {
       host.remove()
     })
   }
+
+  it('should expose subgraph ids so a step can reveal a whole group', async () => {
+    mermaid.initialize({ startOnLoad: false, ...(setupMermaid() as object) })
+    const host = document.createElement('div')
+    document.body.append(host)
+    const { svg } = await mermaid.render('canary-sub', `flowchart LR
+  a[A] --> job
+  subgraph job["Job"]
+    b[B] --> c[C]
+  end`, host)
+    host.innerHTML = svg
+    const els = collectStepElements(host.querySelector('svg')!)
+    expect([...els.nodes.keys()].sort()).toEqual(['a', 'b', 'c', 'job'])
+    host.remove()
+  })
 })
 
 describe('given a MermaidSteps diagram', () => {

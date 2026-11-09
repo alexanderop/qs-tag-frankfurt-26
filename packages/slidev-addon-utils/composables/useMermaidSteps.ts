@@ -32,6 +32,12 @@ export function collectStepElements(svg: SVGSVGElement): StepElements {
     if (id)
       add(nodes, id, node)
   }
+  // subgraphs render as `g.cluster` with id `<svg id>-<subgraph id>`
+  for (const cluster of svg.querySelectorAll('g.cluster[id]')) {
+    const id = cluster.id.startsWith(`${svg.id}-`) ? cluster.id.slice(svg.id.length + 1) : /^[^-]+-(.+)$/.exec(cluster.id)?.[1]
+    if (id)
+      add(nodes, id, cluster)
+  }
   for (const el of svg.querySelectorAll('[data-id]')) {
     const id = (el as HTMLElement).dataset.id!
     if (nodes.has(id))

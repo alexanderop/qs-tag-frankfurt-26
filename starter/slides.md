@@ -32,6 +32,13 @@ info: |
 
 <!--
 Event-Cover. Steht, während der Raum sich setzt. Nicht getimt.
+
+Wenn alle sitzen:
+
+- „Hallo zusammen! Schön, dass ihr alle hier in meiner Session seid.“
+- „Ich hoffe, ihr hattet bis jetzt einen guten Tag und habt schon viel gelernt.“
+- „… und ihr habt noch ein bisschen Energie übrig für meinen Slot.“
+- [click] → Titel-Slide
 -->
 
 ---
@@ -85,6 +92,8 @@ TIME: 0:45–1:15 (30s)
 
 # 🙋 Alle <span class="text-[#ff6bed]">aufstehen</span>, bitte
 
+<HamcrabPose class="absolute right-12 top-4" :size="150" :pose="['sit', 'dance', 'stand', 'tired', 'sit', 'clap'][$clicks] ?? 'clap'" />
+
 <div class="text-xl opacity-70 -mt-2">Dann setzt euch hin, wenn …</div>
 
 <div class="mt-8">
@@ -109,6 +118,7 @@ TIME: 1:15–2:30 (75s)
 - [click] „Setzt euch hin, wenn bei euch kein **Agent** selbst testet.“ Automatisch, im Browser oder in der Pipeline, ohne dass jemand klickt.
 - [click] Wer jetzt noch steht: Applaus, und ich will nach dem Talk mit euch reden. Kurz fragen: „Was nutzt ihr dafür?“
 - Danach alle hinsetzen lassen. „Für alle, die sitzen: Genau darum geht's in den nächsten 30 Minuten.“
+- Der Hamcrab oben rechts macht mit: sitzt → tanzt beim Aufstehen → wird müde → setzt sich → klatscht für alle, die noch stehen. Nicht kommentieren, nur wirken lassen.
 -->
 
 ---
@@ -887,12 +897,15 @@ TIME: 13:55–14:40 (45s)
 - SOURCE: QA-Skill aus einem Kundenprojekt (Idee: Yannick Foelsing), privater Gist alexopotto/2e5b7f09afd15fd3dfdd825515ba9d1d. Kundennamen nicht nennen.
 -->
 ---
+clicks: 10
+---
 
 # Demo: Erst das Ticket, dann <span class="text-[#ff6bed]">explorativ</span>
 
-<AnnotatedVideo
+<AnnotatedStills
   class="mt-2"
-  src="/shop42-qa-run.webm"
+  dir="/shop42"
+  :step="$clicks"
   :chapters="[
     { t: 0, text: 'Mascara in den Warenkorb legen' },
     { t: 4, text: 'Szenario 1: SPAR10 einlösen → −0,89 €', kind: 'pass' },
@@ -912,26 +925,25 @@ TIME: 13:55–14:40 (45s)
 TIME: 14:40–16:10 (90s)
 
 - Ein **zweiter** Agent, der QA-Agent, prüft den PR. Er hat den Code nicht geschrieben.
-- Das ist das echte Video des QA-Agenten, von ihm selbst mit `agent-browser record` aufgenommen. Rechts die Kapitel, ein Klick springt hin.
-- LIVE-OPTION (wenn WLAN stabil): im Repo otto-nuxt-shop auf `feat/gutschein` `claude` starten, Prompt aus Folie „Prompt 2“. Dauert etwa 2,5 Minuten. Sonst dieses Video.
-- Das Video ist 1:20 lang. Sprich einfach mit, die Einblendung sagt dir, wo du bist.
+- Das sind Standbilder aus dem echten Video des QA-Agenten, von ihm selbst mit `agent-browser record` aufgenommen. Jeder Klick springt ein Kapitel weiter (11 Bilder, 10 Klicks). Rechts die Kapitel-Liste.
+- LIVE-OPTION (wenn WLAN stabil): im Repo otto-nuxt-shop auf `feat/gutschein` `claude` starten, Prompt aus Folie „Prompt 2“. Dauert etwa 2,5 Minuten. Sonst diese Bilder.
 
-VOICE-OVER:
-- **0:00** „Der Agent startet auf der Startseite und legt eine Mascara in den Warenkorb.“
-- **0:04** „Szenario 1: Er löst SPAR10 ein. 89 Cent Rabatt, Gesamt 14 Euro. Grün.“
-- **0:09** „Szenario 2: GIBTSNICHT. Die Fehlermeldung kommt. Grün.“
-- **0:15 VIDEO ANHALTEN.** „Alle drei Szenarien aus dem Ticket: grün. Bis hier hätte das auch ein E2E-Test gekonnt. Ab jetzt steht nichts mehr im Ticket.“
-- [Ask for hands] **„Ihr seid die Tester: Wo würdet ihr jetzt suchen?“** Zwei, drei Zurufe abwarten (Menge? Leerzeichen? Entfernen?). Dann weiter abspielen.
-- „Er tippt den Code klein und mit Leerzeichen. Funktioniert.“
-- **0:20** „Jetzt erhöht er die Menge auf 5. Achtet auf den Rabatt: Er bleibt bei 89 Cent. Das ist der erste Fund.“
-- **0:29** „Er dreht es um: bei 9 Stück einlösen, dann auf 1 runter. 8,05 Euro Rabatt auf 8,94 Euro. Das sind 90 Prozent.“
-- **0:37** „Szenario 3 nebenbei: Gutschein entfernen, voller Preis. Grün.“
-- **0:40** „Leere Eingabe, Reload. Hier sagt der Shop ‚ungültig‘ statt ‚bitte Code eingeben‘. Kleinigkeit.“
-- **1:02** „Jetzt wird er gemein: Er legt eine Zitrone für 71 Cent dazu …“
-- **1:10** „… und entfernt die Mascara. Gesamtsumme: minus 1,39 Euro.“
-- **1:15** „Zum Schluss manipuliert er das Cookie. 500 Euro Rabatt. Das wäre ein echter Preis-Exploit.“
+VOICE-OVER (pro Bild):
+- **Bild 1** „Der Agent startet auf der Startseite und legt eine Mascara in den Warenkorb.“
+- [click] **Bild 2** „Szenario 1: Er löst SPAR10 ein. 89 Cent Rabatt, Gesamt 14 Euro. Grün.“
+- [click] **Bild 3** „Szenario 2: GIBTSNICHT. Die Fehlermeldung kommt. Grün.“
+- **HIER STEHEN BLEIBEN.** „Alle Szenarien aus dem Ticket bis hier: grün. Das hätte auch ein E2E-Test gekonnt. Ab jetzt steht nichts mehr im Ticket.“
+- [Ask for hands] **„Ihr seid die Tester: Wo würdet ihr jetzt suchen?“** Zwei, drei Zurufe abwarten (Menge? Leerzeichen? Entfernen?).
+- [click] **Bild 4** „Er tippt den Code klein und mit Leerzeichen. Funktioniert.“
+- [click] **Bild 5** „Jetzt erhöht er die Menge auf 5. Achtet auf den Rabatt: Er bleibt bei 89 Cent. Das ist der erste Fund.“
+- [click] **Bild 6** „Er dreht es um: bei 9 Stück einlösen, dann auf 1 runter. 8,05 Euro Rabatt auf 8,94 Euro. Das sind 90 Prozent.“
+- [click] **Bild 7** „Szenario 3 nebenbei: Gutschein entfernen, voller Preis. Grün.“
+- [click] **Bild 8** „Leere Eingabe, Reload. Hier sagt der Shop ‚ungültig‘ statt ‚bitte Code eingeben‘. Kleinigkeit.“
+- [click] **Bild 9** „Jetzt wird er gemein: Er legt eine Zitrone für 71 Cent dazu …“
+- [click] **Bild 10** „… und entfernt die Mascara. Gesamtsumme: minus 1,39 Euro.“
+- [click] **Bild 11** „Zum Schluss manipuliert er das Cookie. 500 Euro Rabatt. Das wäre ein echter Preis-Exploit.“
 
-- Kapitel-Zeiten sind aus einzelnen Frames des Videos abgelesen (±1 s). Zwischen 0:40 und 1:02 passiert wenig: Zeit für die Erklärung, dass bisher alles nach Ticket grün ist.
+- Kapitel-Zeiten sind aus einzelnen Frames des Videos abgelesen (±1 s). Standbilder: `public/shop42/00–10.webp`, je der Moment, in dem das Ergebnis sichtbar ist. Die Meldung bei leerer Eingabe (Bild 8) ist im Video nicht zu sehen, nur im Report.
 -->
 
 ---
@@ -1011,11 +1023,23 @@ background: /bild-gherkin.jpeg
 
 </div>
 
+<div v-click class="sofa-shock">
+  <HamcrabPose v-if="$clicks >= 1" pose="shock" :size="140" />
+  <div class="sofa-shock__tag">Gesamt <b>−191,96 €</b></div>
+</div>
+
+<style>
+.sofa-shock { position: absolute; left: 60px; bottom: 34px; display: flex; align-items: center; gap: 4px; }
+.sofa-shock__tag { margin-left: -24px; transform: rotate(-6deg); padding: 10px 18px; border-radius: 10px; background: #ff6bed; color: #1a1d29; font-size: 22px; font-weight: 700; box-shadow: 0 6px 20px rgba(0,0,0,.4); }
+.sofa-shock__tag b { font-size: 30px; color: #1a1d29 !important; }
+</style>
+
 <!--
 TIME: 16:40–17:10 (30s)
 
 - **Die Pointe.** Kurz Pause lassen.
 - Alle drei Szenarien waren grün. Ein klassischer E2E-Test wäre durchgelaufen.
+- [click] Hamcrab geschockt mit dem Preisschild: −191,96 €. Kurz wirken lassen, Lacher abwarten.
 - Der Agent hat das gemacht, was gute Tester machen: Er hat Fragen gestellt, die keiner aufgeschrieben hat.
 -->
 
@@ -1072,7 +1096,8 @@ claude -p "$(envsubst < .github/prompts/qa.md)" \
   <template v-if="$clicks === 0"><span>Testauftrag</span>Der Prompt liegt als Datei im Repo: versioniert und reviewbar. PR-Nummer und Branch werden eingesetzt.</template>
   <template v-else-if="$clicks === 1"><span>Timebox</span>Bei 10 $ ist Schluss. Wie eine Timebox im explorativen Testen. Echte Läufe: 1 bis 2 $.</template>
   <template v-else-if="$clicks === 2"><span>Rechte</span>Er darf den Browser bedienen, das Ticket lesen und den Report schreiben. Sonst nichts.</template>
-  <template v-else-if="$clicks === 3"><span>Testergebnis</span><div class="qa-json"><pre>{ "verdict": "CRITICAL_BUGS",
+  <template v-else-if="$clicks === 3"><span>Testergebnis</span><div class="qa-json"><pre>{ "passed": false,
+  "verdict": "CRITICAL_BUGS",
   "summary": "3 Fehler, Ursache useCoupon.ts:15" }</pre><div>Ein fester Wert statt Prosa. Daran hängt ein <code>if</code>: <b class="text-[#ff6bed]">rot oder grün</b>.</div></div></template>
   <template v-else-if="$clicks === 4"><span>Testprotokoll</span>Jeder Schritt erscheint live im Actions-Log. Man sieht dem Agenten beim Testen zu.</template>
   <template v-else><span>Belege</span>Screenshots und Video hängen am Lauf. Fertig für das Defect-Ticket.</template>
@@ -1094,7 +1119,7 @@ TIME: 17:40–18:25 (45s)
 - **Prompt als Datei:** Das ist der Testauftrag. Er liegt im Repo, wird reviewt wie Code. `envsubst` setzt PR-Nummer und Branch ein.
 - [click] **Budget:** 10 $ Deckel. Das ist eure Timebox. Echte Läufe kosten 1 bis gut 2 $, je nachdem, wie weit er explorativ sucht.
 - [click] **Erlaubte Tools:** eine Whitelist. Browser, Ticket lesen, Report schreiben. `curl` ist bewusst nicht dabei.
-- [click] **JSON-Schema:** Das ist der Trick, warum das in einer Pipeline funktioniert. Ein LLM antwortet normalerweise in Prosa: „Sieht größtenteils gut aus …“. Ist das grün oder rot? Mit `--json-schema` muss es dieses JSON liefern, und Claude Code prüft das Format. Der Weg dahin ist kreativ, das Urteil ist ein fester Wert. Danach ist es ein ganz normales `if`: CRITICAL_BUGS heißt `exit 1`, PR rot. Wie in Xray: passed, failed, blocked. Niemand trägt „fast bestanden“ ein.
+- [click] **JSON-Schema:** Das ist der Trick, warum das in einer Pipeline funktioniert. Ein LLM antwortet normalerweise in Prosa: „Sieht größtenteils gut aus …“. Ist das grün oder rot? Mit `--json-schema` muss es dieses JSON liefern, und Claude Code prüft das Format. `passed` ist ein Boolean: true oder false, nichts dazwischen. Der Weg dahin ist kreativ, das Urteil ist ein fester Wert. Danach ist es ein ganz normales `if`: `passed: false` heißt `exit 1`, PR rot. Wie in Xray: passed, failed, blocked. Niemand trägt „fast bestanden“ ein.
 - [click] **Live-Log:** Jeder Tool-Aufruf steht im Actions-Log. Nachvollziehbar wie ein Testprotokoll.
 - [click] **Artefakt:** Screenshots und Video bleiben am Lauf. Das sind die Belege.
 - SOURCE: otto-nuxt-shop `.github/workflows/claude-qa.yml` (gekürzt: `--model opus`, `--max-turns 300` und die volle Tool-Liste fehlen), `.github/prompts/qa-verdict.schema.json`
@@ -1102,98 +1127,127 @@ TIME: 17:40–18:25 (45s)
 
 ---
 
-# So sieht der Lauf <span class="text-[#ff6bed]">im Terminal</span> aus
+<script setup>
+import { ref } from 'vue'
+import { onSlideEnter, onSlideLeave } from '@slidev/client'
 
-<div class="text-sm opacity-60 -mt-2 mb-2">Echter lokaler Lauf auf feat/gutschein, Ausgabe gekürzt · ein neuer Lauf, nicht der Report von vorhin</div>
+const ghLines = [
+  ['13:10:16', '💬', 'Ich suche zuerst das verlinkte Issue, um die Akzeptanzkriterien zu kennen.'],
+  ['13:10:18', '🔧', 'gh issue view 2'],
+  ['13:10:20', '💬', 'Ich lade den Skill verify-otto-shop, um zu wissen, wie ich den Shop bediene.'],
+  ['13:10:47', '🔧', 'agent-browser record start qa-report/video/qa-run.webm http://localhost:3100/p/1'],
+  ['13:11:03', '💬', 'Szenario „Gültiger Gutschein“: Ich löse SPAR10 ein und prüfe Rabattzeile und Gesamt.'],
+  ['13:11:25', '💬', 'Ich erhöhe die Menge auf 2 und schaue, ob der Rabatt auf 1,79 € mitwächst.'],
+  ['13:11:32', '💬', 'Ich lege das Sofa in den Warenkorb, löse SPAR10 ein …'],
+  ['13:11:42', '💬', 'Ich entferne jetzt nur das Sofa.'],
+  ['13:11:50', '💬', 'Kritischer Fund: Gesamtsumme −191,96 €. Ich lade neu, ob der Zustand bleibt.'],
+  ['13:12:30', '💬', 'Alle Belege liegen vor. Jetzt schreibe ich den Report.'],
+  ['13:13:00', '⚖️', 'passed: false · Urteil: CRITICAL_BUGS · Alle 3 Gherkin-Szenarien bestehen. Aber …'],
+  ['13:13:00', '', '=== success · passed: false · Urteil: CRITICAL_BUGS · 115 Turns · 1.17 $ · 2.8 Min ==='],
+]
 
-<div class="term">
+const isPrint = typeof document !== 'undefined' && document.documentElement.classList.contains('slidev-print')
+const shown = ref(isPrint ? ghLines.length : 0)
+let timer
+onSlideEnter(() => {
+  if (isPrint) return
+  shown.value = 0
+  clearInterval(timer)
+  timer = setInterval(() => {
+    if (shown.value >= ghLines.length) return clearInterval(timer)
+    shown.value++
+  }, 900)
+})
+onSlideLeave(() => clearInterval(timer))
+</script>
 
-```text {all|10-12|13-15}
-$ claude -p "$(envsubst < .github/prompts/qa.md)" … | node claude-live-log.mjs
-  1 💬 Zuerst suche ich das verlinkte Issue, weil es die Akzeptanzkriterien enthält.
-  4 🔧 gh issue view 2
-  5 🧩 Lade Skill verify-otto-shop
-  8 📖 Lese .claude/skills/verify-otto-shop/features/warenkorb.md
- 20 🔧 agent-browser record start qa-report/video/qa-run.webm http://localhost:3100/p/1
- 31 💬 Szenario 1: Ich löse SPAR10 ein und prüfe Rabattzeile und Gesamtsumme.
- 32 🔧 agent-browser find role textbox fill "SPAR10" --name "Gutscheincode"
- 44 💬 Explorativ: Ich erhöhe die Menge mit eingelöstem Gutschein, …
- 48 💬 Fund F1: Bei Menge 2 bleibt der Rabatt bei −0,89 € statt −1,79 €.
- 86 💬 Fund F2 bestätigt: 8,05 € Rabatt auf 8,94 € Zwischensumme (90 % statt 10 %).
-102 💬 Fund F3: Gesamtsumme ist negativ (−1,39 €).
-117 💬 Ursache gefunden: useCoupon.ts:15 speichert den Rabatt als festen Betrag.
-121 ⚖️ Urteil: CRITICAL_BUGS · Alle 3 Gherkin-Szenarien bestehen. 3 Fehler, gemeinsame Ursache.
-=== success · Urteil: CRITICAL_BUGS · 87 Turns · 2.12 $ · 4.1 Min ===
-```
+# Label setzen, dann <span class="text-[#ff6bed]">live zuschauen</span>
 
+<HamcrabPose class="absolute right-10 top-2" :size="130" :pose="shown >= ghLines.length - 1 ? 'popcorn-drop' : 'popcorn'" />
+
+<img src="/pr-label-qa-verify.png" class="gh-label mt-2" alt="PR-Timeline: alexanderop added the qa-verify label, darunter der Kommentar von github-actions mit dem QA-Report" />
+
+<div class="gh-log mt-3">
+  <div class="gh-log__step"><span class="gh-log__caret">⌄</span> <span class="gh-log__spin" :class="{ done: shown >= ghLines.length }"></span> Run set -o pipefail <span class="gh-log__job">QA im Browser</span></div>
+  <div v-for="(l, i) in ghLines.slice(0, shown)" :key="i" class="gh-log__line" :class="{ end: !l[1] }">
+    <span class="gh-log__no">{{ i + 1 }}</span><span class="gh-log__ts">{{ l[0] }}</span><span>{{ l[1] }} {{ l[2] }}</span>
+  </div>
 </div>
 
+<div class="mt-2 text-center text-sm opacity-60">Echter Lauf · github.com/alexanderop/otto-nuxt-shop/pull/1 · Log gekürzt, Zeitstempel echt</div>
+
 <style>
-.term .slidev-code { font-size: 14.5px !important; line-height: 1.5 !important; padding: 14px 18px !important; }
+.gh-label { width: 100%; height: 64px; object-fit: cover; object-position: top left; border-radius: 10px; border: 1px solid rgba(255,255,255,.18); }
+.gh-log { height: 280px; overflow: hidden; border-radius: 10px; border: 1px solid #30363d; background: #0d1117; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; line-height: 1.75; color: #e6edf3; display: flex; flex-direction: column; justify-content: flex-end; padding-bottom: 6px; }
+.gh-log__step { margin-bottom: auto; padding: 8px 14px; border-bottom: 1px solid #30363d; font-family: -apple-system, 'Segoe UI', sans-serif; font-size: 14px; font-weight: 600; display: flex; align-items: center; gap: 8px; }
+.gh-log__caret { color: #7d8590; }
+.gh-log__job { margin-left: auto; font-weight: 400; color: #7d8590; font-size: 12px; }
+.gh-log__spin { width: 12px; height: 12px; border-radius: 50%; border: 2px solid #d29922; border-right-color: transparent; animation: gh-spin .9s linear infinite; }
+.gh-log__spin.done { animation: none; border: none; background: #3fb950; }
+.gh-log__line { display: grid; grid-template-columns: 34px 78px 1fr; padding: 0 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.gh-log__line.end { color: #ff6bed; font-weight: 700; }
+.gh-log__no { color: #6e7681; text-align: right; padding-right: 12px; }
+.gh-log__ts { color: #7d8590; }
+@keyframes gh-spin { to { transform: rotate(360deg); } }
 </style>
 
 <!--
 TIME: 18:25–18:55 (30s)
 
-- Genau dieser Befehl, bei mir lokal gestartet. Im Actions-Log sieht es genauso aus.
-- **Sagen:** „Das ist ein neuer Lauf, nicht der Report von vorhin. Darum andere Zahlen: andere Schritte, andere Kosten, gleiche Ursache.“
-- Jede Zeile ist ein Schritt. 💬 sagt, **warum** er etwas tut. 🔧 ist der echte Befehl.
-- Erst Ticket und Skill lesen, dann im Browser die Szenarien, dann explorativ.
-- [click] Die drei Funde, jeder mit Zahlen.
-- [click] Er findet sogar die Ursache im Code. Und am Ende ein festes Urteil: CRITICAL_BUGS. 121 Schritte, 2,12 $, gut 4 Minuten.
-- Das ist euer Testprotokoll. Jeder Schritt ist nachvollziehbar.
-- SOURCE: lokaler Lauf am 2026-11-08 in otto-nuxt-shop (feat/gutschein, PR_NUMBER=1, gleicher Aufruf wie im Workflow). Ausgabe gekürzt: `--session`-Flag und absolute Pfade entfernt, Zeilen 44/102/117/121 verkürzt. Volles Log: `research/raw/2026-11-08-lokaler-qa-lauf.md`.
+- So sieht das im echten PR aus: Ich setze das Label `qa-verify`. Mehr mache ich nicht.
+- Unten das Actions-Log. Die Zeilen laufen live rein, während der Agent testet. Hier im Zeitraffer: knapp 3 Minuten in 11 Sekunden.
+- Man sieht ihm beim Denken zu: Issue lesen, Skill laden, Szenarien, dann explorativ. Das Sofa: −191,96 €.
+- Am Ende ein Urteil, kein Prosa-Text: `passed: false`, CRITICAL_BUGS. 1,17 $.
+- Läuft automatisch los beim Slide-Wechsel, kein Klick nötig. Der Hamcrab schaut mit Popcorn zu und lässt es beim Urteil fallen.
+- SOURCE: otto-nuxt-shop PR #1, Actions-Run 42622982046 vom 09.11., Job „QA im Browser“ (Log via `gh run view --log`)
 -->
 
 ---
-zoom: 0.72
----
 
-# Der echte <span class="text-[#ff6bed]">Workflow</span>
+# Was passiert, wenn jemand das <span class="text-[#ff6bed]">Label</span> setzt?
 
-<div class="text-sm opacity-60 -mt-2 mb-2">otto-nuxt-shop · .github/workflows/claude-qa.yml (gekürzt)</div>
+<div class="text-sm opacity-60 -mt-2 mb-2">otto-nuxt-shop · .github/workflows/claude-qa.yml, zwei Jobs</div>
 
-```yaml
-on:
-  pull_request:
-    types: [labeled]
-jobs:
-  qa:                      # Claude testet, nur Lesezugriff
-    if: github.event.label.name == 'qa-verify'
-    permissions: { contents: read, pull-requests: read, issues: read }
-    steps:
-      - run: .claude/skills/verify-otto-shop/scripts/otto-verify.sh launch
-      - env:
-          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
-        run: |
-          claude -p "$(envsubst < .github/prompts/qa.md)" \
-            --max-budget-usd 10 \
-            --allowedTools "Skill,Read,Write,Bash(agent-browser:*),Bash(gh issue view:*),…" \
-            --json-schema "$(cat .github/prompts/qa-verdict.schema.json)" \
-            --output-format stream-json --verbose | node claude-live-log.mjs
-      - uses: actions/upload-artifact@…   # qa-report/ mit Screenshots + Video
-  report:                  # ohne Claude: darf schreiben
-    needs: qa
-    permissions: { contents: write, pull-requests: write }
-    steps:
-      - run: |   # Screenshots auf Branch qa-evidence, Bild-Links einbetten
-          gh pr comment "$PR_NUMBER" --body-file comment.md
-      - run: |   # Merge-Gate
-          if [ "$VERDICT" = "CRITICAL_BUGS" ]; then exit 1; fi
+<MermaidSteps :steps="['dev', 'qa ticket claude e1', 'evidence e2', 'report comment gate e3', 'green red']" class="mt-2 flex justify-center">
+
+```mermaid {scale: 0.58}
+flowchart LR
+  dev@{ shape: person, label: "Label qa-verify am PR setzen" }
+  subgraph qa["Job 1: QA · nur lesen"]
+    direction TB
+    ticket@{ shape: doc, label: "Ticket lesen" }
+    claude@{ shape: browser, label: "Claude testet im Shop" }
+    ticket --> claude
+  end
+  evidence@{ shape: folder, label: "Urteil passed + Screenshots + Video" }
+  subgraph report["Job 2: Report · ohne KI, darf schreiben"]
+    direction TB
+    comment["💬 Kommentar mit Belegen"]
+    gate{"passed?"}
+    green["✅ Check grün"]
+    red["❌ Check rot"]
+    comment --> gate
+    gate -->|true| green
+    gate -->|false| red
+  end
+  dev e1@--> qa
+  qa e2@--> evidence
+  evidence e3@--> report
 ```
 
-<!--
-TIME: 18:55–19:25 (30s)
+</MermaidSteps>
 
-- Das ist der echte Workflow aus dem Repo, gekürzt. Er ist am 07.11. mehrfach echt gelaufen.
-- **Trigger:** nur wenn ein Label gesetzt wird.
-- **Job qa:** nur das Label qa-verify, und **nur Lesezugriff**. Der Agent kann nichts pushen und nichts kommentieren.
-- **Shop starten** mit dem Skript aus dem Verification-Skill. Kein eigenes CI-Setup.
-- **Claude Code über meine Subscription** (`claude setup-token`), kein API-Key. Den Aufruf selbst haben wir gerade gesehen.
-- Die Belege gehen als Artefakt raus.
-- **Job report, ohne Claude:** Er legt die Screenshots auf einen eigenen Branch, damit sie im Kommentar sichtbar sind, postet den Report und ist das Merge-Gate. Schreibrechte bekommt nur dieser Job.
-- Dazu im echten File: Actions per SHA gepinnt, zizmor im Pedantic-Modus ohne Befund.
-- SOURCE: otto-nuxt-shop Commits 25d6d59 (live log, budget) und e2f5950 (zwei Jobs, Screenshots); Blogposts „Building an AI QA Engineer…“ und „How to Use Claude Code as an AI QA Tester…“
+<!--
+TIME: 18:55–19:40 (45s)
+
+- Der echte Workflow aus dem Repo, als Bild. Den YAML-Code gibt es im Backup.
+- Jemand setzt am PR das Label `qa-verify`. Erst dann läuft der Agent los, nicht bei jedem Push.
+- [click] **Job 1:** Claude liest zuerst das Ticket mit den Akzeptanzkriterien, dann testet er im echten Browser. Dieser Job darf **nur lesen**: nichts pushen, nichts kommentieren, nichts mergen.
+- [click] Raus kommt ein festes Urteil, `passed` true oder false, plus Screenshots und Video.
+- [click] **Job 2, ohne KI:** Er postet den Kommentar mit den Belegen und prüft `passed`. Schreibrechte hat nur dieser Job.
+- [click] `true` → Check grün. `false` oder kein Urteil → Check rot.
+- Nicht sagen „Merge blockiert“: Im Demo-Repo ist der Check nicht als Pflicht-Check eingerichtet. In echten Projekten macht man ihn per Branch-Protection zur Pflicht.
+- SOURCE: otto-nuxt-shop `.github/workflows/claude-qa.yml` (Commit d650193)
 -->
 
 ---
@@ -1225,7 +1279,7 @@ TIME: 18:55–19:25 (30s)
 </style>
 
 <!--
-TIME: 19:25–19:55 (30s)
+TIME: 19:40–20:10 (30s)
 
 - So sieht das Ergebnis im echten PR aus. Kein Mockup, das ist PR #1 im Otto-Klon.
 - Links der Kopf: Erste Zeile ist das Urteil, CRITICAL_BUGS. Darunter, wogegen getestet wurde, der Link zum Video und eine Kurzfassung in zwei Sätzen. Ein Reviewer weiß nach zehn Sekunden, was los ist.
@@ -1262,7 +1316,7 @@ TIME: 19:25–19:55 (30s)
 <div class="mt-4 text-center opacity-70">Alle Bausteine sind dokumentiert. Gebaut habe ich es noch nicht.</div>
 
 <!--
-TIME: 19:55–20:25 (30s)
+TIME: 20:10–20:40 (30s)
 
 - Noch ein Schritt weiter: Kein Label mehr. Der Status im Ticket ist der Auslöser.
 - Ein Dev schiebt das Ticket auf „In QA“.
@@ -1307,7 +1361,7 @@ TIME: 19:55–20:25 (30s)
 </style>
 
 <!--
-TIME: 20:25–21:40 (75s)
+TIME: 20:40–21:55 (75s)
 
 - Das eine Problem, das ich sehe. Links **Verifikation**, rechts **Validierung**. Der QA-Agent sagt mir zwei Dinge: Funktioniert das Feature so, wie wir es wollten? Und durch das explorative Testen: Was haben wir nicht bedacht?
 - Was er mir nicht sagt: Wollen wir das überhaupt shippen? Fühlt es sich gut an?
@@ -1341,7 +1395,7 @@ TIME: 20:25–21:40 (75s)
 </style>
 
 <!--
-TIME: 21:40–22:10 (30s)
+TIME: 21:55–22:25 (30s)
 
 - Kurz zusammengefasst, was wir gesehen haben.
 - Ein normales Ticket mit Gherkin-Szenarien. Das ist das Testorakel.
@@ -1365,7 +1419,7 @@ background: /bild-rolle.jpeg
 </div>
 
 <!--
-TIME: 22:10–22:40 (30s)
+TIME: 22:25–22:55 (30s)
 
 - **Rückgriff:** „Am Anfang habe ich euch eine Antwort versprochen. Hier ist sie.“
 - Diese Frage stellt sich gerade jeder hier im Saal. Also spreche ich sie offen aus.
@@ -1398,7 +1452,7 @@ TIME: 22:10–22:40 (30s)
 </style>
 
 <!--
-TIME: 22:40–23:25 (45s)
+TIME: 22:55–23:40 (45s)
 
 - Boris Cherny hat Claude Code bei Anthropic gebaut.
 - Übersetzt: Der Titel Software Engineer verschwindet an manchen Stellen. Stattdessen heißt es einfach **Builder**. Bei Anthropic codet laut ihm jeder: PM, Designerin, sogar der Finanzer.
@@ -1441,7 +1495,7 @@ TIME: 22:40–23:25 (45s)
 </style>
 
 <!--
-TIME: 23:25–24:10 (45s)
+TIME: 23:40–24:25 (45s)
 
 - Links: So haben wir vor KI eingestellt. **T-shaped**: ein bisschen Code, Design, Produkt, und tief in einer Box. Bei euch: Qualität.
 - Rechts: Mit KI werden Leute **O-shaped**. Ismail Amla nennt das so: rund und flexibel, die stärkste Stärke wechselt je nach Problem. Mit KI kann man kurz in eine andere Disziplin wechseln und wieder zurück.
@@ -1458,7 +1512,7 @@ layout: statement
 <div class="mt-8 text-2xl opacity-80">Gherkin-Szenarien, Testentwurf, Test-Charter, Feature Map.<br/>Das ist <b>eure</b> Arbeit, nur eine Ebene höher.</div>
 
 <!--
-TIME: 24:10–24:40 (30s)
+TIME: 24:25–24:55 (30s)
 
 - Die Wendung, die Mut machen soll.
 - Erinnert euch an die Demo: Der Agent kannte die Szenarien, weil sie jemand gut aufgeschrieben hat.
@@ -1479,7 +1533,7 @@ background: /bild-builder.jpeg
 </div>
 
 <!--
-TIME: 24:40–24:55 (15s)
+TIME: 24:55–25:10 (15s)
 
 - Der Schlusssatz. Langsam sagen, dann kurz stehen lassen.
 -->
@@ -1499,7 +1553,7 @@ TIME: 24:40–24:55 (15s)
 </div>
 
 <!--
-TIME: 24:55–25:25 (30s)
+TIME: 25:10–25:40 (30s)
 
 - Kriterien zuerst. Ohne gute Kriterien kein gutes Urteil. Das bringt am meisten.
 - Browser und Feature Map: `npm i -g agent-browser` oder Playwright CLI, dann `/create-verification-skill`. Ein Nachmittag Arbeit. Danach pflegt ihr die Map wie Testdoku.
@@ -1514,25 +1568,26 @@ class: text-center
 
 # Danke! <span class="text-[#ff6bed]">Fragen?</span>
 
-<div class="flex justify-center gap-16 mt-8">
-  <div class="flex flex-col items-center">
-    <img src="/qr-slides.png" class="w-52 h-52 rounded" alt="QR-Code zu den Slides: alexanderop.github.io/qs-tag-frankfurt-26" />
-    <div class="mt-3 text-lg font-bold">Die Slides</div>
+<div class="finale mt-6">
+  <DancingHamcrab />
+  <div class="finale__qr">
+    <img src="/qr-slides.png" alt="QR-Code zu den Slides: alexanderop.github.io/qs-tag-frankfurt-26" />
+    <div class="mt-3 text-xl font-bold">Die Slides</div>
     <div class="text-sm opacity-60">alexanderop.github.io/qs-tag-frankfurt-26</div>
-  </div>
-  <div class="flex flex-col items-center">
-    <img src="/qr-otto-shop.png" class="w-52 h-52 rounded" alt="QR-Code zu github.com/alexanderop/otto-nuxt-shop" />
-    <div class="mt-3 text-lg font-bold">Der Otto-Klon</div>
-    <div class="text-sm opacity-60">github.com/alexanderop/otto-nuxt-shop</div>
+    <div class="mt-4 text-base opacity-70">Repo, Blogposts und Quellen sind darin verlinkt.</div>
   </div>
 </div>
 
-<div class="mt-6 text-lg opacity-70">alexop.dev</div>
+<style>
+.finale { display: grid; grid-template-columns: 1fr 1fr; align-items: center; justify-items: center; gap: 32px; }
+.finale__qr { display: flex; flex-direction: column; align-items: center; }
+.finale__qr img { width: 260px; height: 260px; border-radius: 8px; }
+</style>
 
 <!--
-TIME: 25:25 + Q&A (4:35 Puffer bis 30:00)
+TIME: 25:40 + Q&A (4:20 Puffer bis 30:00)
 
-- Diese Folie bleibt während der Fragen stehen. Links die Slides, rechts das Repo mit Skill, Workflow und Report.
+- Diese Folie bleibt während der Fragen stehen. Der Hamcrab tanzt weiter, rechts der QR-Code zu den Slides. Repo und Quellen sind in den Slides verlinkt.
 - Wenn keiner fragt: „Wer von euch hat heute Morgen noch gestanden? Was nutzt ihr dafür?“
 -->
 
@@ -1544,6 +1599,57 @@ layout: statement
 
 <!--
 Ab hier nur bei Fragen zeigen.
+-->
+
+---
+zoom: 0.72
+---
+
+# Der echte <span class="text-[#ff6bed]">Workflow</span>
+
+<div class="text-sm opacity-60 -mt-2 mb-2">otto-nuxt-shop · .github/workflows/claude-qa.yml (gekürzt)</div>
+
+```yaml
+on:
+  pull_request:
+    types: [labeled]
+jobs:
+  qa:                      # Claude testet, nur Lesezugriff
+    if: github.event.label.name == 'qa-verify'
+    permissions: { contents: read, pull-requests: read, issues: read }
+    steps:
+      - run: .claude/skills/verify-otto-shop/scripts/otto-verify.sh launch
+      - env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+        run: |
+          claude -p "$(envsubst < .github/prompts/qa.md)" \
+            --max-budget-usd 10 \
+            --allowedTools "Skill,Read,Write,Bash(agent-browser:*),Bash(gh issue view:*),…" \
+            --json-schema "$(cat .github/prompts/qa-verdict.schema.json)" \
+            --output-format stream-json --verbose | node claude-live-log.mjs
+      - uses: actions/upload-artifact@…   # qa-report/ mit Screenshots + Video
+  report:                  # ohne Claude: darf schreiben
+    needs: qa
+    permissions: { contents: write, pull-requests: write }
+    steps:
+      - run: |   # Screenshots auf Branch qa-evidence, Bild-Links einbetten
+          gh pr comment "$PR_NUMBER" --body-file comment.md
+      - run: |   # Merge-Gate
+          if [ "$PASSED" != "true" ]; then exit 1; fi
+```
+
+<!--
+BACKUP (bei Fragen nach dem Code)
+
+- Das ist der echte Workflow aus dem Repo, gekürzt. Er ist am 07.11. mehrfach echt gelaufen.
+- **Trigger:** nur wenn ein Label gesetzt wird.
+- **Job qa:** nur das Label qa-verify, und **nur Lesezugriff**. Der Agent kann nichts pushen und nichts kommentieren.
+- **Shop starten** mit dem Skript aus dem Verification-Skill. Kein eigenes CI-Setup.
+- **Claude Code über meine Subscription** (`claude setup-token`), kein API-Key. 
+- Die Belege gehen als Artefakt raus.
+- **Job report, ohne Claude:** Er legt die Screenshots auf einen eigenen Branch, damit sie im Kommentar sichtbar sind, postet den Report und ist das Merge-Gate (`passed` muss `true` sein). Schreibrechte bekommt nur dieser Job.
+- Dazu im echten File: Actions per SHA gepinnt, zizmor im Pedantic-Modus ohne Befund.
+- SOURCE: otto-nuxt-shop Commits 25d6d59 (live log, budget) und e2f5950 (zwei Jobs, Screenshots); Blogposts „Building an AI QA Engineer…“ und „How to Use Claude Code as an AI QA Tester…“
 -->
 
 ---
