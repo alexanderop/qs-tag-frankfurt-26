@@ -303,85 +303,119 @@ TIME: 6:10–7:00 (50s)
 -->
 
 ---
+clicks: 3
+---
 
 # So <span class="text-[#ff6bed]">sieht</span> der Agent eine Webseite
 
-<div class="ab mt-4">
+<div class="ab mt-3">
   <div class="ab__col">
     <div class="ab__h">Was ihr seht</div>
     <div class="ab__page">
       <div class="ab__pagebar"><i></i><i></i><i></i><span>otto-shop / warenkorb</span></div>
       <div class="ab__pagebody">
-        <div class="ab__el ab__title">Warenkorb <em>e1</em></div>
-        <div class="ab__label">Gutscheincode</div>
-        <div class="ab__row">
-          <div class="ab__el ab__input">SPAR10 <em>e3</em></div>
-          <div class="ab__el ab__btn">Einlösen <em>e2</em></div>
+        <div class="ab__el ab__title">Warenkorb <em v-show="$clicks >= 1">heading</em></div>
+        <div class="ab__sum">
+          <div><span>Zwischensumme</span><span>8,94 €</span></div>
+          <div><span>Versand</span><span>5,95 €</span></div>
+          <div v-if="$clicks >= 3" class="is-new"><span>Gutschein (SPAR10)</span><span>−0,89 €</span></div>
+          <div class="ab__total" :class="{ 'is-new': $clicks >= 3 }"><span>Gesamt</span><span>{{ $clicks >= 3 ? '14,00 €' : '14,89 €' }}</span></div>
         </div>
-        <div class="ab__total">Gesamt 14,89 €</div>
+        <div v-if="$clicks < 3" class="ab__row">
+          <div class="ab__el ab__input"><span class="ab__ph" v-if="$clicks < 2">Gutscheincode</span><span v-else>SPAR10</span> <em v-show="$clicks >= 1">textbox</em></div>
+          <div class="ab__el ab__btn" :class="{ 'is-hit': $clicks === 2 }">Einlösen <em v-show="$clicks >= 1">button</em></div>
+        </div>
+        <div v-else class="ab__row">
+          <div class="ab__done">Gutschein <b>SPAR10</b> eingelöst</div>
+          <div class="ab__link">Gutschein entfernen</div>
+        </div>
       </div>
     </div>
   </div>
   <div class="ab__arrow">→</div>
   <div class="ab__col">
-    <div class="ab__h">Was der Agent sieht</div>
+    <div class="ab__h">Was der Agent sieht und tut</div>
     <div class="ab__term">
-      <div><span class="c-dim">$</span> agent-browser <b>snapshot</b></div>
-      <div>- heading "Warenkorb" <span class="c-ref">[ref=e1]</span></div>
-      <div>- textbox "Gutscheincode" <span class="c-ref">[ref=e3]</span></div>
-      <div>- button "Einlösen" <span class="c-ref">[ref=e2]</span></div>
-      <div class="mt-2"><span class="c-dim">$</span> agent-browser <b>fill</b> <span class="c-ref">@e3</span> "SPAR10"</div>
-      <div><span class="c-dim">$</span> agent-browser <b>click</b> <span class="c-ref">@e2</span></div>
+      <div v-if="$clicks === 0"><span class="c-dim">$ ▍</span></div>
+      <div v-if="$clicks >= 1" :class="{ 'is-old': $clicks > 1 }">
+        <div><span class="c-dim">$</span> agent-browser <b>snapshot</b></div>
+        <div>- <span class="c-ref">heading</span> "Warenkorb" <span class="c-dim">[ref=e6]</span></div>
+        <div>- <span class="c-ref">textbox</span> "Gutscheincode" <span class="c-dim">[ref=e23]</span></div>
+        <div>- <span class="c-ref">button</span> "Einlösen" <span class="c-dim">[ref=e24]</span></div>
+      </div>
+      <div v-if="$clicks >= 2" class="mt-2" :class="{ 'is-old': $clicks > 2 }">
+        <div><span class="c-dim">$</span> agent-browser <b>find</b> role <span class="c-ref">textbox</span> <span class="c-dim">\</span></div>
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;fill "SPAR10" --name "Gutscheincode"</div>
+        <div><span class="c-dim">$</span> agent-browser <b>find</b> role <span class="c-ref">button</span> click --name "Einlösen"</div>
+      </div>
+      <div v-if="$clicks >= 3" class="mt-2">
+        <div><span class="c-dim">$</span> agent-browser <b>wait</b> --text "Gutschein (SPAR10)"</div>
+        <div><span class="c-dim">$</span> agent-browser <b>get text</b> ".summary__rows"</div>
+        <div class="c-out">Gutschein (SPAR10) −0,89 € · Gesamt 14,00 €</div>
+      </div>
     </div>
   </div>
 </div>
 
-<div class="ab__cmds mt-5">
-  <div><code>open</code><span>Seite öffnen</span></div>
-  <div><code>snapshot</code><span>hinschauen</span></div>
-  <div><code>click</code><span>klicken</span></div>
-  <div><code>fill</code><span>tippen</span></div>
-  <div><code>screenshot</code><span>Beweisfoto</span></div>
-  <div><code>record</code><span>Video</span></div>
+<div class="ab__loop mt-4">
+  <div :class="{ on: $clicks === 1 }"><b>1</b> hinschauen <code>snapshot</code></div>
+  <span>→</span>
+  <div :class="{ on: $clicks === 2 }"><b>2</b> handeln <code>find … fill</code> <code>click</code></div>
+  <span>→</span>
+  <div :class="{ on: $clicks === 3 }"><b>3</b> prüfen <code>wait</code> <code>get text</code></div>
 </div>
 
+<div class="mt-4 text-center text-lg">Er sucht wie ein Screenreader: nach <b class="text-[#ff6bed]">Rolle und Name</b>. Ihr kennt das als <code>getByRole</code>.</div>
+
 <style>
-.ab { display: grid; grid-template-columns: 1fr auto 1fr; gap: 16px; align-items: start; }
+.ab { display: grid; grid-template-columns: 340px auto minmax(0, 1fr); gap: 14px; align-items: start; }
 .ab__h { font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #ff6bed; margin-bottom: 8px; }
 .ab__arrow { color: #ff6bed; font-size: 32px; font-weight: 700; padding-top: 110px; }
-.ab__page { border-radius: 10px; overflow: hidden; background: #f4f4f4; color: #222; border: 1px solid rgba(255,255,255,.2); }
+.ab__page { border-radius: 10px; overflow: hidden; background: #f4f4f4; color: #222; border: 1px solid rgba(255,255,255,.2); height: 262px; }
 .ab__pagebar { display: flex; gap: 5px; align-items: center; padding: 6px 10px; background: #ddd; }
 .ab__pagebar i { width: 8px; height: 8px; border-radius: 50%; background: #aaa; }
 .ab__pagebar span { margin-left: 8px; font-size: 11px; color: #666; }
-.ab__pagebody { padding: 14px 16px 16px; }
+.ab__pagebody { padding: 14px 22px 14px 16px; }
 .ab__el { position: relative; }
-.ab__el em { position: absolute; top: -9px; right: -9px; font-style: normal; font-size: 10px; font-weight: 800; background: #ff6bed; color: #1a1d29; border-radius: 999px; padding: 1px 6px; font-family: var(--slidev-code-font-family, monospace); }
-.ab__title { display: inline-block; font-size: 22px; font-weight: 700; padding-right: 10px; }
-.ab__label { font-size: 12px; font-weight: 700; margin-top: 12px; }
-.ab__row { display: flex; gap: 10px; margin-top: 6px; }
+.ab__el em { position: absolute; top: -10px; right: -10px; font-style: normal; font-size: 10px; font-weight: 800; background: #ff6bed; color: #1a1d29; border-radius: 999px; padding: 1px 7px; font-family: var(--slidev-code-font-family, monospace); }
+.ab__title { display: inline-block; font-size: 20px; font-weight: 700; padding-right: 34px; }
+.ab__sum { margin-top: 8px; font-size: 14px; }
+.ab__sum > div { display: flex; justify-content: space-between; padding: 2px 0; }
+.ab__sum .is-new { color: #1a7f37; font-weight: 700; }
+.ab__total { margin-top: 4px; padding-top: 6px !important; border-top: 1px solid #ccc; font-weight: 700; font-size: 16px; }
+.ab__row { display: flex; gap: 12px; margin-top: 16px; align-items: center; }
 .ab__input { flex: 1; border: 1px solid #bbb; border-radius: 6px; padding: 6px 10px; background: #fff; font-size: 14px; }
+.ab__ph { color: #999; }
 .ab__btn { border: 1.5px solid #222; border-radius: 6px; padding: 6px 12px; font-weight: 700; font-size: 14px; background: #fff; }
-.ab__total { margin-top: 14px; font-weight: 700; font-size: 15px; }
-.ab__term { border-radius: 10px; background: #1a1d29; border: 1px solid rgba(255,255,255,.15); padding: 12px 14px; font-family: var(--slidev-code-font-family, monospace); font-size: 13.5px; line-height: 1.7; color: #eaedf3; }
+.ab__btn.is-hit { background: #222; color: #fff; }
+.ab__done { flex: 1; font-size: 12px; }
+.ab__done b { color: #222 !important; }
+.ab__link { font-size: 12px; text-decoration: underline; white-space: nowrap; }
+.ab__term { border-radius: 10px; background: #1a1d29; border: 1px solid rgba(255,255,255,.15); padding: 12px 14px; font-family: var(--slidev-code-font-family, monospace); font-size: 12.5px; line-height: 1.7; color: #eaedf3; height: 262px; white-space: nowrap; overflow: hidden; }
 .ab__term b { color: #f3e6c4; }
+.ab__term .is-old { opacity: .45; }
 .c-dim { opacity: .5; }
 .c-ref { color: #ff6bed; font-weight: 700; }
-.ab__cmds { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; }
-.ab__cmds div { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 8px 4px; border: 1px solid rgba(255,255,255,.12); border-radius: 10px; background: rgba(255,255,255,.04); }
-.ab__cmds code { font-size: 13px; }
-.ab__cmds span { font-size: 13px; opacity: .75; }
+.c-out { color: #6ee7a0; }
+.ab__loop { display: flex; justify-content: center; align-items: center; gap: 12px; }
+.ab__loop > span { color: #ff6bed; font-weight: 700; }
+.ab__loop > div { display: flex; align-items: center; gap: 8px; padding: 6px 14px; border: 1px solid rgba(255,255,255,.15); border-radius: 999px; background: rgba(255,255,255,.04); font-size: 15px; opacity: .6; }
+.ab__loop > div.on { opacity: 1; border-color: #ff6bed; background: rgba(255,107,237,.12); }
+.ab__loop b { display: inline-grid; place-items: center; width: 20px; height: 20px; border-radius: 50%; background: #ff6bed; color: #1a1d29; font-size: 12px; }
+.ab__loop code { font-size: 13px; }
 </style>
 
 <!--
-TIME: 7:00–7:45 (45s)
+TIME: 7:00–8:00 (60s)
 
-- Was macht Agent Browser? Es ist ein Programm im Terminal, das einen echten Browser steuert.
-- Links: Was ihr seht. Eine Seite mit Überschrift, Eingabefeld und Knopf.
-- Rechts: Was der Agent sieht. Mit `snapshot` bekommt er die Seite als **Liste**. Jedes Element, das man anklicken oder ausfüllen kann, bekommt eine **Nummer**: e1, e2, e3.
-- Dann nutzt er die Nummer im Befehl: „Tippe SPAR10 in e3, klicke e2.“ Er muss nicht raten und braucht keine Pixel-Koordinaten.
-- Unten stehen alle Befehle, die er dafür braucht: öffnen, hinschauen, klicken, tippen, Beweisfoto, Video.
-- Danach wieder `snapshot`: Hat sich die Gesamtsumme geändert? So prüft er sein eigenes Ergebnis.
-- SOURCE: `agent-browser --help` (v0.38.2); Snapshot-Format aus einem echten Lauf.
+- Was macht Agent Browser? Es ist ein Programm im Terminal, das einen echten Browser steuert. Links der Warenkorb, wie ihr ihn seht.
+- [click] **Hinschauen.** Mit `snapshot` bekommt der Agent die Seite als **Liste**. Jedes Element hat eine **Rolle** und einen **Namen**: eine Überschrift „Warenkorb“, ein Textfeld „Gutscheincode“, ein Knopf „Einlösen“. Die pinken Marken links zeigen die Rolle.
+- [click] **Handeln.** Er sagt nicht „klicke bei Pixel 400, 300“. Er sagt: „Finde das Textfeld mit dem Namen Gutscheincode und schreibe SPAR10 hinein. Finde den Knopf Einlösen und klicke.“
+- [click] **Prüfen.** Er wartet, bis der Text „Gutschein (SPAR10)“ auf der Seite steht, und liest dann die Zusammenfassung aus: 89 Cent Rabatt, Gesamt 14 Euro. So prüft er sein eigenes Ergebnis.
+- Das ist die Schleife von eben, nur mit echten Befehlen: hinschauen, handeln, prüfen.
+- Für euch: Rolle und Name ist genau das, was ein **Screenreader** vorliest. In Playwright heißt das `getByRole`. Darum klappt es gut auf barrierearmen Seiten und schlecht auf Seiten ohne Labels.
+- Falls gefragt: Zum Auslesen der Summe nutzt er einen CSS-Selektor (`.summary__rows`), ganz ohne geht es nicht. Der Snapshot vergibt auch Nummern (`ref=e23`), über die er direkt klicken könnte (`click @e23`). In meinem Lauf hat er fast immer Rolle und Name genommen, weil die Namen schon in der Feature Map stehen. Weitere Befehle: `open`, `screenshot`, `record` für das Video.
+- SOURCE: Befehle wörtlich aus dem lokalen Lauf, otto-nuxt-shop `.talk-logs/03-verify-gutschein.jsonl` (Szenario 1). Snapshot-Zeilen aus `.data/verify/evidence/SHOP-42-qa/s1-vorher.aria.txt`, gekürzt. Die Ausgabe von `get text` steht im Lauf zeilenweise, hier in einer Zeile und ohne Zwischensumme und Versand. `agent-browser --help` (v0.38.2).
 -->
 
 
@@ -410,7 +444,7 @@ TIME: 7:00–7:45 (45s)
 </div>
 
 <!--
-TIME: 7:45–8:15 (30s)
+TIME: 8:00–8:30 (30s)
 
 - Bevor wir dem Agenten etwas beibringen: Woran arbeiten wir?
 - Unser laufendes Beispiel: ein Otto-Klon in Nuxt 4 mit dem offenen B2B-Designsystem von OTTO. Startseite, Suche, Kategorien, Produktseite, Warenkorb, Merkzettel.
@@ -442,7 +476,7 @@ Szenario: Gutschein entfernen
 ```
 
 <!--
-TIME: 8:15–8:40 (25s)
+TIME: 8:30–8:55 (25s)
 
 - Ein ganz normales Ticket. User Story plus drei Gherkin-Szenarien.
 - Gültiger Code, Summe sinkt.
@@ -461,7 +495,7 @@ layout: statement
 <div class="mt-8 text-2xl opacity-80">Aber er kennt den Shop nicht.</div>
 
 <!--
-TIME: 8:40–8:50 (10s)
+TIME: 8:55–9:05 (10s)
 
 - Der Agent soll genau diese drei Szenarien im echten Shop durchklicken.
 - Aber er weiß nicht, wie man den Shop startet, wo der Warenkorb ist, wie man einen Gutschein eingibt.
@@ -484,7 +518,7 @@ TIME: 8:40–8:50 (10s)
 </div>
 
 <!--
-TIME: 8:50–9:15 (25s)
+TIME: 9:05–9:30 (25s)
 
 - **Analogie:** Ein Agent ist wie ein neuer Kollege am ersten Tag. Schlau, aber er kennt euren Shop nicht. Und er vergisst jeden Abend alles.
 - Was gebt ihr einem neuen Kollegen? Eine **Einarbeitungsmappe**. Bei Claude Code heißt so eine Mappe „Skill“. Es ist nur ein Ordner mit Markdown-Dateien im Repo.
@@ -512,7 +546,7 @@ TIME: 8:50–9:15 (25s)
 <div class="mt-8 text-center text-xl opacity-80">Er lädt nur, was er braucht. Ohne Mappe fängt jeder Lauf <b>bei null</b> an.</div>
 
 <!--
-TIME: 9:15–9:40 (25s)
+TIME: 9:30–9:55 (25s)
 
 - Was passiert, wenn der Agent den Auftrag bekommt „Prüfe SHOP-42 im Browser“?
 - Er kennt von jeder Mappe nur den **Klappentext**, die Beschreibung. Daran erkennt er: Für diese Aufgabe brauche ich die Mappe für den Shop. Erst dann lädt er sie ganz.
@@ -567,7 +601,7 @@ $V proof warenkorb-nachher ; $V stop   # Belege bleiben
 ```
 
 <!--
-TIME: 9:40–10:05 (25s)
+TIME: 9:55–10:20 (25s)
 
 - Die Arbeitsanweisung in echt: eine Markdown-Datei in `.claude/skills/`. Links die ganze Mappe.
 - Oben der **Klappentext**, die Beschreibung. Nur die liest der Agent immer.
@@ -621,7 +655,7 @@ files: |
 ```
 
 <!--
-TIME: 10:05–10:30 (25s)
+TIME: 10:20–10:45 (25s)
 
 - Und das ist eine Seite aus der Feature Map: der Warenkorb. Jedes Feature bekommt so eine Datei, links seht ihr Startseite, Suche, Produktseite, Merkzettel.
 - Jede Datei hat dieselben vier Abschnitte.
@@ -666,7 +700,7 @@ TIME: 10:05–10:30 (25s)
 <div class="mt-5 text-center text-base opacity-70"><b>pstack</b> von Lauren Tan (poteto), React-Compiler-Team · github.com/cursor/plugins</div>
 
 <!--
-TIME: 10:30–10:55 (25s)
+TIME: 10:45–11:10 (25s)
 
 - Die Mappe müsst ihr nicht von Hand schreiben. Ein Befehl aus pstack: `/create-verification-skill`.
 - Er befragt das Repo, nicht euch: Wie startet die App, wie bedient man sie, welche Belege gibt es?
@@ -716,7 +750,7 @@ TIME: 10:30–10:55 (25s)
 </style>
 
 <!--
-TIME: 10:55–11:40 (45s)
+TIME: 11:10–11:55 (45s)
 
 - Das ist der ganze Prompt. Gekürzt um den Port-Hinweis, den Skill-Pfad und „Antworte auf Deutsch mit einer Zusammenfassung“.
 - Das Ticket ist die Quelle, nicht mein Chat-Text.
@@ -748,7 +782,7 @@ TIME: 10:55–11:40 (45s)
 <div class="mt-6 text-center text-base opacity-80">Er schreibt auch <b>deterministische Tests</b>. Aber nicht alles hat einen E2E-Test.<br/>Darum prüft er zusätzlich <span class="text-[#ff6bed]">im echten Browser</span>, bis alles grün ist.</div>
 
 <!--
-TIME: 11:40–12:45 (65s)
+TIME: 11:55–13:00 (65s)
 
 - Der Agent nutzt den Verification-Skill nicht erst in der QA. Er nutzt ihn schon, während er das Feature baut.
 - Natürlich schreibt er auch Unit- und Komponenten-Tests. Aber in den meisten Projekten haben wir nicht für alles E2E-Tests. Genau diese Lücke schließt die Prüfung im Browser.
@@ -770,7 +804,7 @@ layout: statement
 <div class="mt-8 text-2xl opacity-80">Ein <b>zweiter</b> Agent, der den Code nicht geschrieben hat.<br/>Er hakt nicht nur Szenarien ab, er testet auch <b>explorativ</b>.</div>
 
 <!--
-TIME: 12:45–12:55 (10s)
+TIME: 13:00–13:10 (10s)
 
 - Der Entwickler-Agent hat den Skill und Agent Browser genutzt, um das Feature zu bauen.
 - Dieselbe Mappe können wir jetzt ein zweites Mal nutzen: für die QA.
@@ -821,7 +855,7 @@ TIME: 12:45–12:55 (10s)
 </style>
 
 <!--
-TIME: 12:55–13:55 (60s)
+TIME: 13:10–14:10 (60s)
 
 - Ein **zweiter** Agent. Er hat den Code nicht geschrieben, und er darf ihn nicht ändern.
 - Rolle und Grenze: QA-Agent, kein Code.
@@ -864,7 +898,7 @@ clicks: 10
 />
 
 <!--
-TIME: 13:55–15:25 (90s)
+TIME: 14:10–15:40 (90s)
 
 - Ein **zweiter** Agent, der QA-Agent, prüft den PR. Er hat den Code nicht geschrieben.
 - Das sind Standbilder aus dem echten Video des QA-Agenten, von ihm selbst mit `agent-browser record` aufgenommen. Jeder Klick springt ein Kapitel weiter (11 Bilder, 10 Klicks). Rechts die Kapitel-Liste.
@@ -940,7 +974,7 @@ VOICE-OVER (pro Bild):
 </style>
 
 <!--
-TIME: 15:25–15:55 (30s)
+TIME: 15:40–16:10 (30s)
 
 - Das Urteil ist eines von drei festen Werten: HEALTHY, MINOR_ISSUES, CRITICAL_BUGS.
 - Links: Alle Ticket-Szenarien grün, dazu die zwei Regeln aus dem Ticket (Reload, höchstens ein Gutschein), die ich auf der Ticket-Folie weggelassen habe.
@@ -977,7 +1011,7 @@ background: /bild-gherkin.jpeg
 </style>
 
 <!--
-TIME: 15:55–16:25 (30s)
+TIME: 16:10–16:40 (30s)
 
 - **Die Pointe.** Kurz Pause lassen.
 - Alle drei Szenarien waren grün. Ein klassischer E2E-Test wäre durchgelaufen.
@@ -1022,7 +1056,7 @@ TIME: 15:55–16:25 (30s)
 </style>
 
 <!--
-TIME: 16:25–17:10 (45s)
+TIME: 16:40–17:25 (45s)
 
 - „Keiner hat daran gedacht.“ Hätte man daran denken können? Ja. Und zwar mit Techniken, die ihr alle kennt.
 - Ich habe die fünf Funde aus der Demo nachträglich in eine Testmatrix einsortiert. **Drei von fünf** sind Zustandsübergänge: einlösen, dann Menge ändern, dann Artikel entfernen. Der Cookie-Fund ist Manipulation, die leere Eingabe ein Grenzwert.
@@ -1053,7 +1087,7 @@ TIME: 16:25–17:10 (45s)
 <div class="mt-6 text-center text-xl opacity-80">Die Schleife ist dieselbe wie lokal. Nur der <b>Auslöser</b> ist jetzt ein Label.</div>
 
 <!--
-TIME: 17:10–17:40 (30s)
+TIME: 17:25–17:55 (30s)
 
 - Lokal funktioniert's. Jetzt soll es ohne mich laufen.
 - [click] Ich setze am PR das Label `qa-verify`. Bewusst ein Label, nicht jeder Push: Ich entscheide, wann sich ein Lauf lohnt.
@@ -1099,7 +1133,7 @@ claude -p "$(envsubst < .github/prompts/qa.md)" \
 </style>
 
 <!--
-TIME: 17:40–18:15 (35s)
+TIME: 17:55–18:30 (35s)
 
 - Bevor wir den ganzen Workflow sehen: die eine Zeile, in der der Agent läuft. Für euch übersetzt.
 - **Prompt als Datei:** Das ist der Testauftrag. Er liegt im Repo, wird reviewt wie Code. `envsubst` setzt PR-Nummer und Branch ein.
@@ -1149,7 +1183,7 @@ TIME: 17:40–18:15 (35s)
 </style>
 
 <!--
-TIME: 18:15–18:40 (25s)
+TIME: 18:30–18:55 (25s)
 
 - Das ist der Trick, warum ein Agent in einer Pipeline funktioniert.
 - Links: Ein LLM antwortet normalerweise in Prosa. „Sieht größtenteils gut aus, ein paar Auffälligkeiten …“ Ist das grün oder rot? Eine Pipeline kann damit nichts anfangen. (Der Text links ist ein Beispiel von mir, kein echter Lauf.)
@@ -1225,7 +1259,7 @@ onSlideLeave(() => clearInterval(timer))
 </style>
 
 <!--
-TIME: 18:40–19:10 (30s)
+TIME: 18:55–19:25 (30s)
 
 - So sieht das im echten PR aus: Ich setze das Label `qa-verify`. Mehr mache ich nicht.
 - Unten das Actions-Log. Die Zeilen laufen live rein, während der Agent testet. Hier im Zeitraffer: knapp 3 Minuten in 11 Sekunden.
@@ -1271,7 +1305,7 @@ flowchart LR
 </MermaidSteps>
 
 <!--
-TIME: 19:10–19:55 (45s)
+TIME: 19:25–20:10 (45s)
 
 - Der echte Workflow aus dem Repo, als Bild. Den YAML-Code gibt es im Backup.
 - Jemand setzt am PR das Label `qa-verify`. Erst dann läuft der Agent los, nicht bei jedem Push.
@@ -1314,7 +1348,7 @@ TIME: 19:10–19:55 (45s)
 </style>
 
 <!--
-TIME: 19:55–20:25 (30s)
+TIME: 20:10–20:40 (30s)
 
 - So sieht das Ergebnis im echten PR aus. Kein Mockup, das ist PR #1 im Otto-Klon.
 - Das ist der Kommentar zu dem Lauf, dessen Log ihr gerade gesehen habt.
@@ -1347,7 +1381,7 @@ TIME: 19:55–20:25 (30s)
 <div class="mt-3 text-center opacity-70">Alle Bausteine sind dokumentiert. Gebaut habe ich es noch nicht.</div>
 
 <!--
-TIME: 20:25–20:55 (30s)
+TIME: 20:40–21:10 (30s)
 
 - Noch ein Schritt weiter: Kein Label mehr. Der Status im Ticket ist der Auslöser.
 - Ein Dev schiebt das Ticket auf „In QA“.
@@ -1392,7 +1426,7 @@ TIME: 20:25–20:55 (30s)
 </style>
 
 <!--
-TIME: 20:55–22:10 (75s)
+TIME: 21:10–22:25 (75s)
 
 - Das eine Problem, das ich sehe. Links **Verifikation**, rechts **Validierung**. Der QA-Agent sagt mir zwei Dinge: Funktioniert das Feature so, wie wir es wollten? Und durch das explorative Testen: Was haben wir nicht bedacht?
 - Was er mir nicht sagt: Wollen wir das überhaupt shippen? Fühlt es sich gut an?
@@ -1413,7 +1447,7 @@ background: /bild-rolle.jpeg
 </div>
 
 <!--
-TIME: 22:10–22:40 (30s)
+TIME: 22:25–22:55 (30s)
 
 - **Rückgriff:** „Am Anfang habe ich euch eine Antwort versprochen. Hier ist sie.“
 - Diese Frage stellt sich gerade jeder hier im Saal. Also spreche ich sie offen aus.
@@ -1446,7 +1480,7 @@ TIME: 22:10–22:40 (30s)
 </style>
 
 <!--
-TIME: 22:40–23:25 (45s)
+TIME: 22:55–23:40 (45s)
 
 - Boris Cherny hat Claude Code bei Anthropic gebaut.
 - Übersetzt: Der Titel Software Engineer verschwindet an manchen Stellen. Stattdessen heißt es einfach **Builder**. Bei Anthropic codet laut ihm jeder: PM, Designerin, sogar der Finanzer.
@@ -1489,7 +1523,7 @@ TIME: 22:40–23:25 (45s)
 </style>
 
 <!--
-TIME: 23:25–24:10 (45s)
+TIME: 23:40–24:25 (45s)
 
 - Links: So haben wir vor KI eingestellt. **T-shaped**: ein bisschen Code, Design, Produkt, und tief in einer Box. Bei euch: Qualität.
 - Rechts: Mit KI werden Leute **O-shaped**. Ismail Amla nennt das so: rund und flexibel, die stärkste Stärke wechselt je nach Problem. Mit KI kann man kurz in eine andere Disziplin wechseln und wieder zurück.
@@ -1506,7 +1540,7 @@ layout: statement
 <div class="mt-8 text-2xl opacity-80">Gherkin-Szenarien, Testentwurf, Test-Charter, Feature Map.<br/>Das ist <b>eure</b> Arbeit, nur eine Ebene höher.</div>
 
 <!--
-TIME: 24:10–24:40 (30s)
+TIME: 24:25–24:55 (30s)
 
 - Die Wendung, die Mut machen soll.
 - Erinnert euch an die Demo: Der Agent kannte die Szenarien, weil sie jemand gut aufgeschrieben hat.
@@ -1527,7 +1561,7 @@ background: /bild-builder.jpeg
 </div>
 
 <!--
-TIME: 24:40–24:55 (15s)
+TIME: 24:55–25:10 (15s)
 
 - Der Schlusssatz. Langsam sagen, dann kurz stehen lassen.
 -->
@@ -1547,7 +1581,7 @@ TIME: 24:40–24:55 (15s)
 </div>
 
 <!--
-TIME: 24:55–25:25 (30s)
+TIME: 25:10–25:40 (30s)
 
 - Kriterien zuerst. Ohne gute Kriterien kein gutes Urteil. Das bringt am meisten.
 - Browser und Feature Map: `npm i -g agent-browser` oder Playwright CLI, dann `/create-verification-skill`. Ein Nachmittag Arbeit. Danach pflegt ihr die Map wie Testdoku.
@@ -1579,7 +1613,7 @@ class: text-center
 </style>
 
 <!--
-TIME: 25:25 + Q&A (4:35 Puffer bis 30:00)
+TIME: 25:40 + Q&A (4:20 Puffer bis 30:00)
 
 - Diese Folie bleibt während der Fragen stehen. Der Hamcrab tanzt weiter, rechts der QR-Code zu den Slides. Repo und Quellen sind in den Slides verlinkt.
 - Wenn keiner fragt: „Wer von euch hat heute Morgen noch gestanden? Was nutzt ihr dafür?“
