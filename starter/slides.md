@@ -222,18 +222,21 @@ SOURCE: TODO Urheber des Trichter-Diagramms nachtragen (Vorlage von Alex als Bil
 -->
 
 ---
-layout: image-right
-image: /ci-pr-kommentar-video.png
-backgroundSize: contain
----
 
-# Das <span class="text-[#ff6bed]">Zielbild</span>
+# Das <span class="text-[#ff6bed]">Zielbild</span>: ein PR mit Belegen
 
-Ein PR, an dem die Belege schon hängen.
+<div class="ziel mt-4">
+  <img src="/ci-pr-kommentar-lauf-2026-11-10.png" alt="Kommentar von github-actions im Pull Request: Urteil CRITICAL_BUGS, nicht bestanden. Darunter das Video des QA-Laufs mit dem Warenkorb des Shops, dann der QA-Report mit der Tabelle der Szenarien" />
+  <div class="ziel__tags"><span>Urteil</span><span>Video vom Durchlauf</span><span>Screenshots</span></div>
+</div>
 
-- Screenshots
-- Ein Video vom Durchlauf
-- Ein Urteil: Ist das Ticket erfüllt?
+<style>
+.ziel { position: relative; height: 405px; overflow: hidden; border-radius: 10px; border: 1px solid rgba(255,255,255,.18); background: #0d1117; }
+.ziel img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+.ziel::after { content: ''; position: absolute; inset: auto 0 0 0; height: 110px; background: linear-gradient(to bottom, rgba(13,17,23,0), rgba(13,17,23,.95)); }
+.ziel__tags { position: absolute; z-index: 1; left: 0; right: 0; bottom: 14px; display: flex; justify-content: center; gap: 12px; }
+.ziel__tags span { padding: 5px 16px; border-radius: 999px; background: #ff6bed; color: #1a1d29; font-size: 17px; font-weight: 700; }
+</style>
 
 <!--
 TIME: 5:15–5:45 (30s)
@@ -242,8 +245,8 @@ TIME: 5:15–5:45 (30s)
 - Screenshots von jedem geprüften Szenario.
 - Ein Video, damit ich sehe, was der Agent gemacht hat.
 - Ein klares Urteil. Dann muss ich nicht raten.
-- Rechts der echte Kommentar des QA-Agenten in PR #1 des Otto-Klons: Urteil oben, darunter das Video als GIF, dann Screenshots. Genau da wollen wir am Ende des Talks hin.
-- SOURCE: github.com/alexanderop/otto-nuxt-shop/pull/1 (Lauf 5, Run 42368915488)
+- Das ist der echte Kommentar des QA-Agenten in PR #1 des Otto-Klons: Urteil oben, darunter das Video als GIF, dann der Report mit Screenshots. Genau da wollen wir am Ende des Talks hin.
+- SOURCE: github.com/alexanderop/otto-nuxt-shop/pull/1#issuecomment-6767619659 (Run 42817194078 vom 10.11.)
 -->
 
 ---
@@ -1359,7 +1362,7 @@ TIME: 20:10–20:40 (30s)
 - Rechts ein Fund, F2: Repro in drei Schritten, Soll und Ist, darunter der Screenshot als Beleg. Soll 22,04 €, Ist −191,96 €. Ich muss nichts nachklicken, um zu glauben, was da steht.
 - Gepostet vom Report-Job, nicht vom Agenten. Der Check ist rot. Er ist Pflicht-Check auf `main`, der Merge ist also blockiert.
 - **Anderer Lauf, anderer Weg, dieselbe Ursache:** Lokal waren es fünf Funde mit Mascara und Zitrone. Hier sind es drei Funde, mit einem Sofa für 2.139,99 €. Rabatt beim Sofa eingelöst, Sofa raus, Rabatt bleibt. Agenten sind nicht deterministisch. Die Ursache finden beide Läufe: der feste Rabattbetrag im Cookie.
-- Gut ein Dollar, knapp drei Minuten. Das Zielbild am Anfang zeigt einen früheren Lauf desselben PRs (Run 42368915488) mit demselben Fund und demselben Betrag.
+- Gut ein Dollar, knapp drei Minuten. Das Zielbild am Anfang zeigt einen späteren Lauf desselben PRs (Run 42817194078 vom 10.11.), mit anderen Artikeln und derselben Ursache.
 - SOURCE: github.com/alexanderop/otto-nuxt-shop/pull/1, Bot-Kommentar vom 09.11. (Run 42622982046)
 -->
 
