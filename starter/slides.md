@@ -1463,41 +1463,6 @@ TIME: 22:25–22:55 (30s)
 
 ---
 
-<div class="bq">
-  <div class="bq__who">
-    <img src="/boris-cherny.jpg" alt="Boris Cherny" />
-    <b>Boris Cherny</b>
-    <span>Creator von Claude Code</span>
-  </div>
-  <blockquote class="bq__text">
-    <span class="bq__mark">“</span>In some places the title software engineer is going to start to go away, and it's just going to be replaced by <em>builder</em>.
-  </blockquote>
-</div>
-
-<style>
-.bq { display: grid; grid-template-columns: 220px 1fr; gap: 48px; align-items: center; height: 100%; }
-.bq__who { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 4px; }
-.bq__who img { width: 200px; height: 200px; border-radius: 50%; object-fit: cover; border: 4px solid #ff6bed; margin-bottom: 12px; }
-.bq__who b { font-size: 20px; color: #eaedf3; }
-.bq__who span { font-size: 14px; opacity: .65; }
-.bq__text { margin: 0; padding: 0; border: none; background: none; font-size: 2.6rem; line-height: 1.25; font-weight: 600; color: #eaedf3; text-wrap: balance; position: relative; }
-.bq__mark { position: absolute; left: -0.55em; top: -0.35em; font-size: 2.2em; color: #ff6bed; line-height: 1; }
-.bq__text em { font-style: normal; color: #ff6bed; }
-</style>
-
-<!--
-TIME: 22:55–23:40 (45s)
-
-- Boris Cherny hat Claude Code bei Anthropic gebaut.
-- Übersetzt: Der Titel Software Engineer verschwindet an manchen Stellen. Stattdessen heißt es einfach **Builder**. Bei Anthropic codet laut ihm jeder: PM, Designerin, sogar der Finanzer.
-- Cat Wu, Head of Product bei Claude Code, schreibt das auch offiziell (nicht mehr auf der Slide, nur sagen): „Our roles are blending together: designers ship code, engineers make product decisions, product managers build prototypes and evals.“
-- **Ehrlich sagen:** Beide nennen Engineering, PM und Design. QA nennen sie nicht ausdrücklich. „Ich sage: Das gilt auch für euch.“
-- SOURCE: Lenny's Podcast, 19.02.2026, bei 43:06 und 41:25. Aus dem Volltranskript, Audio nicht selbst gehört. research/raw/rollen-verschmelzen-notiz.md; claude.com/resources/articles/product-management-on-the-ai-exponential
--->
-
-
----
-
 # Von <span class="text-[#ff6bed]">T-shaped</span> zu <span class="text-[#ff6bed]">O-shaped</span>
 
 <div class="shapes mt-4">
@@ -1529,11 +1494,11 @@ TIME: 22:55–23:40 (45s)
 </style>
 
 <!--
-TIME: 23:40–24:25 (45s)
+TIME: 22:55–23:40 (45s)
 
 - Links: So haben wir vor KI eingestellt. **T-shaped**: ein bisschen Code, Design, Produkt, und tief in einer Box. Bei euch: Qualität.
 - Rechts: Mit KI werden Leute **O-shaped**. Ismail Amla nennt das so: rund und flexibel, die stärkste Stärke wechselt je nach Problem. Mit KI kann man kurz in eine andere Disziplin wechseln und wieder zurück.
-- Cherny bei 42:46 sagt Ähnliches: Die Rollen überlappen zu etwa 50 Prozent, manche Leute haben Spezialitäten.
+- Boris Cherny (Creator von Claude Code) sagt bei 42:46 Ähnliches: Die Rollen überlappen zu etwa 50 Prozent, manche Leute haben Spezialitäten.
 - **Meine Wendung fürs Publikum:** Ihr könnt jetzt überall mit anpacken. Aber eure Basis bleibt Qualität: Risiken einschätzen, gute Kriterien schreiben, wissen, wo es kracht. Amla sagt selbst: Spezialisten werden zu denen, die Arbeit aus anderen Bereichen prüfen und stärker machen.
 - SOURCE: research/raw/2026-08-12-o-shaped-people.md; research/wiki/rollen-verschmelzen.md
 -->
@@ -1553,7 +1518,7 @@ TIME: 23:40–24:25 (45s)
 </div>
 
 <!--
-TIME: 24:25–24:55 (30s)
+TIME: 23:40–24:10 (30s)
 
 - Kriterien zuerst. Ohne gute Kriterien kein gutes Urteil. Das bringt am meisten.
 - Browser und Feature Map: `npm i -g agent-browser` oder Playwright CLI, dann `/create-verification-skill`. Ein Nachmittag Arbeit. Danach pflegt ihr die Map wie Testdoku.
@@ -1585,7 +1550,7 @@ class: text-center
 </style>
 
 <!--
-TIME: 24:55 + Q&A (5:05 Puffer bis 30:00)
+TIME: 24:10 + Q&A (5:50 Puffer bis 30:00)
 
 - Diese Folie bleibt während der Fragen stehen. Der Hamcrab tanzt weiter, rechts der QR-Code zu den Slides. Repo und Quellen sind in den Slides verlinkt.
 - Wenn keiner fragt: „Wer von euch hat vorhin am Ende noch gestanden? Was nutzt ihr dafür?“
