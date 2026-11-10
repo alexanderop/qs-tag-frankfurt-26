@@ -60,7 +60,7 @@ background: /titel-mensch-roboter.jpeg
 TIME: 0:00–0:45 (45s)
 
 - Kurz Hallo sagen.
-- **Hook:** „Der letzte Talk des Tages. Also bewegen wir uns erst mal.“
+- **Hook:** „Der letzte Talk des Tages.“
 - Keine Notizen nötig, die Slides teile ich am Ende per QR-Code.
 -->
 
@@ -86,39 +86,6 @@ TIME: 0:45–1:15 (30s)
 - „Der Shop, den ihr gleich seht, ist ein privater Nachbau, kein Otto-Code.“
 - Foto: „Das bin ich auf der TACON. Das hier ist meine zweite Testing-Konferenz, und ich finde die Testing-Szene richtig nice.“
 - **Ehrlich sagen:** Ich bin Entwickler, kein QA-Engineer. Ich zeige euch meinen Blick von der Entwicklerseite.
--->
-
----
-
-# 🙋 Alle <span class="text-[#ff6bed]">aufstehen</span>, bitte
-
-<HamcrabPose class="absolute right-12 top-4" :size="150" :pose="['sit', 'dance', 'stand', 'tired', 'sit', 'clap'][$clicks] ?? 'clap'" />
-
-<div class="text-xl opacity-70 -mt-2">Dann setzt euch hin, wenn …</div>
-
-<div class="mt-8">
-
-<IconCards flow :width="170" :items="[
-  { icon: '/funnel/mensch.webp', title: 'Alle stehen', sub: 'einmal kurz bewegen' },
-  { icon: '/icons/claude-code.webp', title: '… ihr KI nicht im Alltag nutzt', sub: 'ChatGPT, Copilot, Claude …', tag: 'hinsetzen' },
-  { icon: '/funnel/statisch.webp', title: '… KI bei euch keine Tests schreibt', sub: 'weder Tests noch Testfälle', tag: 'hinsetzen' },
-  { icon: '/jira/agent.webp', title: '… bei euch kein Agent selbst testet', sub: 'automatisch, ohne dass ihr klickt', tag: 'hinsetzen', accent: true },
-]" />
-
-</div>
-
-<div v-click class="mt-8 text-center text-2xl">Wer jetzt noch steht: <b class="text-[#ff6bed]">Lasst uns nachher reden!</b></div>
-
-<!--
-TIME: 1:15–2:30 (75s)
-
-- [click] [Ask for hands] Erst sollen **alle** aufstehen. „Letzter Talk des Tages, wir bewegen uns kurz.“
-- [click] „Setzt euch hin, wenn ihr KI nicht im Alltag nutzt.“ ChatGPT, Copilot, egal was.
-- [click] „Setzt euch hin, wenn KI bei euch keine Tests oder Testfälle schreibt.“
-- [click] „Setzt euch hin, wenn bei euch kein **Agent** selbst testet.“ Automatisch, im Browser oder in der Pipeline, ohne dass jemand klickt.
-- [click] Wer jetzt noch steht: Applaus, und ich will nach dem Talk mit euch reden. Kurz fragen: „Was nutzt ihr dafür?“
-- Danach alle hinsetzen lassen. „Für alle, die sitzen: Genau darum geht's in den nächsten 30 Minuten.“
-- Der Hamcrab oben rechts macht mit: sitzt → tanzt beim Aufstehen → steht → wird müde → setzt sich → klatscht für alle, die noch stehen. Nicht kommentieren, nur wirken lassen.
 -->
 
 ---
@@ -169,7 +136,7 @@ TIME: 1:15–2:30 (75s)
 </style>
 
 <!--
-TIME: 2:30–4:00 (90s)
+TIME: 1:15–2:45 (90s)
 
 - Links: So haben wir Software **ohne KI** gebaut. Der Balken ist, wie viel eine Station pro Tag schafft. Entwicklung war der schmalste Balken: Code schreiben war der teure Schritt. Alles hat auf Dev gewartet.
 - Testen war damals Klickarbeit am Ende des Bands, wenn alles andere schon fertig war.
@@ -189,7 +156,7 @@ layout: statement
 <div class="mt-8 text-2xl opacity-80">Wer PRs mergen will, ohne jede Zeile zu lesen,<br/>braucht bessere <span class="text-[#ff6bed]">automatische Verifikation</span>.</div>
 
 <!--
-TIME: 4:00–4:45 (45s)
+TIME: 2:45–3:30 (45s)
 
 - **Die Kernthese** des Talks.
 - „Weitgehend“ ist bewusst gewählt. Es gibt noch harte Probleme. Aber für ein typisches Frontend-Ticket schreibt der Agent den Code.
@@ -210,7 +177,7 @@ clicks: 1
 </style>
 
 <!--
-TIME: 4:45–5:15 (30s)
+TIME: 3:30–4:00 (30s)
 
 - **Frage an den Saal:** Wie fangen wir Fehler ab, wenn ein Agent ein Feature komplett allein umsetzt? Anders gefragt: Was braucht es, damit wir Agenten-Code abnehmen können? Antwort: mehrere Schichten, die Fehler abfangen.
 - Ein Trichter: Oben fängt man am meisten ab, unten kommt nur noch durch, was alle Schichten davor übersehen haben.
@@ -239,7 +206,7 @@ SOURCE: TODO Urheber des Trichter-Diagramms nachtragen (Vorlage von Alex als Bil
 </style>
 
 <!--
-TIME: 5:15–5:45 (30s)
+TIME: 4:00–4:30 (30s)
 
 - So soll ein PR aussehen: Code plus **Belege**.
 - Screenshots von jedem geprüften Szenario.
@@ -268,7 +235,7 @@ TIME: 5:15–5:45 (30s)
 <div class="mt-6 text-center text-xl opacity-80">Ein Chatbot antwortet. Ein Agent <b class="text-[#ff6bed]">handelt</b> und prüft sein Ergebnis selbst.</div>
 
 <!--
-TIME: 5:45–6:10 (25s)
+TIME: 4:30–4:55 (25s)
 
 - Viele kennen Claude Code nur als Coding-Tool. Claude Code ist ein **Agent** im Terminal. Ihr sagt, was ihr wollt, und er arbeitet, bis es erledigt ist.
 - Der Unterschied zum Chatbot ist diese Schleife: Er überlegt den nächsten Schritt, nutzt ein Werkzeug, schaut sich das Ergebnis an. Passt es nicht, dreht er noch eine Runde. Das macht er Dutzende Male, ohne dass ihr dazwischen klickt.
@@ -295,7 +262,7 @@ TIME: 5:45–6:10 (25s)
 </div>
 
 <!--
-TIME: 6:10–7:00 (50s)
+TIME: 4:55–5:45 (50s)
 
 - Die Schleife kann nur, wofür es ein Werkzeug gibt. Ohne Browser sieht der Agent die App nicht. Wenn Claude Code einen Browser oder eine App bedienen soll, braucht er ein Tool dafür. Hier sind vier.
 - **Playwright CLI:** Kennt ihr schon. Der Agent ruft es über Bash auf.
@@ -409,7 +376,7 @@ clicks: 3
 </style>
 
 <!--
-TIME: 7:00–8:00 (60s)
+TIME: 5:45–6:45 (60s)
 
 - Was macht Agent Browser? Es ist ein Programm im Terminal, das einen echten Browser steuert. Links der Warenkorb, wie ihr ihn seht.
 - [click] **Hinschauen.** Mit `snapshot` bekommt der Agent die Seite als **Liste**. Jedes Element hat eine **Rolle** und einen **Namen**: eine Überschrift „Warenkorb“, ein Textfeld „Gutscheincode“, ein Knopf „Einlösen“. Die pinken Marken links zeigen die Rolle.
@@ -447,7 +414,7 @@ TIME: 7:00–8:00 (60s)
 </div>
 
 <!--
-TIME: 8:00–8:30 (30s)
+TIME: 6:45–7:15 (30s)
 
 - Bevor wir dem Agenten etwas beibringen: Woran arbeiten wir?
 - Unser laufendes Beispiel: ein Otto-Klon in Nuxt 4 mit dem offenen B2B-Designsystem von OTTO. Startseite, Suche, Kategorien, Produktseite, Warenkorb, Merkzettel.
@@ -479,7 +446,7 @@ Szenario: Gutschein entfernen
 ```
 
 <!--
-TIME: 8:30–8:55 (25s)
+TIME: 7:15–7:40 (25s)
 
 - Ein ganz normales Ticket. User Story plus drei Gherkin-Szenarien.
 - Gültiger Code, Summe sinkt.
@@ -498,7 +465,7 @@ layout: statement
 <div class="mt-8 text-2xl opacity-80">Aber er kennt den Shop nicht.</div>
 
 <!--
-TIME: 8:55–9:05 (10s)
+TIME: 7:40–7:50 (10s)
 
 - Der Agent soll genau diese drei Szenarien im echten Shop durchklicken.
 - Aber er weiß nicht, wie man den Shop startet, wo der Warenkorb ist, wie man einen Gutschein eingibt.
@@ -521,7 +488,7 @@ TIME: 8:55–9:05 (10s)
 </div>
 
 <!--
-TIME: 9:05–9:30 (25s)
+TIME: 7:50–8:15 (25s)
 
 - **Analogie:** Ein Agent ist wie ein neuer Kollege am ersten Tag. Schlau, aber er kennt euren Shop nicht. Und er vergisst jeden Abend alles.
 - Was gebt ihr einem neuen Kollegen? Eine **Einarbeitungsmappe**. Bei Claude Code heißt so eine Mappe „Skill“. Es ist nur ein Ordner mit Markdown-Dateien im Repo.
@@ -549,7 +516,7 @@ TIME: 9:05–9:30 (25s)
 <div class="mt-8 text-center text-xl opacity-80">Er lädt nur, was er braucht. Ohne Mappe fängt jeder Lauf <b>bei null</b> an.</div>
 
 <!--
-TIME: 9:30–9:55 (25s)
+TIME: 8:15–8:40 (25s)
 
 - Was passiert, wenn der Agent den Auftrag bekommt „Prüfe SHOP-42 im Browser“?
 - Er kennt von jeder Mappe nur den **Klappentext**, die Beschreibung. Daran erkennt er: Für diese Aufgabe brauche ich die Mappe für den Shop. Erst dann lädt er sie ganz.
@@ -604,7 +571,7 @@ $V proof warenkorb-nachher ; $V stop   # Belege bleiben
 ```
 
 <!--
-TIME: 9:55–10:20 (25s)
+TIME: 8:40–9:05 (25s)
 
 - Die Arbeitsanweisung in echt: eine Markdown-Datei in `.claude/skills/`. Links die ganze Mappe.
 - Oben der **Klappentext**, die Beschreibung. Nur die liest der Agent immer.
@@ -658,7 +625,7 @@ files: |
 ```
 
 <!--
-TIME: 10:20–10:45 (25s)
+TIME: 9:05–9:30 (25s)
 
 - Und das ist eine Seite aus der Feature Map: der Warenkorb. Jedes Feature bekommt so eine Datei, links seht ihr Startseite, Suche, Produktseite, Merkzettel.
 - Jede Datei hat dieselben vier Abschnitte.
@@ -703,7 +670,7 @@ TIME: 10:20–10:45 (25s)
 <div class="mt-5 text-center text-base opacity-70"><b>pstack</b> von Lauren Tan (poteto), React-Compiler-Team · github.com/cursor/plugins</div>
 
 <!--
-TIME: 10:45–11:10 (25s)
+TIME: 9:30–9:55 (25s)
 
 - Die Mappe müsst ihr nicht von Hand schreiben. Ein Befehl aus pstack: `/create-verification-skill`.
 - Er befragt das Repo, nicht euch: Wie startet die App, wie bedient man sie, welche Belege gibt es?
@@ -753,7 +720,7 @@ TIME: 10:45–11:10 (25s)
 </style>
 
 <!--
-TIME: 11:10–11:55 (45s)
+TIME: 9:55–10:40 (45s)
 
 - Das ist der ganze Prompt. Gekürzt um den Port-Hinweis, den Skill-Pfad und „Antworte auf Deutsch mit einer Zusammenfassung“.
 - Das Ticket ist die Quelle, nicht mein Chat-Text.
@@ -785,7 +752,7 @@ TIME: 11:10–11:55 (45s)
 <div class="mt-6 text-center text-base opacity-80">Er schreibt auch <b>deterministische Tests</b>. Aber nicht alles hat einen E2E-Test.<br/>Darum prüft er zusätzlich <span class="text-[#ff6bed]">im echten Browser</span>, bis alles grün ist.</div>
 
 <!--
-TIME: 11:55–13:00 (65s)
+TIME: 10:40–11:45 (65s)
 
 - Der Agent nutzt den Verification-Skill nicht erst in der QA. Er nutzt ihn schon, während er das Feature baut.
 - Natürlich schreibt er auch Unit- und Komponenten-Tests. Aber in den meisten Projekten haben wir nicht für alles E2E-Tests. Genau diese Lücke schließt die Prüfung im Browser.
@@ -807,7 +774,7 @@ layout: statement
 <div class="mt-8 text-2xl opacity-80">Ein <b>zweiter</b> Agent, der den Code nicht geschrieben hat.<br/>Er hakt nicht nur Szenarien ab, er testet auch <b>explorativ</b>.</div>
 
 <!--
-TIME: 13:00–13:10 (10s)
+TIME: 11:45–11:55 (10s)
 
 - Der Entwickler-Agent hat den Skill und Agent Browser genutzt, um das Feature zu bauen.
 - Dieselbe Mappe können wir jetzt ein zweites Mal nutzen: für die QA.
@@ -858,7 +825,7 @@ TIME: 13:00–13:10 (10s)
 </style>
 
 <!--
-TIME: 13:10–14:10 (60s)
+TIME: 11:55–12:55 (60s)
 
 - Ein **zweiter** Agent. Er hat den Code nicht geschrieben, und er darf ihn nicht ändern.
 - Rolle und Grenze: QA-Agent, kein Code.
@@ -901,7 +868,7 @@ clicks: 10
 />
 
 <!--
-TIME: 14:10–15:40 (90s)
+TIME: 12:55–14:25 (90s)
 
 - Ein **zweiter** Agent, der QA-Agent, prüft den PR. Er hat den Code nicht geschrieben.
 - Das sind Standbilder aus dem echten Video des QA-Agenten, von ihm selbst mit `agent-browser record` aufgenommen. Jeder Klick springt ein Kapitel weiter (11 Bilder, 10 Klicks). Rechts die Kapitel-Liste.
@@ -977,7 +944,7 @@ VOICE-OVER (pro Bild):
 </style>
 
 <!--
-TIME: 15:40–16:10 (30s)
+TIME: 14:25–14:55 (30s)
 
 - Das Urteil ist eines von drei festen Werten: HEALTHY, MINOR_ISSUES, CRITICAL_BUGS.
 - Links: Alle Ticket-Szenarien grün, dazu die zwei Regeln aus dem Ticket (Reload, höchstens ein Gutschein), die ich auf der Ticket-Folie weggelassen habe.
@@ -1014,7 +981,7 @@ background: /bild-gherkin.jpeg
 </style>
 
 <!--
-TIME: 16:10–16:40 (30s)
+TIME: 14:55–15:25 (30s)
 
 - **Die Pointe.** Kurz Pause lassen.
 - Alle drei Szenarien waren grün. Ein klassischer E2E-Test wäre durchgelaufen.
@@ -1059,7 +1026,7 @@ TIME: 16:10–16:40 (30s)
 </style>
 
 <!--
-TIME: 16:40–17:25 (45s)
+TIME: 15:25–16:10 (45s)
 
 - „Keiner hat daran gedacht.“ Hätte man daran denken können? Ja. Und zwar mit Techniken, die ihr alle kennt.
 - Ich habe die fünf Funde aus der Demo nachträglich in eine Testmatrix einsortiert. **Drei von fünf** sind Zustandsübergänge: einlösen, dann Menge ändern, dann Artikel entfernen. Der Cookie-Fund ist Manipulation, die leere Eingabe ein Grenzwert.
@@ -1090,7 +1057,7 @@ TIME: 16:40–17:25 (45s)
 <div class="mt-6 text-center text-xl opacity-80">Die Schleife ist dieselbe wie lokal. Nur der <b>Auslöser</b> ist jetzt ein Label.</div>
 
 <!--
-TIME: 17:25–17:55 (30s)
+TIME: 16:10–16:40 (30s)
 
 - Lokal funktioniert's. Jetzt soll es ohne mich laufen.
 - Alle fünf Karten stehen sofort da, kein Klick. Von links nach rechts durchgehen.
@@ -1137,7 +1104,7 @@ claude -p "$(envsubst < .github/prompts/qa.md)" \
 </style>
 
 <!--
-TIME: 17:55–18:30 (35s)
+TIME: 16:40–17:15 (35s)
 
 - Bevor wir den ganzen Workflow sehen: die eine Zeile, in der der Agent läuft. Für euch übersetzt.
 - **Prompt als Datei:** Das ist der Testauftrag. Er liegt im Repo, wird reviewt wie Code. `envsubst` setzt die PR-Nummer ein.
@@ -1187,7 +1154,7 @@ TIME: 17:55–18:30 (35s)
 </style>
 
 <!--
-TIME: 18:30–18:55 (25s)
+TIME: 17:15–17:40 (25s)
 
 - Das ist der Trick, warum ein Agent in einer Pipeline funktioniert.
 - Links: Ein LLM antwortet normalerweise in Prosa. „Sieht größtenteils gut aus, ein paar Auffälligkeiten …“ Ist das grün oder rot? Eine Pipeline kann damit nichts anfangen. (Der Text links ist ein Beispiel von mir, kein echter Lauf.)
@@ -1263,7 +1230,7 @@ onSlideLeave(() => clearInterval(timer))
 </style>
 
 <!--
-TIME: 18:55–19:25 (30s)
+TIME: 17:40–18:10 (30s)
 
 - So sieht das im echten PR aus: Ich setze das Label `qa-verify`. Mehr mache ich nicht.
 - Unten das Actions-Log. Die Zeilen laufen live rein, während der Agent testet. Hier im Zeitraffer: knapp 3 Minuten in 11 Sekunden.
@@ -1311,7 +1278,7 @@ flowchart LR
 </MermaidSteps>
 
 <!--
-TIME: 19:25–20:10 (45s)
+TIME: 18:10–18:55 (45s)
 
 - Der echte Workflow aus dem Repo, als Bild. Den YAML-Code gibt es im Backup.
 - Jemand setzt am PR das Label `qa-verify`. Erst dann läuft der Agent los. Danach testet jeder neue Push auf diesen PR neu.
@@ -1354,7 +1321,7 @@ TIME: 19:25–20:10 (45s)
 </style>
 
 <!--
-TIME: 20:10–20:40 (30s)
+TIME: 18:55–19:25 (30s)
 
 - So sieht das Ergebnis im echten PR aus. Kein Mockup, das ist PR #1 im Otto-Klon.
 - Das ist der Kommentar zu dem Lauf, dessen Log ihr gerade gesehen habt.
@@ -1387,7 +1354,7 @@ TIME: 20:10–20:40 (30s)
 <div class="mt-3 text-center opacity-70">Alle Bausteine sind dokumentiert. Gebaut habe ich es noch nicht.</div>
 
 <!--
-TIME: 20:40–21:10 (30s)
+TIME: 19:25–19:55 (30s)
 
 - Noch ein Schritt weiter: Kein Label mehr. Der Status im Ticket ist der Auslöser.
 - Ein Dev schiebt das Ticket auf „In QA“.
@@ -1432,7 +1399,7 @@ TIME: 20:40–21:10 (30s)
 </style>
 
 <!--
-TIME: 21:10–22:25 (75s)
+TIME: 19:55–21:10 (75s)
 
 - Das eine Problem, das ich sehe. Links **Verifikation**, rechts **Validierung**. Der QA-Agent sagt mir zwei Dinge: Funktioniert das Feature so, wie wir es wollten? Und durch das explorative Testen: Was haben wir nicht bedacht?
 - Was er mir nicht sagt: Wollen wir das überhaupt shippen? Fühlt es sich gut an?
@@ -1453,7 +1420,7 @@ background: /bild-rolle.jpeg
 </div>
 
 <!--
-TIME: 22:25–22:55 (30s)
+TIME: 21:10–21:40 (30s)
 
 - **Rückgriff:** „Am Anfang habe ich euch eine Antwort versprochen. Hier ist sie.“
 - Diese Frage stellt sich gerade jeder hier im Saal. Also spreche ich sie offen aus.
@@ -1494,7 +1461,7 @@ TIME: 22:25–22:55 (30s)
 </style>
 
 <!--
-TIME: 22:55–23:40 (45s)
+TIME: 21:40–22:25 (45s)
 
 - Links: So haben wir vor KI eingestellt. **T-shaped**: ein bisschen Code, Design, Produkt, und tief in einer Box. Bei euch: Qualität.
 - Rechts: Mit KI werden Leute **O-shaped**. Ismail Amla nennt das so: rund und flexibel, die stärkste Stärke wechselt je nach Problem. Mit KI kann man kurz in eine andere Disziplin wechseln und wieder zurück.
@@ -1518,7 +1485,7 @@ TIME: 22:55–23:40 (45s)
 </div>
 
 <!--
-TIME: 23:40–24:10 (30s)
+TIME: 22:25–22:55 (30s)
 
 - Kriterien zuerst. Ohne gute Kriterien kein gutes Urteil. Das bringt am meisten.
 - Browser und Feature Map: `npm i -g agent-browser` oder Playwright CLI, dann `/create-verification-skill`. Ein Nachmittag Arbeit. Danach pflegt ihr die Map wie Testdoku.
@@ -1550,7 +1517,7 @@ class: text-center
 </style>
 
 <!--
-TIME: 24:10 + Q&A (5:50 Puffer bis 30:00)
+TIME: 22:55 + Q&A (7:05 Puffer bis 30:00)
 
 - Diese Folie bleibt während der Fragen stehen. Der Hamcrab tanzt weiter, rechts der QR-Code zu den Slides. Repo und Quellen sind in den Slides verlinkt.
 - Wenn keiner fragt: „Wer von euch hat vorhin am Ende noch gestanden? Was nutzt ihr dafür?“
