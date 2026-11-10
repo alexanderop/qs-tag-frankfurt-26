@@ -38,7 +38,7 @@ Wenn alle sitzen:
 - „Hallo zusammen! Schön, dass ihr alle hier in meiner Session seid.“
 - „Ich hoffe, ihr hattet bis jetzt einen guten Tag und habt schon viel gelernt.“
 - „… und ihr habt noch ein bisschen Energie übrig für meinen Slot.“
-- [click] → Titel-Slide
+- Dann weiter zur Titel-Slide.
 -->
 
 ---
@@ -118,7 +118,7 @@ TIME: 1:15–2:30 (75s)
 - [click] „Setzt euch hin, wenn bei euch kein **Agent** selbst testet.“ Automatisch, im Browser oder in der Pipeline, ohne dass jemand klickt.
 - [click] Wer jetzt noch steht: Applaus, und ich will nach dem Talk mit euch reden. Kurz fragen: „Was nutzt ihr dafür?“
 - Danach alle hinsetzen lassen. „Für alle, die sitzen: Genau darum geht's in den nächsten 30 Minuten.“
-- Der Hamcrab oben rechts macht mit: sitzt → tanzt beim Aufstehen → wird müde → setzt sich → klatscht für alle, die noch stehen. Nicht kommentieren, nur wirken lassen.
+- Der Hamcrab oben rechts macht mit: sitzt → tanzt beim Aufstehen → steht → wird müde → setzt sich → klatscht für alle, die noch stehen. Nicht kommentieren, nur wirken lassen.
 -->
 
 ---
@@ -638,8 +638,8 @@ files: |
 
 ## Sub-features
 - cart-qty-plus: `+` erhöht die Menge, Summen und Cookie ziehen mit.
-- cart-coupon-valid: SPAR10 gibt −10 % auf die Zwischensumme.
-- cart-coupon-invalid: zeigt „Dieser Gutschein ist ungültig“.
+- cart-qty-minus: `−` verringert die Menge. Bei 1 fliegt die Position raus.
+- cart-shipping: unter 79 € kostet der Versand 5,95 €, sonst kostenlos.
 
 ## How to get to it (user POV)
 - Im Header „Warenkorb“ wählen.
@@ -659,7 +659,7 @@ TIME: 10:20–10:45 (25s)
 
 - Und das ist eine Seite aus der Feature Map: der Warenkorb. Jedes Feature bekommt so eine Datei, links seht ihr Startseite, Suche, Produktseite, Merkzettel.
 - Jede Datei hat dieselben vier Abschnitte.
-- [click] **Was gibt es?** Jedes Unterfeature mit erwartetem Verhalten.
+- [click] **Was gibt es?** Jedes Unterfeature mit erwartetem Verhalten. Der Gutschein steht noch nicht drin. Den trägt der Agent gleich selbst nach.
 - [click] **Wie komme ich hin?** Aus Sicht der Nutzerin.
 - [click] **Wie bediene ich es?** Echte Befehle, die der Agent kopieren kann.
 - [click] **Gotchas.** Mein Lieblingsbeispiel: Der Minus-Button ist ein typografisches Minus, kein Bindestrich. Genau das Wissen, das sonst nur im Kopf einer Testerin steckt.
@@ -862,7 +862,7 @@ TIME: 13:10–14:10 (60s)
 - Wieder ist das Ticket die Quelle.
 - Szenarien zuerst, mit dem Skill.
 - **Ehrlich sagen:** Hier steht meine Test-Charter. „Mengenänderungen“ habe ich als Beispiel reingeschrieben. Den eingebauten Bug kannte der Agent nicht, aber ich habe ihm gesagt, wo erfahrene Tester suchen.
-  - Negative Gesamtsumme und Cookie-Manipulation standen nicht drin. Die hat er selbst gefunden.
+  - Cookie-Manipulation stand nicht drin. Und dass „Artikel entfernen“ zu einer negativen Gesamtsumme führt, auch nicht. Das hat er selbst gefunden.
   - Genau das ist der Punkt für euch: Diese Liste ist **QA-Wissen**. Wer weiß, wo es kracht, schreibt die bessere Charter.
 - Video und Screenshots: Daher kommen die Standbilder, die ihr gleich seht.
 - Festes Urteil und feste Report-Struktur. Damit kann die Pipeline später arbeiten.
@@ -908,7 +908,7 @@ VOICE-OVER (pro Bild):
 - **Bild 1** „Der Agent startet auf der Startseite und legt eine Mascara in den Warenkorb.“
 - [click] **Bild 2** „Szenario 1: Er löst SPAR10 ein. 89 Cent Rabatt, Gesamt 14 Euro. Grün.“
 - [click] **Bild 3** „Szenario 2: GIBTSNICHT. Die Fehlermeldung kommt. Grün.“
-- **HIER STEHEN BLEIBEN.** „Alle Szenarien aus dem Ticket bis hier: grün. Das hätte auch ein E2E-Test gekonnt. Ab jetzt steht nichts mehr im Ticket.“
+- **HIER STEHEN BLEIBEN.** „Die ersten zwei Szenarien aus dem Ticket: grün. Das hätte auch ein E2E-Test gekonnt. Ab jetzt sucht er dort, wo nichts im Ticket steht. Das dritte Szenario hakt er nebenbei ab.“
 - [Ask for hands] **„Ihr seid die Tester: Wo würdet ihr jetzt suchen?“** Zwei, drei Zurufe abwarten (Menge? Leerzeichen? Entfernen?).
 - [click] **Bild 4** „Er tippt den Code klein und mit Leerzeichen. Funktioniert.“
 - [click] **Bild 5** „Jetzt erhöht er die Menge auf 5. Achtet auf den Rabatt: Er bleibt bei 89 Cent. Das ist der erste Fund.“
@@ -1090,11 +1090,12 @@ TIME: 16:40–17:25 (45s)
 TIME: 17:25–17:55 (30s)
 
 - Lokal funktioniert's. Jetzt soll es ohne mich laufen.
-- [click] Ich setze am PR das Label `qa-verify`. Bewusst ein Label, nicht jeder Push: Ich entscheide, wann sich ein Lauf lohnt.
-- [click] GitHub Actions startet den Shop. Mit demselben Skript aus dem Verification-Skill.
-- [click] Claude Code findet über den PR das verlinkte GitHub-Issue (`Closes #2`). Das Issue ist das Ticket mit den Gherkin-Szenarien.
-- [click] Er prüft im echten Browser, headless in der Cloud.
-- [click] Der Report kommt mit Screenshots als Kommentar in den PR. Das Urteil entscheidet, ob der Check grün oder rot wird.
+- Alle fünf Karten stehen sofort da, kein Klick. Von links nach rechts durchgehen.
+- Ich setze am PR das Label `qa-verify`. Bewusst ein Label, nicht jeder Push: Ich entscheide, wann sich ein Lauf lohnt.
+- GitHub Actions startet den Shop. Mit demselben Skript aus dem Verification-Skill.
+- Claude Code findet über den PR das verlinkte GitHub-Issue (`Closes #2`). Das Issue ist das Ticket mit den Gherkin-Szenarien.
+- Er prüft im echten Browser, headless in der Cloud.
+- Der Report kommt mit Screenshots als Kommentar in den PR. Das Urteil entscheidet, ob der Check grün oder rot wird.
 - Gleicher Skill, gleiche Feature Map, gleicher Report wie lokal.
 - SOURCE: alexop.dev „Building an AI QA Engineer with Claude Code and Playwright MCP“ (Label-Trigger) und „How to Use Claude Code as an AI QA Tester with Agent Browser“ (--json-schema).
 -->
@@ -1546,6 +1547,7 @@ TIME: 24:25–24:55 (30s)
 - Erinnert euch an die Demo: Der Agent kannte die Szenarien, weil sie jemand gut aufgeschrieben hat.
 - Er hat bei Mengenänderungen gesucht, weil die Test-Charter im Prompt es ihm gesagt hat.
 - Er wusste, wie der Warenkorb funktioniert, weil jemand die Feature Map gepflegt hat.
+- **Testentwurf:** Den hatte mein Lauf noch nicht. Die zwei offenen Zeilen in der Testmatrix zeigen, was ohne ihn fehlt.
 - Ihr klickt weniger. Ihr baut die Systeme, mit denen geprüft wird.
 -->
 
@@ -1616,7 +1618,7 @@ class: text-center
 TIME: 25:40 + Q&A (4:20 Puffer bis 30:00)
 
 - Diese Folie bleibt während der Fragen stehen. Der Hamcrab tanzt weiter, rechts der QR-Code zu den Slides. Repo und Quellen sind in den Slides verlinkt.
-- Wenn keiner fragt: „Wer von euch hat heute Morgen noch gestanden? Was nutzt ihr dafür?“
+- Wenn keiner fragt: „Wer von euch hat vorhin am Ende noch gestanden? Was nutzt ihr dafür?“
 -->
 
 ---
@@ -1662,7 +1664,7 @@ jobs:
     steps:
       - run: |   # Screenshots auf Branch qa-evidence, Bild-Links einbetten
           gh pr comment "$PR_NUMBER" --body-file comment.md
-      - run: |   # Merge-Gate
+      - run: |   # Quality Gate
           if [ "$PASSED" != "true" ]; then exit 1; fi
 ```
 
@@ -1675,7 +1677,7 @@ BACKUP (bei Fragen nach dem Code)
 - **Shop starten** mit dem Skript aus dem Verification-Skill. Kein eigenes CI-Setup.
 - **Claude Code über meine Subscription** (`claude setup-token`), kein API-Key. 
 - Die Belege gehen als Artefakt raus.
-- **Job report, ohne Claude:** Er legt die Screenshots auf einen eigenen Branch, damit sie im Kommentar sichtbar sind, postet den Report und ist das Merge-Gate (`passed` muss `true` sein). Schreibrechte bekommt nur dieser Job.
+- **Job report, ohne Claude:** Er legt die Screenshots auf einen eigenen Branch, damit sie im Kommentar sichtbar sind, postet den Report und ist das Quality Gate (`passed` muss `true` sein, sonst Check rot). Schreibrechte bekommt nur dieser Job. Nicht sagen „Merge blockiert“: Im Demo-Repo ist der Check kein Pflicht-Check.
 - Dazu im echten File: Actions per SHA gepinnt, zizmor im Pedantic-Modus ohne Befund.
 - SOURCE: otto-nuxt-shop Commits 25d6d59 (live log, budget) und e2f5950 (zwei Jobs, Screenshots); Blogposts „Building an AI QA Engineer…“ und „How to Use Claude Code as an AI QA Tester…“
 -->
@@ -1744,7 +1746,7 @@ Nur bei Fragen. „Wie funktioniert Agent Browser eigentlich?“
   <div>
     <h3>Zitate &amp; Artikel</h3>
     <ul>
-      <li>Boris Cherny bei Lenny's Podcast, 19.02.2026 (41:25, 43:06)<br><span>youtube.com/watch?v=We7BZVKbCVw</span></li>
+      <li>Boris Cherny bei Lenny's Podcast, 19.02.2026 (41:25, 42:46, 43:06)<br><span>youtube.com/watch?v=We7BZVKbCVw</span></li>
       <li>Cat Wu: „Product management on the AI exponential“<br><span>claude.com/resources/articles/product-management-on-the-ai-exponential</span></li>
       <li>Ismail Amla: „O-Shaped People: How AI Is Blowing Up Titles“, LinkedIn, 12.08.2026</li>
     </ul>
