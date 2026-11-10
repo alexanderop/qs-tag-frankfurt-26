@@ -1537,41 +1537,6 @@ TIME: 23:40–24:25 (45s)
 - **Meine Wendung fürs Publikum:** Ihr könnt jetzt überall mit anpacken. Aber eure Basis bleibt Qualität: Risiken einschätzen, gute Kriterien schreiben, wissen, wo es kracht. Amla sagt selbst: Spezialisten werden zu denen, die Arbeit aus anderen Bereichen prüfen und stärker machen.
 - SOURCE: research/raw/2026-08-12-o-shaped-people.md; research/wiki/rollen-verschmelzen.md
 -->
----
-layout: statement
----
-
-# Der Agent hat den Bug gefunden,<br/>weil jemand gute <span class="text-[#ff6bed]">Vorarbeit</span> gemacht hat.
-
-<div class="mt-8 text-2xl opacity-80">Gherkin-Szenarien, Testentwurf, Test-Charter, Feature Map.<br/>Das ist <b>eure</b> Arbeit, nur eine Ebene höher.</div>
-
-<!--
-TIME: 24:25–24:55 (30s)
-
-- Die Wendung, die Mut machen soll.
-- Erinnert euch an die Demo: Der Agent kannte die Szenarien, weil sie jemand gut aufgeschrieben hat.
-- Er hat bei Mengenänderungen gesucht, weil die Test-Charter im Prompt es ihm gesagt hat.
-- Er wusste, wie der Warenkorb funktioniert, weil jemand die Feature Map gepflegt hat.
-- **Testentwurf:** Den hatte mein Lauf noch nicht. Die zwei offenen Zeilen in der Testmatrix zeigen, was ohne ihn fehlt.
-- Ihr klickt weniger. Ihr baut die Systeme, mit denen geprüft wird.
--->
-
----
-layout: cover
-background: /bild-builder.jpeg
----
-
-<div class="w-[42%] text-left">
-
-<h1 class="!text-5xl !leading-tight">Werdet <span class="text-[#ff6bed]">Builder</span> mit Qualitäts-Spezialität.</h1>
-
-</div>
-
-<!--
-TIME: 24:55–25:10 (15s)
-
-- Der Schlusssatz. Langsam sagen, dann kurz stehen lassen.
--->
 
 ---
 
@@ -1588,7 +1553,7 @@ TIME: 24:55–25:10 (15s)
 </div>
 
 <!--
-TIME: 25:10–25:40 (30s)
+TIME: 24:25–24:55 (30s)
 
 - Kriterien zuerst. Ohne gute Kriterien kein gutes Urteil. Das bringt am meisten.
 - Browser und Feature Map: `npm i -g agent-browser` oder Playwright CLI, dann `/create-verification-skill`. Ein Nachmittag Arbeit. Danach pflegt ihr die Map wie Testdoku.
@@ -1620,7 +1585,7 @@ class: text-center
 </style>
 
 <!--
-TIME: 25:40 + Q&A (4:20 Puffer bis 30:00)
+TIME: 24:55 + Q&A (5:05 Puffer bis 30:00)
 
 - Diese Folie bleibt während der Fragen stehen. Der Hamcrab tanzt weiter, rechts der QR-Code zu den Slides. Repo und Quellen sind in den Slides verlinkt.
 - Wenn keiner fragt: „Wer von euch hat vorhin am Ende noch gestanden? Was nutzt ihr dafür?“
