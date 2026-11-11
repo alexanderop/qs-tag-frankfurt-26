@@ -1454,10 +1454,10 @@ TIME: 21:40–22:10 (30s)
 <div class="keynote mt-6">
   <figure>
     <div class="keynote__shot">
-      <img src="/keynote-richard.jpg" alt="Folie aus Richards Keynote: Was wir als Tester sehr gut können. Fragen, Zweifeln, Verbinden." />
+      <img src="/keynote-richard.jpg" alt="Folie aus Richard Seidls Keynote: Was wir als Tester sehr gut können. Fragen, Zweifeln, Verbinden." />
       <div v-click class="keynote__fix"><i></i><b>Menschen</b></div>
     </div>
-    <figcaption>Aus Richards Keynote, heute Morgen hier im Saal</figcaption>
+    <figcaption>Richard Seidl: „Testen ist People Business. Erst recht mit KI.“ Keynote, heute Morgen</figcaption>
   </figure>
   <div class="keynote__map">
     <div><b>Fragen</b><span>Akzeptanzkriterien und Charter. Ohne sie hat der Agent kein Urteil.</span></div>
@@ -1489,7 +1489,7 @@ TIME: 22:10–22:40 (30s)
 - **Zweifeln:** Der Agent meldet CRITICAL_BUGS. Ob das stimmt und ob wir trotzdem shippen, entscheidet jemand, der zweifeln kann.
 - **Verbinden:** Wer Fachlichkeit, Test und Technik zusammenbringt, baut solche Pipelines. Das führt zur nächsten Folie.
 - „Genau diese drei Dinge kann der Agent nicht. Den Rest nehme ich euch gern ab.“
-- TODO vor dem Talk: Richards Nachnamen in Bildunterschrift und Quellen-Folie eintragen.
+- SOURCE: Richard Seidl, Keynote „Testen ist People Business. Erst recht mit KI.“, Software-QS-Tag, 11.11.2026, 09:15 (qs-tag.de/programm/11-11-2026). Foto von mir.
 -->
 
 ---
@@ -1720,6 +1720,7 @@ Nur bei Fragen. „Wie funktioniert Agent Browser eigentlich?“
       <li>Boris Cherny bei Lenny's Podcast, 19.02.2026 (41:25, 42:46, 43:06)<br><span>youtube.com/watch?v=We7BZVKbCVw</span></li>
       <li>Cat Wu: „Product management on the AI exponential“<br><span>claude.com/resources/articles/product-management-on-the-ai-exponential</span></li>
       <li>Ismail Amla: „O-Shaped People: How AI Is Blowing Up Titles“, LinkedIn, 12.08.2026</li>
+      <li>Richard Seidl: „Testen ist People Business. Erst recht mit KI.“, Keynote, Software-QS-Tag, 11.11.2026<br><span>qs-tag.de/programm/11-11-2026</span></li>
     </ul>
     <h3>Tools</h3>
     <ul>
